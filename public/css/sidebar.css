@@ -1,0 +1,61 @@
+#sidebar {
+    width: 250px;
+    background-color: #f8f9fa;
+    border: 1px solid;
+    border-color: gainsboro;
+    position: fixed;
+    top: 56px;
+    left: 0;
+    bottom: 0;
+    z-index: 1040; /* Beneath the navbar */
+    padding: 20px;
+    overflow-y: auto;
+    transition: none;
+}
+
+/* Hide sidebar only on smaller screens */
+@media (max-width: 768px) {
+    #sidebar {
+        width: 100%;
+        transform: translateX(100%); /* Hidden off-screen initially */
+
+    }  
+
+    #sidebar.show {
+        transform: translateX(0); /* Slides in when toggled */
+    }
+}
+
+/* Main content adjustments */
+#main-content {
+    margin-left: 250px; /* Leave space for sidebar on large screens */
+}
+
+@media (max-width: 768px) {
+    #main-content {
+        margin-left: 0; /* Full width on mobile */
+    }
+}
+
+/* Show hamburger icon only on smaller screens */
+.navbar-toggle {
+    display: none !important; /* Hidden by default */
+
+    @media (max-width: 768px) {
+        display: block !important; /* Visible only on small screens */
+    }
+}
+
+
+/* Navbar styles */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1050; /* Above the sidebar */
+}
+
+#content-wrapper {
+    margin-top: 56px; /* Account for navbar height */
+}

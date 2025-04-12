@@ -1,0 +1,55 @@
+.explorer-ul {
+    list-style-type: none; /* Removes bullet points */
+    padding-left: 0; /* No padding on the <ul> */
+}
+
+.explorer-tab {
+    text-align: left;
+    width: 100%;
+    padding-left: calc( 12px + var(--level, 0) * 20px); /* Adjust text indentation */
+    padding-right: 12px;
+    overflow-wrap: break-word;
+    cursor: pointer;
+}
+
+.explorer-tab.active {
+    background-color: azure;
+}
+
+.explorer-dropdown {
+    display: block;
+    height: 0;
+    overflow: hidden;
+    opacity: 0;
+    visibility: hidden; /* Ensure it's not interactable */
+    transition: all 0.3s ease;
+}
+
+.explorer-dropdown.show {
+    height: auto; /* Allow the height to grow automatically */
+    opacity: 1; /* Make it fully visible */
+    visibility: visible; /* Make it interactable */
+}
+
+.explorer-arrow-container {
+    display: flex;
+    align-items: center;
+}
+
+.explorer-arrow-container > span {
+    width: 80%; /* Space for arrow */
+}
+
+.explorer-arrow {
+    width: 24px;
+    height: 24px;
+    fill: rgb(120, 120, 120);
+    transition: transform 0.3s ease;
+    margin-left: auto; /* Nice alignment */
+    transform: rotate(180deg);
+}
+
+.explorer-arrow.flipped {
+    fill: rgb(30, 30, 30);
+    transform: rotate(360deg);
+}

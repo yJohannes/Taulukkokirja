@@ -1,0 +1,6 @@
+.highlight,
+.highlight-row,
+.highlight-col {
+    box-shadow: inset 0 0 0 1000px rgba(150, 161, 255, 0.1);
+    transition: box-shadow 0.15s ease-in-out;
+}
