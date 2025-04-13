@@ -4,6 +4,7 @@
 }
   
 #explorer-search > input {
+    background-color: #f8f9fa;
     width: 100%; /* Full width of the wrapper */
     padding-right: 35px; /* Add space for the icon on the right */
     box-sizing: border-box; /* Includes padding in the total width */
@@ -14,7 +15,7 @@ position: absolute; /* Position the icon relative to the input wrapper */
 top: 50%; /* Center vertically inside the input */
 right: 10px; /* Align to the right of the input field */
 transform: translateY(-50%); /* Adjust for perfect vertical alignment */
-color: #aaa; /* Optional: Style the icon color */
+color: black; /* Optional: Style the icon color */
 pointer-events: none; /* Prevent icon from interfering with input interactions */
 }
 
@@ -38,7 +39,8 @@ pointer-events: none; /* Prevent icon from interfering with input interactions *
 }
 
 .explorer-tab.active {
-    background-color: azure;
+    background-color: black !important;
+    color: white !important;
 }
 
 .explorer-dropdown {
