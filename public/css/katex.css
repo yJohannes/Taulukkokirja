@@ -1,14 +1,21 @@
+.latex-container {
+    max-width: 100%;
+    overflow-x: auto;    /* Horizontal scrolling */
+    overflow-y: hidden;  /* Hide vertical scrollbar */
+}
+
 .katex {
     position: relative;
-    cursor: pointer; /* Optional: to indicate it's interactive */
+    margin: 3px;
+    cursor: pointer;
 
     user-select: none;
-    -webkit-user-select: none; /* Safari */
-    -moz-user-select: none;    /* Firefox */
-    -ms-user-select: none;     /* IE10+/Edge */
+    -webkit-user-select: none;  /* Safari */
+    -moz-user-select: none;     /* Firefox */
+    -ms-user-select: none;      /* IE10+/Edge */
 
     transition: box-shadow 0.5s ease-in-out;
-    box-shadow: inset 0 0 0 1000px rgba(150, 161, 255, 0); /* transparent base */
+    box-shadow: inset 0 0 0 1000px rgba(150, 161, 255, 0);
 
 }
 
@@ -26,14 +33,14 @@
 .katex:hover::before {
     content: "";
     position: absolute;
-    top: -6px;
-    left: -6px;
-    right: -6px;
+    top:    -6px;
+    left:   -6px;
+    right:  -6px;
     bottom: -6px;
 
     border: 1px dashed #7777773f;
     border-radius: 4px;
 
-    pointer-events: none; /* Let mouse interactions pass through */
-    z-index: -1; /* Place it behind the actual KaTeX content */
+    pointer-events: none;   /* Let mouse interactions pass through */
+    z-index: -1;            /* Place it behind the actual KaTeX content */
 }
