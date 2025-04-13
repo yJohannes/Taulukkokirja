@@ -1,0 +1,165 @@
+<h1>Diskreetti todennäköisyysjakauma</h1>
+<hr>
+
+<p>
+    Diskreetti satunnaismuuttuja
+    <span class="latex-container">X</span>
+    saa erilliset arvot 
+    <span class="latex-container">x_1{,}\ x_2{,}\ \ldots</span>
+    todennäköisyyksillä 
+    <span class="latex-container">p_1{,}\ p_2{,}\ \ldots</span>
+    , joiden summa on 1.
+</p>
+
+<div class="table-container">
+    <table class="table-striped">
+        <tbody>
+            <tr>
+                <th><p>Odotusarvo</p></th>
+                <td>
+                    <p><span class="latex-container display">\text{E}(X)=\mu = \sum_{i}{{p}_{i}}{{x}_{i}}</span></p>
+                </td>
+            </tr>
+            <tr>
+                <th><p>Keskihajonta</p></th>
+                <td>
+                    <p><span class="latex-container display">\text{D}(X)=\sigma=\sqrt{\sum_i^{ }p_i(x_i-\mu)^2}</span></p>
+                </td>
+            </tr>        
+            <tr>
+                <th><p>Varianssi</p></th>
+                <td>
+                    <p><span class="latex-container display">\sigma^2</span></p>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<br>
+<h3>Diskreettejä jakaumia</h3>
+
+<div class="table-container">
+    <table class="table-striped">
+        <thead>
+            <tr>
+                <th>
+                    <p>Jakauma</p>
+                </th>
+                <th>
+                    <p>Pistetodennäköisyys</p>
+                </th>
+                <th>
+                    <p>Odotusarvo</p>
+                </th>
+                <th>
+                    <p>Keskihajonta</p>
+                </th>
+                <th>
+                    <p>Määrittelyjoukko</p>
+                </th>
+                <th>
+                    <p>Parametrin rajat</p>
+                </th>
+
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>
+                    <p>Binomijakauma</p>
+                </td>
+                <td>
+                    <p><span class="latex-container display">P\left(X=k\right) = \left(\begin{matrix} n\\ k \end{matrix}\right)p^kq^{n-k}</span></p>
+                </td>
+                <td>
+                    <p><span class="latex-container display">np</span></p>
+                </td>
+                <td>
+                    <p><span class="latex-container display">\sqrt{npq}</span></p>
+                </td>
+                <td>
+
+                </td>
+                <td>
+                    <p><span class="latex-container display">q = 1 - p</span></p>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <p>Hypergeometrinen jakauma</p>
+                </td>
+                <td>
+                    <p><span class="latex-container display">P\left(X=k\right) = \frac{\binom{K}{n}\binom{N-K}{n-k}}{\binom{N}{n}}</span></p>
+                </td>
+                <td>
+                    <p><span class="latex-container display">n\frac{K}{N}</span></p>
+                </td>
+                <td>
+                    <p><span class="latex-container display">\sqrt{n\frac{K}{N}\left(1-\frac{K}{N}\right)\frac{N-n}{N-1}}</span></p>
+                </td>
+                <td>
+
+                </td>
+                <td>
+                    
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <p>Geometrinen jakauma</p>
+                </td>
+                <td>
+                    <p><span class="latex-container display">q^{k}p</span></p>
+                </td>
+                <td>
+                    <p><span class="latex-container display">\dfrac{q}{p}</span></p>
+                </td>
+                <td>
+                    <p><span class="latex-container display">\dfrac{\sqrt{q}}{p}</span></p>
+                </td>
+                <td>
+                    <p>
+                        <span class="latex-container">N:</span>
+                        populaation koko
+                    </p>
+                    <p>
+                        <span class="latex-container">K:</span>
+                        mahdollisten suotuisten tapahtumien määrä
+                    </p>
+                    <p>
+                        <span class="latex-container">n:</span>
+                        yritysten määrä
+                    </p>
+                    <p>
+                        <span class="latex-container">k:</span>
+                        havaittujen suotuisien tapahtumien määrä
+                    </p>
+                </td>
+                <td>
+
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <p>Poissonin jakauma</p>
+                </td>
+                <td>
+                    <p><span class="latex-container display">\dfrac{{{a}^{k}}}{k!}{{e}^{-a}}</span></p>
+                </td>
+                <td>
+                    <p><span class="latex-container display">a</span></p>
+                </td>
+                <td>
+                    <p><span class="latex-container display">\sqrt{a}</span></p>
+                </td>
+                <td>
+                    <p><span></span></p>
+                </td>
+                <td>
+                    <p><span class="latex-container display">a > 0</span></p>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
