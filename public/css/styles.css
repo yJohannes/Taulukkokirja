@@ -12,7 +12,7 @@ body {
 
 #content-wrapper {
     display: grid;
-    grid-template-columns: 250px minmax(0, 1fr); /* minmax to block horizontal overflow. */
+    grid-template-columns: 280px minmax(0, 1fr); /* minmax to block horizontal overflow. */
     grid-template-rows: 100% minmax(0, 1fr);
     gap: 1rem;
     max-width: 100vw;
@@ -71,10 +71,10 @@ td, th {
 
 th {
     white-space: nowrap; /* Prevent wrapping */
+    color: white;
+    background-color: black;
 }
 
 thead {
-    background-color: black;
-    color: white;
     box-shadow: 0 2px 5px rgba(0,0,0,0.2); /* Optional: Add shadow for visual separation */
 }
