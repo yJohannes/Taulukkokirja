@@ -28,10 +28,8 @@ pointer-events: none; /* Prevent icon from interfering with input interactions *
     padding-left: calc( 12px + var(--level, 0) * 20px); /* Adjust text indentation */
     padding-top: 10px;
     padding-bottom: 10px;
-    padding-left: 14px;
     padding-right: 12px;
 
-    
     text-align: left;
     white-space: normal;    /* Allow text to wrap */
     word-wrap: break-word;  /* Ensure the text breaks appropriately */
