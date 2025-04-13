@@ -78,9 +78,3 @@ thead {
     color: white;
     box-shadow: 0 2px 5px rgba(0,0,0,0.2); /* Optional: Add shadow for visual separation */
 }
-
-thead th {
-    position: sticky;
-    /* top: 56px; */
-    z-index: 1100;
-}
