@@ -1,13 +1,40 @@
+#explorer-search {
+    position: relative; /* Allows positioning elements inside the input field */
+    width: 100%; /* Set the width of the input field */
+}
+  
+#explorer-search > input {
+    width: 100%; /* Full width of the wrapper */
+    padding-right: 35px; /* Add space for the icon on the right */
+    box-sizing: border-box; /* Includes padding in the total width */
+}
+  
+#explorer-search i {
+position: absolute; /* Position the icon relative to the input wrapper */
+top: 50%; /* Center vertically inside the input */
+right: 10px; /* Align to the right of the input field */
+transform: translateY(-50%); /* Adjust for perfect vertical alignment */
+color: #aaa; /* Optional: Style the icon color */
+pointer-events: none; /* Prevent icon from interfering with input interactions */
+}
+
 .explorer-ul {
     list-style-type: none; /* Removes bullet points */
     padding-left: 0; /* No padding on the <ul> */
 }
 
 .explorer-tab {
-    text-align: left;
     width: 100%;
     padding-left: calc( 12px + var(--level, 0) * 20px); /* Adjust text indentation */
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 14px;
     padding-right: 12px;
+
+    
+    text-align: left;
+    white-space: normal;    /* Allow text to wrap */
+    word-wrap: break-word;  /* Ensure the text breaks appropriately */
     overflow-wrap: break-word;
     cursor: pointer;
 }

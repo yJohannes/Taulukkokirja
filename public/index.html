@@ -29,7 +29,6 @@
     <!-- Navigation -->
     <nav class="navbar navbar-expand navbar-dark shadow-sm sticky-top">
         <div class="container-fluid">
-
             <b>
                 <a class="navbar-brand" href="#">Formula Book</a>
             </b>
@@ -47,7 +46,7 @@
                         </a>
                     </li>
                     <li class="nav-item ml-3">
-                        <a class="nav-link text-white ripple navbar-toggle" id="toggle-sidebar">
+                        <a class="nav-link text-white ripple" id="sidebar-toggle">
                             <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" fill="white" viewBox="0 20 448 512">
                                 <path d="M0 96C0 78.3 14.3 64 32 64l384 0c17.7 0 32 14.3 32 32s-14.3 32-32 32L32 128C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32l384 0c17.7 0 32 14.3 32 32s-14.3 32-32 32L32 288c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32L32 448c-17.7 0-32-14.3-32-32s14.3-32 32-32l384 0c17.7 0 32 14.3 32 32z"/>
                             </svg>
@@ -57,41 +56,33 @@
             </div>
         </div>
     </nav>
-
-
     
-    <div id="sidebar" class="shadow hidden">
-        <h5>Sidebar</h5>
-
-        <div id="search-bar" style="position: relative;">
-            <input type="text" class="form-control border-dark shadow-sm" placeholder="Search..." aria-label="Search">
-            <i class="bi bi-search search-icon"></i>
-        </div>
-
-        <div></div>
-        <div id="explorer" class="mt-4 shadow rounded"></div>
-    </div>
-
-    <!-- Main content area -->
+    <!-- Content area -->
     <div id="content-wrapper">
+        <aside id="sidebar" class="shadow hidden">
+            <section id="explorer" class="mt-3" aria-label="Explorer">
+                <div id="explorer-search" style="position: relative;">
+                    <input type="text" class="form-control border-dark shadow-sm" placeholder="Search..." aria-label="Search">
+                    <i class="bi bi-search search-icon"></i>
+                </div>
+
+                <div id="explorer-tabs" class="shadow rounded mt-3"></div>
+            </section>
+        </aside>
 
         <main id="main-content">
-            <h1>Main Content</h1>
-            <p>This is a content area. Content will appear here!</p>
-            <!-- Main content -->
+            <article id="page-container">
+                <h1>Main Content</h1>
+                <p>This is the page content area. Pages will appear here!</p>
+            </article>
         </main>
     
-        <footer class="text-white text-center py-3 mt-auto">
-            <div class="container">
-                <p class="mb-0">Bottom text</p>
-            </div>
-        </footer>
     </div>
 
 
     
     <!-- Popup -->
-    <div id="popup" class="popup alert bg-success" role="alert">
+    <div id="popup" class="popup alert bg-success shadow" role="alert">
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="white" viewBox="0 0 448 512">
             <path d="M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7 393.4 105.4c12.5-12.5 32.8-12.5 45.3 0z"/>
         </svg>
@@ -113,13 +104,11 @@
     <script src="js/tables.js" type="text/javascript"></script>
 
     <script>
-        loadExplorerToElement('explorer');
-    </script>
-    
-    <script>
+        loadExplorerToElement('explorer-tabs');
+
         // Sidebar toggle functionality
         const sidebar = document.getElementById('sidebar');
-        const toggleSidebar = document.getElementById('toggle-sidebar');
+        const toggleSidebar = document.getElementById('sidebar-toggle');
 
         toggleSidebar.addEventListener('click', () => {
             sidebar.classList.toggle('show');

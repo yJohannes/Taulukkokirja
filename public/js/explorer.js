@@ -1,12 +1,5 @@
 async function loadExplorerUL()
 {
-    //         <div class="dropdown mr-2 mb-2 d-inline-block">
-
-
-    // <li class="list-item article-list-item" data-id="13730064425382" data-type="document">
-    // 	<div class="list-item-button">Määritelmiä</div>
-    // </li>
-
     try {
         const response = await fetch('/api/pages-structure');
 
@@ -75,7 +68,7 @@ async function loadExplorerUL()
             
             if (isDropdown) {
                 const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
-                path.setAttribute("d", "m7 14 5-5 5 5z");  // Traces an arrowS
+                path.setAttribute("d", "m7 14 5-5 5 5z");  // Traces an arrow
                 
                 const arrow = document.createElementNS("http://www.w3.org/2000/svg", "svg");
                 arrow.classList.add('explorer-arrow');
@@ -119,7 +112,12 @@ async function loadExplorerUL()
                     
                     tab.addEventListener('click', function() {
                         // window.location.href = pageName;
-                        loadPageToElement(currentPath, 'main-content');
+
+                        const sidebar = document.getElementById('sidebar');
+                        sidebar.classList.toggle('show', false);
+                
+
+                        loadPageToElement(currentPath, 'page-container');
                     })
                 }
 
