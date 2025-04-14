@@ -5,6 +5,15 @@ function initExplorerButtons()
 {
     const collapse = document.getElementById('explorer-collapse')
 
+    collapse.setAttribute('title', 'Collapse tabs');
+    collapse.setAttribute('data-toggle', 'tooltip');
+    collapse.setAttribute('data-placement', 'right');
+    $(collapse).tooltip({
+        delay: { show: 500, hide: 200 },
+        animation: true
+    });
+
+
     collapse.addEventListener('click', () => {
         const uls = document.querySelectorAll('.explorer-ul');
     
@@ -16,7 +25,8 @@ function initExplorerButtons()
             lis.forEach((li) => {
                 const tabs = li.querySelectorAll('.explorer-tab');
                 tabs.forEach((tab) => {
-        
+                    tab.classList.remove('active');
+
                     const arrowSvg = tab.querySelector('svg.flipped');
                     if (arrowSvg) {
                         arrowSvg.classList.remove('flipped');
@@ -75,7 +85,6 @@ async function loadExplorerUL()
                 // console.log(childTabs)
 
                 const activeChildren = tab.querySelectorAll('.active');
-                console.log(activeChildren)
                 
                 for (const child of tab.children) {
                     if (child.classList.contains('active')) {
