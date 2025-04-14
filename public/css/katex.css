@@ -25,7 +25,7 @@
 }
 
 .katex:hover {
-    color: navy;
+    color: #4b5180;
 }
 
 .katex:hover::before {
