@@ -1,3 +1,5 @@
+import { createPopup } from './popup.js';
+
 async function initLatex()
 {
     const elements = document.getElementsByClassName('latex-container');
@@ -23,19 +25,21 @@ async function initLatex()
             katex_span.classList.add('highlight');
             setTimeout(() => katex_span.classList.remove('highlight'), 750);
 
-            const latex = element.getAttribute('title');
-
+            let latex = element.getAttribute('title');
+            if (!latex) {
+                latex = element.getAttribute('data-original-title');    
+            }
+            
             if (!latex) return;
 
             navigator.clipboard.writeText(latex)
                 .then(() => {
-                    showPopup("Copied!");
+                    createPopup("Copied!", 'success');
                 })
                 .catch(err => {
                     console.error('Error copying text: ', err);
                 });
         });
-
     });
 }
 
