@@ -77,6 +77,14 @@ pointer-events: none; /* Prevent icon from interfering with input interactions *
 }
 
 .explorer-arrow.flipped {
-    fill: rgb(30, 30, 30);
+    fill: black;
     transform: rotate(360deg);
+}
+
+.active .explorer-arrow {
+    fill: rgb(200, 200, 200);
+}
+
+.active .explorer-arrow.flipped {
+    fill: white;
 }
