@@ -15,8 +15,6 @@
     -ms-user-select: none;      /* IE10+/Edge */
 
     transition: box-shadow 0.5s ease-in-out;
-    box-shadow: inset 0 0 0 1000px rgba(150, 161, 255, 0);
-
 }
 
 /* override KaTeX's default block display */
