@@ -1,3 +1,7 @@
+import { initTableHighlights } from './tables.js';
+import { initLatex } from './latex.js';
+
+
 async function loadPageHTML(path)
 {
     try
@@ -28,5 +32,7 @@ async function loadPageToElement(path, elementId)
     element.innerHTML = html;
 
     initLatex();
-    enableTableHighlights();
+    initTableHighlights();
 }
+
+export { loadPageToElement };

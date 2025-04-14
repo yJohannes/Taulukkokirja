@@ -37,3 +37,5 @@ async function initLatex()
         });
     });
 }
+
+export { initLatex };

@@ -1,4 +1,4 @@
-async function enableTableHighlights()
+async function initTableHighlights()
 {
     const tables = document.querySelectorAll('table');
     
@@ -53,3 +53,5 @@ async function enableTableHighlights()
         });
     });
 }
+
+export { initTableHighlights };

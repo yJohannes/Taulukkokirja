@@ -1,3 +1,32 @@
+import { initRipple } from './ripple.js';
+import { loadPageToElement } from './pages.js';
+
+function initExplorerButtons()
+{
+    const collapse = document.getElementById('explorer-collapse')
+
+    collapse.addEventListener('click', () => {
+        const uls = document.querySelectorAll('.explorer-ul');
+    
+        // Close all tabs and unflip arrows
+        uls.forEach(ul => {
+            ul.classList.remove('show');
+            
+            const lis = ul.querySelectorAll('li');
+            lis.forEach((li) => {
+                const tabs = li.querySelectorAll('.explorer-tab');
+                tabs.forEach((tab) => {
+        
+                    const arrowSvg = tab.querySelector('svg.flipped');
+                    if (arrowSvg) {
+                        arrowSvg.classList.remove('flipped');
+                    }
+                });
+            });
+        });
+    });
+}
+
 async function loadExplorerUL()
 {
     try {
@@ -39,14 +68,14 @@ async function loadExplorerUL()
                     }
                 }
 
-                // If dropdown is open, Ccose and transfer active tab 1 level up.
-                const parentTab = tab.closest('ul').closest('li').querySelector('div'); // Find parent tab (div)
-                const childTabs = tab.closest('li').querySelectorAll('ul > li > div'); // Finds child tabs
-                console.log(parentTab)
-                console.log(childTabs)
+                // // If dropdown is open, Ccose and transfer active tab 1 level up.
+                // const parentTab = tab.closest('ul').closest('li').querySelector('div'); // Find parent tab (div)
+                // const childTabs = tab.closest('li').querySelectorAll('ul > li > div'); // Finds child tabs
+                // console.log(parentTab)
+                // console.log(childTabs)
 
-                // const activeChildren = tab.querySelectorAll('.active');
-                // console.log(activeChildren)
+                const activeChildren = tab.querySelectorAll('.active');
+                console.log(activeChildren)
                 
                 for (const child of tab.children) {
                     if (child.classList.contains('active')) {
@@ -79,6 +108,10 @@ async function loadExplorerUL()
                 tab.addEventListener('click', () => {
 
                     arrow.classList.toggle('flipped');
+                });
+
+                tab.addEventListener('tab-collapse', () => {
+                    arrow.classList.remove('flipped');
                 });
 
                 tab.appendChild(arrow);
@@ -116,7 +149,6 @@ async function loadExplorerUL()
                         const sidebar = document.getElementById('sidebar');
                         sidebar.classList.toggle('show', false);
                 
-
                         loadPageToElement(currentPath, 'page-container');
                     })
                 }
@@ -156,11 +188,12 @@ async function loadExplorerUL()
 async function loadExplorerToElement(elementId)
 {
     const ul = await loadExplorerUL();
-    console.log(ul);
-
+    
     const element = document.getElementById(elementId);
     element.appendChild(ul);
-
-    loadRipple();
-
+    
+    initExplorerButtons();
+    initRipple();
 }
+
+export { loadExplorerToElement };

@@ -1,12 +1,24 @@
-.ripple {
+.ripple, 
+.ripple-dark {
     position: relative;
     overflow: hidden; 
 }
 
-.ripple-effect {
+.ripple-effect-light {
     position: absolute;
     border-radius: 50%;
     background: rgba(255, 255, 255, 0.3);
+    transform: scale(0);
+    opacity: 1;
+    animation: grow 0.6s ease-out forwards;
+    pointer-events: none;
+    will-change: transform, opacity;
+}
+
+.ripple-effect-dark {
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(0, 0, 0, 0.2); /* Dark ripple on light surfaces */
     transform: scale(0);
     opacity: 1;
     animation: grow 0.6s ease-out forwards;
