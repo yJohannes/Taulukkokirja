@@ -2,12 +2,14 @@
     background-color: #f8f9fa;
     border: 1px solid;
     border-color: gainsboro;
+    height: auto;
     position: sticky;
     top: 0;
     padding: 20px;
     overflow-y: auto;
     transition: none;
     z-index: 10;
+
 }
 
 /* Hide sidebar only on smaller screens */
