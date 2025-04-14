@@ -1,16 +1,25 @@
-async function addRippleToElement(element, type)
+async function addRippleToElement(element)
 {
-    element.addEventListener('mousedown', function (e) {
-        const rect = element.getBoundingClientRect();
-        const size = Math.max(rect.width, rect.height);
-        const x = e.clientX - rect.left - size / 2;
-        const y = e.clientY - rect.top - size / 2;
-
+    element.addEventListener('mousedown', (e) => {
         const ripple = document.createElement('div');
-        if (type === 'dark') {
+
+        if (element.classList.contains('ripple-dark')) {
             ripple.classList.add('ripple-effect-dark');
         } else {
             ripple.classList.add('ripple-effect-light');
+        }
+
+        const rect = element.getBoundingClientRect();
+        const size = Math.max(rect.width, rect.height);
+
+        let x;
+        let y;
+        if (element.classList.contains('ripple-centered')) {
+            x = rect.width / 2 - size / 2;   // Center horizontally
+            y = rect.height / 2 - size / 2;  // Center vertically
+        } else {
+            x = e.clientX - rect.left - size / 2;
+            y = e.clientY - rect.top - size / 2;
         }
 
         ripple.style.width = ripple.style.height = `${size}px`;
@@ -44,10 +53,6 @@ async function addRippleToElement(element, type)
 export async function initRipple()
 {
     document.querySelectorAll('.ripple').forEach(element => {
-        addRippleToElement(element, 'light');
-    });
-
-    document.querySelectorAll('.ripple-dark').forEach(element => {
-        addRippleToElement(element, 'dark');
+        addRippleToElement(element);
     });
 }    
