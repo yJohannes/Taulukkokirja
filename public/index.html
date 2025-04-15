@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Formula Book</title>
+    <title>Kaavakirja</title>
     <link rel="icon" href="img/icon/book-rounded.png">
 
     <!-- Katex -->
@@ -26,23 +26,31 @@
     <nav class="navbar navbar-expand navbar-dark shadow-sm sticky-top">
         <div class="container-fluid">
             <b>
-                <a class="navbar-brand" href="#">Formula Book</a>
+                <a class="navbar-brand" href="#">Kaavakirja</a>
             </b>
 
             <div class="ml-auto">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item ml-3">
-                        <a class="nav-link text-white ripple ripple-centered" href="#" title="Bookmarks">
+                        <a id="latex-editor" class="nav-link text-white ripple ripple-centered" href="#" title="LaTeX-editori">
+                            <i class="bi bi-pen-fill"></i>
+                        </a>
+                    </li>
+
+                    <li class="nav-item ml-3">
+                        <a id="bookmarks" class="nav-link text-white ripple ripple-centered" href="#" title="Kirjanmerkit">
                             <i class="bi bi-bookmarks-fill"></i>
                         </a>
                     </li>
+
                     <li class="nav-item ml-3">
-                        <a class="nav-link text-white ripple ripple-centered" href="#" title="Settings">
+                        <a id="settings" class="nav-link text-white ripple ripple-centered" href="#" title="Asetukset">
                             <i class="bi bi-gear-fill"></i>
                         </a>
                     </li>
+
                     <li class="nav-item ml-3">
-                        <a class="nav-link text-white ripple" id="sidebar-toggle">
+                        <a id="sidebar-toggle" class="nav-link text-white ripple" title="Avaa/sulje sivupalkki">
                             <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" fill="white" viewBox="0 20 448 512">
                                 <path d="M0 96C0 78.3 14.3 64 32 64l384 0c17.7 0 32 14.3 32 32s-14.3 32-32 32L32 128C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32l384 0c17.7 0 32 14.3 32 32s-14.3 32-32 32L32 288c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32L32 448c-17.7 0-32-14.3-32-32s14.3-32 32-32l384 0c17.7 0 32 14.3 32 32z"/>
                             </svg>
@@ -58,15 +66,19 @@
         <aside id="sidebar" class="shadow hidden">
             <section id="explorer" class="mt-3" aria-label="Explorer">
                 <div id="explorer-search" style="position: relative;">
-                    <input type="text" class="form-control border-dark shadow-sm" placeholder="Search..." aria-label="Search">
+                    <input type="text" class="form-control border-dark shadow-sm" placeholder="Hae..." aria-label="Search">
                     <i class="bi bi-search search-icon"></i>
                 </div>
 
                 <div id="explorer-buttons" class="mt-3" style="display: flex; justify-content: flex-end;">
-                    <button id="explorer-collapse" class="btn btn-sm btn-no-focus ripple ripple-dark ripple-centered" title="Collapse tabs">
-                        <span style="font-size: 110%;">
-                            <i class="bi bi-arrows-collapse" style="font-size: 120%;"></i>
-                        </span>
+                    <button id="explorer-collapse" class="btn btn-sm btn-no-focus ripple ripple-dark ripple-centered" title="Sulje välilehdet">
+                        <i class="bi bi-arrows-collapse" style="font-size: 120%;"></i>
+                    </button>
+                    <button id="explorer-expand" class="btn btn-sm btn-no-focus ripple ripple-dark ripple-centered" title="Laajenna välilehdet">
+                        <i class="bi bi-arrows-expand" style="font-size: 120%;"></i>
+                    </button>
+                    <button id="explorer-auto-collapse" class="btn btn-sm btn-no-focus ripple ripple-dark ripple-centered" title="Automaattinen sulkeminen">
+                        <i class="bi bi-list-nested" style="font-size: 120%;"></i>
                     </button>
                 </div>
                 <div id="explorer-tabs" class="shadow rounded mt-1"></div>
@@ -75,8 +87,10 @@
 
         <main id="main-content">
             <article id="page-container">
-                <h1>Main Content</h1>
-                <p>This is the page content area. Pages will appear here!</p>
+                <h1>Etusivu</h1>
+                <hr>
+
+                <p>Tämä on kaavakirjan etusivu. Sivut lataavat tähän!</p>
             </article>
         </main>
     </div>
