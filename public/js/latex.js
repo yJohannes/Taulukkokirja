@@ -12,7 +12,8 @@ async function initLatex()
         element.setAttribute('data-placement', 'right');
         $(element).tooltip({
             delay: { show: 500, hide: 200 },
-            animation: true
+            animation: true,
+            trigger: 'hover'  // No persisting tooltips
         });
 
         katex.render(latex, element, {
