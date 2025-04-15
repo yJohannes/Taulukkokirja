@@ -1,3 +1,5 @@
+/* https://imagecolorpicker.com/color-code/96a1ff */
+
 html {
     scrollbar-color: rgba(148, 148, 148, 1) transparent;
 }
@@ -37,6 +39,12 @@ main {
     padding: 1rem;
 }
 
+.active {
+    background-color: black !important;
+    color: white !important;
+}
+
+
 nav {
     background-color: black !important;
 }
@@ -52,6 +60,10 @@ input {
 
 .table-container {
     overflow-x: auto;
+
+    /* Shows latex borders */
+    padding-top: 3px;
+    padding-left: 3px;
 }
 
 table {
