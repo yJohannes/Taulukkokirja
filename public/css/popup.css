@@ -3,9 +3,7 @@
     padding: 10px 20px;
     border-radius: 5px;
     font-size: 16px;
-    /* box-shadow: 0 10px 20px rgba(0, 0, 0, 0.25); */ /* Using bootstrap shadow for consistency */
 
-    /* Position at the bottom and center*/
     position: fixed;
     bottom: 20px;
     left: 50%;
@@ -17,7 +15,7 @@
     transform: scale(0);
 
     transition: all 0.15s ease-out;
-    z-index: 2000;
+    z-index: 10;
 }
 
 .popup.show {
