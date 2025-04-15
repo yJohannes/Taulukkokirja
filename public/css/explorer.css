@@ -38,25 +38,24 @@ pointer-events: none; /* Prevent icon from interfering with input interactions *
     cursor: pointer;
 }
 
-.explorer-tab.active {
-    background-color: black !important;
-    color: white !important;
-}
-
 .explorer-dropdown {
     display: block;
-    height: 0;
+    max-height: 0;
     overflow: hidden;
     opacity: 0;
-    visibility: hidden; /* Ensure it's not interactable */
-    transition: all 0.3s ease;
+    visibility: hidden;
+    transition: all 0.25s ease-out;
+    /* transition: max-height 0.3s ease-in-out, opacity 0.3s ease-in-out, visibility 0.1s ease-in-out; */
 }
 
 .explorer-dropdown.show {
-    height: auto; /* Allow the height to grow automatically */
-    opacity: 1; /* Make it fully visible */
-    visibility: visible; /* Make it interactable */
+    height: auto;
+    opacity: 1;
+    visibility: visible;
+    max-height: 3000px;
 }
+
+
 
 .explorer-arrow-container {
     display: flex;
