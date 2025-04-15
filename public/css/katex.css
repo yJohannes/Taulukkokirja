@@ -40,5 +40,4 @@
     border-radius: 4px;
 
     pointer-events: none;   /* Let mouse interactions pass through */
-    z-index: -1;            /* Place it behind the actual KaTeX content */
 }
