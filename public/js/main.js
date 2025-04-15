@@ -11,8 +11,6 @@ elements.push(document.getElementById('bookmarks'));
 elements.push(document.getElementById('settings'));
 elements.push(document.getElementById('sidebar-toggle'));
 
-console.log(elements)
-
 const params = {
     delay: { show: 500, hide: 200 },
     animation: true,
@@ -28,8 +26,8 @@ elements.forEach(element => {
 
 // Sidebar collapse on mobile
 const sidebar = document.getElementById('sidebar');
-const toggleSidebar = document.getElementById('sidebar-toggle');
+const sidebarToggle = document.getElementById('sidebar-toggle');
 
-toggleSidebar.addEventListener('click', () => {
+sidebarToggle.addEventListener('click', () => {
     sidebar.classList.toggle('show');
 });
