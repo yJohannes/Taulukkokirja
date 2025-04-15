@@ -102,6 +102,10 @@ function newTab(text, level, isDropdown)
             } else {
                 activeTabs.forEach(t => t.classList.remove('active'));
                 tab.classList.add('active');
+
+                // If tab is clicked on small screen hide sidebar
+                const sidebar = document.getElementById('sidebar');
+                sidebar.classList.remove('show');
                 return;
             }
         }
