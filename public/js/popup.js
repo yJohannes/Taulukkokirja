@@ -17,7 +17,7 @@ function createPopup(message, role) {
 
     // Create a new popup element
     const popup = document.createElement('div');
-    popup.className = 'popup alert bg-success shadow';
+    popup.className = 'popup bg-success shadow';
     popup.setAttribute('role', 'alert');
 
     // SVG icon
@@ -48,9 +48,12 @@ function createPopup(message, role) {
         popup.classList.add('show');
     });
 
-    // Automatically remove the popup after 2 seconds
     popupTimeout = setTimeout(() => {
-        popup.remove();
+        popup.classList.remove('show');
+
+        setTimeout(() => {
+            popup.remove();
+        }, 200);
     }, 2000);
 }
 
