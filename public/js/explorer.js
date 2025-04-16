@@ -1,6 +1,4 @@
-import { initRipple } from './ripple.js';
 import { loadPageToElement } from './pages.js';
-
 
 function initExplorerButtons()
 {
@@ -76,7 +74,7 @@ function initExplorerButtons()
 }
 
 
-function newTab(text, level, isDropdown)
+function newTab(text, level, isDropdown, explorerParent)
 {
     const tab = document.createElement('div');
     tab.classList.add("btn", "btn-light", "btn-no-focus", "explorer-tab", "ripple");
@@ -92,8 +90,7 @@ function newTab(text, level, isDropdown)
     tab.appendChild(span);
 
     tab.addEventListener('click', () => {
-        const explorerContainer = document.getElementById('explorer-tabs')
-        const activeTabs = explorerContainer.querySelectorAll('.active')
+        const activeTabs = explorerParent.querySelectorAll('.active')
 
         // Handle basic tabs
         if (!isDropdown) {
@@ -121,7 +118,7 @@ function newTab(text, level, isDropdown)
             const parentTab = parentMenu.parentElement.querySelector('div');
 
             // Dismiss highest level menu
-            if (!(parentMenu.parentElement.id === 'explorer-tabs'))
+            if (!(parentMenu.parentElement.id === 'explorer-container'))
             {
                 parentTab.classList.add('active');
             }
@@ -132,7 +129,6 @@ function newTab(text, level, isDropdown)
             
             if (autoCollapseOn) {
                 const parentMenu = tab.parentElement.parentElement;
-                console.log(parentMenu);
 
                 const openMenu = parentMenu.querySelectorAll('.show');
                 openMenu.forEach(m => {
@@ -173,29 +169,28 @@ function newTab(text, level, isDropdown)
 }
 
 // Recursive function to generate the tab list with collapsibility
-function generateTabs(data, rootPath="") {
+function generateTabs(data, explorerParent, rootPath="") {
     const ul = document.createElement('ul');
     ul.classList.add("explorer-ul");
 
     for (let key in data) {
         let currentPath = rootPath + key + "/";
+        
 
-        const pageName = key
-            .replaceAll("_", " ")
-            .replace(".html", "");
+        const pageName = key.replace(".html", "");
 
         const li = document.createElement('li');
 
         let tab; 
         const level = currentPath.split('/').length - 2;
         if (typeof data[key] === 'object' && data[key] !== null) {
-            tab = newTab(pageName, level, true);    // Dropdown tab
+            tab = newTab(pageName, level, true, explorerParent);    // Dropdown tab
         } else {
-            tab = newTab(pageName, level, false);   // Normal tab
+            tab = newTab(pageName, level, false, explorerParent);   // Normal tab
             currentPath = currentPath.slice(0, -1); // Remove trailing '/'
             
             tab.addEventListener('click', function() {
-                // window.location.href = pageName;
+                history.pushState(null, '', '/' + currentPath.replaceAll(' ', '-'));
                 loadPageToElement(currentPath, 'page-container');
             })
         }
@@ -204,7 +199,7 @@ function generateTabs(data, rootPath="") {
 
         // If the value is an object (i.e., nested menu), recursively create a nested menu
         if (typeof data[key] === 'object' && data[key] !== null) {
-            const nestedMenu = generateTabs(data[key], currentPath);
+            const nestedMenu = generateTabs(data[key], explorerParent, currentPath);
             nestedMenu.classList.add("explorer-dropdown");  // Add class to style the nested menu
             li.appendChild(nestedMenu);
         }
@@ -215,7 +210,7 @@ function generateTabs(data, rootPath="") {
     return ul;
 }
 
-async function loadExplorerUL()
+async function loadExplorerUL(explorerParent)
 {
     try {
         const response = await fetch('/api/pages-structure');
@@ -226,9 +221,10 @@ async function loadExplorerUL()
         }
 
         const structure = await response.json();
+        console.log(structure)
 
 
-        const tabs = generateTabs(structure);
+        const tabs = generateTabs(structure, explorerParent);
         return tabs;
 
     } catch (error) {
@@ -240,15 +236,12 @@ async function loadExplorerUL()
 
 // // window.onload = loadHierarchy; // Load hierarchy when the page loads
 // window.getHierarchyHTML = getHierarchyHTML;
-async function loadExplorerToElement(elementId)
-{
-    const ul = await loadExplorerUL();
-    
-    const element = document.getElementById(elementId);
+async function loadExplorerToElement(element)
+{    
+    const ul = await loadExplorerUL(element);
     element.appendChild(ul);
     
     initExplorerButtons();
-    initRipple();
 }
 
 export { loadExplorerToElement };

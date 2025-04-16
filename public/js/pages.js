@@ -35,4 +35,32 @@ async function loadPageToElement(path, elementId)
     initTableHighlights();
 }
 
-export { loadPageToElement };
+function initPageLoading()
+{
+    window.addEventListener('popstate', () => {
+        const url = location.pathname.replaceAll('-', ' ');
+        loadPageToElement(url, 'page-container');
+    });
+    
+    document.addEventListener('DOMContentLoaded', () => {
+        const url = location.pathname;
+        loadPageToElement('pages/'+  url, 'page-container');
+    });
+
+    // document.querySelectorAll('a').forEach(link => {
+    //     link.addEventListener('click', event => {
+    //         event.preventDefault();
+    //         const url = event.target.href;
+                
+    //         // Update the browser's address bar without reloading
+    //         history.pushState(null, '', url);
+        
+    //         // Load new content into the container
+    //         loadPageToElement(url, 'page-container');
+    //     });
+    // });
+
+    
+}
+
+export { loadPageToElement, initPageLoading };
