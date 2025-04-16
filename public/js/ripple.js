@@ -50,9 +50,11 @@ async function addRippleToElement(element)
     });
 }
 
-export async function initRipple()
+async function initRipple()
 {
     document.querySelectorAll('.ripple').forEach(element => {
         addRippleToElement(element);
     });
-}    
+}
+
+export { initRipple };
