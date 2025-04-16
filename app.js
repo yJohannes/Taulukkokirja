@@ -25,35 +25,19 @@ const app = express();
 // Serve static files (HTML, CSS, JS) from the "public" directory
 app.use(express.static(path.join(__dirname, 'public')));
 
-// Load index.html
-app.get('/', (req, res) => {
-  console.log("Loading index.html");
-  res.sendFile(path.join(__dirname, 'public', 'index.html'), (err) => {
-      if (err) {
-          res.status(404).send('index.html not found');
-      }
-  });
-});
+// // Serve any file within the 'pages' directory (like Math/Vectors.html)
+// app.get('/pages/:category/:file', (req, res) => {
+//   const { req_path } = req.params;
+//   const filePath = path.join(__dirname, 'public', 'pages', req_path);
 
-// Serve any file within the 'pages' directory (like Math/Vectors.html)
-app.get('/pages/:category/:file', (req, res) => {
-  const { req_path } = req.params;
-  const filePath = path.join(__dirname, 'public', 'pages', req_path);
+//   // Send the requested file
+//   res.sendFile(filePath, (err) => {
+//       if (err) {
+//         res.status(404).send('File not found');
+//       }
+//   });
+// });
 
-  // Send the requested file
-  res.sendFile(filePath, (err) => {
-      if (err) {
-          res.status(404).send('File not found');
-      }
-  });
-});
-
-// Endpoint to fetch folder names from the 'pages' directory
-app.get('/api/test', (req, res) => {
-  const data = [{id: 324, name: "Bob"}, {id: 3245, name: "Sharon"}];
-
-  res.json(data);
-});
 
 app.get('/api/pages-structure', (req, res) => {
   const pagesDir = path.join(__dirname, 'public', 'pages');
@@ -77,7 +61,6 @@ app.get('/api/pages-structure', (req, res) => {
     });
 
     return result;
-    console.log(result);
   };
 
   try {
