@@ -6,14 +6,14 @@
 #explorer-search > input {
     background-color: #f8f9fa;
     width: 100%; /* Full width of the wrapper */
-    padding-right: 35px; /* Add space for the icon on the right */
+    padding-right: 2rem; /* Add space for the icon on the right */
     box-sizing: border-box; /* Includes padding in the total width */
 }
   
 #explorer-search i {
 position: absolute; /* Position the icon relative to the input wrapper */
 top: 50%; /* Center vertically inside the input */
-right: 10px; /* Align to the right of the input field */
+right: 0.625rem; /* Align to the right of the input field */
 transform: translateY(-50%); /* Adjust for perfect vertical alignment */
 color: black; /* Optional: Style the icon color */
 pointer-events: none; /* Prevent icon from interfering with input interactions */
@@ -26,16 +26,26 @@ pointer-events: none; /* Prevent icon from interfering with input interactions *
 
 .explorer-tab {
     width: 100%;
-    padding-left: calc( 12px + var(--level, 0) * 20px); /* Adjust text indentation */
-    padding-top: 7px;
-    padding-bottom: 7px;
+    padding-left: calc(12px + var(--level, 0) * 20px); /* Adjust text indentation */
     padding-right: 12px;
+    
+    padding-top: calc(
+        max(3.5px, 14px / (1 + var(--level, 0)))
+    );
+    padding-bottom: calc(
+        max(3.5px, 14px / (1 + var(--level, 0)))
+    );
+
+    font-size: calc(
+        max(94%, 100% - var(--level, 0) * 2%)
+    );
 
     text-align: left;
     white-space: normal;    /* Allow text to wrap */
     word-wrap: break-word;  /* Ensure the text breaks appropriately */
     overflow-wrap: break-word;
     cursor: pointer;
+
 }
 
 .explorer-dropdown {
