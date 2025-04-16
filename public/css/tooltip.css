@@ -1,7 +1,6 @@
 /* Reduced motion blocks the animation */
 
 .tooltip {
-    /* position: absolute !important; */
     pointer-events: none;
 }
 
