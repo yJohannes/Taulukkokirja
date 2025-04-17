@@ -191,8 +191,10 @@ function generateTabs(data, explorerParent, rootPath="") {
             
             tab.addEventListener('click', function() {
                 console.log(currentPath)
+
+                // MAKE USE PAGES.JS TO LOAD
                 history.pushState(null, '', '/#/' + currentPath.replaceAll(' ', '-').replace('.html', ''));
-                loadPageToElement(currentPath, 'page-container');
+                loadPageToElement('pages/' + currentPath, 'page-container');
             })
         }
 
