@@ -4,9 +4,12 @@ import { initLatex } from './latex.js';
 
 async function loadPageHTML(path)
 {
+    if (path === '/') {
+        return;
+    }
+
     try
     {
-        // Fetch the content from the server
         const response = await fetch(`/pages/${path}`);
 
         if (!response.ok) {
@@ -38,29 +41,35 @@ async function loadPageToElement(path, elementId)
 function initPageLoading()
 {
     window.addEventListener('popstate', () => {
-        const url = location.pathname.replaceAll('-', ' ');
+        // console.log("POPSTATE");
+        let url = window.location.hash.replaceAll('-', ' ').replace('#/', '');
+
+        if (!url.endsWith('.html')) {
+            url += '.html'
+        }
+
         loadPageToElement(url, 'page-container');
     });
     
-    document.addEventListener('DOMContentLoaded', () => {
-        const url = location.pathname;
-        loadPageToElement('pages/'+  url, 'page-container');
+    window.addEventListener('hashchange', () => {
+        // console.log("HASH CHANGE")
+        const hash = window.location.hash;
+        // console.log(hash)
     });
 
-    // document.querySelectorAll('a').forEach(link => {
-    //     link.addEventListener('click', event => {
-    //         event.preventDefault();
-    //         const url = event.target.href;
-                
-    //         // Update the browser's address bar without reloading
-    //         history.pushState(null, '', url);
+    window.addEventListener('load', () => {
+        // console.log("LOAD");
+        let url = window.location.hash.replaceAll('-', ' ').replace('#/', '');
         
-    //         // Load new content into the container
-    //         loadPageToElement(url, 'page-container');
-    //     });
-    // });
+        document.title = window.location.hash.split('/').pop() + ' | Kaavakirja';
 
-    
+
+        if (!url.endsWith('.html')) {
+            url += '.html'
+        }
+
+        loadPageToElement(url, 'page-container');
+    });
 }
 
 export { loadPageToElement, initPageLoading };

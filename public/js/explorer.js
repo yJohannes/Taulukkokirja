@@ -190,7 +190,8 @@ function generateTabs(data, explorerParent, rootPath="") {
             currentPath = currentPath.slice(0, -1); // Remove trailing '/'
             
             tab.addEventListener('click', function() {
-                history.pushState(null, '', '/' + currentPath.replaceAll(' ', '-'));
+                console.log(currentPath)
+                history.pushState(null, '', '/#/' + currentPath.replaceAll(' ', '-').replace('.html', ''));
                 loadPageToElement(currentPath, 'page-container');
             })
         }
