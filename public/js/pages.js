@@ -4,13 +4,9 @@ import { initLatex } from './latex.js';
 
 async function loadPageHTML(path)
 {
-    if (path === '/') {
-        return;
-    }
-
     try
     {
-        const response = await fetch(`/pages/${path}`);
+        const response = await fetch(path);
 
         if (!response.ok) {
             return "Error loading page";
@@ -40,35 +36,37 @@ async function loadPageToElement(path, elementId)
 
 function initPageLoading()
 {
-    window.addEventListener('popstate', () => {
-        // console.log("POPSTATE");
+    const loadUrl = () => {
         let url = window.location.hash.replaceAll('-', ' ').replace('#/', '');
-
+    
+        if (url === '/' || url === '') {
+            return;
+        }
+    
         if (!url.endsWith('.html')) {
             url += '.html'
         }
+    
+        loadPageToElement(`/pages/${url}`, 'page-container');
+    }
 
-        loadPageToElement(url, 'page-container');
+    window.addEventListener('popstate', () => {
+        console.log("POPSTATE");
+        loadUrl();
     });
     
-    window.addEventListener('hashchange', () => {
-        // console.log("HASH CHANGE")
-        const hash = window.location.hash;
-        // console.log(hash)
+    window.addEventListener('load', () => {
+        console.log("LOAD");
+        loadUrl();
+        document.title = window.location.hash.split('/').pop() + ' | Kaavakirja';
     });
 
-    window.addEventListener('load', () => {
-        // console.log("LOAD");
-        let url = window.location.hash.replaceAll('-', ' ').replace('#/', '');
-        
+    window.addEventListener('hashchange', () => {
+        console.log("HASH CHANGE")
+        console.log(window.location.hash)
+
+        loadUrl();
         document.title = window.location.hash.split('/').pop() + ' | Kaavakirja';
-
-
-        if (!url.endsWith('.html')) {
-            url += '.html'
-        }
-
-        loadPageToElement(url, 'page-container');
     });
 }
 
