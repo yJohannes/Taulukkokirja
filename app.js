@@ -25,20 +25,6 @@ const app = express();
 // Serve static files (HTML, CSS, JS) from the "public" directory
 app.use(express.static(path.join(__dirname, 'public')));
 
-// // Serve any file within the 'pages' directory (like Math/Vectors.html)
-// app.get('/pages/:category/:file', (req, res) => {
-//   const { req_path } = req.params;
-//   const filePath = path.join(__dirname, 'public', 'pages', req_path);
-
-//   // Send the requested file
-//   res.sendFile(filePath, (err) => {
-//       if (err) {
-//         res.status(404).send('File not found');
-//       }
-//   });
-// });
-
-
 app.get('/api/pages-structure', (req, res) => {
   const pagesDir = path.join(__dirname, 'public', 'pages');
 
