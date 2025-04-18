@@ -30,6 +30,18 @@ async function loadPageToElement(path, elementId)
     const element = document.getElementById(elementId);
     element.innerHTML = html;
 
+    const newUrl = '/#/' + path.replaceAll(' ', '-').replace('.html', '')
+    let pageName = path.split('/').pop().replace('.html', '');
+    pageName = decodeURIComponent(pageName)
+
+    history.pushState(null, '', newUrl);
+
+    if (pageName) {
+        document.title = pageName + ' | Kaavakirja';
+    } else {
+        document.title = 'Kaavakirja';
+    }
+
     initLatex();
     initTableHighlights();
 }
@@ -40,6 +52,7 @@ function initPageLoading()
         let url = window.location.hash.replaceAll('-', ' ').replace('#/', '');
     
         if (url === '/' || url === '') {
+            fetch('index.html');
             return;
         }
     
@@ -47,7 +60,16 @@ function initPageLoading()
             url += '.html'
         }
     
-        loadPageToElement(`/pages/${url}`, 'page-container');
+        loadPageToElement(url, 'page-container');
+
+        let pageName = url.split('/').pop().replace('.html', '');
+        pageName = decodeURIComponent(pageName)
+
+        if (pageName) {
+            document.title = pageName + ' | Kaavakirja';
+        } else {
+            document.title = 'Kaavakirja';
+        }
     }
 
     window.addEventListener('popstate', () => {
@@ -58,7 +80,6 @@ function initPageLoading()
     window.addEventListener('load', () => {
         console.log("LOAD");
         loadUrl();
-        document.title = window.location.hash.split('/').pop() + ' | Kaavakirja';
     });
 
     window.addEventListener('hashchange', () => {
@@ -66,7 +87,6 @@ function initPageLoading()
         console.log(window.location.hash)
 
         loadUrl();
-        document.title = window.location.hash.split('/').pop() + ' | Kaavakirja';
     });
 }
 
