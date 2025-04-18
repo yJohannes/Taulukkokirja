@@ -1,4 +1,6 @@
 const express = require('express');
+const compression = require('compression');
+
 // const rateLimit = require('express-rate-limit');
 // const helmet = require('helmet');
 const path = require('path');
@@ -21,6 +23,8 @@ const fs = require('fs');
         // );
 const PORT = 5500;
 const app = express();
+
+app.use(compression());
 
 // Serve static files (HTML, CSS, JS) from the "public" directory
 app.use(express.static(path.join(__dirname, 'public')));
