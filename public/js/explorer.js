@@ -25,8 +25,14 @@ function initExplorerButtons()
     autoCollapse.setAttribute('data-placement', 'top');
     $(autoCollapse).tooltip(config);
     
+    const savedState = localStorage.getItem('explorer-auto-collapse-state');
+    if (savedState === "true") {
+        autoCollapse.classList.add('active');
+    }
+
     autoCollapse.addEventListener('click', () => {
         autoCollapse.classList.toggle('active');
+        localStorage.setItem("explorer-auto-collapse-state", autoCollapse.classList.contains('active'));
     });
 
     expand.addEventListener('click', () => {
@@ -81,7 +87,7 @@ function newTab(text, level, isDropdown, explorerParent)
     tab.style.setProperty('--level', level);
 
     if (level === 0) {
-        tab.style.fontWeight = 'bold'; // Apply bold styling
+        tab.style.fontWeight = 'bold';
     }
 
     const span = document.createElement('span');
@@ -147,7 +153,7 @@ function newTab(text, level, isDropdown, explorerParent)
     
     if (isDropdown) {
         const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
-        path.setAttribute("d", "m7 14 5-5 5 5z");  // Traces an arrow
+        path.setAttribute("d", "m7 14 5-5 5 5z");  // Traces a neat arrow
         
         const arrow = document.createElementNS("http://www.w3.org/2000/svg", "svg");
         arrow.classList.add('explorer-arrow');
@@ -175,8 +181,6 @@ function generateTabs(data, explorerParent, rootPath="") {
 
     for (let key in data) {
         let currentPath = rootPath + key + "/";
-        
-
         const pageName = key.replace(".html", "");
 
         const li = document.createElement('li');
@@ -190,10 +194,6 @@ function generateTabs(data, explorerParent, rootPath="") {
             currentPath = currentPath.slice(0, -1); // Remove trailing '/'
             
             tab.addEventListener('click', function() {
-                console.log(currentPath)
-
-                // MAKE USE PAGES.JS TO LOAD
-                history.pushState(null, '', '/#/' + currentPath.replaceAll(' ', '-').replace('.html', ''));
                 loadPageToElement('pages/' + currentPath, 'page-container');
             })
         }
@@ -224,8 +224,6 @@ async function loadExplorerUL(explorerParent)
         }
 
         const structure = await response.json();
-        console.log(structure)
-
 
         const tabs = generateTabs(structure, explorerParent);
         return tabs;
