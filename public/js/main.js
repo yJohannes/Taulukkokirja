@@ -1,8 +1,12 @@
-import { loadExplorerToElement } from './explorer.js';
+import { loadExplorerToElement, loadExplorerSave } from './explorer.js';
 import { initPageLoading } from './pages.js';
 import { initSidebar } from './sidebar.js';
 import { initNavbar } from './navbar.js';
 import { initRipple } from './ripple.js';
+
+const ACTIVE = 'active';
+const SHOW = 'show';
+const ARROW_FLIPPED = 'flipped';
 
 document.addEventListener('DOMContentLoaded', async () => {
     initPageLoading();
@@ -11,4 +15,5 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     await loadExplorerToElement(document.getElementById('explorer-container'));
     await initRipple();
+    loadExplorerSave();
 });
