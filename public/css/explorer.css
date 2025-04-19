@@ -67,16 +67,16 @@ pointer-events: none; /* Prevent icon from interfering with input interactions *
 
 
 
-.explorer-arrow-container {
+.flip-arrow-container {
     display: flex;
     align-items: center;
 }
 
-.explorer-arrow-container > span {
+.flip-arrow-container > span {
     width: 80%; /* Space for arrow */
 }
 
-.explorer-arrow {
+.flip-arrow {
     width: 24px;
     height: 24px;
     fill: rgb(120, 120, 120);
@@ -85,15 +85,15 @@ pointer-events: none; /* Prevent icon from interfering with input interactions *
     transform: rotate(180deg);
 }
 
-.explorer-arrow.flipped {
+.flip-arrow.flipped {
     fill: black;
     transform: rotate(360deg);
 }
 
-.active .explorer-arrow {
+.active .flip-arrow {
     fill: rgb(200, 200, 200);
 }
 
-.active .explorer-arrow.flipped {
+.active .flip-arrow.flipped {
     fill: white;
 }
