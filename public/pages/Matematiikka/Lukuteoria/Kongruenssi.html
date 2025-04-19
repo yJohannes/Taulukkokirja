@@ -1,0 +1,188 @@
+<h1>Kongruenssi</h1>
+<hr>
+
+<h3>Määritelmä</h3>
+<p>
+    <span class="latex-container display">
+        a\equiv b\ \left(\text{mod}\ n\right)\Longleftrightarrow \ m\mid \left(a-b\right)
+    </span>
+</p>
+
+<div class="table-container">
+    <table class="table-striped">
+        <thead>
+            <tr>
+                <th>
+                    Sääntöjä, kun
+                    <span class="latex-container display">
+                        a\equiv b\ \left(\text{mod}\ n\right)\ \wedge \ c\equiv d\ \left(\text{mod}\ n\right)
+                    </span>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>
+
+                    <span class="latex-container display">
+                        a+c \equiv b+d\  (\text{mod}\  n)
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+
+                    <span class="latex-container display">
+                        a-c \equiv b-d\  (\text{mod}\  n)
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+
+                    <span class="latex-container display">
+                        ac \equiv bd \ (\text{mod}\  n)
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    
+                    <span class="latex-container display">
+                        a^p \equiv b^p \ (\text{mod}\  n), \ k \in \N
+                    </span>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<br>
+<h5>Wilsonin lause</h5>
+<p>
+    Jos
+    <span class="latex-container">p</span>
+    on alkuluku,
+    <span class="latex-container display">
+        (p-1)! \equiv -1 \ (\text{mod}\ p)
+    </span>
+</p>
+
+<h5>
+    Käänteisluku modulo
+    <span class="latex-container">n</span>
+</h5>
+<p>
+    Jos
+    <span class="latex-container display">\text{gcd}(a, n)=1</span>
+    , niin on olemassa kokonaisluku
+    <span class="latex-container">a^{-1}</span>
+    , jolle
+    <span class="latex-container display">aa^{-1} \equiv 1 \ (\text{mod}\ n)</span>
+</p>
+
+<h3>Fermat'n pieni lause</h3>
+<p>
+    Jos
+    <span class="latex-container">p</span>
+    on alkuluku ja 
+    <span class="latex-container">a</span>
+    on kokonaisluku, jolle
+    <span class="latex-container">p \nmid a</span>
+    , niin:
+</p>
+
+<p>
+
+    <span class="latex-container display">
+        a^{p-1} \equiv 1 \ (\text{mod}\ p)
+    </span>
+</p>
+
+<p>
+    Yleistettynä:
+</p>
+<p>
+    <span class="latex-container display">a^p \equiv a\ (\text{mod}\ p)</span>
+    (kaikilla kokonaisluvuilla
+    <span class="latex-container">a</span>
+    )
+</p>
+
+<h3>Kiinalainen jäännöslause (Chinese Remainder Theorem)</h3>
+<p>
+    Jos on järjestelmä
+    <br>
+    <span class="latex-container display">
+        \begin{cases}
+        x\equiv a_1\ \left(\text{mod}\ m_1\right)&\\
+        x\equiv a_2\ \left(\text{mod}\ m_2\right)&\\
+        \vdots &\\
+        x\equiv a_k\ \left(\text{mod}\ m_k\right)&
+        \end{cases}
+    </span>
+    <br>
+    ja kaikki
+    <span class="latex-container">m_i</span>
+    ovat pariittain yhteensopimattomia eli
+    <span class="latex-container display">\text{gcd}(m_i, m_j)=1</span>
+    kun 
+    <span class="latex-container">i \neq j</span>
+    , niin silloin järjetelmällä on yksikäsitteinen ratkaisu modulo
+    <span class="latex-container display">M = m_1 m_2 \ldots m_k</span>
+    .
+</p>
+
+<p>Rakennuskaava:</p>
+<p>
+    <span class="latex-container display">
+        x\equiv \sum _{i=1}^ka_iM_iy_i\ \left(\text{mod}\ M\right)
+    </span>
+    , missä:
+</p>
+<ul>
+    <li>
+        <span class="latex-container display">
+            M = m_1 m_2 \ldots m_k
+        </span>
+    </li>
+    <li>
+        <span class="latex-container display">
+            M_i = \frac {M}{m_i}
+        </span>
+    </li>
+    <li>
+        <span class="latex-container">y_i</span>
+        on 
+        <span class="latex-container">M_i</span>
+        :n modulo
+        <span class="latex-container">m_i</span>
+        käänteisluku: 
+        <span class="latex-container display">M_i y_i \equiv 1\ (\text{mod}\ m_i)</span>
+    </li>
+
+</ul>
+
+<h3>Eulerin lause</h3>
+
+<p>
+    Jos
+    <span class="latex-container display">\text{gcd}(a, n)=1</span>
+    , niin:
+</p>
+<p>
+    <span class="latex-container display">
+        a^{\phi(n)} \equiv 1\ (\text{mod}\ n)
+    </span>
+</p>
+<p>
+    Missä
+    <span class="latex-container">\phi(n)</span>
+    on Eulerin totientti-funktio (Eulerin fii-funktio) eli 
+    <span class="latex-container">\phi(n) =</span>
+    lukujen määrä välillä
+    <span class="latex-container">1 \ldots n</span>
+    , jotka ovat suhteellisia alkulukuja 
+    <span class="latex-container">n</span>
+    kanssa
+</p>

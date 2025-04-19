@@ -1,0 +1,108 @@
+<h1>Integraaliin liittyviä sääntöjä</h1>
+<hr>
+
+<div class="table-container">
+    <table class="table-striped">
+        <thead>
+            <tr>
+                <th>Kaava</th>
+                <th>Selite</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>
+                    <b>Määräämätön integraali</b>
+                </td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>
+                    <span class="latex-container display">
+                        \int{kf(x)\text{d}x}=k\int{f(x)\text{d}x}
+                    </span>
+                </td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>
+                    <span class="latex-container display">
+                        \int{(f(x)+g(x))\,\text{d}x}=\int{f(x)\,\text{d}x}+\int{g(x)\,\text{d}x}
+                    </span>
+                </td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>
+                    <span class="latex-container display">
+                        \int{{f}'(x)g(x)\,\text{d}x}=f(x)g(x)-\int{{g}'(x)f(x)\,\text{d}x}
+                    </span>
+                </td>
+                <td>osittaisintegrointi</td>
+            </tr>
+            <tr>
+                <td>
+                    <span class="latex-container display">
+                        \int{{f}'(x)\,{g}'(f(x))\,\text{d}x}=g(f(x))+C
+                    </span>
+                </td>
+                <td>funktio ja sisäfunktio</td>
+            </tr>
+
+            <tr>
+                <td>
+                    <b>Määrätty integraali</b>
+                </td>
+                <td></td>
+            </tr>
+
+            <tr>
+                <td>
+                    <span class="latex-container display">
+                        \int_a^{c}{f(x)\text{d}x}=\int_a^{b}{f(x)\text{d}x}+\int_b^{c}{f(x)\text{d}x}
+                    </span>
+                </td>
+                <td></td>
+            </tr>
+            <tr>
+                <td><span class="latex-container display">\int_a^{a}{f(x)\text{d}x}=0</span></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td><span class="latex-container display"> \int_a^{b}{f(x)\text{d}x}=-\int_b^{a}{f(x)\text{d}x}</span></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td><span class="latex-container display"> \int_a^{b}{f(x)\text{d}x}\ge \int_a^{b}{g(x)\text{d}x}</span></td>
+                <td>
+                    <span class="latex-container display">f(x) \geq g(x)</span>
+                    integroimisvälillä
+                </td>
+            </tr>
+            <tr>
+                <td><span class="latex-container display">\int_{a}^{b}{{f}'(x)g(x)\text{d}x}=\bigg/_{\!\!\!\!\!a}^bf(x)g(x)-\int_{a}^{b}{{g}'(x)f(x)\text{d}x}</span></td>
+                <td>\int_{a}^{b}{{f}'(x)g(x)\text{d}x}=\bigg/_{\!\!\!\!\!a}^bf(x)g(x)-\int_{a}^{b}{{g}'(x)f(x)\text{d}x}</td>
+            </tr>
+            <tr>
+                <td><span class="latex-container display">\int_{-a}^af(x)\text{d}x=2\int_0^af(x)\text{d}x</span></td>
+                <td>
+                    jos
+                    <span class="latex-container display">f(-x)=f(x)</span>
+                    (parillinen)
+                </td>
+            </tr>
+            <tr>
+                <td><span class="latex-container display"> \int_{-a}^{a}{f(x)\text{d}x}=0</span></td>
+                <td>
+                    jos
+                    <span class="latex-container display">f(-x)=-f(x)</span>
+                    (pariton)
+                </td>
+            </tr>
+            <tr>
+                <td><span class="latex-container display">\int _a^{\infty }f\left(x\right)\ \text{d}x=\lim _{t\to \infty }\int _a^tf\left(x\right)\ \text{d}x</span></td>
+                <td>epäoleellinen integraali</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

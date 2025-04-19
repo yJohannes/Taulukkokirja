@@ -1,0 +1,179 @@
+<h1>Alkuluvut</h1>
+<hr>
+
+<h3>Tavalliset alkuluvut (primes)</h3>
+<ul>
+    <li>
+        Määritelmä: Luku, joka on suurempi kuin 1 ja jaollinen vain ykkösellä ja itsellään.
+    </li>
+    <li>
+        <span class="latex-container">
+            2, 3, 5, 7, 11, 13, 17, ...
+        </span>
+    </li>
+</ul>
+
+<h3>Suhteellisesti alkuluvut (coprimes)</h3>
+<ul>
+    <li>
+        Kaksi (tai useampi) kokonaislukua ovat suhteellisesti alkulukuja, jos niiden suurin yhteinen tekijä on 1.
+    </li>
+    <li>
+        <span class="latex-container">
+            (8, 15), (9, 28) 
+        </span>
+    </li>
+    <li>
+        luvut eivät itse tarvitse olla alkulukuja
+    </li>
+</ul>
+
+<h3>Puolialkuluvut (semiprimes)</h3>
+<ul>
+    <li>
+        Luku, joka on kahden alkuluvun (ei välttämättä eri) tulo.
+    </li>
+    <li>
+        <span class="latex-container">
+            4 = 2×2, 6 = 2×3, 9 = 3×3, 15 = 3×5
+        </span>
+    </li>
+    <li>
+        Käytetään esimerkiksi RSA-salauksessa, koska isojen puolialkulukujen tekijöihin jako on vaikeaa.
+    </li>
+</ul>
+
+
+<h3>Kaksoisalkuluvut (twin primes)</h3>
+<ul>
+    <li>
+        Kaksi alkulukua, joiden ero on 2.
+    </li>
+    <li>
+        <span class="latex-container">
+            (3, 5), (5, 7), (11, 13), (17, 19)
+        </span>
+    </li>
+</ul>
+
+<h3>Sisarusalkuluvut (cousin primes)</h3>
+<ul>
+    <li>
+        Kaksi alkulukua, joiden ero on 4.
+    </li>
+    <li>
+        <span class="latex-container">
+            (3, 7), (7, 11), (13, 17)
+        </span>
+    </li>
+</ul>
+
+<h3>Serkusalkuluvut (sexy primes)</h3>
+<ul>
+    <li>
+        Kaksi alkulukua, joiden ero on 6.
+    </li>
+    <li>
+        <span class="latex-container">
+            (5, 11), (7, 13), (11, 17)
+        </span>
+    </li>
+</ul>
+
+<h3>Mersennen alkuluvut</h3>
+<ul>
+    <li>
+        Muotoa
+        <span class="latex-container display">M_p = 2^p - 1</span>
+        , missä
+        <span class="latex-container">p</span>
+        on alkuluku.
+    </li>
+    <li>
+        <span class="latex-container">
+            2^2 - 1 = 3, 2^3 - 1 = 7, 2^5 - 1 = 31
+        </span>
+    </li>
+</ul>
+
+<h3>Fermat'n alkuluvut</h3>
+<ul>
+    <li>
+        Muotoa
+        <span class="latex-container display">F_n = 2^{2^n} + 1</span>
+    </li>
+    <li>
+        <span class="latex-container">
+            F₀ = 3, F₁ = 5, F₂ = 17, F₃ = 257
+        </span>
+    </li>
+</ul>
+
+<h3>Sophie Germain -alkuluvut</h3>
+<ul>
+    <li>
+        Alkuluku
+        <span class="latex-container">p</span>
+        , jonka tapauksessa myös
+        <span class="latex-container">2p+1</span>
+        on alkuluku.
+    </li>
+    <li>
+        <span class="latex-container">
+            2 → 5, 3 → 7, 5 → 11, 11 → 23
+        </span>
+    </li>
+</ul>
+
+<h3>Chen-alkuluvut</h3>
+<ul>
+    <li>
+        Alkuluku
+        <span class="latex-container">p</span>
+        ,
+        jolle
+        <span class="latex-container">p+2</span>
+        on alkuluku tai puolialkuluku.
+    </li>
+    <li>
+        <span class="latex-container">
+            3 → 5, 5 → 7, 7 → 9 (3×3)
+        </span>
+    </li>
+</ul>
+
+<h3>Gaussin alkuluvut (Gaussian primes)</h3>
+<ul>
+    <li>
+        Kompleksilukuja muotoa
+        <span class="latex-container">a + bi</span>
+        , jotka ovat alkulukuja kompleksilukujen joukossa.
+    </li>
+    <li>
+        <span class="latex-container">
+            3 + 0i, 1 + 2i, 2 + i
+        </span>
+    </li>
+</ul>
+
+<h3>Wilsonin alkuluvut</h3>
+<ul>
+    <li>
+        Alkuluku
+        <span class="latex-container">p</span>
+        , joka toteuttaa Wilsonin lauseen:
+        <span class="latex-container display">
+            (p - 1)! \equiv -1 \mod p
+        </span>
+    </li>
+</ul>
+
+<h3>Probabilistiset alkuluvut</h3>
+<ul>
+    <li>
+        Lukuja, joiden alkuluvuksi olemista testataan todennäköisyyteen perustuvilla algoritmeilla.
+    </li>
+    <li>
+        Esimerkiksi Miller–Rabin- ja Fermat-testit.
+    </li>
+</ul>

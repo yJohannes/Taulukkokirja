@@ -1,0 +1,90 @@
+<h1>Osittaisintegrointi</h1>
+<hr>
+
+<div class="table-container">
+    <table class="table-striped">
+        <thead></thead>
+        <tbody>
+            <tr>
+                <td>
+                    <span class="latex-container display">
+                        \int _{ }^{ }uv'\ \text{d}x=\bigg/_{\!\!\!\!\!{ }}^{ }uv-\int _{ }^{ }u'v\ \text{d}x
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span class="latex-container display">
+                        \int _a^buv'\ \text{d}x=\bigg/_{\!\!\!\!\!a}^buv-\int _a^bu'v\ \text{d}x
+                    </span>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<br>
+<p>
+    On hyvä kirjoittaa
+    <span class="latex-container display">
+        \left(\begin{matrix}
+        u\ =\ldots &v'=\ldots \\
+        u'=\ldots &v\ =\ldots 
+        \end{matrix}\right)
+    </span>
+</p>
+
+<br>
+
+<h3>Johdettuja valmiskaavoja</h3>
+<div class="table-container">
+    <table class="table-striped">
+        <thead>
+            <tr>
+                <th>Nimi</th>
+                <th>Kaava</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>palautus- eli rekursiokaava</td>
+                <td>
+                    <span class="latex-container display">
+                        \int _{ }^{ }\sin ^nx\ \text{d}x=-\frac{1}{n}\sin ^{n-1}x\cos x+\frac{n-1}{n}\int _{ }^{ }\sin ^{n-2}x\ \text{d}x
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td>jokin sähkötekniikassa käytetty kaava</td>
+                <td>
+                    <span class="latex-container display">
+                        \int _{ }^{ }e^{kx}\sin bx\ \text{d}x=\frac{k\sin bx-b\cos bx}{k^2+b^2}e^{kx}+C
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td>???</td>
+                <td>
+                    <span class="latex-container display">
+                        \int _{ }^{ }x^ne^x\ \text{d}x=e^x\left(x^n-nx^{n-1}+n\left(n-1\right)x^{n-2}-\ldots +\left(-1\right)^nn!\right)+C
+                    </span>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<br>
+
+<h3>Johtaminen</h3>
+<div class="table-container">
+    <span class="latex-container display">
+        \begin{align*}
+        D(uv) &= u'v + uv' \\
+        \int_a^b \left( u'v + uv' \right)\,\mathrm{d}x &= \bigg/_{\!\!\!\!\!a}^b uv \\
+        \int_a^b u'v\,\mathrm{d}x + \int_a^b uv'\,\mathrm{d}x &= \bigg/_{\!\!\!\!\!a}^b uv \\
+        \int_a^b uv'\,\mathrm{d}x &= \bigg/_{\!\!\!\!\!a}^b uv - \int_a^b u'v\,\mathrm{d}x
+        \end{align*}
+
+    </span>
+</div>
