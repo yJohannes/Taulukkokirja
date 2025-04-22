@@ -1,0 +1,90 @@
+<h1>Kahden diskreetin muuttujan tilastollinen jakauma</h1>
+<hr>
+
+<div class="table-container">
+    <table class="table-striped">
+        <thead>
+            <tr>
+                <th>Nimi</th>
+                <th>Kaava</th>
+                <th>Selite</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>
+                    <p>
+                        Muuttujien
+                        <span class="latex-container">x</span>
+                        ja
+                        <span class="latex-container">y</span>
+                        kovarianssi
+                    </p>
+                </td>
+                <td>
+                    <span class="latex-container display">s_{xy}=\dfrac{\sum_{i=1}^n(x_i-\bar{x})(y_i-\bar{y})}{n}</span>
+                </td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Pearsonin korrelaatiokerroin (tulomomenttikerroin)</td>
+                <td>
+                    <span class="latex-container display">r=\dfrac{\sum_{i=1}^n(x_i-\bar{x})(y_i-\bar{y})}{\sqrt{\sum_{i=1}^n(x_i-\bar{x})^2}\sum_{i=1}^n(y_i-\bar{y})^2}</span>
+                    <span class="latex-container display">=\dfrac{n\Sigma xy-\Sigma x\Sigma y}{\sqrt{\left[n\Sigma x^2-(\Sigma x)^2\right]\left[n\Sigma y^2-(\Sigma y)^2\right]}}=\dfrac{s_{xy}}{s_xs_y}</span>
+                </td>
+                <td>
+                    <span class="latex-container">s_x</span>
+                    ja
+                    <span class="latex-container">s_y</span>
+                    ovat muuttujien
+                    <span class="latex-container">x</span>
+                    ja
+                    <span class="latex-container">y</span>
+                    keskihajonnat.
+                </td>
+            </tr>
+            <tr>
+                <td>Spearmanin järjestyskorrelaatiokerroin</td>
+                <td>
+                    <span class="latex-container display">{{r}_{s}}=1-\dfrac{6\sum_{i=1}^n{d_i^{2}}}{n({{n}^{2}}-1)}</span>
+                </td>
+                <td>
+                    <span class="latex-container">d_i =</span>
+                    parin
+                    <span class="latex-container">(x_i,y_i)</span>
+                    järjestyslukujen erotus
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<br>
+
+<h3>
+    Regressiosuoran 
+    <span class="latex-container display">y=bx+a</span>
+    sovitus pistejoukkoon
+</h3>
+
+
+<div class="table-container">
+    <table class="table-striped">
+        <tbody>
+            <tr>
+                <td>kulmakerroin</td>
+                <td>
+                    <span class="latex-container display">b=\dfrac{n\Sigma {{x}_{i}}{{y}_{i}}-(\Sigma {{x}_{i}})(\Sigma {{y}_{i}})}{n\Sigma {{x}_{i}}^{2}-{{(\Sigma {{x}_{i}})}^{2}}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>vakio</td>
+                <td>
+                    <span class="latex-container display">
+                        a=\dfrac{\Sigma {{y}_{i}}-b\Sigma {{x}_{i}}}{n}
+                    </span>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

@@ -1,0 +1,87 @@
+<h1>Tilastollisten jakaumien tunnuslukuja</h1>
+<hr>
+
+<div class="table-container">
+    <table class="table-striped">
+        <thead>
+            <tr>
+                <th>Tunnusluku</th>
+                <th>Yksittäiset havainnot</th>
+                <th>Luokitellut havainnot</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>havainnot</td>
+                <td>
+                    <span class="latex-container">{{x}_{1}},\ {{x}_{2}},\ \ldots ,\ {{x}_{n}}</span>
+                    <p>havaintojen lukumäärä</p>
+                    <span class="latex-container">n</span>
+                </td>
+                <td>
+                    <p><span class="latex-container">x_1\ (f_1\text{ kpl}),\ x_2\ (f_2\text{ kpl}),\ \ldots ,\ {{x}_{k}}\ (f_k\text{ kpl})</span></p>
+                    <p><span class="latex-container">{{f}_{1}}+{{f}_{2}}+\cdots +{{f}_{k}}=n</span></p>
+                </td>
+            </tr>
+            <tr>
+                <td>keskiarvo</td>
+                <td><span class="latex-container display">\bar{x}=\dfrac{\sum_{i=1}^{n}{{{x}_{i}}}}{n}</span></td>
+                <td><span class="latex-container display">\bar{x}=\dfrac{\sum_{i=1}^{k}{{{f}_{i}}{{x}_{i}}}}{\sum_{i=1}^{k}{{{f}_{i}}}}</span></td>
+            </tr>
+            <tr>
+                <td>keskihajonta</td>
+                <td><span class="latex-container display">{{s}_{n}}=\sqrt{\dfrac{\sum_{i=1}^{n}{{{({{x}_{i}}-\bar{x})}^{2}}}}{n}}</span></td>
+                <td><span class="latex-container display">{{s}_{n}}=\sqrt{\dfrac{\sum_{i=1}^{k}{{{f}_{i}}{{({{x}_{i}}-\bar{x})}^{2}}}}{n}}</span></td>
+            </tr>
+            <tr>
+                <td>otoskeskihajonta</td>
+                <td><span class="latex-container display">{{s}_{n-1}}=\sqrt{\dfrac{\sum_{i=1}^{n}{{{({{x}_{i}}-\bar{x})}^{2}}}}{n-1}}</span></td>
+                <td><span class="latex-container display">{{s}_{n-1}}=\sqrt{\dfrac{\sum_{i=1}^{k}{{{f}_{i}}{{({{x}_{i}}-\bar{x})}^{2}}}}{n-1}}</span></td>
+            </tr>
+            <tr>
+                <td>keskipoikkeama</td>
+                <td><span class="latex-container display">\text{M.D.}=\dfrac{\sum_{i=1}^n\left|x_i-\bar{x}\right|}{n}</span></td>
+                <td><span class="latex-container display">\text{M.D.}=\dfrac{\sum_{i=1}^kf_i\left|x_i-\bar{x}\right|}{n}</span></td>
+            </tr>
+            
+
+            <tr>
+                <td>moodiluokka</td>
+                <td>Luokka, jolla on suurin frekvenssi.</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>mediaaniluokka</td>
+                <td>Luokka, jonka summafrekvenssi ensimmäisenä saavuttaa 50 %:n rajan.</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>
+                    vaiheluväli
+                </td>
+                <td>
+                    <span class="latex-container">\Delta</span>
+                    , jakauman suurimman ja pienimmän luvun erotus
+                </td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>varianssi</td>
+                <td>
+                    <p>
+                        keskihajonnan neliö
+                        <span class="latex-container">s^2</span>
+                    </p>
+                </td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>keskiarvon keskivirhe</td>
+                <td>
+                    <span class="latex-container display">{{s}_{{\bar{x}}}}=\dfrac{s}{\sqrt{n}}</span>
+                </td>
+                <td></td>
+            </tr>
+        </tbody>
+    </table>
+</div>

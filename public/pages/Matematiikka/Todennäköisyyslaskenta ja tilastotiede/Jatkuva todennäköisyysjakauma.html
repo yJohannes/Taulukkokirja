@@ -1,0 +1,139 @@
+<h1>Jatkuva todennäköisyysjakauma</h1>
+<hr>
+
+<p>
+    Jatkuvan satunnaismuuttujan
+    <span class="latex-container">X</span>
+    arvojoukko olkoon väli
+    <span class="latex-container display">E=[a,b]</span>
+    . Kun
+    <span class="latex-container display">A=[c,d] \subset E</span>
+    , niin
+    <span class="latex-container display">X \in A</span>
+    eli
+    <span class="latex-container display">c \leq X \leq d</span>
+    on tapahtuma. Satunnaismuuttujan
+    <span class="latex-container">X</span>
+    tiheysfunktiolle
+    <span class="latex-container">f</span>
+    pätee:
+</p>
+
+<ul>
+    <li>
+        <span class="latex-container display">
+            \forall x \in E \text{: } f(x) \geq 0
+        </span>
+    </li>
+    <li>
+        <span class="latex-container display">
+            \int_a^bf(x)\ \text{d}x=1
+        </span>
+        (jos
+        <span class="latex-container display">E=\mathbb{R}</span>
+        , niin
+        <span class="latex-container display">\int_{-\infty}^{\infty}f(x)\ \text{d}x=1</span>
+        )
+    </li>
+</ul>
+
+<div class="table-container">
+    <table class="table-striped">
+        <thead>
+            <tr>
+                <th>Nimi</th>
+                <th>Kaava</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>kertymäfunktio</td>
+                <td>
+                    <span class="latex-container display">
+                        F(x)=\text{P}(X\le x)=\int_a^xf(t)\text{d}t
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td>todennäköisyys</td>
+                <td>
+                    <span class="latex-container display">
+                        \text{P}(X\in A)=\int_c^df(x)\text{d}x=F(d)-F(c)
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td>odotusarvo</td>
+                <td>
+                    <span class="latex-container display">
+                        \text{E}(X)=\mu =\int_{a}^{b}{xf(x)\text{d}x}
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td>keskihajonta</td>
+                <td>
+                    <span class="latex-container display">
+                        \text{D}(X)=\sigma =\sqrt{\int_{a}^{b}{{{(x-\mu )}^{2}}f(x)\text{d}x}}=\sqrt{\int_{a}^{b}{{{x}^{2}}f(x)\text{d}x-{{\mu }^{2}}}}
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td>varianssi</td>
+                <td><span class="latex-container display">{{\sigma }^{2}}</span></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<br>
+
+<h3>Jatkuvia jakaumia</h3>
+<div class="table-container">
+    <table class="table-striped">
+        <thead>
+            <tr>
+                <th>Jakauma</th>
+                <th>Määrittelyjoukko</th>
+                <th>Tiheysfunktio</th>
+                <th>Parametrin rajat</th>
+                <th>Odotusarvo</th>
+                <th>keskihajonta</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>normaalijakauma</td>
+                <td><span class="latex-container">\mathbb{R}</span></td>
+                <td><span class="latex-container display">\dfrac{1}{\sigma\sqrt{2\pi}}{\text{e}}^{-\frac{1}{2}\left(\frac{x-\mu}{\sigma}\right)^2}</span></td>
+                <td><span class="latex-container">\sigma > 0</span></td>
+                <td><span class="latex-container">\mu</span></td>
+                <td><span class="latex-container">\sigma</span></td>
+            </tr>
+            <tr>
+                <td>normitettu normaalijakauma</td>
+                <td><span class="latex-container">\mathbb{R}</span></td>
+                <td><span class="latex-container display">\dfrac{1}{\sqrt{2\pi }}\text{e}^{-\frac{1}{2}x^2}</span></td>
+                <td></td>
+                <td>0</td>
+                <td>1</td>
+            </tr>
+            <tr>
+                <td>eksponenttijakauma</td>
+                <td><span class="latex-container">\mathbb{R}_+</span></td>
+                <td><span class="latex-container">a e^{-ax}</span></td>
+                <td><span class="latex-container">a>0</span></td>
+                <td><span class="latex-container">\dfrac{1}{a}</span></td>
+                <td><span class="latex-container">\dfrac{1}{a}</span></td>
+            </tr>
+            <tr>
+                <td>tasainen jakauma</td>
+                <td><span class="latex-container">[a,b]</span></td>
+                <td><span class="latex-container">\dfrac{1}{b-a}</span></td>
+                <td><span class="latex-container">b>a</span></td>
+                <td><span class="latex-container">\dfrac{a+b}{2}</span></td>
+                <td><span class="latex-container">\dfrac{b-a}{2\sqrt{3}}</span></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
