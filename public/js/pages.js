@@ -1,5 +1,5 @@
 import { initTableHighlights } from './tables.js';
-import { initLatex } from './latex.js';
+import { initLatex, initLatexWorkers, initLatexWorkersFast } from './latex.js';
 
 
 async function loadPageHTML(path)
@@ -42,7 +42,7 @@ async function loadPageToElement(path, elementId)
         document.title = 'Kaavakirja';
     }
 
-    initLatex();
+    initLatexWorkersFast();
     initTableHighlights();
 }
 
