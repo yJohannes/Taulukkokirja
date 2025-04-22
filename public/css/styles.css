@@ -35,7 +35,7 @@ body {
 
 #content-wrapper {
     display: grid;
-    grid-template-columns: 280px minmax(0, 1fr); /* minmax to block horizontal overflow. */
+    grid-template-columns: 325px minmax(0, 1fr); /* minmax to block horizontal overflow. */
     grid-template-rows: 100% minmax(0, 1fr);
     gap: 1rem;
     max-width: 100vw;
