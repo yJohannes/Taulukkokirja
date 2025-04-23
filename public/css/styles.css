@@ -113,6 +113,7 @@ th {
     white-space: nowrap; /* Prevent wrapping */
     color: var(--color-secondary);
     background-color: var(--color-primary);
+    font-weight: normal !important;
 }
 
 thead {
