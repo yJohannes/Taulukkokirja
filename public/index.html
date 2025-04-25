@@ -67,13 +67,18 @@
     <!-- Content area -->
     <div id="content-wrapper">
         <aside id="sidebar" class="shadow hidden">
-            <section id="explorer" class="mt-3" aria-label="Explorer">
-                <div id="explorer-search" style="position: relative;">
-                    <input type="text" class="form-control border-dark shadow-sm" placeholder="Hae..." aria-label="Search">
+
+            <div class="mt-3"></div>
+
+            <section id="explorer" class="" aria-label="Explorer">
+                <div id="explorer-search">
+                    <input type="text" class="form-control shadow" placeholder="Hae..." aria-label="Search">
                     <i class="bi bi-search search-icon"></i>
                 </div>
 
-                <div id="explorer-buttons" class="mt-3" style="display: flex; justify-content: flex-end;">
+                <div class="mt-3"></div>
+
+                <div id="explorer-buttons" style="display: flex; justify-content: flex-end;">
                     <button id="explorer-expand" class="btn btn-sm btn-no-focus ripple ripple-dark ripple-centered" title="Laajenna välilehdet" aria-label="Laajenna välilehdet">
                         <i class="bi bi-arrows-expand" style="font-size: 120%;"></i>
                     </button>
@@ -84,7 +89,11 @@
                         <i class="bi bi-list-nested" style="font-size: 120%;"></i>
                     </button>
                 </div>
-                <div id="explorer-container" class="shadow rounded mt-1"></div>
+                
+                <div class="mt-1"></div>
+
+                <div id="search-container" class="shadow rounded"></div>
+                <div id="explorer-container" class="shadow rounded"></div>
             </section>
         </aside>
 
