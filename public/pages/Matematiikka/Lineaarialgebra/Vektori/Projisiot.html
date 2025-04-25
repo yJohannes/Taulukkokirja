@@ -1,12 +1,15 @@
 <h1>Projisiot</h1>
 <hr>
 
+<h3>Ortogonaaliprojektio</h3>
+
 <div class="table-container">
     <table class="table-striped">
         <thead>
             <tr>
                 <th>Nimi</th>
                 <th>Kaava</th>
+                <th>Selite</th>
             </tr>
         </thead>
         <tbody>
@@ -14,17 +17,19 @@
                 <td>skalaariprojektio</td>
                 <td>
                     <span class="latex-container display">
-                        {{a}_{b}}=\dfrac{\bar{a}\cdot \bar{b}}{\left| \bar{b} \right|}
+                        {{a}_{b}}=\left|\bar{a}\right|\cos \alpha =\dfrac{\bar{a}\cdot \bar{b}}{\left| \bar{b} \right|}
                     </span>
                 </td>
+                <td>Projektiovektorin pituus, jos kulma on terävä. Jos kulma on tylppä, niin pituuden vastaluku.</td>
             </tr>
             <tr>
                 <td>vektoriprojektio</td>
                 <td>
                     <span class="latex-container display">
-                        {{\bar{a}}_{b}}=\dfrac{\bar{a}\cdot \bar{b}}{\bar{b}\cdot \bar{b}}\bar{b}
+                        {{\bar{a}}_{b}}= \bar{b}^0\left|\bar{a}\right|\cos \alpha = a_b \bar b^0= \dfrac{\bar{a}\cdot \bar{b}}{\bar{b}\cdot \bar{b}}\bar{b}
                     </span>
                 </td>
+                <td></td>
             <tr>
                 <td>
                     <p>projektiovektorin pituus</p>
@@ -34,6 +39,7 @@
                         \left|P_{\bar{y}}\bar{x}\right|=\frac{\left|\bar{x}\cdot \bar{y}\right|}{\left|\bar{y}\right|}
                     </span>
                 </td>
+                <td></td>
             </tr>
         </tbody>
     </table>
