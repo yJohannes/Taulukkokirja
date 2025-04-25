@@ -1,22 +1,29 @@
 #explorer-search {
-    position: relative; /* Allows positioning elements inside the input field */
+    position: sticky;
+    top: 1rem;
     width: 100%; /* Set the width of the input field */
+    z-index: 50;
+}
+
+#explorer-search:focus {
+    border: solid black;
+    box-shadow: none !important;
 }
   
 #explorer-search > input {
     background-color: #f8f9fa;
     width: 100%; /* Full width of the wrapper */
-    padding-right: 2rem; /* Add space for the icon on the right */
+    padding-right: 2rem; /* Add space for the i  on the right */
     box-sizing: border-box; /* Includes padding in the total width */
 }
   
 #explorer-search i {
-position: absolute; /* Position the icon relative to the input wrapper */
-top: 50%; /* Center vertically inside the input */
-right: 0.625rem; /* Align to the right of the input field */
-transform: translateY(-50%); /* Adjust for perfect vertical alignment */
-color: black; /* Optional: Style the icon color */
-pointer-events: none; /* Prevent icon from interfering with input interactions */
+    position: absolute;
+    top: 50%;
+    right: 0.625rem;
+    transform: translateY(-50%);
+    color: black;
+    pointer-events: none;
 }
 
 .explorer-ul {
@@ -63,37 +70,4 @@ pointer-events: none; /* Prevent icon from interfering with input interactions *
     opacity: 1;
     visibility: visible;
     max-height: 3000px;
-}
-
-
-
-.flip-arrow-container {
-    display: flex;
-    align-items: center;
-}
-
-.flip-arrow-container > span {
-    width: 80%; /* Space for arrow */
-}
-
-.flip-arrow {
-    width: 24px;
-    height: 24px;
-    fill: rgb(120, 120, 120);
-    transition: transform 0.3s ease;
-    margin-left: auto; /* Nice alignment */
-    transform: rotate(180deg);
-}
-
-.flip-arrow.flipped {
-    fill: black;
-    transform: rotate(360deg);
-}
-
-.active .flip-arrow {
-    fill: rgb(200, 200, 200);
-}
-
-.active .flip-arrow.flipped {
-    fill: white;
 }
