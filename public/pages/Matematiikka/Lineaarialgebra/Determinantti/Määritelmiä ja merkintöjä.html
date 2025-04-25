@@ -1,0 +1,213 @@
+<h1>Determinantti</h1>
+<hr>
+
+<div class="table-container">
+    <table class="table-striped">
+        <thead>
+            <tr>
+                <th>Nimi</th>
+                <th>Merkintä/Määritelmä</th>
+                <th>Selite</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>
+                    matriisin
+                    <span class="latex-container">B</span>
+                    determinantti
+                </td>
+                <td>
+                    <span class="latex-container">\text{det}(B)</span>
+                </td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>kaksirivinen determinantti</td>
+                <td>
+                    <span class="latex-container display">
+                        \left|\begin{matrix}
+                            a&b\\
+                            c&d
+                        \end{matrix}\right|=ad-bc
+                    </span>
+                </td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>
+                    kolmirivinen determinantti, 
+                    Sarrus'n sääntö ([sarý:])
+                </td>
+                <td>
+                    <span class="latex-container display">
+                        \left|\begin{matrix}
+                            a_1&a_2&a_3\\
+                            b_1&b_2&b_3\\
+                            c_1&c_2&c_3
+                            \end{matrix}\right|\begin{matrix}
+                            a_1&a_2\\
+                            b_1&b_2\\
+                            c_1&c_2
+                        \end{matrix}
+                    </span>
+                    <span class="latex-container display">=a_1b_2c_3+a_2b_3c_1+a_3b_1c_2-a_3b_2c_1-a_1b_3c_2-a_2b_1c_3</span>
+                </td>
+                <td>Lasketaan yhteen kaikki päälävistäjän suuntaiset kolmoistulot sekä vähennetään sivulävistäjän suuntaiset kolmoistulot</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>
+                    <span class="latex-container display">
+                        \left| \begin{matrix}    a & b & c  \\    d & e & f  \\    g & h & i  \\ \end{matrix} \right|=a\left| \begin{matrix}    e & f  \\    h & i  \\ \end{matrix} \right|-b\left| \begin{matrix}    d & f  \\    g & i  \\ \end{matrix} \right|+c\left| \begin{matrix}    d & e  \\    g & h  \\ \end{matrix} \right|
+                    </span>
+                </td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>
+                    <span class="latex-container">n \times n</span>
+                    -determinantti
+                </td>
+                <td>
+                    <span class="latex-container display">
+                        \left|\begin{matrix}
+                            a_{11}&a_{12}&\ldots &a_{1n}\\
+                            a_{21}&a_{22}&\ldots &a_{2n}\\
+                            \vdots &\vdots &\ddots &\vdots \\
+                            a_{n1}&a_{n2}&\ldots &a_{nn}
+                        \end{matrix}\right|
+                    </span>
+                </td>
+                <td>
+                    1. alaindeksi ilmaisii <i>vaakarivin</i> (vr)
+                    <br>
+                    2. alaindeksi <i>pystyrivin</i> (pr)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    alideterminantti eli minori (minor)
+                </td>
+                <td>
+                    <span class="latex-container">M_{ij}</span>
+                    <br>
+                    <br>
+                    Esimerkki
+                    <span class="latex-container">a_{23}</span>
+                    :n alideterminantti
+                    <br>
+                    <span class="latex-container display">
+                        \left|\begin{matrix}
+                        a_{11}&a_{12}&a_{13}&a_{14}\\
+                        a_{21}&a_{22}&a_{23}&a_{24}\\
+                        a_{31}&a_{32}&a_{33}&a_{34}\\
+                        a_{41}&a_{42}&a_{43}&a_{44}
+                        \end{matrix}\right|\to \left|\begin{matrix}
+                        a_{11}&a_{12}&&a_{14}\\
+                        &&&\\
+                        a_{31}&a_{32}&&a_{34}\\
+                        a_{41}&a_{42}&&a_{44}
+                        \end{matrix}\right|\to \left|\begin{matrix}
+                        a_{11}&a_{12}&a_{14}\\
+                        a_{31}&a_{32}&a_{34}\\
+                        a_{41}&a_{42}&a_{44}
+                        \end{matrix}\right|
+                    </span>
+                </td>
+                <td>
+                    poistetaan
+                    <i>i</i>:s vaakarivi ja
+                    <i>j</i>:s pystyrivi
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td><span class="latex-container display">M_{ij}=\text{det}(A_{ij})</span></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>
+                    alkion
+                    <span class="latex-container">a_{ij}</span>
+                    komplementti
+                </td>
+                <td>
+                    <span class="latex-container">A_{ij}=(-1)^{i+j}M_{ij}</span>
+                </td>
+                
+                <td>
+                    alideterminantti varustettuna etumerkillä 
+                    <span class="latex-container">(-1)^{i+j}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>(eng.) kofaktori (cofactor)</td>
+                <td><span class="latex-container display">C_{ij}=A_{ij}</span></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>komplementtien etumerkit</td>
+                <td>
+                    <span class="latex-container display">
+                        \left|\begin{matrix}
+                        +&-&+&-\\
+                        -&+&-&+\\
+                        +&-&+&-\\
+                        -&+&-&+
+                        \end{matrix}\right|
+                    </span>
+                </td>
+                <td>
+                    <span class="latex-container display">(-1)^{i+j}</span>
+                    , (päälävistäjä aina +)
+                </td>
+            </tr>
+            <tr>
+                <td>2-rivisen determinantin elideterinantti</td>
+                <td>
+                    <span class="latex-container display">
+                        \text{det} \left|\begin{matrix}
+                        -5
+                        \end{matrix}\right|=-5
+                    </span>
+                </td>
+                <td>Arvoksi sovittu alkion arvo.</td>
+            </tr>
+            <tr>
+                <td>
+                    Laplace'n laajennus eli
+                    determinantin
+                    <span class="latex-container">D</span> määrittäminen kehittämällä se
+                    vaaka- tai pystyrivin mukaan
+                </td>
+                <td>
+                    Esim. kolmas vaakarivi
+                    <span class="latex-container display">3 \times 3</span>
+                    -determinantti:
+                    <br>
+                    <span class="latex-container">D=a_{31}A_{31}+a_{32}A_{32}+a_{33}A_{33}</span>
+                </td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>
+                    <span class="latex-container display">
+                        D=\sum _{i=1}^na_{ij}A_{ij}=\sum _{j=1}^na_{ij}A_{ij}
+                    </span>
+                </td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>
+                    <span class="latex-container display">
+                        D=\sum _{i=1}^n\left(-1\right)^{^{i+j}}a_{ij}M_{ij}=\sum _{j=1}^n\left(-1\right)^{^{i+j}}a_{ij}M_{ij}
+                    </span>
+                </td>
+                <td></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
