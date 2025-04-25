@@ -1,4 +1,4 @@
-import { loadExplorerToElement, loadExplorerSave } from './explorer.js';
+import { loadExplorerToElement, loadExplorerSave } from './explorer/explorer.js';
 import { initPageLoading } from './pages.js';
 import { initSidebar } from './sidebar.js';
 import { initNavbar } from './navbar.js';
