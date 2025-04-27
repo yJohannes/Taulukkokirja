@@ -17,7 +17,7 @@ function createPopup(message, role) {
 
     // Create a new popup element
     const popup = document.createElement('div');
-    popup.className = 'popup bg-success shadow';
+    popup.className = 'popup shadow';
     popup.setAttribute('role', 'alert');
 
     // SVG icon
@@ -30,6 +30,7 @@ function createPopup(message, role) {
 
     if (role === 'success') {
         svg.innerHTML = `<path d="M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7 393.4 105.4c12.5-12.5 32.8-12.5 45.3 0z"/>`;
+        popup.style.backgroundColor = '#2E6F40'
     }
 
     // Message span
