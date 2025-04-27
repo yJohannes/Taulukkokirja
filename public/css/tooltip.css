@@ -1,10 +1,9 @@
-/* Reduced motion blocks the animation */
+/* Reduced motion blocks the bootstrap animation */
 
 .tooltip {
     pointer-events: none;
 }
 
-/* Scale the inner tooltip content */
 .tooltip.fade .tooltip-inner
 {
     transform: scale(0.8);
