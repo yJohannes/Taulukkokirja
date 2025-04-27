@@ -46,7 +46,7 @@ async function addRippleToElement(element)
 
         setTimeout(() => {
             if (isMouseUp) onMouseUp();
-        }, 600); // Keep the ripple visible for 600ms
+        }, 1500); // Keep the ripple visible for 600ms
     });
 }
 
