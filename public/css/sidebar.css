@@ -8,8 +8,7 @@
     padding: 1.25rem;
     overflow-y: auto;
     transition: none;
-    z-index: 10;
-
+    z-index: 110;
 }
 
 /* Hide sidebar only on smaller screens */
@@ -31,7 +30,7 @@
     }
 
     #content-wrapper {
-        grid-template-columns: minmax(0, 1fr); /* Make content full width */
+        grid-template-columns: 0px minmax(0, 1fr); /* Make content full width */
     }
 }
 
