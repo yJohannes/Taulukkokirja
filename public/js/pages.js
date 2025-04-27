@@ -30,7 +30,7 @@ async function loadPageToElement(path, elementId)
     const element = document.getElementById(elementId);
     element.innerHTML = html;
 
-    const newUrl = '/#/' + path.replaceAll(' ', '-').replace('.html', '')
+    const newUrl = '/#/' + path.replaceAll(' ', '_').replace('.html', '')
     let pageName = path.split('/').pop().replace('.html', '');
     pageName = decodeURIComponent(pageName)
 
@@ -49,9 +49,9 @@ async function loadPageToElement(path, elementId)
 function initPageLoading()
 {
     const loadUrl = () => {
-        let url = window.location.hash.replaceAll('-', ' ').replace('#/', '');
+        let url = window.location.hash.replaceAll('_', ' ').replace('#/', '');
     
-        if (url === '/' || url === '') {
+        if (!url || url === '/') {
             fetch('index.html');
             return;
         }
@@ -65,11 +65,7 @@ function initPageLoading()
         let pageName = url.split('/').pop().replace('.html', '');
         pageName = decodeURIComponent(pageName)
 
-        if (pageName) {
-            document.title = pageName + ' | Kaavakirja';
-        } else {
-            document.title = 'Kaavakirja';
-        }
+        pageName ? document.title = pageName + ' | Kaavakirja' : document.title = 'Kaavakirja';
     }
 
     window.addEventListener('popstate', () => {
