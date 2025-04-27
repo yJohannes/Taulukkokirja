@@ -1,29 +1,40 @@
-#explorer-search {
+#explorer-container,
+#search-container {
+    width: 100%;
+}
+
+#explorer-search-wrapper {
     position: sticky;
-    top: 1rem;
-    width: 100%; /* Set the width of the input field */
+    top: 0;
+    width: 100%;
     z-index: 50;
 }
 
-#explorer-search:focus {
-    border: solid black;
-    box-shadow: none !important;
+#explorer-search-wrapper i {
+  position: absolute;
+  top: 50%;
+  right: 0.625rem;
+  transform: translateY(-50%);
+  color: black;
+  pointer-events: none;
 }
-  
-#explorer-search > input {
+
+#explorer-search-wrapper:focus-within i {
+    color: var(--color-accent);
+}
+
+
+#explorer-search {
     background-color: #f8f9fa;
-    width: 100%; /* Full width of the wrapper */
-    padding-right: 2rem; /* Add space for the i  on the right */
+
+    width: calc(100% + 1.5rem); /* Extend beyond container */
+    margin: 0 -0.75rem; /* Offset padding */
+    padding-right: 2rem; /* Add space for the search icon */
     box-sizing: border-box; /* Includes padding in the total width */
 }
-  
-#explorer-search i {
-    position: absolute;
-    top: 50%;
-    right: 0.625rem;
-    transform: translateY(-50%);
-    color: black;
-    pointer-events: none;
+
+#explorer-search:focus {
+    border-color: var(--color-accent) !important;
 }
 
 .explorer-ul {
@@ -53,6 +64,10 @@
     overflow-wrap: break-word;
     cursor: pointer;
 
+}
+
+.explorer-tab:focus {
+    box-shadow: none !important;
 }
 
 .explorer-dropdown {
