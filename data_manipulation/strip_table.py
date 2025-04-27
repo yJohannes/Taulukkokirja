@@ -6,7 +6,7 @@ def strip_table(latex: bool = False, display: bool = False):
         soup = BeautifulSoup(file, "html.parser")
 
         s = ""
-        s += """<div class="table-container">\n"""
+        s += """<div class="fit-container">\n"""
         s += """<table class="table-striped">\n"""
 
         head = soup.find("thead")
@@ -101,172 +101,10 @@ def strip_table(latex: bool = False, display: bool = False):
         s += "</div>\n"
 
         s = s.replace('�', ' ').replace('−', '-').replace('�', '')
+        s = s.replace('<br />', '')
 
         # Prettify and write to file
         with open("data_manipulation/output.html", "w") as output:
             output.write(BeautifulSoup(s, "html.parser").prettify())
-
-# def strip_table(latex: bool = False, display: bool = False):
-#     with open("data_manipulation/target.html", 'r') as file:
-#         file = file.read().replace('&nbsp;', '')
-#         soup = BeautifulSoup(file, "html.parser")
-
-#         s = ""
-#         s += """<div class="table-container">\n"""
-#         s += """<table class="table-striped">\n"""
-
-#         head = soup.find("thead")
-
-#         if head:
-#             s += "<thead>\n"
-#             for tr in head.find_all("tr"):
-#                 s += "<tr>\n"
-#                 for th in tr.find_all("th"):
-#                     text = th.get_text(strip=True)
-#                     rowspan = th.get("rowspan")
-#                     colspan = th.get("colspan")
-#                     s += "<th"
-#                     if rowspan and int(rowspan) > 1:
-#                         s += f' rowspan="{rowspan}"'
-#                     if colspan and int(colspan) > 1:
-#                         s += f' colspan="{colspan}"'
-
-#                     if latex:
-#                         # Remove all <svg> elements and replace with LaTeX container spans
-#                         content = ""
-#                         for element in th.contents:
-#                             if element.name == "svg":
-#                                 # Extract the LaTeX from <title> within <svg>
-#                                 if element.find("title"):
-#                                     latex_text = element.find("title").get_text(strip=True)
-#                                     if display:
-#                                         content += f'<span class="latex-container display">{latex_text}</span>'
-#                                     else:
-#                                         content += f'<span class="latex-container">{latex_text}</span>'
-#                             else:
-#                                 # Preserve other text or elements
-#                                 content += str(element)
-
-#                         s += f">{content}</th>\n"
-#                     else:
-#                         # Regular text extraction without LaTeX handling
-#                         text = th.get_text("\n", strip=True)
-#                         s += f">{text}</th>\n"
-
-#                 s += "</tr>\n"
-#             s += "</thead>\n"
-
-#         s += "<tbody>\n"
-#         for tr in soup.find("tbody").find_all("tr"):
-#             s += "<tr>\n"
-#             for td in tr.find_all("td"):
-#                 rowspan = td.get("rowspan")
-#                 colspan = td.get("colspan")
-#                 s += "<td"
-#                 if rowspan and int(rowspan) > 1:
-#                     s += f' rowspan="{rowspan}"'
-#                 if colspan and int(colspan) > 1:
-#                     s += f' colspan="{colspan}"'
-
-#                 if latex:
-#                     # Remove all <svg> elements and replace with LaTeX container spans
-#                     content = ""
-#                     for element in td.contents:
-#                         if element.name == "svg":
-#                             # Extract the LaTeX from <title> within <svg>
-#                             if element.find("title"):
-#                                 latex_text = element.find("title").get_text(strip=True)
-#                                 if display:
-#                                     content += f'<span class="latex-container display">{latex_text}</span>'
-#                                 else:
-#                                     content += f'<span class="latex-container">{latex_text}</span>'
-#                         else:
-#                             # Preserve other text or elements
-#                             content += str(element)
-
-#                     s += f">{content}</td>\n"
-#                 else:
-#                     # Regular text extraction without LaTeX handling
-#                     text = td.get_text("\n", strip=True)
-#                     s += f">{text}</td>\n"
-
-#             s += "</tr>\n"
-#         s += "</tbody>\n"
-
-#         s += "</table>\n"
-#         s += "</div>\n"
-
-#         s = s.replace('�', ' ').replace('−', '-').replace('�', '')
-
-#         with open("data_manipulation/output.html", "w") as output:
-#             output.write(BeautifulSoup(s, "html.parser").prettify())
-            # output.write(s)
-
-
-# def strip_table(latex: bool=False, display: bool=False):
-#     with open("data_manipulation/target.html") as file:
-#         soup = BeautifulSoup(file, "html.parser")
-
-#         s = ""
-#         s += """<div class ="table-container">\n"""
-#         s += """<table class="table-striped">\n"""
-
-#         head = soup.find("thead")
-
-#         if (head):
-#             s += "<thead>\n"
-#             for tr in head.find_all("tr"):
-#                 s += "<tr>\n"
-#                 for th in tr.find_all("th"):
-#                     text = th.get_text(strip=True)
-#                     rowspan = th.get("rowspan")
-#                     colspan = th.get("colspan")
-#                     s += "<th"
-#                     if rowspan and int(rowspan) > 1:
-#                         s += f' rowspan="{rowspan}"'
-#                     if colspan and int(colspan) > 1:
-#                         s += f' colspan="{colspan}"'
-                    
-#                     s += f">{text}"
-#                     s += "</th>\n"
-#                 s += "</tr>\n"
-#             s += "</thead>\n"
-
-#         s += "<tbody>\n"
-#         for tr in soup.find("tbody").find_all("tr"):
-#             s += "<tr>\n"
-#             for td in tr.find_all("td"):
-#                 # text = td.get_text("\n", strip=True)
-
-                
-
-#                 rowspan = td.get("rowspan")
-#                 colspan = td.get("colspan")
-#                 s += "<td"
-#                 if rowspan and int(rowspan) > 1:
-#                     s += f' rowspan="{rowspan}"'
-#                 if colspan and int(colspan) > 1:
-#                     s += f' colspan="{colspan}"'
-
-#                 if latex:
-#                     s += ">"
-#                     if display:
-#                         s += '<span class="latex-container display">'
-#                     else:
-#                         s += '<span class="latex-container">'
-#                     s += text
-#                     s += "</span></td>"
-#                 else:
-#                     s += f">{text}</td>\n"
-
-#             s += "</tr>\n"
-#         s += "</tbody>\n"
-
-
-#         s += "</table>\n"
-#         s += "</div>\n"
-
-#         with open("data_manipulation/output.html", "w") as output:
-#             output.write(s)
 
 strip_table(True, True)
