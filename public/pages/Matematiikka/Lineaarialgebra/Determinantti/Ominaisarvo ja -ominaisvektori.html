@@ -1,0 +1,70 @@
+<div class="sticky-page-header">
+    <h1>Ominaisarvo ja -ominaisvektori</h1>
+    <hr>
+</div>
+
+<p>(engl. Eigenvalue and eigenvector)</p>
+
+<p>
+    Esim. värähtelysysteemiä tutkiessä voidaan joutua yhtälöpariin, joka on muotoa
+    <br>
+    <span class="latex-container display">
+        \begin{cases}
+        8x+y=\lambda x&\\
+        5x+3y=\lambda y&
+        \end{cases}
+    </span>
+    <br>
+    
+    ja jolla on jokin ei-triviaali ratkaisu, jos
+    <span class="latex-container">\lambda</span>
+    :lle valitaan sopiva arvo. Tällaiset
+    <span class="latex-container">\lambda</span>
+    :n arvot ovat nimeltään systeemin ominaisarvot (eigenvalues).
+</p>
+
+<p>
+    Yhtälö voidaan kirjoittaa muotoon 
+    <br>
+    <span class="latex-container display">
+        \begin{cases}
+        \left(8-\lambda \right)x+y=0&\\
+        5x+\left(3-\lambda \right)y=0&
+        \end{cases}
+    </span>
+    <br>
+    , joten kyseessä on homogeeninen lineaarinen pari. Tällä on ei-triviaali ratkaisu mikäli
+    <span class="latex-container display">D=0</span>
+    :
+</p>
+<p>
+    <span class="latex-container display">
+        \left|\begin{matrix}
+        8-\lambda &1\\
+        5&4-\lambda 
+        \end{matrix}\right|=0\Leftrightarrow \left(8-\lambda \right)\left(4-\lambda \right)-5=0
+    </span>
+</p>
+
+<p>
+    Tästä saadaan kaksi ominaisarvoa
+    <span class="latex-container display">\lambda _1=3{,}\ \lambda _2=9</span>
+    .
+    Esimerkiksi ensimmäisellä arvolla 
+    <span class="latex-container display">\lambda_1 = 3</span>
+    yhtälöparisurkastuu yhtälöksi
+    <span class="latex-container display">5x+y=0</span>
+    (toinen yhtälö on sama). Tämän yhtälön ratkaisut voidaan esittää muodossa
+    <span class="latex-container display">
+        \begin{cases}
+        x=t\\
+        y=-5t
+        \end{cases}{,}\ t\in \mathbb{R}
+    </span>
+    <br>
+    tai myös ominaisvektoreina (eigenvectors)
+    <br>
+    <span class="latex-container display">
+        \left[x{,}\ y\right]=t\left[1{,}\ 5\right]
+    </span>
+</p>
