@@ -25,7 +25,7 @@
 }
 
 .katex:hover {
-    color: var(--color-tertiary);
+    color: var(--color-accent);
 }
 
 .katex:hover::before {
