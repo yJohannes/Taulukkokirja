@@ -1,0 +1,119 @@
+<div class="sticky-page-header">
+    <h1>Lineaariset yhtälöryhmät</h1>
+    <hr>
+</div>
+
+<h3>Yhtälöpari</h3>
+
+<p>
+    <span class="latex-container display">
+        \frac{\begin{matrix}
+        \\
+        +
+        \end{matrix}\begin{cases}
+        ax+by=e&\parallel \cdot d&\parallel \cdot \left(-c\right)\\
+        cx+dy=f&\parallel \cdot \left(-b\right)&\parallel \cdot a
+        \end{cases}}{\begin{cases}
+        \left(ad-bc\right)x=ed-fb&&\\
+        \left(ad-bc\right)y=af-ec&&
+        \end{cases}}
+    </span>
+    , josta
+    <span class="latex-container display">
+        D=\left|\begin{matrix}
+        a&b\\
+        c&d
+        \end{matrix}\right|=ad-bc
+    </span>
+</p>
+<p>
+    <span class="latex-container display">
+        D_x=\left|\begin{matrix}
+        e&b\\
+        f&d
+        \end{matrix}\right|=ed-fb
+    </span>
+    ,
+    <span class="latex-container display">
+        D_y=\left|\begin{matrix}
+        a&e\\
+        c&f
+        \end{matrix}\right|=af-ec
+    </span>
+</p>
+
+<p>
+    <span class="latex-container display">
+        \therefore \begin{cases}
+        Dx=D_x&\\
+        Dy=D_y&
+        \end{cases}
+    </span>
+</p>
+
+<ol>
+    <li>
+        <p>
+            <span class="latex-container display">D \neq 0</span>
+            ,
+            <span class="latex-container display">
+                \begin{cases}
+                x=\frac{D_x}{D}\\
+                y=\frac{D_y}{D}
+                \end{cases}
+            </span>
+            (suorat leikkaavat)
+        </p>
+    </li>
+    <li>
+        <p>
+            <span class="latex-container display">
+                D=0
+                \wedge
+                (D_x \neq 0
+                \vee
+                D_y \neq 0) 
+                \Rightarrow 
+            </span>
+            ei ratkaisua
+            (suorat yhdensuuntaiset)
+        </p>
+    </li>
+    <li>
+        <p>
+            <span class="latex-container display">
+                D=D_X=0 \Rightarrow D_y=0
+            </span>
+        </p>
+        <p>
+            <span class="latex-container display">
+                \Rightarrow
+            </span>
+            äärettömän monta ratkaisua
+            (suorat yhtyvät)
+        </p>
+    </li>
+</ol>
+
+<h3>Kolme lineaarista yhtälöä</h3>
+<p>
+    <span class="latex-container display">
+        \frac{\begin{matrix}
+        \\
+        \\
+        +
+        \end{matrix}\begin{cases}
+        a_1x+b_1y+c_1z=d_1&\parallel \cdot A_1\\
+        a_2x+b_2y+c_2z=d_2&\parallel \cdot A_2\\
+        a_3x+b_3y+c_3z=d_3&\parallel \cdot A_3
+        \end{cases}}{Dx+0+0=d_1A_1+d_2A_2+d_3A_3}
+    </span>
+    ,
+    <span class="latex-container display">
+        D=\left|\begin{matrix}
+        a_1&b_1&c_1\\
+        a_2&b_2&c_2\\
+        a_3&b_3&c_3
+        \end{matrix}\right|
+    </span>
+</p>
