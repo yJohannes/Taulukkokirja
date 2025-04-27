@@ -3,6 +3,7 @@ import { initPageLoading } from './pages.js';
 import { initSidebar } from './sidebar.js';
 import { initNavbar } from './navbar.js';
 import { initRipple } from './ripple.js';
+import { initArrowNavigation } from './arrow_navigation.js';
 
 const ACTIVE = 'active';
 const SHOW = 'show';
@@ -15,5 +16,6 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     await loadExplorerToElement(document.getElementById('explorer-container'));
     await initRipple();
+    initArrowNavigation();
     loadExplorerSave();
 });
