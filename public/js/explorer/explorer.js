@@ -1,8 +1,9 @@
 import { initSearchToInput } from './search.js';
-import { generateTabs } from './tab.js';
+import { generateTabs, getTabDropdown } from './tab.js';
 import { initExplorerButtons } from './buttons.js';
 
 import * as defs from './defs.js'
+
 
 function showExplorer(bool)
 {
@@ -29,7 +30,8 @@ function expandExplorer()
         lis.forEach((li) => {
             const tabs = li.querySelectorAll('.explorer-tab');
             tabs.forEach((tab) => {
-                localStorage.setItem(tab.getAttribute('data-path'), 'show');
+                const state = { show: true, active: false };
+                localStorage.setItem(tab.getAttribute('data-path'), JSON.stringify(state));
 
                 const arrowSvg = tab.querySelector(`svg`);
                 if (arrowSvg) {
@@ -69,40 +71,20 @@ function collapseExplorer()
 function openPath(path) {
     const explorer = document.querySelector('#explorer-container');
     const parts = path.split('/'); // Split the path into parts for navigation
-    let currentElement = explorer;
-    let fullPath = ''; // Track the full path as we progress
+
+    let joinPath = '';
 
     for (const part of parts) {
-        fullPath = fullPath ? `${fullPath}/${part}` : part; // Combine parts to create the full path
+        joinPath = joinPath ? joinPath + '/' + part : part;
 
-        // Find the tab corresponding to the full path
-        const tab = currentElement.querySelector(`.explorer-tab[data-path="${fullPath}"]`);
-        if (!tab) {
-            console.error(`Path part "${fullPath}" not found.`);
-            return;
+        const tabClass = `.explorer-tab[data-path="${joinPath}/"]`;
+
+        const tab = explorer.querySelector(tabClass);
+        const dropdown = getTabDropdown(tab);
+
+        if (!dropdown.classList.contains('show')) {
+            tab.click();
         }
-
-        // Expand the current dropdown
-        const ul = tab.closest('li').querySelector('.explorer-ul');
-        if (ul) {
-            ul.classList.add(defs.SHOW);
-
-            const arrowSvg = tab.querySelector(`svg`);
-            if (arrowSvg) {
-                arrowSvg.classList.add(defs.ARROW_FLIPPED);
-            }
-        }
-
-        // Update the current element to the dropdown for the next iteration
-        currentElement = ul;
-    }
-
-    // Mark the target path as active
-    const targetTab = currentElement?.querySelector(`.explorer-tab[data-path="${fullPath}"]`);
-    if (targetTab) {
-        targetTab.classList.add(defs.ACTIVE);
-    } else {
-        console.error(`Target path "${fullPath}" not found.`);
     }
 }
 
@@ -118,14 +100,23 @@ function loadExplorerSave()
             const tabs = li.querySelectorAll('.explorer-tab');
             tabs.forEach((tab) => {
                 const path = tab.getAttribute('data-path');
-                const dropdownState = localStorage.getItem(path);
-                if (dropdownState === 'show') {
-                    const dropdown = li.querySelector('.explorer-ul');
-                    dropdown?.classList.add(defs.SHOW);
+                const storedState = localStorage.getItem(path);
+                
+                if (storedState) {
+                    const state = JSON.parse(storedState);
+                    
+                    if (state.show) {
+                        const dropdown = li.querySelector('.explorer-ul');
+                        dropdown?.classList.add(defs.SHOW);
+                        
+                        const arrowSvg = tab.querySelector(`svg`);
+                        if (arrowSvg) {
+                            arrowSvg.classList.add(defs.ARROW_FLIPPED);
+                        }
+                    }
 
-                    const arrowSvg = tab.querySelector(`svg`);
-                    if (arrowSvg) {
-                        arrowSvg.classList.add(defs.ARROW_FLIPPED);
+                    if (state.active) {
+                        tab.classList.add('active');
                     }
                 }
             });

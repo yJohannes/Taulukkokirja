@@ -4,6 +4,10 @@ import { createArrow } from '../arrow.js';
 
 import * as defs from './defs.js'
 
+function getTabDropdown(tab) {
+    return tab.parentElement.querySelector('ul');
+}
+
 
 function handleTabClick(tab, isDropdown, parentElement)
 {
@@ -11,12 +15,20 @@ function handleTabClick(tab, isDropdown, parentElement)
 
     // Handle basic tabs
     if (!isDropdown) {
-        if (tab.classList.contains(defs.ACTIVE)) return;  // Clicked the current tab
-
+        // Clicked the current tab
+        if (tab.classList.contains(defs.ACTIVE)) {
+            return;
+        }
+        
         activeTabs.forEach(t => {
             t.classList.remove(defs.ACTIVE);
-            localStorage
+            localStorage.removeItem(t.getAttribute('data-path'));
+    
         });
+
+        const state = { show: null, active: true };
+        localStorage.setItem(tab.getAttribute('data-path'), JSON.stringify(state));
+
         tab.classList.add(defs.ACTIVE);
 
         // If tab is clicked on small screen hide sidebar
@@ -25,7 +37,7 @@ function handleTabClick(tab, isDropdown, parentElement)
     }
 
     // Handle collapsible tabs
-    const nestedDropdown = tab.parentElement.querySelector('ul');
+    const nestedDropdown = getTabDropdown(tab);
     activeTabs.forEach(t => t.classList.remove(defs.ACTIVE));
 
     // If closing a dropdown, shift focus up a level
@@ -33,14 +45,15 @@ function handleTabClick(tab, isDropdown, parentElement)
         nestedDropdown.classList.remove(defs.SHOW);
         localStorage.removeItem(tab.getAttribute('data-path'))
 
-
         const parentDropdown = tab.parentElement.parentElement;
-        const parentTab = parentDropdown.parentElement.querySelector('div');
+        const parentTab = parentDropdown.parentElement.querySelector('button');
 
         // Dismiss highest level dropdown
         if (!(parentDropdown.parentElement.id === 'explorer-container')) {
             parentTab.classList.add(defs.ACTIVE);
-            localStorage.setItem(parentTab.getAttribute('data-path'), 'show');
+            
+            const state = { show: true, active: false };
+            localStorage.setItem(parentTab.getAttribute('data-path'), JSON.stringify(state));
         }
 
     } else {
@@ -49,30 +62,31 @@ function handleTabClick(tab, isDropdown, parentElement)
         
         if (autoCollapseOn) {
             const parentDropdown = tab.parentElement.parentElement;
-
             const openDropdown = parentDropdown.querySelectorAll(`.${defs.SHOW}`);
-            openDropdown.forEach(m => {
-                m.classList.remove(defs.SHOW);
-                
-                const tab = m.parentElement.querySelector('div');
+
+            openDropdown.forEach(dropdown => {
+                const tab = dropdown.parentElement.querySelector('button');
                 const arrow = tab.querySelector('svg');
+                
                 arrow.classList.remove(defs.ARROW_FLIPPED);
+                dropdown.classList.remove(defs.SHOW);
                 localStorage.removeItem(tab.getAttribute('data-path'))
             });
         }
 
         // Set tab as defs.ACTIVE and show contents
         tab.classList.add(defs.ACTIVE);
-        localStorage.setItem(tab.getAttribute('data-path'), 'show');
-
         nestedDropdown.classList.add(defs.SHOW);
+
+        const state = { show: true, active: false };
+        localStorage.setItem(tab.getAttribute('data-path'), JSON.stringify(state));
     }
 }
 
 function createTab(textOrHTML, level, isDropdown, parentElement)
 {
-    const tab = document.createElement('div');
-    tab.classList.add("btn", "btn-light", "btn-no-focus", "explorer-tab", "ripple");
+    const tab = document.createElement('button');
+    tab.classList.add('btn', 'btn-light', 'explorer-tab', 'ripple');
     tab.style.setProperty('--level', level);
 
     if (level === 0) tab.style.fontWeight = 'bold';
@@ -85,51 +99,62 @@ function createTab(textOrHTML, level, isDropdown, parentElement)
     
     // Add arrow to dropdowns
     if (isDropdown) {
-        tab.classList.add('flip-arrow-container');
-        tab.addEventListener('click', () => {
-
-            arrow.classList.toggle(defs.ARROW_FLIPPED);
-        });
-
+        tab.style.display = 'flex';
+        tab.style.justifyContent = 'space-between';
+        tab.style.alignItems = 'center';
+        
         const arrow = createArrow();
         tab.appendChild(arrow);
+        tab.addEventListener('click', () => {
+            arrow.classList.toggle(defs.ARROW_FLIPPED);
+        });
     }
 
     return tab;
 }
 
 // Recursive function to generate the tab list with collapsibility
-function generateTabs(data, parentElement, rootPath="") {
+function generateTabs(data, parentElement, rootPath='') {
     const ul = document.createElement('ul');
-    ul.classList.add("explorer-ul");
+    ul.classList.add('explorer-ul');
 
     for (let key in data) {
-        let currentPath = rootPath + key + "/";
-        const pageName = key.replace(".html", "");
-
+        const pageName = key.replace('.html', '');
+        const currentPath = rootPath ? rootPath + '/' + key : key;
+        const level = currentPath.split('/').length - 1;
         const li = document.createElement('li');
 
         let tab; 
-        const level = currentPath.split('/').length - 2;
         if (typeof data[key] === 'object' && data[key] !== null) {
             tab = createTab(pageName, level, true, parentElement);    // Dropdown tab
 
         } else {
-            currentPath = currentPath.slice(0, -1);  // Remove trailing '/'
             tab = createTab(pageName, level, false, parentElement);   // Normal tab
             tab.addEventListener('click', () => {
-                loadPageToElement('pages/' + currentPath, 'page-container');
-            });
+            
+                const formatPath = (path) => {
+                    path = decodeURIComponent(path)
+                    path.replaceAll(' ', '_')
+                }
 
+                const pagePath = 'pages/' + currentPath;
+                const hrefPath = window.location.href.split('/#/')[1] + '.html';
+
+                if (hrefPath !== pagePath.replaceAll(' ', '_'))
+                {
+                    loadPageToElement(pagePath, 'page-container');
+                }
+            });
         }
         
-        li.appendChild(tab);
         tab.setAttribute('data-path', currentPath)
+        li.appendChild(tab);
 
         // If the value is an object (i.e., nested dropdown), recursively create a nested dropdown
         if (typeof data[key] === 'object' && data[key] !== null) {
             const nestedDropdown = generateTabs(data[key], parentElement, currentPath);
-            nestedDropdown.classList.add("explorer-dropdown");  // Add class to style the nested dropdown
+            nestedDropdown.classList.add('explorer-dropdown');
+
             li.appendChild(nestedDropdown);
         }
 
@@ -142,4 +167,5 @@ function generateTabs(data, parentElement, rootPath="") {
 export {
     createTab,
     generateTabs,
+    getTabDropdown,
 };
