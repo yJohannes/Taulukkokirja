@@ -29,7 +29,7 @@
     <nav class="navbar navbar-expand navbar-dark shadow-sm sticky-top">
         <div class="container-fluid">
             <b>
-                <a class="navbar-brand" href="#">Taulukkokirja</a>
+                <a class="navbar-brand" href="">Taulukkokirja</a>
             </b>
 
             <div class="ml-auto">
@@ -53,7 +53,7 @@
                     </li>
 
                     <li class="nav-item ml-3">
-                        <button id="sidebar-toggle" class="nav-link btn btn-link btn-no-focus border-0 rounded-0 text-white ripple" title="Avaa/sulje sivupalkki" aria-label="Avaa/sulje sivupalkki">
+                        <button id="sidebar-toggle" class="nav-link btn btn-link border-0 rounded-0 text-white ripple" title="Avaa/sulje sivupalkki" aria-label="Avaa/sulje sivupalkki">
                             <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="19.6px" fill="white" viewBox="0 20 448 512">
                                 <path d="M0 96C0 78.3 14.3 64 32 64l384 0c17.7 0 32 14.3 32 32s-14.3 32-32 32L32 128C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32l384 0c17.7 0 32 14.3 32 32s-14.3 32-32 32L32 288c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32L32 448c-17.7 0-32-14.3-32-32s14.3-32 32-32l384 0c17.7 0 32 14.3 32 32z"/>
                             </svg>
@@ -67,40 +67,41 @@
     <!-- Content area -->
     <div id="content-wrapper">
         <aside id="sidebar" class="shadow hidden">
-
-            <div class="mt-3"></div>
-
             <section id="explorer" class="" aria-label="Explorer">
-                <div id="explorer-search">
-                    <input type="text" class="form-control shadow" placeholder="Hae..." aria-label="Search">
+                <div id="explorer-search-wrapper">
+                    <input id="explorer-search" type="text" class="form-control shadow" placeholder="Hae... " aria-label="Search">
                     <i class="bi bi-search search-icon"></i>
                 </div>
 
                 <div class="mt-3"></div>
 
-                <div id="explorer-buttons" style="display: flex; justify-content: flex-end;">
-                    <button id="explorer-expand" class="btn btn-sm btn-no-focus ripple ripple-dark ripple-centered" title="Laajenna välilehdet" aria-label="Laajenna välilehdet">
+                <div id="explorer-buttons" class="button-group tab-skip" role="group"  style="display: flex; justify-content: flex-end;">
+                    <button id="explorer-expand" class="btn btn-sm ripple ripple-dark ripple-centered" title="Laajenna välilehdet" aria-label="Laajenna välilehdet">
                         <i class="bi bi-arrows-expand" style="font-size: 120%;"></i>
                     </button>
-                    <button id="explorer-collapse" class="btn btn-sm btn-no-focus ripple ripple-dark ripple-centered" title="Sulje välilehdet" aria-label="Sulje välilehdet">
+                    <button id="explorer-collapse" class="btn btn-sm ripple ripple-dark ripple-centered" title="Sulje välilehdet" aria-label="Sulje välilehdet">
                         <i class="bi bi-arrows-collapse" style="font-size: 120%;"></i>
                     </button>
-                    <button id="explorer-auto-collapse" class="btn btn-sm btn-no-focus ripple ripple-dark ripple-centered" title="Automaattinen sulkeminen" aria-label="Automaattinen sulkeminen">
+                    <button id="explorer-auto-collapse" class="btn btn-sm ripple ripple-dark ripple-centered" title="Automaattinen sulkeminen" aria-label="Automaattinen sulkeminen">
                         <i class="bi bi-list-nested" style="font-size: 120%;"></i>
                     </button>
                 </div>
                 
                 <div class="mt-1"></div>
 
-                <div id="search-container" class="shadow rounded"></div>
-                <div id="explorer-container" class="shadow rounded"></div>
+                <div id="search-container" class="button-group shadow rounded"></div>
+                <div id="explorer-container" class="button-group shadow rounded"></div>
             </section>
         </aside>
 
+        <div id="main-splitter" class="splitter"></div>
+
         <main id="main-content">
             <article id="page-container">
-                <h1>Etusivu</h1>
-                <hr>
+                <div class="sticky-page-header">
+    <h1>Etusivu</h1>
+    <hr>
+</div>
 
                 <p>Tämä on taulukkokirjan etusivu. Sivut lataavat tähän!</p>
 
