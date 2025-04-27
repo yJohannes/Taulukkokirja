@@ -12,26 +12,29 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.get('/api/pages-structure', (req, res) => {
   const pagesDir = path.join(__dirname, 'public', 'pages');
 
-  // Helper function to recursively get all files in directories
   const getFolderStructure = (dir) => {
     const result = {};
-
+  
     const filesAndDirs = fs.readdirSync(dir, { withFileTypes: true });
-
-    filesAndDirs.forEach(file => {
-      const fullPath = path.join(dir, file.name);
-
-      // If it's a directory, recursively get its structure
-      if (file.isDirectory()) {
-        result[file.name] = getFolderStructure(fullPath);
-      } else {
-        // If it's a file, add to the current folder's list
-        result[file.name] = null;
-      }
+  
+    // Separate files and directories
+    const files = filesAndDirs.filter(file => file.isFile());
+    const directories = filesAndDirs.filter(file => file.isDirectory());
+  
+    // Process files first
+    files.forEach(file => {
+      result[file.name] = null;
     });
-
+  
+    // Then process directories
+    directories.forEach(dirent => {
+      const fullPath = path.join(dir, dirent.name);
+      result[dirent.name] = getFolderStructure(fullPath);
+    });
+  
     return result;
   };
+  
 
   try {
     const pageStructure = getFolderStructure(pagesDir);
