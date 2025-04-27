@@ -44,16 +44,19 @@ function searchInStructure(structure, searchString, path = '') {
 
 function generateResultView(matches, resultContainer) {
     resultContainer.innerHTML = '';
-
     resultContainer.innerHTML += `
         <div style="display: flex; justify-content: space-between; align-items: center; padding: 1rem;">
             <p style="margin: 0"><b>Haun tulokset</b></p>
-            <div class="rounded-pill" style="display: inline-block; white-space: nowrap; background-color: var(--color-primary); color: var(--color-secondary); padding: 0.4rem 0.6rem;">
+            <div class="rounded-pill" style="display: inline-block; font-size: 75%; white-space: nowrap; background-color: var(--color-primary); color: var(--color-secondary); padding: 0.4rem 0.6rem;">
                 ${matches.length} osumaa
             </div>
         </div>
-
     `
+
+    if (matches.length === 0) {
+        resultContainer.innerHTML += '<p style="padding-left: 1rem;">Ei tuloksia</p>'
+        return;
+    }
 
     for (const match of matches) {
         const split = match.split('/')
@@ -85,6 +88,7 @@ function generateResultView(matches, resultContainer) {
             tab.addEventListener('click', () => {
                 showExplorer(true);
                 showResults(false);
+                openPath(match);
                 // Make it open the folder
             });
         }
@@ -111,12 +115,7 @@ function search(searchString) {
     const searchContainer = document.getElementById('search-container');
 
     const matches = searchInStructure(explorerStructure, searchString);
-    if (matches.length > 0) {
-        console.log('Matches found:', matches);
-        generateResultView(matches, searchContainer)
-    } else {
-        console.log('No matches found for:', searchString);
-    }
+    generateResultView(matches, searchContainer)
 }
 
 async function initSearchToInput(element)
@@ -125,6 +124,16 @@ async function initSearchToInput(element)
 
     element.addEventListener('input', (event) => {
         search(event.target.value);
+    });
+
+    document.addEventListener("keydown", function(event) {
+        if (event.altKey && event.key === "s") {
+            event.preventDefault(); // Prevent default browser search behavior
+            const searchInput = document.querySelector("#explorer-search");
+            if (searchInput) {
+                searchInput.focus();
+            }
+        }
     });
 }
 
