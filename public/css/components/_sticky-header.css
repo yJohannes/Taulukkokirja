@@ -1,3 +1,5 @@
+
+
 .sticky-page-header {
     position: sticky;
     top: 1rem; /* match page container padding */
@@ -10,9 +12,9 @@
     position: absolute;
     top: -1rem; /* match page container padding */
     bottom: 0;
-    left: 0;
-    right: -0.1rem; /* Misses a spot without this */
-
+    left: calc(-1rem - 5px); /* padding + splitter, this is redundant though */
+    right: -1rem;
     background-color: var(--color-background);
     z-index: -1;
+    /* box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1) !important; */
 }
