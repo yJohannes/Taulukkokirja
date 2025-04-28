@@ -6,15 +6,20 @@ function initTableHighlights()
         table.addEventListener('click', (e) => {
             const target = e.target;
 
-            const th = target.closest('th');
-
-            if (th) {
-            // if (target.tagName === 'TH') {
-                const headers = [...target.parentNode.children];
-                let index = 0;
+            if (target.tagName === 'TH' || target.parentElement.tagName === 'TH') {
                 
+                let targetTh;
+                if (target.tagName === 'TH') {
+                    targetTh = target;
+                } else {
+                    targetTh = target.parentElement;
+                }
+                
+                let index = 0;
+                const headers = [...targetTh.parentNode.children];
+
                 for (let th of headers) {
-                    if (th === target) break;
+                    if (th === targetTh) break;
                     index += th.colSpan || 1;
                 }
 
