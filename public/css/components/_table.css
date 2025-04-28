@@ -13,8 +13,10 @@ th {
     background-color: var(--color-primary);
     color: var(--color-secondary);
     font-weight: normal !important;
-    white-space: nowrap; /* Prevent wrapping */
+    white-space: nowrap; 
 }
+
+
 
 td {
     border: 1px solid #dee2e6 !important;
@@ -28,4 +30,3 @@ th > p,
 td > p {
     margin: 0;
 }
-
