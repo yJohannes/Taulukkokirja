@@ -49,6 +49,7 @@
 .explorer-ul {
     list-style-type: none; /* Removes bullet points */
     padding-left: 0; /* No padding on the <ul> */
+    margin-bottom: 0;
 }
 
 .explorer-tab {
