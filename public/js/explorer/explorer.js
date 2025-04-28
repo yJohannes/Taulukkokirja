@@ -77,7 +77,7 @@ function openPath(path) {
     for (const part of parts) {
         joinPath = joinPath ? joinPath + '/' + part : part;
 
-        const tabClass = `.explorer-tab[data-path="${joinPath}/"]`;
+        const tabClass = `.explorer-tab[data-path="${joinPath}"]`;
 
         const tab = explorer.querySelector(tabClass);
         const dropdown = getTabDropdown(tab);
