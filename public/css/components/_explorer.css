@@ -11,12 +11,12 @@
 }
 
 #explorer-search-wrapper i {
-  position: absolute;
-  top: 50%;
-  right: 0.625rem;
-  transform: translateY(-50%);
-  color: black;
-  pointer-events: none;
+    position: absolute;
+    top: 50%;
+    right: 0.625rem;
+    transform: translateY(-50%);
+    color: black;
+    pointer-events: none;
 }
 
 #explorer-search-wrapper:focus-within i {
@@ -37,12 +37,25 @@
     border-color: var(--color-accent) !important;
 }
 
+#explorer-buttons > button:focus {
+    box-shadow: none !important;
+}
+
+#explorer-buttons button:focus-visible {
+    box-shadow: 0 0 0 2px var(--color-focus) !important; /* Example: Set a custom focus style for tab focus */
+}
+
+
 .explorer-ul {
     list-style-type: none; /* Removes bullet points */
     padding-left: 0; /* No padding on the <ul> */
 }
 
 .explorer-tab {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
     width: 100%;
     padding-left: calc(12px + var(--level, 0) * 20px); /* Adjust text indentation */
     padding-right: 12px;
@@ -58,12 +71,13 @@
         max(94%, 100% - var(--level, 0) * 2%)
     );
 
-    text-align: left;
-    white-space: normal;    /* Allow text to wrap */
-    word-wrap: break-word;  /* Ensure the text breaks appropriately */
-    overflow-wrap: break-word;
     cursor: pointer;
+}
 
+.explorer-tab > span {
+    text-align: left;
+    overflow-wrap: anywhere;
+    hyphens: auto;
 }
 
 .explorer-tab:focus {

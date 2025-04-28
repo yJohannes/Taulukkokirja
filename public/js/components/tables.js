@@ -1,4 +1,4 @@
-async function initTableHighlights()
+function initTableHighlights()
 {
     const tables = document.querySelectorAll('table');
     
@@ -6,7 +6,10 @@ async function initTableHighlights()
         table.addEventListener('click', (e) => {
             const target = e.target;
 
-            if (target.tagName === 'TH') {
+            const th = target.closest('th');
+
+            if (th) {
+            // if (target.tagName === 'TH') {
                 const headers = [...target.parentNode.children];
                 let index = 0;
                 

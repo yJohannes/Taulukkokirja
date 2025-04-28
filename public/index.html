@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="fi">
+<html lang="en"> <!-- en for auto hyphenation-->
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -26,47 +26,47 @@
 </head>
 <body>
     <!-- Navigation -->
-    <nav class="navbar navbar-expand navbar-dark shadow-sm sticky-top">
+    <header class="navbar navbar-expand navbar-dark shadow-sm sticky-top">
         <div class="container-fluid">
             <b>
                 <a class="navbar-brand" href="">Taulukkokirja</a>
             </b>
 
-            <div class="ml-auto">
+            <nav class="ml-auto">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item ml-3">
-                        <a id="latex-editor" class="nav-link text-white ripple ripple-centered" href="#" title="LaTeX-editori" aria-label="LaTeX-editori">
+                        <a id="latex-editor" class="nav-link rounded text-white ripple ripple-centered" href="#" title="LaTeX-editori" aria-label="LaTeX-editori">
                             <i class="bi bi-pen-fill"></i>
                         </a>
                     </li>
 
                     <li class="nav-item ml-3">
-                        <a id="bookmarks" class="nav-link text-white ripple ripple-centered" href="#" title="Kirjanmerkit" aria-label="Kirjanmerkit">
+                        <a id="bookmarks" class="nav-link rounded text-white ripple ripple-centered" href="#" title="Kirjanmerkit" aria-label="Kirjanmerkit">
                             <i class="bi bi-bookmarks-fill"></i>
                         </a>
                     </li>
 
                     <li class="nav-item ml-3">
-                        <a id="settings" class="nav-link text-white ripple ripple-centered" href="#" title="Asetukset" aria-label="Asetukset">
+                        <a id="settings" class="nav-link rounded text-white ripple ripple-centered" href="#" title="Asetukset" aria-label="Asetukset">
                             <i class="bi bi-gear-fill"></i>
                         </a>
                     </li>
 
                     <li class="nav-item ml-3">
-                        <button id="sidebar-toggle" class="nav-link btn btn-link border-0 rounded-0 text-white ripple" title="Avaa/sulje sivupalkki" aria-label="Avaa/sulje sivupalkki">
+                        <button id="sidebar-toggle" class="nav-link btn text-white rounded ripple" title="Avaa/sulje sivupalkki" aria-label="Avaa/sulje sivupalkki">
                             <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="19.6px" fill="white" viewBox="0 20 448 512">
                                 <path d="M0 96C0 78.3 14.3 64 32 64l384 0c17.7 0 32 14.3 32 32s-14.3 32-32 32L32 128C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32l384 0c17.7 0 32 14.3 32 32s-14.3 32-32 32L32 288c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32L32 448c-17.7 0-32-14.3-32-32s14.3-32 32-32l384 0c17.7 0 32 14.3 32 32z"/>
                             </svg>
                         </button>
                     </li>
                 </ul>
-            </div>
+            </nav>
         </div>
-    </nav>
+    </header>
     
     <!-- Content area -->
     <div id="content-wrapper">
-        <aside id="sidebar" class="shadow hidden">
+        <nav id="sidebar" class="shadow">
             <section id="explorer" class="" aria-label="Explorer">
                 <div id="explorer-search-wrapper">
                     <input id="explorer-search" type="text" class="form-control shadow" placeholder="Hae... " aria-label="Search">
@@ -75,7 +75,7 @@
 
                 <div class="mt-3"></div>
 
-                <div id="explorer-buttons" class="button-group tab-skip" role="group"  style="display: flex; justify-content: flex-end;">
+                <div id="explorer-buttons" role="group" style="display: flex; justify-content: flex-end;">
                     <button id="explorer-expand" class="btn btn-sm ripple ripple-dark ripple-centered" title="Laajenna välilehdet" aria-label="Laajenna välilehdet">
                         <i class="bi bi-arrows-expand" style="font-size: 120%;"></i>
                     </button>
@@ -92,7 +92,7 @@
                 <div id="search-container" class="button-group shadow rounded"></div>
                 <div id="explorer-container" class="button-group shadow rounded"></div>
             </section>
-        </aside>
+        </nav>
 
         <div id="main-splitter" class="splitter"></div>
 
@@ -109,7 +109,7 @@
                 <ul>
                     <li>
                         <p>
-                            <a href="https://physics.info/equations/" style="color: var(--color-tertiary);">
+                            <a href="https://physics.info/equations/" class="text-dark">
                                 Kaikenlaisia fysiikan yhtälöitä — physics.info
                             </a>
                         </p>

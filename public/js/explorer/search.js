@@ -1,4 +1,4 @@
-import { loadPageToElement } from '../pages.js';
+import { loadPageToElement } from '../components/pages.js';
 import { loadExplorerStructure, openPath, showExplorer } from './explorer.js';
 import { createTab } from './tab.js';
 

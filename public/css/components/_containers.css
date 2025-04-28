@@ -1,0 +1,7 @@
+.fit-container {
+    overflow-x: auto;
+
+    /* Shows latex pseudo borders */
+    padding-top: 0.1875rem;
+    padding-left: 0.1875rem;
+}

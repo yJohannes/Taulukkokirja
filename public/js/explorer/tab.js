@@ -1,6 +1,6 @@
-import { loadPageToElement } from '../pages.js';
-import { showSidebar }  from '../sidebar.js';
-import { createArrow } from '../arrow.js';
+import { loadPageToElement } from '../components/pages.js';
+import { showSidebar }  from '../components/sidebar.js';
+import { createArrow } from '../components/arrow.js';
 
 import * as defs from './defs.js'
 
@@ -99,9 +99,9 @@ function createTab(textOrHTML, level, isDropdown, parentElement)
     
     // Add arrow to dropdowns
     if (isDropdown) {
-        tab.style.display = 'flex';
-        tab.style.justifyContent = 'space-between';
-        tab.style.alignItems = 'center';
+        // tab.style.display = 'flex';
+        // tab.style.justifyContent = 'space-between';
+        // tab.style.alignItems = 'center';
         
         const arrow = createArrow();
         tab.appendChild(arrow);

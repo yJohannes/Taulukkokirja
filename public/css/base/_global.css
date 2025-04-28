@@ -1,0 +1,77 @@
+:root {
+    --color-primary: #000000;
+    --color-secondary: #ffffff;
+    --color-accent: #2E6F40; /* rgb(46, 111, 64 */
+    --color-focus: rgba(46, 111, 64, 0.2);
+    /* --color-accent: #001F3F; */
+    /* --color-accent: #E2725B; */
+    /* --color-accent: #DCAE96; */
+    --color-background: #FAF9F5;
+    --color-text: #000000;
+}
+
+/** https://imagecolorpicker.com/color-code/96a1ff */
+/** https://www.anthropic.com/claude */
+
+/* Scrollbar */
+::-webkit-scrollbar-thumb {
+    background: transparent;
+}
+
+html {
+    scrollbar-color: rgba(148, 148, 148, 1) transparent;
+}
+
+/* Selection */
+::selection {
+    background: var(--color-accent);
+    color: rgb(255, 255, 255);
+}
+
+::-moz-selection {
+    background: var(--color-accent);
+    color: rgb(255, 255, 255);
+}
+
+/*  */
+body {
+    background-color: var(--color-background);
+}
+
+h1 {
+    font-size: 2rem;
+}
+
+h2 {
+    font-size: 1.75rem;
+}
+
+h3 {
+    font-size: 1.5rem;
+}
+
+h4 {
+    font-size: 1.25rem;
+}
+
+h5 {
+    font-size: 1.125rem;
+}
+
+h6 {
+    font-size: 1rem;
+}
+
+header {
+    background-color: var(--color-primary) !important;
+}
+
+input {
+    color: black !important;
+}
+
+.active {
+    background-color: var(--color-primary) !important;
+    color: var(--color-secondary) !important;
+}
+

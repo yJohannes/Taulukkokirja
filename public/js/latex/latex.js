@@ -1,4 +1,4 @@
-import { createPopup } from './popup.js';
+import { createPopup } from '../components/popup.js';
 
 function initLatexWorkersFast() {
     const elements = Array.from(document.getElementsByClassName('latex-container'));

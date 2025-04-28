@@ -1,0 +1,31 @@
+table {
+    width: auto;
+    height: auto;
+    text-wrap: auto;
+}
+
+thead {
+    box-shadow: 0 0.125rem 0.3125rem rgba(0,0,0,0.2);
+}
+
+th {
+    border: 1px #232323 solid;
+    background-color: var(--color-primary);
+    color: var(--color-secondary);
+    font-weight: normal !important;
+    white-space: nowrap; /* Prevent wrapping */
+}
+
+td {
+    border: 1px solid #dee2e6 !important;
+}
+
+th, td {
+    padding: 0.5rem !important;
+}
+
+th > p,
+td > p {
+    margin: 0;
+}
+

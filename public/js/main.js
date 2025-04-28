@@ -1,9 +1,9 @@
 import { loadExplorerToElement, loadExplorerSave } from './explorer/explorer.js';
-import { initPageLoading } from './pages.js';
-import { initSidebar } from './sidebar.js';
-import { initNavbar } from './navbar.js';
-import { initRipple } from './ripple.js';
-import { initArrowNavigation } from './arrow_navigation.js';
+import { initPageLoading } from './components/pages.js';
+import { initSidebar } from './components/sidebar.js';
+import { initNavbar } from './components/navbar.js';
+import { initRipple } from './effects/ripple.js';
+import { initArrowNavigation } from './components/arrow_navigation.js';
 
 const ACTIVE = 'active';
 const SHOW = 'show';

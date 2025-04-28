@@ -1,9 +1,18 @@
-@import 'tooltip.css';
-@import 'ripple.css';
-@import 'arrow.css';
-@import 'styles.css';
-@import 'katex.css';
-@import 'highlight.css';
-@import 'popup.css';
-@import 'sidebar.css';
-@import 'explorer.css';
+@import 'base/_global.css';
+@import 'base/_katex.css';
+
+@import 'layout/_grid.css';
+@import 'layout/_sidebar.css';
+
+@import 'components/_explorer.css';
+@import 'components/_arrow.css';
+@import 'components/_containers.css';
+@import 'components/_page-container.css';
+@import 'components/_popup.css';
+@import 'components/_splitter.css';
+@import 'components/_sticky-header.css';
+@import 'components/_table.css';
+@import 'components/_tooltip.css';
+
+@import 'effects/_ripple.css';
+@import 'effects/_highlight.css';

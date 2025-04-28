@@ -1,5 +1,5 @@
 import { initTableHighlights } from './tables.js';
-import { initLatex, initLatexWorkers, initLatexWorkersFast } from './latex.js';
+import { initLatex, initLatexWorkers, initLatexWorkersFast } from '../latex/latex.js';
 
 
 async function loadPageHTML(path)
