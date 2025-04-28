@@ -36,4 +36,21 @@ export function initExplorerButtons()
     collapse.addEventListener('click', () => {
         collapseExplorer();
     });
+
+    document.addEventListener("keydown", function(event) {
+        if (event.altKey && event.key === "1") {
+            event.preventDefault();
+            expand.click();
+        }
+
+        if (event.altKey && event.key === "2") {
+            event.preventDefault();
+            collapse.click();
+        }
+
+        if (event.altKey && event.key === "3") {
+            event.preventDefault();
+            autoCollapse.click();
+        }
+    });
 }
