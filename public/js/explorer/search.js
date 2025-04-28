@@ -128,7 +128,7 @@ async function initSearchToInput(element)
 
     document.addEventListener("keydown", function(event) {
         if (event.altKey && event.key === "s") {
-            event.preventDefault(); // Prevent default browser search behavior
+            event.preventDefault();
             const searchInput = document.querySelector("#explorer-search");
             if (searchInput) {
                 searchInput.focus();
