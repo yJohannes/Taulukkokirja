@@ -22,13 +22,14 @@ function handleTabClick(tab, isDropdown, parentElement)
         
         activeTabs.forEach(t => {
             t.classList.remove(defs.ACTIVE);
-            localStorage.removeItem(t.getAttribute('data-path'));
+            if (!isDropdown) {
+                localStorage.removeItem(t.getAttribute('data-path'));
+            }
     
         });
 
         const state = { show: null, active: true };
         localStorage.setItem(tab.getAttribute('data-path'), JSON.stringify(state));
-
         tab.classList.add(defs.ACTIVE);
 
         // If tab is clicked on small screen hide sidebar
