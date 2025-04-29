@@ -1,6 +1,6 @@
-import { loadPageToElement } from '../components/pages.js';
-import { showSidebar }  from '../components/sidebar.js';
-import { createArrow } from '../components/arrow.js';
+import { loadPageToElement } from '../pages.js';
+import { showSidebar }  from '../sidebar.js';
+import { createArrow } from '../arrow.js';
 
 import * as defs from './defs.js'
 
@@ -8,6 +8,18 @@ function getTabDropdown(tab) {
     return tab.parentElement.querySelector('ul');
 }
 
+function setTabActivity(tab, boolActive) {
+    if (boolActive) {
+        activeTabs.forEach(t => {
+            t.classList.remove(defs.ACTIVE);
+
+            // Not a dropdown tab
+            if (getTabDropdown(tab) == null) {
+                localStorage.removeItem(t.getAttribute('data-path'));
+            }
+        });
+    }
+}
 
 function handleTabClick(tab, isDropdown, parentElement)
 {
@@ -25,7 +37,6 @@ function handleTabClick(tab, isDropdown, parentElement)
             if (!isDropdown) {
                 localStorage.removeItem(t.getAttribute('data-path'));
             }
-    
         });
 
         const state = { show: null, active: true };

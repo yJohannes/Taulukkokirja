@@ -1,4 +1,4 @@
-import { loadPageToElement } from '../components/pages.js';
+import { loadPageToElement } from '../pages.js';
 import { loadExplorerStructure, openPath, showExplorer } from './explorer.js';
 import { createTab } from './tab.js';
 
@@ -72,8 +72,19 @@ function generateResultView(matches, resultContainer) {
             tab = createTab(name.replace('.html', ''), 1, false, resultContainer);
             tab.addEventListener('click', () => {
                 console.log(`Opening: ${match}`);
-                loadPageToElement('pages/' + match, 'page-container');
 
+                // const explorer = document.getElementById('explorer')
+                // const activeTabs = explorer.querySelectorAll(`.${defs.ACTIVE}`);
+                
+                // activeTabs.forEach(t => {
+                //     t.classList.remove(defs.ACTIVE);
+                //     if (!isDropdown) {
+                //         localStorage.removeItem(t.getAttribute('data-path'));
+                //     }
+            
+                // });
+
+                loadPageToElement('pages/' + match, 'page-container');
             });
 
         } else {
