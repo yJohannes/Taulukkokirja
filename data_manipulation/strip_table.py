@@ -100,9 +100,8 @@ def strip_table(latex: bool = False, display: bool = False):
         s += "</table>\n"
         s += "</div>\n"
 
-        s = s.replace('�', ' ').replace('−', '-').replace('�', '')
-        s = s.replace('<br />', '')
-
+        s = s.replace('�', ' ').replace('−', '-').replace('�', '').replace('<br />', '')
+        
         # Prettify and write to file
         with open("data_manipulation/output.html", "w") as output:
             output.write(BeautifulSoup(s, "html.parser").prettify())
