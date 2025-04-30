@@ -1,5 +1,5 @@
 import { loadPageToElement } from '../pages.js';
-import { loadExplorerStructure, openPath, showExplorer } from './explorer.js';
+import { getTabByPath, loadExplorerStructure, openPath, showExplorer } from './explorer.js';
 import { createTab } from './tab.js';
 
 import * as defs from './defs.js'
@@ -70,8 +70,9 @@ function generateResultView(matches, resultContainer) {
             }
 
             tab = createTab(name.replace('.html', ''), 1, false, resultContainer);
-            tab.addEventListener('click', () => {
-                console.log(`Opening: ${match}`);
+
+            tab.addEventListener('click', (e) => {
+                // console.log(`Opening: ${match}`);
 
                 // const explorer = document.getElementById('explorer')
                 // const activeTabs = explorer.querySelectorAll(`.${defs.ACTIVE}`);
@@ -84,9 +85,28 @@ function generateResultView(matches, resultContainer) {
             
                 // });
 
-                loadPageToElement('pages/' + match, 'page-container');
+                if (e.button === 0) {
+                    loadPageToElement('pages/' + match, 'page-container');
+                    console.log(0);
+                }
             });
 
+            // Right click
+            tab.addEventListener('contextmenu', (e) => {
+                e.preventDefault();
+
+                resultContainer.innerHTML = '';
+                showExplorer(true);
+                showResults(false);
+
+                const parentPath = match.substring(0, match.lastIndexOf('/'));
+
+                openPath(parentPath);
+                getTabByPath(parentPath).scrollIntoView({
+                    behavior: 'auto',     // smooth scrolling animation
+                    block: 'center',        // align element to center of the viewport
+                  });
+            });
         } else {
             let name = split[last];
             if (last > 0) {
@@ -97,10 +117,15 @@ function generateResultView(matches, resultContainer) {
 
             tab = createTab(name.replace('.html', ''), 1, false, resultContainer);
             tab.addEventListener('click', () => {
+                resultContainer.innerHTML = '';
                 showExplorer(true);
                 showResults(false);
+
                 openPath(match);
-                // Make it open the folder
+                getTabByPath(match).scrollIntoView({
+                    behavior: 'auto',     // smooth scrolling animation
+                    block: 'center',        // align element to center of the viewport
+                  });
             });
         }
 
@@ -114,11 +139,19 @@ function search(searchString) {
     if (searchString.length <= 0) {
         showExplorer(true);
         showResults(false);
+        
+        document.getElementById('explorer-search-icon').style.display = 'inline';
+        document.getElementById('explorer-clear-search').style.display = 'none';
+        
         return;
     }
+
     showExplorer(false);
     showResults(true);
 
+    document.getElementById('explorer-search-icon').style.display = 'none';
+    document.getElementById('explorer-clear-search').style.display = 'flex';
+    
     if (!explorerStructure) {
         console.error('Explorer structure is not initialized.');
         return;
@@ -137,10 +170,22 @@ async function initSearchToInput(element)
         search(event.target.value);
     });
 
+    const clearBtn = document.getElementById('explorer-clear-search');
+    const searchInput = document.querySelector("#explorer-search");
+    
+    clearBtn.addEventListener("click", () => {
+        searchInput.value = '';
+
+        // simulate input
+        const event = new Event('input', { bubbles: true });
+        searchInput.dispatchEvent(event);
+
+        searchInput.focus();
+    });
+
     document.addEventListener("keydown", function(event) {
         if (event.altKey && event.key === "s") {
             event.preventDefault();
-            const searchInput = document.querySelector("#explorer-search");
             if (searchInput) {
                 searchInput.focus();
             }
