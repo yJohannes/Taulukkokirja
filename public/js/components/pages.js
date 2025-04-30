@@ -1,6 +1,36 @@
 import { initTableHighlights } from './tables.js';
-import { initLatex, initLatexWorkers, initLatexWorkersFast } from '../latex/latex.js';
+import { initLatex } from '../latex/latex.js';
 
+
+function formatPathToHash(path) {
+    return '/#/' + path.replaceAll(' ', '_').replace('.html', '')
+}
+
+function formatLocationHashForFetch(hash) {
+    hash = hash
+        .replace('#/', '')
+        .replaceAll('_', ' ');
+    
+    if (!hash) return '';
+
+    return hash += '.html';
+}
+
+function setPageTitleFromPath(path) {
+    const splitPath = path.split('/');
+    let pageName = splitPath.pop().replace('.html', '');
+    let folderName = splitPath.pop();
+    
+    pageName = decodeURIComponent(pageName);
+    
+    if (folderName) {
+        folderName = decodeURIComponent(folderName);
+        pageName ? document.title =  pageName + ' | ' + folderName + ' | Kaavakirja' : document.title = 'Kaavakirja';
+    } else {
+        pageName ? document.title = pageName + ' | Kaavakirja' : document.title = 'Kaavakirja';
+    }
+
+}
 
 async function loadPageHTML(path)
 {
@@ -22,6 +52,21 @@ async function loadPageHTML(path)
     }
 }
 
+// Execute any inline scripts within injected HTML
+function injectScripts() {
+    document.querySelectorAll('script.injected').forEach(script => {
+        script.remove();
+    });
+
+    const scripts = document.querySelectorAll('#page-container script');
+    scripts.forEach(script => {
+        const newScript = document.createElement('script');
+        newScript.classList.add('injected');
+        newScript.textContent = script.textContent;
+        document.body.appendChild(newScript);
+    });
+}
+
 // Create an async function to load the page and set the content
 async function loadPageToElement(path, elementId)
 {
@@ -30,42 +75,29 @@ async function loadPageToElement(path, elementId)
     const element = document.getElementById(elementId);
     element.innerHTML = html;
 
-    const newUrl = '/#/' + path.replaceAll(' ', '_').replace('.html', '')
-    let pageName = path.split('/').pop().replace('.html', '');
-    pageName = decodeURIComponent(pageName)
-
+    injectScripts();
+    
+    const newUrl = formatPathToHash(path);
     history.pushState(null, '', newUrl);
 
-    if (pageName) {
-        document.title = pageName + ' | Kaavakirja';
-    } else {
-        document.title = 'Kaavakirja';
-    }
+    setPageTitleFromPath(path);
 
-    initLatexWorkersFast();
+    initLatex();
     initTableHighlights();
 }
 
 function initPageLoading()
 {
     const loadUrl = () => {
-        let url = window.location.hash.replaceAll('_', ' ').replace('#/', '');
-    
+        const url = formatLocationHashForFetch(window.location.hash);
+
         if (!url || url === '/') {
             fetch('index.html');
             return;
         }
     
-        if (!url.endsWith('.html')) {
-            url += '.html'
-        }
-    
         loadPageToElement(url, 'page-container');
-
-        let pageName = url.split('/').pop().replace('.html', '');
-        pageName = decodeURIComponent(pageName)
-
-        pageName ? document.title = pageName + ' | Kaavakirja' : document.title = 'Kaavakirja';
+        setPageTitleFromPath(url);
     }
 
     window.addEventListener('popstate', () => {
@@ -80,7 +112,6 @@ function initPageLoading()
 
     window.addEventListener('hashchange', () => {
         console.log("HASH CHANGE")
-        console.log(window.location.hash)
 
         loadUrl();
     });
