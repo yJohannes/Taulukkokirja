@@ -1,0 +1,65 @@
+<div class="sticky-page-header">
+    <h1>Asetukset</h1>
+    <hr>
+</div>
+
+<h3>Korostusväri</h3>
+
+<div class="container-fluid mt-4">
+    <div class="row justify-content-start">
+        <div class="col-auto">
+            <div class="color-box rounded" style="background-color: rgb(184, 28, 67);" onclick="setColor('rgb(184, 28, 67)')"></div>
+        </div>
+        <div class="col-auto">
+            <div class="color-box rounded" style="background-color: #a84a32;" onclick="setColor('#a84a32')"></div>
+        </div>
+        <div class="col-auto">
+            <div class="color-box rounded" style="background-color: #a87132;" onclick="setColor('#a87132')"></div>
+        </div>
+        <div class="col-auto">
+            <div class="color-box rounded" style="background-color: #60a832;" onclick="setColor('#60a832')"></div>
+        </div>
+        <div class="col-auto">
+            <div class="color-box rounded" style="background-color: #2E6F40;" onclick="setColor('#2E6F40')"></div>
+        </div>
+        <div class="col-auto">
+            <div class="color-box rounded" style="background-color: #3291a8;" onclick="setColor('#3291a8')"></div>
+        </div>
+        <div class="col-auto">
+            <div class="color-box rounded" style="background-color: #021CA4;" onclick="setColor('#021CA4')"></div>
+        </div>
+        <div class="col-auto">
+            <div class="color-box rounded" style="background-color: #4b5180;" onclick="setColor('#4b5180')"></div>
+        </div>
+        <div class="col-auto">
+            <div class="color-box rounded" style="background-color: #4432a8;" onclick="setColor('#4432a8')"></div>
+        </div>
+        <div class="col-auto">
+            <div class="color-box rounded" style="background-color: #a83258;" onclick="setColor('#a83258')"></div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .color-box {
+        width: 5rem; height: 5rem;
+        cursor: pointer;
+    }
+</style>
+
+<script>
+    function setColor(color) {
+        let colorFocus;
+        if (color.startsWith('rgb')) {
+            colorFocus = color.replace('rgb', 'rgba').replace(')', ', 0.3)');
+        } else {
+            colorFocus = color + "20" // Append 20 (hex alpha) for 0.2 opacity
+        }
+
+        document.documentElement.style.setProperty('--color-accent', color);
+        document.documentElement.style.setProperty('--color-focus', colorFocus);
+
+        localStorage.setItem('--color-accent', color);
+        localStorage.setItem('--color-focus', colorFocus);
+    }
+</script>
