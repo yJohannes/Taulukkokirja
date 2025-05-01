@@ -9,27 +9,40 @@
     width: 100%;
     z-index: 50;
 }
-
-#explorer-search-wrapper i {
+#explorer-search-icon {
+    pointer-events: none;
     position: absolute;
     top: 50%;
-    right: 0.625rem;
+    right: 0;
     transform: translateY(-50%);
     color: black;
-    pointer-events: none;
 }
 
-#explorer-search-wrapper:focus-within i {
-    color: var(--color-accent);
+#explorer-clear-search {
+    position: absolute;
+    display: flex;
+    justify-content: center; /* Center the icon horizontally */
+    align-items: center; /* Center the icon vertically */
+
+    width: 2rem;
+    height: 2rem;
+    top: 50%;
+    right: 0;
+    
+    transform: translateY(-50%) translateX(25%);
+    color: black;
 }
 
+/* #explorer-search-wrapper:focus-within i { */
+    /* color: var(--color-accent); */
+/* } */
 
 #explorer-search {
     background-color: #f8f9fa;
 
     width: calc(100% + 1.5rem); /* Extend beyond container */
     margin: 0 -0.75rem; /* Offset padding */
-    padding-right: 2rem; /* Add space for the search icon */
+    padding-right: 3rem; /* Add space for the search icon */
     box-sizing: border-box; /* Includes padding in the total width */
 }
 
@@ -37,11 +50,14 @@
     border-color: var(--color-accent) !important;
 }
 
-#explorer-buttons > button:focus {
+#explorer-buttons > button:focus,
+#explorer-search-wrapper button:focus {
     box-shadow: none !important;
 }
 
-#explorer-buttons button:focus-visible {
+#explorer-buttons button:focus-visible,
+#explorer-search-wrapper button:focus-visible {
+
     box-shadow: 0 0 0 2px var(--color-focus) !important; /* Example: Set a custom focus style for tab focus */
 }
 
@@ -99,5 +115,5 @@
     height: auto;
     opacity: 1;
     visibility: visible;
-    max-height: 3000px;
+    max-height: 10000px;
 }
