@@ -145,8 +145,11 @@ function generateTabs(data, parentElement, rootPath='') {
             tab.addEventListener('click', () => {
             
                 const formatPath = (path) => {
-                    path = decodeURIComponent(path)
-                    path.replaceAll(' ', '_')
+                    path = decodeURIComponent(path);
+                    path = path
+                        .replaceAll(' ', '_')
+                        .replaceAll('.html', '')
+                        ;
                 }
 
                 const pagePath = 'pages/' + currentPath;
