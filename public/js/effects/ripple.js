@@ -1,4 +1,4 @@
-async function addRippleToElement(element)
+function addRippleToElement(element)
 {
     element.addEventListener('mousedown', (e) => {
         const ripple = document.createElement('div');
@@ -50,7 +50,7 @@ async function addRippleToElement(element)
     });
 }
 
-async function initRipple()
+function initRipple()
 {
     document.querySelectorAll('.ripple').forEach(element => {
         addRippleToElement(element);
