@@ -7,6 +7,7 @@
 .katex {
     position: relative;
     margin: 3px;
+    border-radius: 4px; /* Rounds the highlight */
     cursor: pointer;
 
     user-select: none;
