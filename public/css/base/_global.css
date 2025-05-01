@@ -72,6 +72,14 @@ header {
     background-color: var(--color-primary) !important;
 }
 
+header.navbar {
+    background-image: url('/img/icon/damascus.png'); /* Replace with your actual image path */
+    background-size: cover;                  /* Scale the image to cover the header */
+    background-position: center;            /* Center the image */
+    background-repeat: no-repeat;           /* Prevent tiling */
+}
+
+
 input {
     color: black !important;
 }
