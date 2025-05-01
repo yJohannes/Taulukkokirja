@@ -68,8 +68,11 @@
         <nav id="sidebar" class="shadow">
             <section id="explorer" class="" aria-label="Explorer">
                 <div id="explorer-search-wrapper">
-                    <input id="explorer-search" type="text" class="form-control shadow" placeholder="Hae... " aria-label="Search">
-                    <i class="bi bi-search search-icon"></i>
+                    <input id="explorer-search" type="text" autocomplete="off" class="form-control shadow" placeholder="Hae... " aria-label="Search"></input>
+                    <i id="explorer-search-icon" class="bi bi-search"></i>
+                    <button id="explorer-clear-search" class="btn btn-sm rounded-circle ripple ripple-dark ripple-centered" style="display: none;">
+                        <i class="bi bi-x-lg" style="font-size: 120%;"></i>
+                    </button>
                 </div>
 
                 <div class="mt-3"></div>
