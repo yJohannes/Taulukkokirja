@@ -12,6 +12,8 @@ th {
     border: 1px #232323 solid;
     background-color: var(--color-primary);
     color: var(--color-secondary);
+    mix-blend-mode: difference !important;
+
     font-weight: normal !important;
     white-space: nowrap; 
 }
@@ -27,6 +29,10 @@ th, td {
 }
 
 th > p,
-td > p {
+td > p,
+th > ul,
+td > ul,
+th > ol,
+td > ol {
     margin: 0;
 }
