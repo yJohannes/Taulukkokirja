@@ -68,6 +68,12 @@ function collapseExplorer()
     });
 }
 
+function getTabByPath(path) {
+    const explorer = document.querySelector('#explorer-container');
+    const tabClass = `.explorer-tab[data-path="${path}"]`;
+    return explorer.querySelector(tabClass);
+}
+
 function openPath(path) {
     const explorer = document.querySelector('#explorer-container');
     const parts = path.split('/'); // Split the path into parts for navigation
@@ -165,6 +171,7 @@ async function loadExplorerToElement(element)
 
 export {
     openPath,
+    getTabByPath,
     showExplorer,
     expandExplorer,
     collapseExplorer,
