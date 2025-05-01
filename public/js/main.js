@@ -1,9 +1,9 @@
-import { loadExplorerToElement, loadExplorerSave } from './explorer/explorer.js';
+import { loadExplorerToElement, loadExplorerSave } from './components/explorer/explorer.js';
 import { initPageLoading } from './components/pages.js';
 import { initSidebar } from './components/sidebar.js';
 import { initNavbar } from './components/navbar.js';
 import { initRipple } from './effects/ripple.js';
-import { initArrowNavigation } from './components/arrow_navigation.js';
+import { loadSettings } from './components/settings.js';
 
 const ACTIVE = 'active';
 const SHOW = 'show';
@@ -15,7 +15,9 @@ document.addEventListener('DOMContentLoaded', async () => {
     initSidebar();
 
     await loadExplorerToElement(document.getElementById('explorer-container'));
-    await initRipple();
-    initArrowNavigation();
     loadExplorerSave();
+
+    initRipple();
+
+    loadSettings();
 });
