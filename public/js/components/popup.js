@@ -15,7 +15,6 @@ function createPopup(message, role) {
         }
     }
 
-    // Create a new popup element
     const popup = document.createElement('div');
     popup.className = 'popup shadow';
     popup.setAttribute('role', 'alert');
@@ -37,17 +36,14 @@ function createPopup(message, role) {
     const span = document.createElement('span');
     span.textContent = message;
 
-    // Append SVG and message to the popup
     popup.appendChild(svg);
     popup.appendChild(span);
-
-    // Append the popup to the body
     document.body.appendChild(popup);
 
-    // Add the "show" class for animation
-    requestAnimationFrame(() => {
+    // Trigger animation with a small delay to let DOM append
+    setTimeout(() => {
         popup.classList.add('show');
-    });
+    }, 10);
 
     popupTimeout = setTimeout(() => {
         popup.classList.remove('show');
