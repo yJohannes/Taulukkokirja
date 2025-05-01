@@ -2,13 +2,13 @@
     --color-primary: #000000;
     --color-secondary: #ffffff;
     --color-accent: #4b5180;
-    --color-focus: rgba(75, 81, 128, 0.2);
+    --color-focus: rgba(75, 81, 128, 0.3);
     --color-accent: #021CA4;
-    --color-focus: rgba(2, 28, 164, 0.2);
+    --color-focus: rgba(2, 28, 164, 0.3);
     --color-accent: rgb(184, 28, 67);
-    --color-focus: rgb(184, 28, 67, 0.2);
+    --color-focus: rgb(184, 28, 67, 0.3);
     --color-accent: #2E6F40; /* rgb(46, 111, 64 */
-    --color-focus: rgba(46, 111, 64, 0.2);
+    --color-focus: rgba(46, 111, 64, 0.3);
 
     /* --color-accent: #E2725B; */
     /* --color-accent: #DCAE96; */
