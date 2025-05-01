@@ -20,7 +20,9 @@
                     determinantti
                 </td>
                 <td>
-                    <span class="latex-container">\text{det}(B)</span>
+                    <span class="latex-container">\det B</span>
+                    ,
+                    <span class="latex-container">\text{det}\left(B\right)</span>
                 </td>
                 <td></td>
             </tr>
@@ -38,9 +40,17 @@
             </tr>
             <tr>
                 <td>
-                    kolmirivinen determinantti, 
-                    Sarrus'n sääntö ([sarý:])
+                    kolmirivinen determinantti
                 </td>
+                <td>
+                    <span class="latex-container display">
+                        \left| \begin{matrix}    a & b & c  \\    d & e & f  \\    g & h & i  \\ \end{matrix} \right|=a\left| \begin{matrix}    e & f  \\    h & i  \\ \end{matrix} \right|-b\left| \begin{matrix}    d & f  \\    g & i  \\ \end{matrix} \right|+c\left| \begin{matrix}    d & e  \\    g & h  \\ \end{matrix} \right|
+                    </span>
+                </td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Sarrus'n sääntö ([sarý:])</td>
                 <td>
                     <span class="latex-container display">
                         \left|\begin{matrix}
@@ -56,15 +66,6 @@
                     <span class="latex-container display">=a_1b_2c_3+a_2b_3c_1+a_3b_1c_2-a_3b_2c_1-a_1b_3c_2-a_2b_1c_3</span>
                 </td>
                 <td>Lasketaan yhteen kaikki päälävistäjän suuntaiset kolmoistulot sekä vähennetään sivulävistäjän suuntaiset kolmoistulot</td>
-            </tr>
-            <tr>
-                <td></td>
-                <td>
-                    <span class="latex-container display">
-                        \left| \begin{matrix}    a & b & c  \\    d & e & f  \\    g & h & i  \\ \end{matrix} \right|=a\left| \begin{matrix}    e & f  \\    h & i  \\ \end{matrix} \right|-b\left| \begin{matrix}    d & f  \\    g & i  \\ \end{matrix} \right|+c\left| \begin{matrix}    d & e  \\    g & h  \\ \end{matrix} \right|
-                    </span>
-                </td>
-                <td></td>
             </tr>
             <tr>
                 <td>
@@ -87,6 +88,40 @@
                     2. alaindeksi <i>pystyrivin</i> (pr)
                 </td>
             </tr>
+
+            <tr>
+                <td>Lävistäjämatriisin determinantti</td>
+                <td>
+                    <span class="latex-container display">
+                        \left|\begin{matrix}
+                        a&0&0\\
+                        0&b&0\\
+                        0&0&c
+                        \end{matrix}\right|=abc
+                    </span>
+                </td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>
+                    <ul>
+                        <li>
+                            Lisäksi kaikissa asennoissa pätee
+                        </li>
+                    </ul>
+                </td>
+                <td>
+                    <span class="latex-container display">
+                        \left|\begin{matrix}
+                        a&n&m\\
+                        0&b&k\\
+                        0&0&c
+                        \end{matrix}\right|=abc
+                    </span>
+                </td>
+                <td></td>
+            </tr>
+
             <tr>
                 <td>
                     alideterminantti eli minori (minor)
@@ -166,7 +201,7 @@
                 </td>
             </tr>
             <tr>
-                <td>2-rivisen determinantin elideterinantti</td>
+                <td>2-rivisen determinantin alideterinantti</td>
                 <td>
                     <span class="latex-container display">
                         \text{det} \left|\begin{matrix}

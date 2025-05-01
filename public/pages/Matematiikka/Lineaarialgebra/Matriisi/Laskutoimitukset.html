@@ -3,3 +3,192 @@
     <hr>
 </div>
 
+<div class="fit-container">
+    <table class="table-striped">
+        <thead>
+            <tr>
+                <th>Sääntö/Laki</th>
+                <th>Esimerkki</th>
+                <th>Selite</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>yhtäsuuruus</td>
+                <td>
+                    <span class="latex-container">
+                        A=B\Leftrightarrow
+                    </span>
+                    <span class="latex-container">A</span>
+                    ja
+                    <span class="latex-container">B</span>
+                    ovat samaa tyyppiä ja vastinalkioittain samat.
+                </td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>summa</td>
+                <td>
+                    <span class="latex-container display">
+                        \begin{bmatrix}
+                        1&2&0\\
+                        2&4&5
+                        \end{bmatrix}+\begin{bmatrix}
+                        2&-3&4\\
+                        1&2&3
+                        \end{bmatrix}=\begin{bmatrix}
+                        3&-1&4\\
+                        3&6&8
+                        \end{bmatrix}
+                    </span>
+                </td>
+                <td>saman tyypin matriisit laketaan yhteen vastinalkioittain</td>
+            </tr>
+            <tr>
+                <td>luvulla (skalaarilla) kertominen</td>
+                <td>
+                    <span class="latex-container display">
+                        2\cdot \begin{bmatrix}
+                        2&-3&4\\
+                        1&2&3
+                        \end{bmatrix}=\begin{bmatrix}
+                        4&-6&8\\
+                        1&4&6
+                        \end{bmatrix}
+                    </span>
+                </td>
+                <td>jokainen alkio kerrotaan tällä luvulla</td>
+            </tr>
+            <tr>
+                <td>tulo</td>
+                <td>
+                    <span class="latex-container display">
+                        \begin{bmatrix}
+                        1&2&3\\
+                        0&1&-6
+                        \end{bmatrix}\begin{bmatrix}
+                        7&4\\
+                        5&2\\
+                        1&0
+                        \end{bmatrix}
+                    </span>
+                    <span class="latex-container display">
+                        =\begin{bmatrix}
+                        1\cdot 7+2\cdot 5+3\cdot 1&1\cdot 4+2\cdot 2+3\cdot 0\\
+                        0\cdot 7+1\cdot 5+\left(-6\right)\cdot 1&0\cdot 4+1\cdot 2+\left(-6\right)\cdot 0
+                        \end{bmatrix}
+                    </span>
+                    <span class="latex-container display">
+                        =\begin{bmatrix}
+                        20&8\\
+                        -1&2
+                        \end{bmatrix}
+                    </span>
+                </td>
+                <td>
+                    Ensimmäisen matriisin vaakarivillä kerrotaan jokainen toisen matriisin pystyrivi.
+                    Tulo täyttää tulomatriisin samassa järjestyksessä. Tuloa voi kuvailla pistetulomaiseksi,
+                    koska vaakavektoreilla kerrotaan pystyvektorit. 
+                    <br>
+                    <br>
+                    Tulo
+                    <span class="latex-container">AB</span>
+                    voidaan muodostaa jos 
+                    <span class="latex-container">A</span>
+                    on tyyppiä
+                    <span class="latex-container">m \times n</span>
+                    ja
+                    <span class="latex-container">B</span>
+                    tyyppiä
+                    <span class="latex-container">n \times r</span>
+                    . Tulo on tyyppiä
+                    <span class="latex-container">m \times r</span>
+                    .
+                </td>
+            </tr>
+            <tr>
+                <td>vaihdantalaki</td>
+                <td>
+                    <span class="latex-container display">
+                        AB \neq BA
+                    </span>
+                </td>
+                <td>matriisit eivät yleensä kommutoi.</td>
+            </tr>
+            <tr>
+                <td>yksikkömatriisilla samankokoisen matriisin kertominen</td>
+                <td>
+                    <span class="latex-container display">I_2A=AI_2=A</span>
+                </td>
+                <td>
+                    <span class="latex-container">I</span>
+                    ja
+                    <span class="latex-container">A</span>
+                    kommutoi. Niinpä ykkösmatriisilla kertominen luvulla 1 kertomista 
+                    <span class="latex-container display">\left(1 \cdot a = a \cdot 1 = a\right)</span>
+                </td>
+            </tr>
+            <tr>
+                <td>yhteenlaskun vaihdantalaki</td>
+                <td><span class="latex-container display">A+B=B+A</span></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>yhteenlaskun liitäntälaki</td>
+                <td><span class="latex-container display">A+\left(B+C\right)=\left(A+B\right)+C</span></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>luvulla (skalaarilla) kertomisen lait</td>
+                <td>
+                    <span class="latex-container display">
+                        t\left(A+B\right)=tA+tB
+                    </span>
+                    <br>
+                    <span class="latex-container display">
+                        t\left(uA\right)=\left(tu\right)A=u\left(tA\right)
+                    </span>
+                    <br>
+                    <span class="latex-container display">
+                        t\left(AB\right)=\left(tA\right)B=A\left(tB\right)
+                    </span>
+                </td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>kertolaskun liitäntälaki</td>
+                <td><span class="latex-container display">A\left(BC\right)=\left(AB\right)C</span></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>kertolaskun osittelulaki</td>
+                <td><span class="latex-container display">A\left(B+C\right)=AB+AC</span></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>
+                    Jos
+                    <span class="latex-container">A</span>
+                    ja 
+                    <span class="latex-container">B</span>
+                    ovat samaa tyyppiä, niin
+                </td>
+                <td>
+                    <span class="latex-container display">
+                        \left(2A+3B\right)\left(2A-3B\right) = 4A^2 - 6AB + 6BA - 9B^2
+                    </span>
+                </td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>
+                    <span class="latex-container display">
+                        A^{-1}=\frac{1}{\det A}\cdot \text{adj}\ A
+                    </span>
+                </td>
+                <td></td>
+            </tr>
+        </tbody>
+    </table>
+</div>

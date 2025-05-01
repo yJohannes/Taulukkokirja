@@ -8,9 +8,9 @@
     <table class="table-striped">
         <thead>
             <tr>
-                <th>Suure, laki</th>
+                <th>Suure, kaava</th>
                 <th>Kaava</th>
-                <th>Yksikkö</th>
+                <th style="min-width: 69px;">Yksikkö</th>
                 <th>Selite</th>
             </tr>
         </thead>
@@ -28,9 +28,20 @@
                 <td></td>
             </tr>
             <tr>
+                <td>pintajännitys</td>
+                <td><span class="latex-container display">\sigma</span></td>
+                <td>
+                    <span class="latex-container display">\frac{\text{N}}{\text{m}}</span>
+                    ,
+                    <span class="latex-container display">\frac{\text{J}}{\text{m}^2}</span>
+
+                </td>
+                <td></td>
+            </tr>
+            <tr>
                 <td>pintajännityksen voima</td>
                 <td><span class="latex-container display">F=\sigma l</span></td>
-                <td><span class="latex-container display">\frac{\text{N}}{\text{m}}</span></td>
+                <td></td>
                 <td>
                     <span class="latex-container display">l</span>
                     on rajapinnan pituus eli reunaviiva, jonka ympärillä pintajännitys vaikuttaa.
@@ -39,7 +50,7 @@
             <tr>
                 <td>pintajännityksen energia</td>
                 <td><span class="latex-container display">E=\sigma A</span></td>
-                <td><span class="latex-container display">\frac{\text{J}}{\text{m}^2}</span></td>
+                <td></td>
                 <td>
                     <span class="latex-container display">A</span>
                     on pintajännityksen vaikutusala.
@@ -72,9 +83,10 @@
     <table class="table-striped">
         <thead>
             <tr>
-                <th>Suure, laki</th>
+                <th>Suure, kaava</th>
                 <th>Kaava</th>
                 <th>Yksikkö</th>
+                <th>Selite</th>
             </tr>
         </thead>
         <tbody>
@@ -82,15 +94,22 @@
                 <td>tilavuusvirta</td>
                 <td><span class="latex-container display">q_v=\frac{\Delta V}{\Delta t}=\frac{A\Delta s}{\Delta t}=Av</span></td>
                 <td></td>
-            </tr>
-            <tr>
-                <td>jatkuvuusyhtälö</td>
-                <td><span class="latex-container display">A_1 v_1 = A_2 v_2</span></td>
                 <td></td>
             </tr>
             <tr>
-                <td>Bernoullin yhtälö</td>
-                <td><span class="latex-container display">{p}_{0}+\dfrac{1}{2}\rho {{v}^{2}}+h\rho g=\text{vakio}</span></td>
+                <td>tilavuusvirran virran tiheys</td>
+                <td><span class="latex-container display">J_V = \frac{q_V}{A}=\frac{AV}A=v</span></td>
+                <td><span class="latex-container display">\frac{\text{m}}{\text{s}}</span></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>
+                    suureen
+                    <span class="latex-container display">X</span>
+                    virta
+                </td>
+                <td><span class="latex-container display">q_X=\frac{\Delta X}{\Delta t}</span></td>
+                <td></td>
                 <td></td>
             </tr>
             <tr>
@@ -101,11 +120,75 @@
                 </td>
                 <td><span class="latex-container display">J_X = \frac{q_X}{A}</span></td>
                 <td><span class="latex-container display">\frac{[X]}{\text{s}^2} </span></td>
+                <td></td>
             </tr>
             <tr>
-                <td>tilavuusvirran virran tiheys</td>
-                <td><span class="latex-container display">J_V = \frac{q_V}{A}=\frac{AV}A=v</span></td>
-                <td><span class="latex-container display">\frac{\text{m}}{\text{s}}</span></td>
+                <td>jatkuvuusyhtälö</td>
+                <td><span class="latex-container display">A_1 v_1 = A_2 v_2</span></td>
+                <td></td>
+                <td>putken poikkipinta-alan muutos, kokoon puristumaton neste</td>
+            </tr>
+            <tr>
+                <td>Bernoullin yhtälö</td>
+                <td><span class="latex-container display">{p}_{0}+\dfrac{1}{2}\rho {{v}^{2}}+h\rho g=\text{vakio}</span></td>
+                <td></td>
+                <td>
+                    Kitkaton ja laminaari (=pyörteetön) virtaus, nestepalaset liikkuvat jonossa pitkin virtausviivoja, jotka osoittavat nopeusvektorin suunnan.
+                    <br>
+                    <br>
+
+                    Kokonaisenergia säilyy:
+                    <ul>
+                        <li>
+                            <span class="latex-container display">p=\frac{F}{A}=\frac{Fx}{Ax}=\frac{W}{V}</span>
+                            voiman tekemä työ tilavuusyksikköä kohti
+                        </li>
+                        <li>
+                            <span class="latex-container display">\frac{1}{2}\rho v^2=\frac{\frac{1}{2}mv^2}{V}=\frac{E_k}{V}</span>
+                            kineettinen energia tilavuusyksikköä kohti
+                        </li>
+                        <li>
+                            <span class="latex-container display">\rho gh=\frac{mgh}{V}</span>
+                            potentiaalienergia tilavuusyksikköä kohti
+                        </li>
+                    </ul>
+
+                    <span class="latex-container">p</span>
+                    on staattinen paine,
+                    <span class="latex-container">\rho h g</span>
+                    hydrostaattinen paine ja 
+                    <span class="latex-container">\rho v^{2}/2</span>
+                    kineettinen eli dynaaminen paine.
+                </td>
+            </tr>
+            <tr>
+                <td><ul><li>tasapaksu putki</li></ul></td>
+                <td>
+                    <span class="latex-container display">p_1-p_2=\rho gh_2-\rho gh_1</span>
+                </td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td><ul><li>hydraulinen korkeus</li></ul></td>
+                <td><span class="latex-container display">H=\frac{p}{\rho g}+\frac{v^2}{2g}+h</span></td>
+                <td><span class="latex-container">\text{m}</span></td>
+                <td>
+                    <ul>
+                        <li>
+                            <span class="latex-container display">\frac{p}{\rho g}</span>
+                            painekorkeus
+                        </li>
+                        <li>
+                            <span class="latex-container display">\frac{v^2}{2g}</span>
+                            nopeuskorkeus
+                        </li>
+                        <li>
+                            <span class="latex-container display">h</span>
+                            asemakorkeus
+                        </li>
+                    </ul>
+                </td>
             </tr>
         </tbody>
     </table>
