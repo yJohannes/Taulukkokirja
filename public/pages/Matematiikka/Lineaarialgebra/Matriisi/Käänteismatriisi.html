@@ -1,0 +1,161 @@
+<div class="sticky-page-header">
+    <h1>Käänteismatriisi</h1>
+    <hr>
+</div>
+
+<p>
+    Jokaisella luvulla
+    <span class="latex-container">a\neq 0</span>
+    on käänteisluku
+    <span class="latex-container">a^{-1}</span>
+    , jolla on perusominaisuus
+    <span class="latex-container display">aa^{-1} = a^{-1}a = 1</span>
+    . Vastaavasti jos
+    <span class="latex-container">A</span>
+    on neliömatriisi ja 
+    <span class="latex-container display">\det A \neq 0</span>
+    , niin on olemassa sellainen matriisi
+    <span class="latex-container">A^{-1}</span>
+    , että
+    <span class="latex-container display">AA^{-1} = A^{-1}A = I</span>
+    , jossa
+    <span class="latex-container">I</span>
+    on ykkösmatriisi. Matriisia
+    <span class="latex-container">A^{-1}</span>
+    sanotaan
+    <span class="latex-container">A</span>
+    :n käänteismatriisiksi.
+</p>
+
+<h3>Käänteismatriisin laskeminen käsin</h3>
+
+<p>
+  Olkoon säännöllinen matriisi
+  <span class="latex-container display">
+    A=\begin{bmatrix}
+    1&2\\
+    3&4
+    \end{bmatrix}
+  </span>
+  ,
+  <span class="latex-container display">
+    \det A=\begin{vmatrix}
+    1&2\\
+    3&4
+    \end{vmatrix}=-2\ne 0
+  </span>
+  .
+
+  <br>
+  <br>
+  Muodostetaan ensin matriisi, jonka alkioina ovat 
+  <span class="latex-container display">
+    \det A
+  </span>
+  :n alkioiden komplementit.
+
+  <br>
+  <br>
+  <span class="latex-container display">
+    \begin{bmatrix}
+    +\begin{vmatrix}
+    4
+    \end{vmatrix}&-\begin{vmatrix}
+    3
+    \end{vmatrix}\\
+    -\begin{vmatrix}
+    2
+    \end{vmatrix}&+\begin{vmatrix}
+    1
+    \end{vmatrix}
+    \end{bmatrix}=\begin{bmatrix}
+    4&-3\\
+    -2&1
+    \end{bmatrix}
+  </span>
+  
+  <br>
+  Kun tämä komplementtien muodostama matriisi transponoidaan, saadaan
+  <span class="latex-container">A</span>
+  :n ns. liittomatriisi eli adjungoitu matriisi
+  <br>
+  <span class="latex-container display">
+    \text{adj}\left(A\right)=\begin{bmatrix}
+    4&-3\\
+    -2&1
+    \end{bmatrix}^T=\begin{bmatrix}
+    4&-2\\
+    -3&1
+    \end{bmatrix}
+  </span>
+
+  <br>
+  <br>
+  Voidaan todistaa, että yleisesti 
+  <span class="latex-container display">
+    \boxed{
+    A^{-1}=\frac{1}{\det A}\cdot \text{adj}\ A
+    }
+  </span>
+
+  <br>
+  <br>
+  <span class="latex-container display">
+    A^{-1}=\frac{1}{-2}\begin{bmatrix}
+    4&-2\\
+    -3&1
+    \end{bmatrix}=\begin{bmatrix}
+    -2&1\\
+    \frac{3}{2}&-\frac{1}{2}
+    \end{bmatrix}
+  </span>
+</p>
+
+
+<h3>Gauss–Jordanin eliminointiin perustuva menetelmä</h3>
+<p>Yksi yleisimmistä menetelmistä käänteismatriisin määrittämiseksi on <strong>rivitoimituksiin perustuva Gauss–Jordanin eliminointi</strong>. Tässä menetelmässä alkuperäinen matriisi laajennetaan yksikkömatriisilla, ja rivimuunnoksia tehdään, kunnes alkuperäinen matriisi muuttuu yksikkömatriisiksi. Samalla yksikkömatriisi muuntuu alkuperäisen matriisin käänteismatriisiksi.</p>
+
+<ol>
+  <li>Muodosta laajennettu matriisi 
+    <span class="latex-container display">[A \mid I]</span>, 
+    missä <span class="latex-container display">A</span> on alkuperäinen 
+    <span class="latex-container display">n \times n</span> -matriisi ja 
+    <span class="latex-container display">I</span> on 
+    <span class="latex-container display">n \times n</span> -yksikkömatriisi.
+  </li>
+  <li>Suorita <strong>rivimuunnoksia</strong> (vaihto, kertominen luvulla, ja rivien yhteenlasku) niin, että vasen puoli muuttuu yksikkömatriisiksi.</li>
+  <li>Kun vasen puoli on yksikkömatriisi, oikealla puolella on 
+    <span class="latex-container display">A^{-1}</span>, 
+    eli alkuperäisen matriisin käänteismatriisi.
+  </li>
+</ol>
+
+<h3>Esimerkki:</h3>
+<p>Olkoon 
+  <span class="latex-container display">
+    A = \begin{bmatrix} 2 & 1 \\ 5 & 3 \end{bmatrix}
+  </span>
+</p>
+
+<p>
+    Laajennettu matriisi:
+    <span class="latex-container display">
+      \left[ \begin{array}{cc|cc}
+      2 & 1 & 1 & 0 \\
+      5 & 3 & 0 & 1 \\
+      \end{array} \right]
+    </span>
+</p>
+
+<p>
+    Tee rivimuunnoksia kunnes vasen puoli on yksikkömatriisi:
+    <br>
+    <span class="latex-container display">
+        \left[ \begin{array}{cc|cc}
+        1 & 0 & 3 & -1 \\
+        0 & 1 & -5 & 2 \\
+        \end{array} \right]
+        \Rightarrow A^{-1} = \begin{bmatrix} 3 & -1 \\ -5 & 2 \end{bmatrix}
+    </span>
+</p>
+
