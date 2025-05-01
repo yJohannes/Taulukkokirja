@@ -87,7 +87,6 @@ function generateResultView(matches, resultContainer) {
 
                 if (e.button === 0) {
                     loadPageToElement('pages/' + match, 'page-container');
-                    console.log(0);
                 }
             });
 
