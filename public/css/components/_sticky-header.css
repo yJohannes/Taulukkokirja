@@ -15,6 +15,7 @@
     bottom: 0;
     left: calc(-1rem - 5px); /* padding + splitter, this is redundant though */
     right: -1rem;
+
     background: rgba(250, 249, 245, 0.825);
     z-index: -1;
     backdrop-filter: blur(2px);
