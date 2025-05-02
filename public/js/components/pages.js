@@ -99,7 +99,7 @@ function removeBookmark(pagePath) {
     localStorage.setItem('bookmarks', JSON.stringify(bookmarks));
 }
 
-async function loadPageToElement(path, elementId)
+async function loadPageToElement(path, elementId, bookMarkable=true)
 {
     const html = await loadPageHTML(path);
 
@@ -111,40 +111,38 @@ async function loadPageToElement(path, elementId)
     wrapper.style.flexDirection = 'row';
     wrapper.style.justifyContent = 'space-between';
     
-    const bookmark = document.createElement('i');
-    const bookmarks = getBookmarks();
-
-    if (bookmarks.includes(path)) {
-        bookmark.classList.add('bi', 'bi-bookmark-fill');
-    } else {
-        bookmark.classList.add('bi', 'bi-bookmark');
+    if (bookMarkable) {
+        const bookmark = document.createElement('i');
+        const bookmarks = getBookmarks();
+        
+        if (bookmarks.includes(path)) {
+            bookmark.classList.add('bi', 'bi-bookmark-fill');
+        } else {
+            bookmark.classList.add('bi', 'bi-bookmark');
+        }
+        
+        const button = document.createElement('button');
+        button.classList.add('btn', 'btn-no-box-shadow', 'button-with-icon', 'rounded-circle', 'ripple', 'ripple-dark', 'ripple-centered')
+        addRippleToElement(button);
+        
+        button.addEventListener('click', () => {
+            if (bookmark.classList.toggle('bi-bookmark')) {
+                removeBookmark(path);
+            }
+            
+            if (bookmark.classList.toggle('bi-bookmark-fill')) {
+                setBookmark(path);
+            }
+            
+        });
+        button.appendChild(bookmark);
+        wrapper.appendChild(button);
     }
-    
-    const button = document.createElement('button');
-    button.classList.add('btn', 'btn-no-box-shadow', 'button-with-icon', 'rounded-circle', 'ripple', 'ripple-dark', 'ripple-centered')
-    addRippleToElement(button);
-
-    button.addEventListener('click', () => {
-        if (bookmark.classList.toggle('bi-bookmark')) {
-            removeBookmark(path);
-        }
-
-        if (bookmark.classList.toggle('bi-bookmark-fill')) {
-            setBookmark(path);
-        }
-
-    });
-
-    button.appendChild(bookmark);
-    wrapper.appendChild(button);
-    
-
 
     injectScripts();
     
     const newUrl = formatPathToHash(path);
     history.pushState(null, '', newUrl);
-
     setPageTitleFromPath(path);
 
     initLatex();
