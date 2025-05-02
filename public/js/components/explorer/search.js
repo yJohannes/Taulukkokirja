@@ -1,6 +1,7 @@
 import { loadPageToElement } from '../pages.js';
 import { getTabByPath, loadExplorerStructure, openPath, showExplorer } from './explorer.js';
 import { createTab } from './tab.js';
+import { addRippleToElement } from '../../effects/ripple.js';
 
 import * as defs from './defs.js'
 
@@ -172,6 +173,8 @@ async function initSearchToInput(element)
     const clearBtn = document.getElementById('explorer-clear-search');
     const searchInput = document.querySelector("#explorer-search");
     
+    addRippleToElement(clearBtn);
+
     clearBtn.addEventListener("click", () => {
         searchInput.value = '';
 
