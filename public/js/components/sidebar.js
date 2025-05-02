@@ -53,9 +53,6 @@ function initSidebar()
     if (localStorage.getItem('sidebar-visibility') === 'show') {
         sidebar.classList.add('show');
     }
-
-
-
 }
 
 export {
