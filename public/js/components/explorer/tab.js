@@ -1,6 +1,8 @@
 import { loadPageToElement } from '../pages.js';
 import { showSidebar }  from '../sidebar.js';
 import { createArrow } from '../arrow.js';
+import { addRippleToElement } from '../../effects/ripple.js';
+import { formatPathToHash } from '../pages.js';
 
 import * as defs from './defs.js'
 
@@ -97,7 +99,13 @@ function handleTabClick(tab, isDropdown, parentElement)
 
 function createTab(textOrHTML, level, isDropdown, parentElement)
 {
-    const tab = document.createElement('button');
+    let tab;
+    if (isDropdown) {
+        tab = document.createElement('button');
+    } else {
+        tab = document.createElement('a');
+    }
+
     tab.classList.add('btn', 'btn-light', 'explorer-tab', 'ripple');
     tab.style.setProperty('--level', level);
 
@@ -148,8 +156,7 @@ function generateTabs(data, parentElement, rootPath='') {
                     path = decodeURIComponent(path);
                     path = path
                         .replaceAll(' ', '_')
-                        .replaceAll('.html', '')
-                        ;
+                        .replaceAll('.html', '');
                 }
 
                 const pagePath = 'pages/' + currentPath;
@@ -163,6 +170,9 @@ function generateTabs(data, parentElement, rootPath='') {
         }
         
         tab.setAttribute('data-path', currentPath)
+        tab.setAttribute('href', formatPathToHash('pages/' + currentPath));
+        addRippleToElement(tab);
+        
         li.appendChild(tab);
 
         // If the value is an object (i.e., nested dropdown), recursively create a nested dropdown
