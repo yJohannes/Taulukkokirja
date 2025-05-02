@@ -1,22 +1,17 @@
 import * as defs from "./defs.js"
 import { expandExplorer, collapseExplorer } from "./explorer.js";
+import { addToolTip } from "../tooltip.js";
+import { addRippleToElement } from "../../effects/ripple.js";
 
 export function initExplorerButtons()
 {
-    const config = {
-        delay: { [defs.SHOW]: 500, hide: 200 },
-        animation: true,
-        trigger: 'hover'  // No persisting tooltips
-    }
-
     const expand = document.getElementById('explorer-expand')
     const collapse = document.getElementById('explorer-collapse')
     const autoCollapse = document.getElementById('explorer-auto-collapse')
 
-    for (let b of [expand, collapse, autoCollapse]) {
-        b.setAttribute('data-toggle', 'tooltip');
-        b.setAttribute('data-placement', 'top');
-        $(b).tooltip(config);
+    for (let button of [expand, collapse, autoCollapse]) {
+        addToolTip(button, 'top');
+        addRippleToElement(button);
     }
     
     const savedState = localStorage.getItem('explorer-auto-collapse-state');
