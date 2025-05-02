@@ -1,6 +1,6 @@
 import { loadExplorerToElement, loadExplorerSave } from './components/explorer/explorer.js';
 import { initPageLoading } from './components/pages.js';
-import { initSidebar } from './components/sidebar.js';
+import { initSidebar } from './layout/sidebar.js';
 import { initNavbar } from './components/navbar.js';
 import { loadSettings } from './components/settings.js';
 
