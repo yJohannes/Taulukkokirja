@@ -57,4 +57,4 @@ function initRipple()
     });
 }
 
-export { initRipple };
+export { initRipple };export { initRipple, addRippleToElement };
