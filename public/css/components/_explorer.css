@@ -15,11 +15,16 @@
     color: black;
 }
 
+
+.btn-no-box-shadow:focus {
+    box-shadow: none !important;
+}
+
 #explorer-clear-search {
     display: flex;
     justify-content: center;
     align-items: center;
-    position: absolute;
+    position: absolute !important;
     top: 50%;
     right: 0;
     width: 2rem;
@@ -50,7 +55,6 @@
     background: rgba(250, 249, 245, 0.3);
     z-index: -1;
     backdrop-filter: blur(2px);
-
 }
 
 #explorer-search:focus {
@@ -65,6 +69,10 @@
 #explorer-buttons button:focus-visible,
 #explorer-search-wrapper button:focus-visible {
     box-shadow: 0 0 0 2px var(--color-focus) !important; /* Example: Set a custom focus style for tab focus */
+}
+
+#search-container {
+    width: 100%;
 }
 
 
@@ -95,6 +103,7 @@
     );
 
     cursor: pointer;
+    transition: none !important;
 }
 
 .explorer-tab > span {
