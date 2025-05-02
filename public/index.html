@@ -24,7 +24,7 @@
 
 </head>
 <body>
-    <!-- Navigation -->
+    <!-- Header -->
     <header class="navbar navbar-expand navbar-dark shadow-sm sticky-top">
         <div class="container-fluid">
             <b>
@@ -52,7 +52,7 @@
                     </li>
 
                     <li class="nav-item ml-2">
-                        <a id="sidebar-toggle" class="nav-link rounded-circle text-white ripple ripple-centered hover-glow" title="Avaa/sulje sivupalkki" aria-label="Avaa/sulje sivupalkki">
+                        <a id="sidebar1-toggle" class="nav-link rounded-circle text-white ripple ripple-centered hover-glow" title="Avaa/sulje sivupalkki" aria-label="Avaa/sulje sivupalkki">
                             <i class="bi bi-list" style="transform: scale(1.4);"></i>
                         </a>
                     </li>
@@ -63,7 +63,7 @@
 
     <!-- Content area -->
     <div id="content-wrapper">
-        <nav id="sidebar" class="shadow">
+        <aside id="sidebar1" class="sidebar shadow">
             <section id="explorer" class="" aria-label="Explorer">
                 <div id="explorer-search-wrapper">
                     <input id="explorer-search" type="text" autocomplete="off" class="form-control shadow" placeholder="Hae... " aria-label="Search"></input>
@@ -89,20 +89,21 @@
                 
                 <div class="mt-1"></div>
 
-                <div id="search-container" class="button-group shadow rounded"></div>
-                <div id="explorer-container" class="button-group shadow rounded"></div>
+                <nav id="search-container" class="button-group shadow rounded"></nav>
+                <nav id="explorer-container" class="button-group shadow rounded"></nav>
             </section>
-        </nav>
+        </aside>
 
-        <div id="main-splitter" class="splitter"></div>
+
+        <div id="splitter1" class="splitter"></div>
 
         <main id="main-content">
             <article id="page-container">
                 <div class="sticky-page-header">
-	<div class="flex-wrapper">
-		<h1>Etusivu</h1>
-	</div>
-	<hr>
+                    <div class="flex-wrapper">
+                        <h1>Etusivu</h1>
+                    </div>
+                    <hr>
                 </div>
 
                 <p>Tämä on taulukkokirjan etusivu.</p>
@@ -135,9 +136,17 @@
                         </p>
                     </li>
                 </ul>
-                
             </article>
         </main>
+
+        <div id="splitter2" class="splitter"></div>
+
+        <aside id="sidebar2" class="sidebar shadow">
+            <article id="sidebar2-content"></article>
+        </aside>
+
+
+
     </div>
 </body>
 </html>

@@ -1,6 +1,6 @@
-#sidebar {
+.sidebar {
     background-color: white;
-    border: 1px solid;
+    border: 2px solid;
     border-color: gainsboro;
     height: calc(100vh - 56px); /* header */
     position: sticky;
@@ -10,21 +10,29 @@
     z-index: 110;
 }
 
+#sidebar2 {
+    display: none !important;
+}
+
+#sidebar2.show {
+    display: block !important;
+}
+
 /* Hide sidebar only on smaller screens */
 @media (max-width: 768px) {
 
-    #sidebar,
-    #main-splitter {
+    #sidebar1,
+    #splitter1 {
         display: none; /* REMOVE from grid layout */
     }
 
-    #sidebar {
+    #sidebar1 {
         position: fixed; /* Detach from grid */
         top: 56px;       /* Align below navbar */
         left: 0;
     }  
 
-    #sidebar.show {
+    #sidebar1.show {
         width: 100%;
         display: block;
     }
@@ -35,7 +43,7 @@
 }
 
 /* Show hamburger icon on smaller screens */
-#sidebar-toggle {
+#sidebar1-toggle {
     /* Hidden by default */
     display: none !important; 
     box-shadow: none !important;

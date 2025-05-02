@@ -1,7 +1,7 @@
 
 #content-wrapper {
     display: grid;
-    grid-template-columns: 325px 5px minmax(0, 1fr); /* minmax to block horizontal overflow. */
+    grid-template-columns: 325px 5px minmax(0, 1fr) 5px 275px; /* minmax to block horizontal overflow. */
     max-width: 100vw;
     position: fixed;
     top: 56px; /* navbar */
@@ -12,15 +12,23 @@
     overflow-y: auto;
 }
 
-#sidebar {
+#sidebar1 {
     order: 1;
 }
 
-#main-splitter {
+#splitter1 {
     order: 2;
 }
 
 #main-content {
     order: 3;
+}
+
+#splitter2 {
+    order: 4;
+}
+
+#sidebar2 {
+    order: 5;
 }
 
