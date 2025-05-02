@@ -1,5 +1,6 @@
 import { initTableHighlights } from './tables.js';
 import { initLatex } from '../latex/latex.js';
+import { addRippleToElement } from '../effects/ripple.js';
 
 
 function formatPathToHash(path) {
@@ -25,9 +26,9 @@ function setPageTitleFromPath(path) {
     
     if (folderName) {
         folderName = decodeURIComponent(folderName);
-        pageName ? document.title =  pageName + ' | ' + folderName + ' | Kaavakirja' : document.title = 'Kaavakirja';
+        pageName ? document.title = pageName + ' | ' + folderName + ' | Taulukkokirja' : document.title = 'Taulukkokirja';
     } else {
-        pageName ? document.title = pageName + ' | Kaavakirja' : document.title = 'Kaavakirja';
+        pageName ? document.title = pageName + ' | Taulukkokirja' : document.title = 'Taulukkokirja';
     }
 
 }
@@ -67,13 +68,77 @@ function injectScripts() {
     });
 }
 
-// Create an async function to load the page and set the content
+function getBookmarks() {
+    let bookmarks = localStorage.getItem('bookmarks');
+    if (!bookmarks) {
+        bookmarks = '[]';
+    }
+
+    bookmarks = JSON.parse(bookmarks);
+    return bookmarks;
+}
+
+function setBookmark(pagePath) {
+    let bookmarks = getBookmarks();
+
+    if (!bookmarks.includes(pagePath)) {
+        bookmarks.push(pagePath);
+    }
+
+    localStorage.setItem('bookmarks', JSON.stringify(bookmarks));
+}
+
+function removeBookmark(pagePath) {
+    let bookmarks = getBookmarks();
+
+    const index = bookmarks.indexOf(pagePath);
+    if (index !== -1) {
+        bookmarks.splice(index, 1);
+    }
+
+    localStorage.setItem('bookmarks', JSON.stringify(bookmarks));
+}
+
 async function loadPageToElement(path, elementId)
 {
     const html = await loadPageHTML(path);
 
     const element = document.getElementById(elementId);
     element.innerHTML = html;
+    
+    const headerContainer = element.querySelector('.sticky-page-header');
+    const wrapper = headerContainer.querySelector('.flex-wrapper');
+    wrapper.style.flexDirection = 'row';
+    wrapper.style.justifyContent = 'space-between';
+    
+    const bookmark = document.createElement('i');
+    const bookmarks = getBookmarks();
+
+    if (bookmarks.includes(path)) {
+        bookmark.classList.add('bi', 'bi-bookmark-fill');
+    } else {
+        bookmark.classList.add('bi', 'bi-bookmark');
+    }
+    
+    const button = document.createElement('button');
+    button.classList.add('btn', 'btn-no-box-shadow', 'button-with-icon', 'rounded-circle', 'ripple', 'ripple-dark', 'ripple-centered')
+    addRippleToElement(button);
+
+    button.addEventListener('click', () => {
+        if (bookmark.classList.toggle('bi-bookmark')) {
+            removeBookmark(path);
+        }
+
+        if (bookmark.classList.toggle('bi-bookmark-fill')) {
+            setBookmark(path);
+        }
+
+    });
+
+    button.appendChild(bookmark);
+    wrapper.appendChild(button);
+    
+
 
     injectScripts();
     
@@ -117,4 +182,8 @@ function initPageLoading()
     });
 }
 
-export { loadPageToElement, initPageLoading };
+export {
+    loadPageToElement,
+    initPageLoading,
+    formatPathToHash
+};
