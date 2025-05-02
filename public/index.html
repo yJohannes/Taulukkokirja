@@ -33,30 +33,28 @@
 
             <nav class="ml-auto">
                 <ul class="navbar-nav ml-auto">
-                    <li class="nav-item ml-3">
-                        <a id="latex-editor" class="nav-link rounded text-white ripple ripple-centered" href="#" title="LaTeX-editori" aria-label="LaTeX-editori">
+                    <li class="nav-item ml-2">
+                        <a id="latex-editor" class="nav-link rounded-circle text-white ripple ripple-centered hover-glow" href="#" title="LaTeX-editori" aria-label="LaTeX-editori">
                             <i class="bi bi-pen-fill"></i>
                         </a>
                     </li>
 
-                    <li class="nav-item ml-3">
-                        <a id="bookmarks" class="nav-link rounded text-white ripple ripple-centered" href="#" title="Kirjanmerkit" aria-label="Kirjanmerkit">
+                    <li class="nav-item ml-2">
+                        <a id="bookmarks" class="nav-link rounded-circle text-white ripple ripple-centered hover-glow" href="#" title="Kirjanmerkit" aria-label="Kirjanmerkit">
                             <i class="bi bi-bookmarks-fill"></i>
                         </a>
                     </li>
 
-                    <li class="nav-item ml-3">
-                        <a id="settings" class="nav-link rounded text-white ripple ripple-centered" href="#/Asetukset" title="Asetukset" aria-label="Asetukset">
+                    <li class="nav-item ml-2">
+                        <a id="settings" class="nav-link rounded-circle text-white ripple ripple-centered hover-glow" href="#/Asetukset" title="Asetukset" aria-label="Asetukset">
                             <i class="bi bi-gear-fill"></i>
                         </a>
                     </li>
 
-                    <li class="nav-item ml-3">
-                        <button id="sidebar-toggle" class="nav-link btn text-white rounded ripple ripple-centered" title="Avaa/sulje sivupalkki" aria-label="Avaa/sulje sivupalkki">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="19.6px" fill="white" viewBox="0 20 448 512">
-                                <path d="M0 96C0 78.3 14.3 64 32 64l384 0c17.7 0 32 14.3 32 32s-14.3 32-32 32L32 128C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32l384 0c17.7 0 32 14.3 32 32s-14.3 32-32 32L32 288c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32L32 448c-17.7 0-32-14.3-32-32s14.3-32 32-32l384 0c17.7 0 32 14.3 32 32z"/>
-                            </svg>
-                        </button>
+                    <li class="nav-item ml-2">
+                        <a id="sidebar-toggle" class="nav-link rounded-circle text-white ripple ripple-centered hover-glow" title="Avaa/sulje sivupalkki" aria-label="Avaa/sulje sivupalkki">
+                            <i class="bi bi-list" style="transform: scale(1.4);"></i>
+                        </a>
                     </li>
                 </ul>
             </nav>
@@ -70,7 +68,7 @@
                 <div id="explorer-search-wrapper">
                     <input id="explorer-search" type="text" autocomplete="off" class="form-control shadow" placeholder="Hae... " aria-label="Search"></input>
                     <i id="explorer-search-icon" class="bi bi-search"></i>
-                    <button id="explorer-clear-search" class="btn btn-sm rounded-circle ripple ripple-dark ripple-centered" style="display: none;">
+                    <button id="explorer-clear-search" class="btn rounded-circle ripple ripple-dark ripple-centered hover-glow" style="display: none;">
                         <i class="bi bi-x-lg" style="font-size: 120%;"></i>
                     </button>
                 </div>
@@ -78,13 +76,13 @@
                 <div class="mt-3"></div>
 
                 <div id="explorer-buttons" role="group" style="display: flex; justify-content: flex-end;">
-                    <button id="explorer-expand" class="btn btn-sm ripple ripple-dark ripple-centered" title="Laajenna välilehdet (alt + 1)" aria-label="Laajenna välilehdet">
+                    <button id="explorer-expand" class="btn btn-sm ripple ripple-dark ripple-centered hover-glow" title="Laajenna välilehdet (alt + 1)" aria-label="Laajenna välilehdet">
                         <i class="bi bi-arrows-expand" style="font-size: 120%;"></i>
                     </button>
-                    <button id="explorer-collapse" class="btn btn-sm ripple ripple-dark ripple-centered" title="Sulje välilehdet (alt + 2)" aria-label="Sulje välilehdet">
+                    <button id="explorer-collapse" class="btn btn-sm ripple ripple-dark ripple-centered hover-glow" title="Sulje välilehdet (alt + 2)" aria-label="Sulje välilehdet">
                         <i class="bi bi-arrows-collapse" style="font-size: 120%;"></i>
                     </button>
-                    <button id="explorer-auto-collapse" class="btn btn-sm ripple ripple-dark ripple-centered" title="Automaattinen sulkeminen (alt + 3)" aria-label="Automaattinen sulkeminen">
+                    <button id="explorer-auto-collapse" class="btn btn-sm ripple ripple-dark ripple-centered hover-glow" title="Automaattinen sulkeminen (alt + 3)" aria-label="Automaattinen sulkeminen">
                         <i class="bi bi-list-nested" style="font-size: 120%;"></i>
                     </button>
                 </div>
@@ -101,8 +99,10 @@
         <main id="main-content">
             <article id="page-container">
                 <div class="sticky-page-header">
-                    <h1>Etusivu</h1>
-                    <hr>
+	<div class="flex-wrapper">
+		<h1>Etusivu</h1>
+	</div>
+	<hr>
                 </div>
 
                 <p>Tämä on taulukkokirjan etusivu.</p>
