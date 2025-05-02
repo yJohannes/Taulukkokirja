@@ -19,3 +19,11 @@
     z-index: -1;
     backdrop-filter: blur(2px);
 }
+
+.sticky-page-header h1 {
+    margin-bottom: 0 !important;
+}
+
+.sticky-page-header hr {
+    margin-top: 0.5rem !important;
+}
