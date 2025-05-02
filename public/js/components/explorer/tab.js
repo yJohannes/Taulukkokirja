@@ -1,5 +1,5 @@
 import { loadPageToElement } from '../pages.js';
-import { showSidebar }  from '../sidebar.js';
+import { showSidebar }  from '../../layout/sidebar.js';
 import { createArrow } from '../arrow.js';
 import { addRippleToElement } from '../../effects/ripple.js';
 import { formatPathToHash } from '../pages.js';
