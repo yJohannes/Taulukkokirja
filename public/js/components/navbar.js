@@ -1,23 +1,17 @@
+import { addRippleToElement } from "../effects/ripple.js";
+import { addToolTip } from "./tooltip.js";
+
 function initNavbar()
 {
-    // Navbar
-    let elements = [];
+    let navs = [];
+    navs.push(document.getElementById('latex-editor'));
+    navs.push(document.getElementById('bookmarks'));
+    navs.push(document.getElementById('settings'));
+    navs.push(document.getElementById('sidebar-toggle'));
 
-    elements.push(document.getElementById('latex-editor'));
-    elements.push(document.getElementById('bookmarks'));
-    elements.push(document.getElementById('settings'));
-    elements.push(document.getElementById('sidebar-toggle'));
-
-    const params = {
-        delay: { show: 500, hide: 200 },
-        animation: true,
-        trigger: 'hover',  // No persisting tooltips
-    }
-
-    elements.forEach(element => {
-        element.setAttribute('data-toggle', 'tooltip');
-        element.setAttribute('data-placement', 'bottom');
-        $(element).tooltip(params);
+    navs.forEach(nav => {
+        addToolTip(nav, 'bottom')
+        addRippleToElement(nav);
     });
 }
 
