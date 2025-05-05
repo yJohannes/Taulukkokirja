@@ -1,4 +1,4 @@
-function addRippleToElement(element)
+export function addRippleToElement(element)
 {
     element.addEventListener('mousedown', (e) => {
         const ripple = document.createElement('div');
@@ -49,12 +49,3 @@ function addRippleToElement(element)
         }, 1500); // Keep the ripple visible for 600ms
     });
 }
-
-function initRipple()
-{
-    document.querySelectorAll('.ripple').forEach(element => {
-        addRippleToElement(element);
-    });
-}
-
-export { initRipple, addRippleToElement };
