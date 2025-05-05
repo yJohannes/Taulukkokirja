@@ -1,49 +1,50 @@
 .sidebar {
+    scrollbar-width: thin;
     background-color: white;
-    border: 2px solid;
-    border-color: gainsboro;
-    height: calc(100vh - 56px); /* header */
     position: sticky;
     top: 0;
+    height: calc(100vh - 56px); /* header */
     padding: 1.25rem;
     overflow-y: auto;
-    z-index: 110;
+    z-index: 60;
 }
 
-#sidebar2 {
-    display: none !important;
+.sidebar::-webkit-scrollbar {
+    width: 6px;
 }
 
-#sidebar2.show {
+
+#sidebar-2.show {
     display: block !important;
 }
 
 /* Hide sidebar only on smaller screens */
 @media (max-width: 768px) {
 
-    #sidebar1,
+    #sidebar-1,
     #splitter1 {
         display: none; /* REMOVE from grid layout */
     }
 
-    #sidebar1 {
+    #sidebar-1 {
         position: fixed; /* Detach from grid */
         top: 56px;       /* Align below navbar */
         left: 0;
     }  
 
-    #sidebar1.show {
+    #sidebar-1.show {
         width: 100%;
         display: block;
     }
 
     #content-wrapper {
-        grid-template-columns: minmax(0, 1fr); /* Make content full width */
+        /* Make content full width */
+        grid-template-columns: minmax(0, 1fr); 
     }
 }
 
 /* Show hamburger icon on smaller screens */
-#sidebar1-toggle {
+#sidebar-1-toggle {
     /* Hidden by default */
     display: none !important; 
     box-shadow: none !important;
