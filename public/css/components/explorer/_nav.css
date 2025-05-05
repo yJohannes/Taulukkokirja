@@ -1,0 +1,65 @@
+
+.explorer-ul {
+    list-style-type: none; /* Removes bullet points */
+    padding-left: 0; /* No padding on the <ul> */
+    margin-bottom: 0;
+}
+
+.explorer-tab {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    width: 100%;
+    padding-left: calc(12px + var(--level, 0) * 20px); /* Adjust text indentation */
+    padding-right: 12px;
+    
+    padding-top: calc(
+        max(3.5px, 14px / (1 + var(--level, 0)))
+    );
+    padding-bottom: calc(
+        max(3.5px, 14px / (1 + var(--level, 0)))
+    );
+
+    font-size: calc(
+        max(94%, 100% - var(--level, 0) * 2%)
+    );
+
+    cursor: pointer;
+    transition: none !important;
+}
+
+.explorer-tab > span {
+    text-align: left;
+    hyphens: auto;
+    overflow-wrap: anywhere;
+}
+
+.explorer-tab:focus {
+    box-shadow: none !important;
+}
+
+.explorer-dropdown {
+    /* display: none; */
+    overflow: hidden;
+    max-height: 0;
+    opacity: 0;
+    visibility: hidden;
+    transition:
+        max-height 0.25s ease-out,
+        opacity 0.25s ease-out,
+        visibility 0.25s ease-out;
+}
+
+.explorer-dropdown.show {
+    /* display: block; */
+    height: auto;
+    max-height: 10000px;
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Fully hidden, layout-skipped state (used only during resize) */
+.explorer-dropdown:not(.show).hard-hide {
+    display: none !important;
+}
