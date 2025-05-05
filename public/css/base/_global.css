@@ -30,18 +30,19 @@ html {
 
 /* Selection */
 ::selection {
-    background: var(--color-accent);
+    background: var(--color-primary);
     color: rgb(255, 255, 255);
 }
 
 ::-moz-selection {
-    background: var(--color-accent);
+    background: var(--color-primary);
     color: rgb(255, 255, 255);
 }
 
 /*  */
 body {
     background-color: var(--color-background);
+    overflow: hidden;
 }
 
 h1 {
@@ -68,18 +69,6 @@ h6 {
     font-size: 1rem;
 }
 
-header {
-    background-color: var(--color-primary) !important;
-}
-
-header.navbar {
-    background-image: url('/img/icon/damascus.png'); /* Replace with your actual image path */
-    background-size: cover;                  /* Scale the image to cover the header */
-    background-position: center;            /* Center the image */
-    background-repeat: no-repeat;           /* Prevent tiling */
-}
-
-
 input {
     color: black !important;
 }
@@ -91,6 +80,10 @@ input {
 
 .flex-wrapper {
     display: flex;
+}
+
+.btn.rounded-circle {
+    aspect-ratio: 1 / 1 !important;
 }
 
 .button-with-icon {
@@ -108,13 +101,16 @@ input {
     font-size: 150%;
 }
 
-.nav-link {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 0.75rem !important;
-    aspect-ratio: 1;
-    height: auto;
+.btn-no-box-shadow:focus {
+    box-shadow: none !important;
+}
+
+.btn:focus {
+    box-shadow: none !important;
+}
+
+.btn:focus-visible {
+    box-shadow: 0 0 0 2px var(--color-focus) !important;
 }
 
 .hover-glow:hover::before {
@@ -122,7 +118,7 @@ input {
     position: absolute;
     top: 0; left: 0;
     width: 100%; height: 100%;
-    z-index: -1;
+    z-index: 1;
     background-color: rgba(200, 200, 200, 0.1) !important;
 }
 
