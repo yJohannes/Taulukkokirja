@@ -3,8 +3,6 @@ import { getTabByPath, loadExplorerStructure, openPath, showExplorer } from './e
 import { createTab } from './tab.js';
 import { addRippleToElement } from '../../effects/ripple.js';
 
-import * as defs from './defs.js'
-
 let explorerStructure = null;
 
 function showResults(bool) {
@@ -73,18 +71,6 @@ function generateResultView(matches, resultContainer) {
             tab = createTab(name.replace('.html', ''), 1, false, resultContainer);
 
             tab.addEventListener('click', (e) => {
-                // console.log(`Opening: ${match}`);
-
-                // const explorer = document.getElementById('explorer')
-                // const activeTabs = explorer.querySelectorAll(`.${defs.ACTIVE}`);
-                
-                // activeTabs.forEach(t => {
-                //     t.classList.remove(defs.ACTIVE);
-                //     if (!isDropdown) {
-                //         localStorage.removeItem(t.getAttribute('data-path'));
-                //     }
-            
-                // });
 
                 if (e.button === 0) {
                     loadPageToElement('pages/' + match, 'page-container');
@@ -129,7 +115,7 @@ function generateResultView(matches, resultContainer) {
             });
         }
 
-
+        addRippleToElement(tab);
         resultContainer.appendChild(tab);
     }
 }

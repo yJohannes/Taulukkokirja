@@ -2,6 +2,7 @@ import * as defs from "./defs.js"
 import { expandExplorer, collapseExplorer } from "./explorer.js";
 import { addToolTip } from "../tooltip.js";
 import { addRippleToElement } from "../../effects/ripple.js";
+import * as storage from '../storage/index.js';
 
 export function initExplorerButtons()
 {
@@ -14,14 +15,16 @@ export function initExplorerButtons()
         addRippleToElement(button);
     }
     
-    const savedState = localStorage.getItem('explorer-auto-collapse-state');
-    if (savedState === "true") {
+    if (storage.getFromStorageList('active-states').includes('explorer-auto-collapse')) {
         autoCollapse.classList.add(defs.ACTIVE);
     }
 
     autoCollapse.addEventListener('click', () => {
-        autoCollapse.classList.toggle(defs.ACTIVE);
-        localStorage.setItem("explorer-auto-collapse-state", autoCollapse.classList.contains(defs.ACTIVE));
+        if (autoCollapse.classList.toggle(defs.ACTIVE)) {
+            storage.addToStorageList('active-states', 'explorer-auto-collapse');
+        } else {
+            storage.removeFromStorageList('active-states', 'explorer-auto-collapse');
+        }
     });
 
     expand.addEventListener('click', () => {

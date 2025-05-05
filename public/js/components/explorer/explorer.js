@@ -1,8 +1,9 @@
 import { initSearchToInput } from './search.js';
-import { generateTabs, getTabDropdown } from './tab.js';
+import { generateTabs, getTabDropdown, isDropdownTab } from './tab.js';
 import { initExplorerButtons } from './buttons.js';
 
-import * as defs from './defs.js'
+import * as defs from './defs.js';
+import * as storage from '../storage/index.js';
 
 
 function showExplorer(bool)
@@ -30,8 +31,7 @@ function expandExplorer()
         lis.forEach((li) => {
             const tabs = li.querySelectorAll('.explorer-tab');
             tabs.forEach((tab) => {
-                const state = { show: true, active: false };
-                localStorage.setItem(tab.getAttribute('data-path'), JSON.stringify(state));
+                storage.addToStorageList('show-states', tab.getAttribute('data-path'));
 
                 const arrowSvg = tab.querySelector(`svg`);
                 if (arrowSvg) {
@@ -56,8 +56,8 @@ function collapseExplorer()
         lis.forEach((li) => {
             const tabs = li.querySelectorAll('.explorer-tab');
             tabs.forEach((tab) => {
-                localStorage.removeItem(tab.getAttribute('data-path'))
                 tab.classList.remove(defs.ACTIVE);
+                storage.removeFromStorageList('show-states', tab.getAttribute('data-path'));
                 
                 const arrowSvg = tab.querySelector(`svg`);
                 if (arrowSvg) {
@@ -106,12 +106,8 @@ function loadExplorerSave()
             const tabs = li.querySelectorAll('.explorer-tab');
             tabs.forEach((tab) => {
                 const path = tab.getAttribute('data-path');
-                const storedState = localStorage.getItem(path);
-                
-                if (storedState) {
-                    const state = JSON.parse(storedState);
-                    
-                    if (state.show) {
+                if (isDropdownTab(tab)) {
+                    if (storage.getFromStorageList('show-states').includes(path)) {
                         const dropdown = li.querySelector('.explorer-ul');
                         dropdown?.classList.add(defs.SHOW);
                         
@@ -121,10 +117,9 @@ function loadExplorerSave()
                         }
                     }
 
-                    if (state.active) {
-                        tab.classList.add('active');
-                    }
-                }
+                } else if (storage.getFromStorageList('active-states').includes(path)) {
+                    tab.classList.add('active');
+                }                    
             });
         });
     });

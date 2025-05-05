@@ -5,6 +5,11 @@ import { addRippleToElement } from '../../effects/ripple.js';
 import { formatPathToHash } from '../pages.js';
 
 import * as defs from './defs.js'
+import * as storage from '../storage/index.js';
+
+export function isDropdownTab(tab) {
+    return (tab.parentElement.querySelector('ul') !== null);
+}
 
 function getTabDropdown(tab) {
     return tab.parentElement.querySelector('ul');
@@ -17,7 +22,7 @@ function setTabActivity(tab, boolActive) {
 
             // Not a dropdown tab
             if (getTabDropdown(tab) == null) {
-                localStorage.removeItem(t.getAttribute('data-path'));
+                storage.removeFromStorageList('show-states', t.getAttribute('data-path'));
             }
         });
     }
@@ -37,12 +42,11 @@ function handleTabClick(tab, isDropdown, parentElement)
         activeTabs.forEach(t => {
             t.classList.remove(defs.ACTIVE);
             if (!isDropdown) {
-                localStorage.removeItem(t.getAttribute('data-path'));
+                storage.removeFromStorageList('active-states', t.getAttribute('data-path'));
             }
         });
 
-        const state = { show: null, active: true };
-        localStorage.setItem(tab.getAttribute('data-path'), JSON.stringify(state));
+        storage.addToStorageList('active-states', tab.getAttribute('data-path'));
         tab.classList.add(defs.ACTIVE);
 
         // If tab is clicked on small screen hide sidebar
@@ -57,7 +61,7 @@ function handleTabClick(tab, isDropdown, parentElement)
     // If closing a dropdown, shift focus up a level
     if (nestedDropdown.classList.contains(defs.SHOW)) {
         nestedDropdown.classList.remove(defs.SHOW);
-        localStorage.removeItem(tab.getAttribute('data-path'))
+        storage.removeFromStorageList('show-states', tab.getAttribute('data-path'));
 
         const parentDropdown = tab.parentElement.parentElement;
         const parentTab = parentDropdown.parentElement.querySelector('button');
@@ -66,8 +70,7 @@ function handleTabClick(tab, isDropdown, parentElement)
         if (!(parentDropdown.parentElement.id === 'explorer-container')) {
             parentTab.classList.add(defs.ACTIVE);
             
-            const state = { show: true, active: false };
-            localStorage.setItem(parentTab.getAttribute('data-path'), JSON.stringify(state));
+            storage.addToStorageList('show-states', parentTab.getAttribute('data-path'));
         }
 
     } else {
@@ -84,7 +87,7 @@ function handleTabClick(tab, isDropdown, parentElement)
                 
                 arrow.classList.remove(defs.ARROW_FLIPPED);
                 dropdown.classList.remove(defs.SHOW);
-                localStorage.removeItem(tab.getAttribute('data-path'))
+                storage.removeFromStorageList('show-states', tab.getAttribute('data-path'))
             });
         }
 
@@ -92,8 +95,7 @@ function handleTabClick(tab, isDropdown, parentElement)
         tab.classList.add(defs.ACTIVE);
         nestedDropdown.classList.add(defs.SHOW);
 
-        const state = { show: true, active: false };
-        localStorage.setItem(tab.getAttribute('data-path'), JSON.stringify(state));
+        storage.addToStorageList('show-states', tab.getAttribute('data-path'));
     }
 }
 
