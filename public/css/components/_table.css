@@ -4,15 +4,10 @@ table {
     text-wrap: auto;
 }
 
-thead {
-    box-shadow: 0 0.125rem 0.3125rem rgba(0,0,0,0.2);
-}
-
 th {
     border: 1px #232323 solid;
     background-color: var(--color-primary);
     color: var(--color-secondary);
-    mix-blend-mode: difference !important;
 
     font-weight: normal !important;
     white-space: nowrap; 
