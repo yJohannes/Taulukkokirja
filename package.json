@@ -1,11 +1,10 @@
 {
   "dependencies": {
-    "bootstrap": "^5.3.5",
     "compression": "^1.8.0",
     "express": "^5.1.0",
-    "helmet": "^8.1.0"
+    "mathjax-node": "^2.1.1"
   },
-  "name": "formula-book",
+  "name": "table-book",
   "version": "1.0.0",
   "main": "app.js",
   "directories": {
@@ -15,7 +14,7 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
-  "author": "",
+  "author": "Johannes Ylinen",
   "license": "ISC",
   "description": ""
 }
