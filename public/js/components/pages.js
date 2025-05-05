@@ -1,7 +1,7 @@
 import { initTableHighlights } from './tables.js';
 import { initLatex } from '../latex/latex.js';
 import { addRippleToElement } from '../effects/ripple.js';
-
+import * as storage from './storage/index.js';
 
 function formatPathToHash(path) {
     return '/#/' + path.replaceAll(' ', '_').replace('.html', '')
@@ -68,37 +68,6 @@ function injectScripts() {
     });
 }
 
-function getBookmarks() {
-    let bookmarks = localStorage.getItem('bookmarks');
-    if (!bookmarks) {
-        bookmarks = '[]';
-    }
-
-    bookmarks = JSON.parse(bookmarks);
-    return bookmarks;
-}
-
-function setBookmark(pagePath) {
-    let bookmarks = getBookmarks();
-
-    if (!bookmarks.includes(pagePath)) {
-        bookmarks.push(pagePath);
-    }
-
-    localStorage.setItem('bookmarks', JSON.stringify(bookmarks));
-}
-
-function removeBookmark(pagePath) {
-    let bookmarks = getBookmarks();
-
-    const index = bookmarks.indexOf(pagePath);
-    if (index !== -1) {
-        bookmarks.splice(index, 1);
-    }
-
-    localStorage.setItem('bookmarks', JSON.stringify(bookmarks));
-}
-
 async function loadPageToElement(path, elementId, bookMarkable=true)
 {
     const html = await loadPageHTML(path);
@@ -113,7 +82,7 @@ async function loadPageToElement(path, elementId, bookMarkable=true)
     
     if (bookMarkable) {
         const bookmark = document.createElement('i');
-        const bookmarks = getBookmarks();
+        const bookmarks = storage.getFromStorageList('bookmarks');
         
         if (bookmarks.includes(path)) {
             bookmark.classList.add('bi', 'bi-bookmark-fill');
@@ -122,16 +91,17 @@ async function loadPageToElement(path, elementId, bookMarkable=true)
         }
         
         const button = document.createElement('button');
-        button.classList.add('btn', 'btn-no-box-shadow', 'button-with-icon', 'rounded-circle', 'ripple', 'ripple-dark', 'ripple-centered')
+        button.classList.add('btn', 'btn-no-box-shadow', 'button-with-icon', 'rounded-circle', 'ripple', 'ripple-dark', 'ripple-centered', 'hover-glow');
         addRippleToElement(button);
         
         button.addEventListener('click', () => {
             if (bookmark.classList.toggle('bi-bookmark')) {
-                removeBookmark(path);
+                storage.removeFromStorageList('bookmarks', path)
+
             }
             
             if (bookmark.classList.toggle('bi-bookmark-fill')) {
-                setBookmark(path);
+                storage.addToStorageList('bookmarks', path)
             }
             
         });
