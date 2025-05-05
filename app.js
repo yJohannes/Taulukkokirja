@@ -2,12 +2,15 @@ const express = require('express');
 const compression = require('compression');
 const path = require('path');
 const fs = require('fs');
+const mathSvg = require('./public/rich_text_editor/server/mathSvg');
 
 const PORT = 5500;
 const app = express();
 
 app.use(compression());
 app.use(express.static(path.join(__dirname, 'public')));
+
+app.get('/math.svg', mathSvg.mathSvgResponse);
 
 app.get('/api/pages-structure', (req, res) => {
   const pagesDir = path.join(__dirname, 'public', 'pages');
