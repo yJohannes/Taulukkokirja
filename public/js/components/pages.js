@@ -122,6 +122,20 @@ async function loadPageToElement(path, elementId, bookMarkable=true)
         wrapper.appendChild(button);
     }
 
+    const recents = storage.getFromStorageList('recently-viewed');
+    let idx = recents.indexOf(path);
+    
+    // If the path already exists, remove it
+    if (idx !== -1)
+        recents.splice(idx, 1);
+
+    recents.unshift(path); // Add the new path to the front of the array (index 0)
+    
+    // If there are more than 20 items, remove the oldest item (last item in array)
+    if (recents.length + 1 > 10)
+        recents.pop();
+
+    storage.setStorageItem('recently-viewed', recents);
     
     const newUrl = formatPathToHash(path);
     history.pushState(null, '', newUrl);
