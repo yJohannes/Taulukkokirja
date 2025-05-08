@@ -1,6 +1,6 @@
 import * as defs from "./defs.js"
 import { expandExplorer, collapseExplorer } from "./explorer.js";
-import { addToolTip } from "../tooltip.js";
+import { addToolTip } from "../common/tooltip.js";
 import { addRippleToElement } from "../../effects/ripple.js";
 import * as storage from '../storage/index.js';
 
