@@ -1,5 +1,6 @@
 #main-content {
     background-color: var(--color-background);
+    min-width: 500px;
     padding: 0 1rem 1rem 1rem;
     overflow-y: auto
 }
