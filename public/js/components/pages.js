@@ -3,7 +3,14 @@ import { initLatex } from '../latex/latex.js';
 import { addRippleToElement } from '../effects/ripple.js';
 import * as storage from './storage/index.js';
 
-function formatPathToHash(path) {
+export function sanitizePath(path) {
+    path = decodeURIComponent(path);
+    path = path.replace('#/', '').replaceAll('_', ' ').replace('.html', '');
+    return path;
+}
+
+export function formatPathToHash(path) {
+    path = 'pages/' + path.replace('pages/', '');
     return '/#/' + path.replaceAll(' ', '_').replace('.html', '')
 }
 
