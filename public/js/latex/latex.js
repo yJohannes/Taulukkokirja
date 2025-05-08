@@ -1,5 +1,5 @@
-import { createPopup } from '../components/popup.js';
-import { addToolTip } from '../components/tooltip.js';
+import { createPopup } from '../components/common/popup.js';
+import { addToolTip } from '../components/common/tooltip.js';
 
 function getLatex(element) {
     return element.getAttribute('title') || element.getAttribute('data-original-title');
