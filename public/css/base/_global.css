@@ -28,6 +28,14 @@ html {
     scrollbar-color: rgba(148, 148, 148, 1) transparent;
 }
 
+*::-webkit-scrollbar {
+    width: 6px;
+}
+
+* {
+    scrollbar-width: thin;
+}
+
 /* Selection */
 ::selection {
     background: var(--color-primary);
