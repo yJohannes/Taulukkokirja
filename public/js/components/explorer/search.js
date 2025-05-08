@@ -150,7 +150,7 @@ function search(searchString) {
 
 async function initSearchToInput(element)
 {
-    explorerStructure = await loadExplorerStructure();
+    explorerStructure = (await explorer.loadExplorerStructure()).pages;
 
     element.addEventListener('input', (event) => {
         search(event.target.value);
