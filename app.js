@@ -2,7 +2,7 @@ const express = require('express');
 const compression = require('compression');
 const path = require('path');
 const fs = require('fs');
-const mathSvg = require('./public/rich_text_editor/server/mathSvg');
+const mathSvg = require('./public/vendor/rich-text-editor/server/mathSvg');
 
 const PORT = 5500;
 const app = express();
