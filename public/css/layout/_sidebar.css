@@ -1,5 +1,4 @@
 .sidebar {
-    scrollbar-width: thin;
     background-color: white;
     position: sticky;
     top: 0;
@@ -9,10 +8,15 @@
     z-index: 60;
 }
 
-.sidebar::-webkit-scrollbar {
-    width: 6px;
+
+#sidebar-1 {
+    min-width: 275px;
 }
 
+#sidebar-2 {
+    min-width: 260px;
+    padding-top: 0;
+}
 
 #sidebar-2.show {
     display: block !important;
