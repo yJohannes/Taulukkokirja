@@ -6,24 +6,24 @@
 }
 
 .explorer-tab {
-    display: flex;
+    display: flex !important;
     justify-content: space-between;
     align-items: center;
 
     width: 100%;
-    padding-left: calc(12px + var(--level, 0) * 20px); /* Adjust text indentation */
-    padding-right: 12px;
+    padding-left: calc(12px + var(--level, 0) * 20px) !important; /* Adjust text indentation */
+    padding-right: 12px !important;
     
     padding-top: calc(
         max(3.5px, 14px / (1 + var(--level, 0)))
-    );
+    ) !important;
     padding-bottom: calc(
         max(3.5px, 14px / (1 + var(--level, 0)))
-    );
+    ) !important;
 
     font-size: calc(
         max(94%, 100% - var(--level, 0) * 2%)
-    );
+    ) !important;
 
     cursor: pointer;
     transition: none !important;
@@ -32,6 +32,7 @@
 .explorer-tab > span {
     text-align: left;
     hyphens: auto;
+    line-height: 1.25;
     overflow-wrap: anywhere;
 }
 
