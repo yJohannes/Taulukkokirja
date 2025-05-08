@@ -1,5 +1,6 @@
 #editor {
     background-color: white;
+    min-width: 500px;
     padding: 0 1rem 1rem 1rem;
 }
 
@@ -23,7 +24,7 @@
     z-index: 201;
 }
 
-#editor > .flex-wrapper > h3 {
+#editor > .flex-wrapper > h4 {
     margin: 0 !important;
     white-space: nowrap;       /* Prevents wrapping */
     overflow: hidden;          /* Hides overflowed text */
