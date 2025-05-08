@@ -9,26 +9,26 @@ import * as defs from './defs.js'
 import * as storage from '../storage/index.js';
 
 
-export function isDropdownTab(tab) {
-    return (tab.parentElement.querySelector('ul') !== null);
+export function isDropdownTab($tab) {
+    return ($tab.parentElement.querySelector('ul') !== null);
 }
 
-export function getTabDropdown(tab) {
-    return tab.parentElement.querySelector('ul') || null;
+export function getTabDropdown($tab) {
+    return $tab.parentElement.querySelector('ul') || null;
 }
 
-export function getTabParentDropdown(tab) {
-    return tab.parentElement.parentElement || null;
+export function getTabParentDropdown($tab) {
+    return $tab.parentElement.parentElement || null;
 
 }
 
-function setTabActivity(tab, boolActive) {
-    if (boolActive) {
+function setTabActivity($tab, isActive) {
+    if (isActive) {
         activeTabs.forEach(t => {
             t.classList.remove(defs.ACTIVE);
 
             // Not a dropdown tab
-            if (getTabDropdown(tab) == null) {
+            if (getTabDropdown($tab) == null) {
                 storage.removeFromStorageList('show-states', t.getAttribute('data-path'));
             }
         });
@@ -106,10 +106,12 @@ function handleTabClick(tab, isDropdown, parentElement)
     }
 }
 
-function createTab(textOrHTML, level, isDropdown, path)
+function createTab(textOrHTML, level, isDropdown, path, tagName='')
 {
     let tab;
-    if (isDropdown) {
+    if (tagName) {
+        tab = document.createElement(tagName);
+    } else if (isDropdown) {
         tab = document.createElement('button');
     } else {
         tab = document.createElement('a');
