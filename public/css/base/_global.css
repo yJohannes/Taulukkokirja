@@ -94,10 +94,12 @@ input {
     display: flex;
     justify-content: center;
     align-items: center;
-    /* position: absolute !important; */
-    width: 3rem;
-    height: 3rem;
-    
+
+    padding: 0 !important;
+    height: 2.75rem;
+    min-width: 2.75rem;
+    aspect-ratio: 1 / 1;    
+
     color: black;
 }
 
