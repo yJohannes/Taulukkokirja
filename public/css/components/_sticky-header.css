@@ -19,8 +19,8 @@
     backdrop-filter: blur(2px);
 }
 
-.sticky-page-header h1 {
-    margin-bottom: 0 !important;
+.sidebar .sticky-page-header::before {
+    background: rgba(255, 255, 255, 0.825);
 }
 
 .sticky-page-header hr {
