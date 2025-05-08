@@ -1,11 +1,12 @@
 import { addRippleToElement } from "../effects/ripple.js"
-import { addToolTip } from "../components/tooltip.js"
+import { addToolTip } from "../components/common/tooltip.js"
 import { loadPageToElement } from "../components/pages.js"
 import { toggleEditor } from "./editor.js"
+import { updateBookmarks } from "../components/bookmarks/index.js"
 
 function initNavbar()
 {
-    const sidebar2 = document.getElementById('sidebar2')
+    const sidebar2 = document.getElementById('sidebar-2')
     const editor = document.getElementById('latex-editor')
     const bookmarks = document.getElementById('bookmarks')
 
@@ -14,6 +15,8 @@ function initNavbar()
     })
 
     bookmarks.addEventListener('click', () => {
+        updateBookmarks();
+        
         sidebar2.classList.toggle('show')
     });
     
