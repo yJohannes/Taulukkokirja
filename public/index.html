@@ -33,7 +33,7 @@
     <!-- SPLIT IS NOT WORKING UNLESS THESE ARE HERE FOR WHATEVER REASON -->
     <style>
         #content-wrapper {
-            grid-template-columns: 1fr 1px 4fr;
+            grid-template-columns: 1fr 1px 4fr 1px 0.75fr;
             grid-template-rows: 2fr 1px 1fr;
         }
     </style>
@@ -192,11 +192,33 @@
             <div id="rich-text-editor-root"></div>
         </div>
 
-        <!-- <aside id="sidebar2" class="sidebar shadow"> -->
-            <!-- <article id="sidebar2-content"></article> -->
-        <!-- </aside> -->
-        
-    </div>
+        <div id="gutter-col-2" class="gutter gutter-horizontal"></div>
 
+        <aside id="sidebar-2" class="sidebar shadow">
+            <div id="sidebar-2-content">
+                <section id="bookmarks">
+                    <div class="sticky-page-header">
+                        <div class="flex-wrapper">
+                            <h2>Kirjanmerkit</h2>
+                        </div>
+                        <hr>
+                    </div>
+                    <div id="bookmark-container" class="shadow"></div>
+                </section>
+                
+                <br>
+                
+                <section id="recently-viewed">
+                    <div class="sticky-page-header">
+                        <div class="flex-wrapper">
+                            <h2>Viimeksi selatut</h2>
+                        </div>
+                        <hr>
+                    </div>
+                    <div id="recently-viewed-container" class="shadow"></div>
+                </section>
+            </div>
+        </aside>
+    </div>
 </body>
 </html>
