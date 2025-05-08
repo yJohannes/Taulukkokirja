@@ -7,15 +7,15 @@ import * as explorer from '../explorer/index.js';
 
 
 
-function createTabFromList(pathsList, container, deleteTargetListName=null) {
-    container.innerHTML = '';
+function createTabFromList(pathsList, $container, deleteTargetListName=null) {
+    $container.innerHTML = '';
 
     pathsList.forEach(path => {
         const name = explorer.formatPathLabel(path);
 
-        const tab = explorer.createTab(name, 0, false, path);
-        tab.style.padding = '8px';
-        addRippleToElement(tab);
+        const $tab = explorer.createTab(name, 0, false, path);
+        $tab.style.padding = '8px';
+        addRippleToElement($tab);
 
         /* 
             <button id="explorer-clear-search" class="btn rounded-circle ripple ripple-dark ripple-centered hover-glow" style="display: none;">
@@ -23,12 +23,12 @@ function createTabFromList(pathsList, container, deleteTargetListName=null) {
             </button>
         */
        if (deleteTargetListName) {
-            const delBtn = document.createElement('button');
-            delBtn.classList.add('btn', 'rounded-circle', 'ripple', 'ripple-dark', 'ripple-centered', 'hover-glow')
-            delBtn.classList.add('button-with-icon');
-            addRippleToElement(delBtn);
+            const $delete = document.createElement('button');
+            $delete.classList.add('btn', 'rounded-circle', 'ripple', 'ripple-dark', 'ripple-centered', 'hover-glow')
+            $delete.classList.add('button-with-icon');
+            addRippleToElement($delete);
 
-            delBtn.addEventListener('click', (e) => {
+            $delete.addEventListener('click', (e) => {
                 e.stopPropagation(); // Prevents event from reaching <a>
                 e.preventDefault();
 
@@ -36,39 +36,38 @@ function createTabFromList(pathsList, container, deleteTargetListName=null) {
                 updateBookmarks();
             });
 
-            const x = document.createElement('i');
-            x.classList.add('bi', 'bi-trash3-fill');
-            x.style.fontSize = '120%'
+            const $x = document.createElement('i');
+            $x.classList.add('bi', 'bi-trash3-fill');
+            $x.style.fontSize = '120%'
 
-            delBtn.appendChild(x);
-            tab.appendChild(delBtn);
+            $delete.appendChild($x);
+            $tab.appendChild($delete);
         }
 
-        tab.addEventListener('click', (e) => {
+        $tab.addEventListener('click', (e) => {
             loadPageToElement(path, 'page-container');
 
-            console.log(path)
             explorer.openPath(path);
-            tab.scrollIntoView({
+            $tab.scrollIntoView({
                 behavior: 'auto',
                 block: 'center'
             });
 
-            tab.addEventListener('click', () => updateBookmarks());
+            $tab.addEventListener('click', () => updateBookmarks());
         });
 
-        container.appendChild(tab);
+        $container.appendChild($tab);
     });
 }
 
 export function updateBookmarks() {
-    const bookmarksContainer = document.getElementById('bookmark-container');
-    const recentsContainer = document.getElementById('recently-viewed-container');
+    const $bookmarksContainer = document.getElementById('bookmark-container');
+    const $recentsContainer = document.getElementById('recently-viewed-container');
 
     const bookmarks = storage.getFromStorageList('bookmarks');
     const recents = storage.getFromStorageList('recently-viewed');
     
     // Use the function for both lists
-    createTabFromList(bookmarks, bookmarksContainer, 'bookmarks');
-    createTabFromList(recents, recentsContainer);
+    createTabFromList(bookmarks, $bookmarksContainer, 'bookmarks');
+    createTabFromList(recents, $recentsContainer);
 }

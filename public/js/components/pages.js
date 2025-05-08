@@ -86,41 +86,43 @@ async function loadPageToElement(path, elementId, bookMarkable=true)
     const html = await loadPageHTML(path);
     if (!html) return;
 
-    const element = document.getElementById(elementId);
-    element.innerHTML = html;
+    const $element = document.getElementById(elementId);
+    $element.innerHTML = html;
     
-    const headerContainer = element.querySelector('.sticky-page-header');
-    const wrapper = headerContainer.querySelector('.flex-wrapper');
-    wrapper.style.flexDirection = 'row';
-    wrapper.style.justifyContent = 'space-between';
+    const $headerContainer = $element.querySelector('.sticky-page-header');
+    const $wrapper = $headerContainer.querySelector('.flex-wrapper');
+    $wrapper.style.flexDirection = 'row';
+    $wrapper.style.justifyContent = 'space-between';
     
     if (bookMarkable) {
-        const bookmark = document.createElement('i');
-        const bookmarks = storage.getFromStorageList('bookmarks');
+        const $button = document.createElement('button');
+        $button.classList.add('btn', 'btn-no-box-shadow', 'button-with-icon', 'rounded-circle', 'ripple', 'ripple-dark', 'ripple-centered', 'hover-glow');
+        addRippleToElement($button);
         
-        if (bookmarks.includes(path)) {
-            bookmark.classList.add('bi', 'bi-bookmark-fill');
-        } else {
-            bookmark.classList.add('bi', 'bi-bookmark');
-        }
-        
-        const button = document.createElement('button');
-        button.classList.add('btn', 'btn-no-box-shadow', 'button-with-icon', 'rounded-circle', 'ripple', 'ripple-dark', 'ripple-centered', 'hover-glow');
-        addRippleToElement(button);
-        
-        button.addEventListener('click', () => {
-            if (bookmark.classList.toggle('bi-bookmark')) {
+        const $icon = document.createElement('i');
+        $button.appendChild($icon);
+
+        $button.addEventListener('click', () => {
+            if ($icon.classList.toggle('bi-bookmark')) {
                 storage.removeFromStorageList('bookmarks', path)
             }
             
-            if (bookmark.classList.toggle('bi-bookmark-fill')) {
+            if ($icon.classList.toggle('bi-bookmark-fill')) {
                 storage.addToStorageList('bookmarks', path, true)
             }
 
             updateBookmarks();
         });
-        button.appendChild(bookmark);
-        wrapper.appendChild(button);
+
+        const bookmarks = storage.getFromStorageList('bookmarks');
+        
+        if (bookmarks.includes(path)) {
+            $icon.classList.add('bi', 'bi-bookmark-fill');
+        } else {
+            $icon.classList.add('bi', 'bi-bookmark');
+        }
+
+        $wrapper.appendChild($button);
     }
 
     const recents = storage.getFromStorageList('recently-viewed');
