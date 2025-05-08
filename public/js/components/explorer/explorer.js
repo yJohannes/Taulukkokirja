@@ -75,6 +75,7 @@ function getTabByPath(path) {
 }
 
 function openPath(path) {
+    path = path.replace('/pages', '').replace('pages/', '');
     const explorer = document.querySelector('#explorer-container');
     const parts = path.split('/'); // Split the path into parts for navigation
 
@@ -88,7 +89,9 @@ function openPath(path) {
         const tab = explorer.querySelector(tabClass);
         const dropdown = getTabDropdown(tab);
 
-        if (!dropdown.classList.contains('show')) {
+        if (!dropdown) {
+            tab.click();
+        } else if (dropdown && !dropdown.classList.contains('show')) {
             tab.click();
         }
     }
