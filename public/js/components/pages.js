@@ -1,6 +1,7 @@
 import { initTableHighlights } from './tables.js';
 import { initLatex } from '../latex/latex.js';
 import { addRippleToElement } from '../effects/ripple.js';
+import { updateBookmarks } from './bookmarks/index.js';
 import * as storage from './storage/index.js';
 
 export function sanitizePath(path) {
@@ -15,6 +16,7 @@ export function formatPathToHash(path) {
 }
 
 function formatLocationHashForFetch(hash) {
+    hash = decodeURIComponent(hash);
     hash = hash
         .replace('#/', '')
         .replaceAll('_', ' ');
@@ -61,6 +63,7 @@ async function loadPageHTML(path)
 }
 
 // Execute any inline scripts within injected HTML
+// Scripts will get the class 'injected' 
 function injectScripts() {
     document.querySelectorAll('script.injected').forEach(script => {
         script.remove();
@@ -77,7 +80,10 @@ function injectScripts() {
 
 async function loadPageToElement(path, elementId, bookMarkable=true)
 {
+    path = 'pages/' + path.replace('pages/', '');
+
     const html = await loadPageHTML(path);
+    if (!html) return;
 
     const element = document.getElementById(elementId);
     element.innerHTML = html;
@@ -104,26 +110,26 @@ async function loadPageToElement(path, elementId, bookMarkable=true)
         button.addEventListener('click', () => {
             if (bookmark.classList.toggle('bi-bookmark')) {
                 storage.removeFromStorageList('bookmarks', path)
-
             }
             
             if (bookmark.classList.toggle('bi-bookmark-fill')) {
-                storage.addToStorageList('bookmarks', path)
+                storage.addToStorageList('bookmarks', path, true)
             }
-            
+
+            updateBookmarks();
         });
         button.appendChild(bookmark);
         wrapper.appendChild(button);
     }
 
-    injectScripts();
     
     const newUrl = formatPathToHash(path);
     history.pushState(null, '', newUrl);
+    
     setPageTitleFromPath(path);
-
     initLatex();
     initTableHighlights();
+    injectScripts();
 }
 
 function initPageLoading()
@@ -142,7 +148,7 @@ function initPageLoading()
 
     window.addEventListener('popstate', () => {
         console.log("POPSTATE");
-        loadUrl();
+        // loadUrl();
     });
     
     window.addEventListener('load', () => {
@@ -153,12 +159,11 @@ function initPageLoading()
     window.addEventListener('hashchange', () => {
         console.log("HASH CHANGE")
 
-        loadUrl();
+        // loadUrl();
     });
 }
 
 export {
     loadPageToElement,
     initPageLoading,
-    formatPathToHash
 };
