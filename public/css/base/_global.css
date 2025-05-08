@@ -90,10 +90,6 @@ input {
     display: flex;
 }
 
-.btn.rounded-circle {
-    aspect-ratio: 1 / 1 !important;
-}
-
 .button-with-icon {
     display: flex;
     justify-content: center;
