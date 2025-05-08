@@ -1,18 +1,25 @@
 import { loadPageToElement } from '../pages.js';
 import { showSidebar }  from '../../layout/sidebar.js';
-import { createArrow } from '../arrow.js';
+import { createArrow } from '../common/arrow.js';
 import { addRippleToElement } from '../../effects/ripple.js';
 import { formatPathToHash } from '../pages.js';
+import { updateBookmarks } from '../bookmarks/index.js';
 
 import * as defs from './defs.js'
 import * as storage from '../storage/index.js';
+
 
 export function isDropdownTab(tab) {
     return (tab.parentElement.querySelector('ul') !== null);
 }
 
-function getTabDropdown(tab) {
-    return tab.parentElement.querySelector('ul');
+export function getTabDropdown(tab) {
+    return tab.parentElement.querySelector('ul') || null;
+}
+
+export function getTabParentDropdown(tab) {
+    return tab.parentElement.parentElement || null;
+
 }
 
 function setTabActivity(tab, boolActive) {
@@ -99,7 +106,7 @@ function handleTabClick(tab, isDropdown, parentElement)
     }
 }
 
-function createTab(textOrHTML, level, isDropdown, parentElement)
+function createTab(textOrHTML, level, isDropdown, path)
 {
     let tab;
     if (isDropdown) {
@@ -107,24 +114,19 @@ function createTab(textOrHTML, level, isDropdown, parentElement)
     } else {
         tab = document.createElement('a');
     }
+    
+    tab.setAttribute('data-path', path)
+    tab.setAttribute('href', formatPathToHash(path));
 
     tab.classList.add('btn', 'btn-light', 'explorer-tab', 'ripple');
     tab.style.setProperty('--level', level);
 
-    if (level === 0) tab.style.fontWeight = 'bold';
-
     const span = document.createElement('span');
     span.innerHTML = textOrHTML;
     tab.appendChild(span);
-
-    tab.addEventListener('click', () => handleTabClick(tab, isDropdown, parentElement))
     
     // Add arrow to dropdowns
-    if (isDropdown) {
-        // tab.style.display = 'flex';
-        // tab.style.justifyContent = 'space-between';
-        // tab.style.alignItems = 'center';
-        
+    if (isDropdown) {        
         const arrow = createArrow();
         tab.appendChild(arrow);
         tab.addEventListener('click', () => {
@@ -148,31 +150,28 @@ function generateTabs(data, parentElement, rootPath='') {
 
         let tab; 
         if (typeof data[key] === 'object' && data[key] !== null) {
-            tab = createTab(pageName, level, true, parentElement);    // Dropdown tab
+            tab = createTab(pageName, level, true, currentPath);    // Dropdown tab
+            tab.addEventListener('click', () => handleTabClick(tab, true, parentElement));
+            if (level === 0) tab.style.fontWeight = 'bold';
+
 
         } else {
-            tab = createTab(pageName, level, false, parentElement);   // Normal tab
-            tab.addEventListener('click', () => {
-            
-                const formatPath = (path) => {
-                    path = decodeURIComponent(path);
-                    path = path
-                        .replaceAll(' ', '_')
-                        .replaceAll('.html', '');
-                }
+            tab = createTab(pageName, level, false, currentPath);   // Normal tab
+            tab.addEventListener('click', () => handleTabClick(tab, false, parentElement));
 
-                const pagePath = 'pages/' + currentPath;
+            tab.addEventListener('click', () => {
+        
                 const hrefPath = window.location.href.split('/#/')[1] + '.html';
 
-                if (hrefPath !== pagePath.replaceAll(' ', '_'))
+                if (hrefPath !== currentPath.replaceAll(' ', '_'))
                 {
-                    loadPageToElement(pagePath, 'page-container');
+                    loadPageToElement(currentPath, 'page-container');
                 }
             });
         }
         
-        tab.setAttribute('data-path', currentPath)
-        tab.setAttribute('href', formatPathToHash('pages/' + currentPath));
+        tab.addEventListener('click', () => updateBookmarks());
+
         addRippleToElement(tab);
         
         li.appendChild(tab);
@@ -194,5 +193,4 @@ function generateTabs(data, parentElement, rootPath='') {
 export {
     createTab,
     generateTabs,
-    getTabDropdown,
 };
