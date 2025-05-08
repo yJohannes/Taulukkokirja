@@ -68,7 +68,7 @@ function generateResultView(matches, resultContainer) {
                 name = '<small><i>' + split[last-1] + '</i></small> / ' + name;
             }
 
-            tab = createTab(name.replace('.html', ''), 1, false, resultContainer);
+            $tab = explorer.createTab(name, 0, false, 'pages/' + match);
 
             tab.addEventListener('click', (e) => {
 
@@ -85,7 +85,7 @@ function generateResultView(matches, resultContainer) {
                 showExplorer(true);
                 showResults(false);
 
-                const parentPath = match.substring(0, match.lastIndexOf('/'));
+                const parentPath = 'pages/' + match.substring(0, match.lastIndexOf('/'));
 
                 openPath(parentPath);
                 getTabByPath(parentPath).scrollIntoView({
@@ -107,8 +107,8 @@ function generateResultView(matches, resultContainer) {
                 showExplorer(true);
                 showResults(false);
 
-                openPath(match);
-                getTabByPath(match).scrollIntoView({
+                explorer.openPath('pages/' + match);
+                explorer.getTabByPath('pages/' + match).scrollIntoView({
                     behavior: 'auto',     // smooth scrolling animation
                     block: 'center',        // align element to center of the viewport
                   });

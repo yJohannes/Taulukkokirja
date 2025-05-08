@@ -138,14 +138,17 @@ function createTab(textOrHTML, level, isDropdown, path)
 }
 
 // Recursive function to generate the tab list with collapsibility
-function generateTabs(data, parentElement, rootPath='') {
+function generateTabs(data, parentElement, rootPath='pages') {
     const ul = document.createElement('ul');
     ul.classList.add('explorer-ul');
+
+    data = data.pages || data; // Support both top-level and nested calls
+
 
     for (let key in data) {
         const pageName = key.replace('.html', '');
         const currentPath = rootPath ? rootPath + '/' + key : key;
-        const level = currentPath.split('/').length - 1;
+        const level = currentPath.split('/').length - 1 - 1; // sub 1 again because of pages as root 
         const li = document.createElement('li');
 
         let tab; 

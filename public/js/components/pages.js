@@ -11,7 +11,6 @@ export function sanitizePath(path) {
 }
 
 export function formatPathToHash(path) {
-    path = 'pages/' + path.replace('pages/', '');
     return '/#/' + path.replaceAll(' ', '_').replace('.html', '')
 }
 
@@ -80,7 +79,9 @@ function injectScripts() {
 
 async function loadPageToElement(path, elementId, bookMarkable=true)
 {
-    path = 'pages/' + path.replace('pages/', '');
+    if (!path.endsWith('.html')) {
+        explorer.openPath(path);
+    }
 
     const html = await loadPageHTML(path);
     if (!html) return;
@@ -136,7 +137,7 @@ async function loadPageToElement(path, elementId, bookMarkable=true)
         recents.pop();
 
     storage.setStorageItem('recently-viewed', recents);
-    
+
     const newUrl = formatPathToHash(path);
     history.pushState(null, '', newUrl);
     
@@ -149,13 +150,13 @@ async function loadPageToElement(path, elementId, bookMarkable=true)
 function initPageLoading()
 {
     const loadUrl = () => {
-        const url = formatLocationHashForFetch(window.location.hash);
+        let url = formatLocationHashForFetch(window.location.hash);
 
         if (!url || url === '/') {
             fetch('index.html');
             return;
         }
-    
+
         loadPageToElement(url, 'page-container');
         setPageTitleFromPath(url);
     }
@@ -167,7 +168,7 @@ function initPageLoading()
     
     window.addEventListener('load', () => {
         console.log("LOAD");
-        loadUrl();
+        // loadUrl();
     });
 
     window.addEventListener('hashchange', () => {

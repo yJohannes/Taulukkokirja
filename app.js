@@ -41,7 +41,7 @@ app.get('/api/pages-structure', (req, res) => {
 
   try {
     const pageStructure = getFolderStructure(pagesDir);
-    res.json(pageStructure);
+    res.json({ pages: pageStructure});
   } catch (err) {
     res.status(500).send('Error reading directory');
   }

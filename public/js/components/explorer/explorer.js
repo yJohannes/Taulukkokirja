@@ -75,14 +75,15 @@ function getTabByPath(path) {
 }
 
 function openPath(path) {
-    path = path.replace('/pages', '').replace('pages/', '');
     const explorer = document.querySelector('#explorer-container');
     const parts = path.split('/'); // Split the path into parts for navigation
-
     let joinPath = '';
 
     for (const part of parts) {
         joinPath = joinPath ? joinPath + '/' + part : part;
+
+        // Don't try to get the pages tab which doesn't exist
+        if (joinPath === 'pages') continue;
 
         const tabClass = `.explorer-tab[data-path="${joinPath}"]`;
 
@@ -145,6 +146,7 @@ async function loadExplorer(parentElement)
 {
     try {
         const structure = await loadExplorerStructure();
+        console.log(structure)
         const tabs = generateTabs(structure, parentElement);
         return tabs;
 
