@@ -20,5 +20,4 @@ export function init() {
     wrapper.childNodes.forEach(btn => {
         addRippleToElement(btn)
     })
-
 }
