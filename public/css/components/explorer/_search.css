@@ -33,8 +33,11 @@
     background-color: #f8f9fa;
 
     width: calc(100% + 1.5rem); /* Extend beyond container */
+    height: 100%;
     margin: 0 -0.75rem; /* Offset padding */
     padding-right: 3rem; /* Add space for the search icon */
+    padding-top: 0.75rem;
+    padding-bottom: 0.75rem;
     box-sizing: border-box; /* Includes padding in the total width */
 }
 
@@ -49,7 +52,7 @@
     right: -1rem;
     background: rgba(250, 249, 245, 0.3);
     z-index: -1;
-    backdrop-filter: blur(2px);
+    backdrop-filter: blur(1.4px);
 }
 
 #explorer-search:focus {
@@ -60,3 +63,6 @@
     width: 100%;
 }
 
+#explorer-container {
+    width: 100%;
+}
