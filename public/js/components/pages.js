@@ -90,13 +90,13 @@ async function loadPageToElement(path, elementId, bookMarkable=true)
     $element.innerHTML = html;
     
     const $headerContainer = $element.querySelector('.sticky-page-header');
-    const $wrapper = $headerContainer.querySelector('.flex-wrapper');
+    const $wrapper = $headerContainer.querySelector('.d-flex');
     $wrapper.style.flexDirection = 'row';
     $wrapper.style.justifyContent = 'space-between';
     
     if (bookMarkable) {
         const $button = document.createElement('button');
-        $button.classList.add('btn', 'btn-no-box-shadow', 'button-with-icon', 'rounded-circle', 'ripple', 'ripple-dark', 'ripple-centered', 'hover-glow');
+        $button.classList.add('btn', 'button-with-icon', 'rounded-circle', 'ripple', 'ripple-dark', 'ripple-centered', 'hover-glow');
         addRippleToElement($button);
         
         const $icon = document.createElement('i');
@@ -165,12 +165,12 @@ function initPageLoading()
 
     window.addEventListener('popstate', () => {
         console.log("POPSTATE");
-        // loadUrl();
+        loadUrl();
     });
     
     window.addEventListener('load', () => {
         console.log("LOAD");
-        // loadUrl();
+        loadUrl();
     });
 
     window.addEventListener('hashchange', () => {
