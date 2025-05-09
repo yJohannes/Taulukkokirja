@@ -25,7 +25,7 @@ export async function indexPages(miniSearchRef) {
 
     for (let path of paths) {
         try {
-            const response = await fetch('pages/' + path);
+            const response = await fetch(path);
             const html = await response.text();
             
             // Strip HTML to plain text
@@ -34,12 +34,9 @@ export async function indexPages(miniSearchRef) {
             const content = tempDiv.textContent || tempDiv.innerText || '';
             
             // Add to index
-            miniSearchRef.add({ id: path, title: formatPathLabel(path), content: content });
+            miniSearchRef.add({ id: path, title: formatPathLabel(path, false), content: content });
         } catch (err) {
             console.error(`Failed to fetch ${path}`, err);
         }
     }
-
-    miniSearchRef.add({ id: 'test-id', title: 'Test Title', content: 'This is some test content with fys' });
-
 }

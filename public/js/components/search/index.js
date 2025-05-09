@@ -5,11 +5,10 @@ let miniSearch;
 const searchConfig = {
     fields: ['title', 'content'],
     storeFields: ['id', 'title'], // what we want to get back in results
-    // searchOptions: {
-    //     boost: { title: 2 }, // boost title field importance
-    //     fuzzy: 0.1,
-    //     prefix: true
-    // }
+    searchOptions: {
+        fuzzy: 0.2,
+        prefix: true
+    }
 };
 
 export async function initSearch() {
@@ -17,8 +16,7 @@ export async function initSearch() {
 
     const savedIndex = localStorage.getItem('search-index');
     if (savedIndex) {
-        const parsedIndex = JSON.parse(savedIndex);
-        miniSearch.index = parsedIndex;
+        miniSearch = MiniSearch.loadJSON(savedIndex, searchConfig);
     } else {
         await indexPages(miniSearch);
         const serializedIndex = JSON.stringify(miniSearch.toJSON());
@@ -27,7 +25,9 @@ export async function initSearch() {
 }
 
 export function search(query) {
-    console.log(miniSearch.index)
-    console.log(miniSearch.search('fys'))
-    return miniSearch.search(query, searchConfig);
+    if (localStorage.getItem('search-index')) {
+        return miniSearch.search(query);
+    } else {
+        console.error('Search index not initialized.');
+    }
 }
