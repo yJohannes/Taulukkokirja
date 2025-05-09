@@ -146,7 +146,6 @@ async function loadExplorer(parentElement)
 {
     try {
         const structure = await loadExplorerStructure();
-        console.log(structure)
         const tabs = generateTabs(structure, parentElement);
         return tabs;
 
