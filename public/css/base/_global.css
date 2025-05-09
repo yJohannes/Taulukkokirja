@@ -1,23 +1,14 @@
+/** https://imagecolorpicker.com/color-code/96a1ff */
+/** https://www.anthropic.com/claude */
+
 :root {
     --color-primary: #000000;
     --color-secondary: #ffffff;
-    --color-accent: #4b5180;
-    --color-focus: rgba(75, 81, 128, 0.3);
-    --color-accent: #021CA4;
-    --color-focus: rgba(2, 28, 164, 0.3);
-    --color-accent: rgb(184, 28, 67);
-    --color-focus: rgb(184, 28, 67, 0.3);
-    --color-accent: #2E6F40; /* rgb(46, 111, 64 */
+    --color-accent: rgb(46, 111, 64);
     --color-focus: rgba(46, 111, 64, 0.3);
-
-    /* --color-accent: #E2725B; */
-    /* --color-accent: #DCAE96; */
     --color-background: #FAF9F5;
     --color-text: #000000;
 }
-
-/** https://imagecolorpicker.com/color-code/96a1ff */
-/** https://www.anthropic.com/claude */
 
 /* Scrollbar */
 ::-webkit-scrollbar-thumb {
@@ -47,7 +38,6 @@ html {
     color: rgb(255, 255, 255);
 }
 
-/*  */
 body {
     background-color: var(--color-background);
     overflow: hidden;
@@ -86,10 +76,6 @@ input {
     color: var(--color-secondary) !important;
 }
 
-.flex-wrapper {
-    display: flex;
-}
-
 .button-with-icon {
     display: flex;
     justify-content: center;
@@ -103,21 +89,14 @@ input {
     color: black;
 }
 
+.button-with-icon:hover {
+    color: var(--color-accent);
+}
+
 .button-with-icon > i {
     font-size: 150%;
 }
 
-.btn-no-box-shadow:focus {
-    box-shadow: none !important;
-}
-
-.btn:focus {
-    box-shadow: none !important;
-}
-
-.btn:focus-visible {
-    box-shadow: 0 0 0 2px var(--color-focus) !important;
-}
 
 .hover-glow:hover::before {
     content: "";
@@ -126,12 +105,4 @@ input {
     width: 100%; height: 100%;
     z-index: 1;
     background-color: rgba(200, 200, 200, 0.1) !important;
-}
-
-@media (max-width: 768px) {
-    .btn-sm {
-        padding: 0.375rem 0.75rem;
-        font-size: 1rem;
-        line-height: 1.5;
-    }
 }
