@@ -1,0 +1,15 @@
+.btn:focus {
+    box-shadow: none !important;
+}
+
+.btn:focus-visible {
+    box-shadow: 0 0 0 2px var(--color-focus) !important;
+}
+
+@media (max-width: 768px) {
+    .btn-sm {
+        padding: 0.375rem 0.75rem;
+        font-size: 1rem;
+        line-height: 1.5;
+    }
+}
