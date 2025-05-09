@@ -4,25 +4,32 @@ export * from './explorer.js'
 export * from './search.js'
 export * from './tab.js'
 
-export function formatPathLabel(tabPath) {
+export function formatPathLabel(tabPath, withHTML=true) {
     tabPath = decodeURIComponent(tabPath);
     const split = tabPath.split('/')
     const last = split.length - 1;
+    const baseName = tabPath.endsWith('.html') ? split[last].replace('.html', '') : split[last];
+    const parentName = last > 0 ? split[last - 1] : '';
+
+    if (!withHTML) {
+        let plainTextName = baseName;
+        if (parentName) {
+            plainTextName += ' | ' + parentName;
+        }
+        return plainTextName;
+    }
 
     if (tabPath.endsWith('.html')) {
-        let name = '<b>' + split[last] + '</b>';
-        if (last > 0) {
-            name = name + ' | <small><i>' + split[last-1] + '</i></small>';
+        let formatted = '<b>' + baseName + '</b>';
+        if (parentName) {
+            formatted = formatted + ' | <small><i>' + parentName + '</i></small>';
         }
-        name = name.replace('.html', '');
-        return name;
+        return formatted;
     } else {
-        let name = split[last];
-        if (last > 0) {
-            name = name + ' | <small>' + split[last-1] + '</small>';
+        let formatted = baseName;
+        if (parentName) {
+            formatted = formatted + ' | <small>' + parentName + '</small>';
         }
-        name = '<i>' + name + '</i>';
-
-        return name;
+        return '<i>' + formatted + '</i>';
     }
 }
