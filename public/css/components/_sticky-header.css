@@ -2,7 +2,7 @@
 
 .sticky-page-header {
     position: sticky;
-    top: 1rem; /* match page container padding */
+    top: 0;
     z-index: 50;
 } 
 
@@ -25,6 +25,5 @@
 }
 
 .sticky-page-header hr {
-    margin-top: 0.5rem !important;
-    margin-bottom: 2rem;
+    margin-top: 0.5rem;
 }
