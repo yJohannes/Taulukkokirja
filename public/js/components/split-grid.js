@@ -21,9 +21,8 @@ export function initSplitGrid() {
 
         // These match min-widths described in stylesheets
         columnMinSizes: {
-            0: 275, // Sidebar
-            2: 500, // Main + Editor
-            4: 260, // Sidebar 2
+            0: 250, // Sidebar
+            4: 250, // Sidebar 2
         },
 
         rowMinSizes: {
