@@ -2,3 +2,18 @@ Fix hashchange, popstate, etc. This way anchor don't need to have an event liste
 loading a page. E.g. explorer/search.js L77, tab creation in general.
 
 tab.js L27 (activeTabs.forEach)
+
+wdoqdwq
+dwwdqqwdqw
+aowidjawoidja
+dawdpawawdj
+
+const $ = (id) => document.getElementById(id);
+const $icon = $('explorer-search-icon');
+
+doajdas
+debugasd
+apdojaspdajd
+adoajspdao
+djasdadjad
+sdjapsdoasjdpojaddjasdas
