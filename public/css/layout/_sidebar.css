@@ -3,49 +3,16 @@
     position: sticky;
     top: 0;
     height: calc(100vh - 56px); /* header */
+    min-width: 250px;
     padding: 1.25rem;
     overflow-y: auto;
     z-index: 60;
-}
-
-
-#sidebar-1 {
-    min-width: 275px;
-}
-
-#sidebar-2 {
-    min-width: 260px;
-    padding-top: 0;
 }
 
 #sidebar-2.show {
     display: block !important;
 }
 
-/* Hide sidebar only on smaller screens */
-@media (max-width: 768px) {
-
-    #sidebar-1,
-    #splitter1 {
-        display: none; /* REMOVE from grid layout */
-    }
-
-    #sidebar-1 {
-        position: fixed; /* Detach from grid */
-        top: 56px;       /* Align below navbar */
-        left: 0;
-    }  
-
-    #sidebar-1.show {
-        width: 100%;
-        display: block;
-    }
-
-    #content-wrapper {
-        /* Make content full width */
-        grid-template-columns: minmax(0, 1fr); 
-    }
-}
 
 /* Show hamburger icon on smaller screens */
 #sidebar-1-toggle {

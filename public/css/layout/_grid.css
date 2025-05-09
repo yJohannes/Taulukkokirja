@@ -20,3 +20,33 @@
 
     overflow-y: hidden;
 }
+
+
+@media (max-width: 768px) {
+    #content-wrapper {
+        grid-template-columns: 1fr;
+        grid-template-rows: 2fr 1px 1fr;
+        height: calc(100vh - 56px); /* navbar */
+        grid-template-areas:
+            "main-content"
+            "gutter-row-1"
+            "editor      ";
+    }
+
+    .sidebar {
+        display: none; 
+        position: fixed; /* Detach from grid */
+        top: 56px;       /* Align below navbar */
+        left: 0;
+    }  
+
+    .sidebar.show {
+        width: 100%;
+        display: block;
+    }
+
+    #content-wrapper {
+        /* Make content full width */
+        grid-template-columns: minmax(0, 1fr); 
+    }
+}
