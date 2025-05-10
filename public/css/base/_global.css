@@ -71,6 +71,17 @@ input {
     color: black !important;
 }
 
+mark {
+    background-color: var(--color-focus);
+    color: inherit;
+    padding-left: 1px;
+    padding-right: 1px;
+}
+
+th mark {
+    background-color: var(--color-accent);
+}
+
 .active {
     background-color: var(--color-primary) !important;
     color: var(--color-secondary) !important;
