@@ -4,7 +4,7 @@ export * from './explorer.js'
 export * from './search.js'
 export * from './tab.js'
 
-export function formatPathLabel(tabPath, withHTML=true) {
+export function formatPathLabel(tabPath, withHTML=true, separator=', ') {
     tabPath = decodeURIComponent(tabPath);
     const split = tabPath.split('/')
     const last = split.length - 1;
@@ -14,22 +14,22 @@ export function formatPathLabel(tabPath, withHTML=true) {
     if (!withHTML) {
         let plainTextName = baseName;
         if (parentName) {
-            plainTextName += ' | ' + parentName;
+            plainTextName += ` ${separator} ${parentName}`;
         }
         return plainTextName;
     }
 
     if (tabPath.endsWith('.html')) {
-        let formatted = '<b>' + baseName + '</b>';
+        let formatted = `<b>${baseName}</b>`;
         if (parentName) {
-            formatted = formatted + ' | <small><i>' + parentName + '</i></small>';
+            formatted = `${formatted}${separator}<small><i>${parentName}</i></small>`
         }
         return formatted;
     } else {
         let formatted = baseName;
         if (parentName) {
-            formatted = formatted + ' | <small>' + parentName + '</small>';
+            formatted = `${formatted}${separator}<small>${parentName}</small>`
         }
-        return '<i>' + formatted + '</i>';
+        return `<i>${formatted}</i>`;
     }
 }
