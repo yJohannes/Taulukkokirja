@@ -1,31 +1,28 @@
-import { initTableHighlights } from './tables.js';
-import { initLatex } from '../latex/latex.js';
-import { addRippleToElement } from '../effects/ripple.js';
-import { updateBookmarks } from './bookmarks/index.js';
-import * as storage from './storage/index.js';
+import { initTableHighlights } from '/js/components/tables.js';
+import { initLatex } from '/js/latex/latex.js';
+import { addRippleToElement } from  '/js/effects/ripple.js';
+import { updateBookmarks } from '/js/components/bookmarks/index.js';
+import { highlightTerms } from '../effects/highlight-terms.js';
+import * as storage from '/js/components/storage/index.js';
+import * as pages from './index.js';
 
-export function sanitizePath(path) {
-    path = decodeURIComponent(path);
-    path = path.replace('#/', '').replaceAll('_', ' ').replace('.html', '');
-    return path;
+// Execute any inline scripts within injected HTML
+// Scripts will get the class 'injected' 
+function injectScripts() {
+    document.querySelectorAll('script.injected').forEach(script => {
+        script.remove();
+    });
+
+    const scripts = document.querySelectorAll('#page-container script');
+    scripts.forEach(script => {
+        const newScript = document.createElement('script');
+        newScript.classList.add('injected');
+        newScript.textContent = script.textContent;
+        document.body.appendChild(newScript);
+    });
 }
 
-export function formatPathToHash(path) {
-    return '/#/' + path.replaceAll(' ', '_').replace('.html', '')
-}
-
-function formatLocationHashForFetch(hash) {
-    hash = decodeURIComponent(hash);
-    hash = hash
-        .replace('#/', '')
-        .replaceAll('_', ' ');
-    
-    if (!hash) return '';
-
-    return hash += '.html';
-}
-
-function setPageTitleFromPath(path) {
+export function setPageTitleFromPath(path) {
     const splitPath = path.split('/');
     let pageName = splitPath.pop().replace('.html', '');
     let folderName = splitPath.pop();
@@ -41,8 +38,7 @@ function setPageTitleFromPath(path) {
 
 }
 
-async function loadPageHTML(path)
-{
+export async function loadPageHTML(path) {
     try
     {
         const response = await fetch(path);
@@ -61,30 +57,20 @@ async function loadPageHTML(path)
     }
 }
 
-// Execute any inline scripts within injected HTML
-// Scripts will get the class 'injected' 
-function injectScripts() {
-    document.querySelectorAll('script.injected').forEach(script => {
-        script.remove();
-    });
-
-    const scripts = document.querySelectorAll('#page-container script');
-    scripts.forEach(script => {
-        const newScript = document.createElement('script');
-        newScript.classList.add('injected');
-        newScript.textContent = script.textContent;
-        document.body.appendChild(newScript);
-    });
-}
-
-async function loadPageToElement(path, elementId, bookMarkable=true)
+export async function loadPageToElement(path, elementId, bookMarkable=true)
 {
+    console.log('Loading page to element')
+
     if (!path.endsWith('.html')) {
         explorer.openPath(path);
     }
 
     const html = await loadPageHTML(path);
-    if (!html) return;
+    if (!html || html === 'Error loading page') {
+        const $element = document.getElementById(elementId);
+        $element.innerHTML = html;
+        return
+    };
 
     const $element = document.getElementById(elementId);
     $element.innerHTML = html;
@@ -139,9 +125,6 @@ async function loadPageToElement(path, elementId, bookMarkable=true)
         recents.pop();
 
     storage.setStorageItem('recently-viewed', recents);
-
-    const newUrl = formatPathToHash(path);
-    history.pushState(null, '', newUrl);
     
     setPageTitleFromPath(path);
     initLatex();
@@ -149,23 +132,31 @@ async function loadPageToElement(path, elementId, bookMarkable=true)
     injectScripts();
 }
 
-function initPageLoading()
+export function initPageLoading()
 {
-    const loadUrl = () => {
-        let url = formatLocationHashForFetch(window.location.hash);
+    const loadUrl = async () => {
+        let url = pages.formatLocationHashForFetch(window.location.hash);
 
         if (!url || url === '/') {
             fetch('index.html');
             return;
         }
 
-        loadPageToElement(url, 'page-container');
+        // const newUrl = pages.formatPathToHash(url);
+        // history.pushState(null, '', newUrl);
+        await loadPageToElement(url, 'page-container');
         setPageTitleFromPath(url);
+
+        const terms = pages.getDecodedSearchParams('highlight');
+        if (terms) {
+            console.log(terms)
+            highlightTerms(document.getElementById('page-container'), terms);
+        }
     }
 
     window.addEventListener('popstate', () => {
-        console.log("POPSTATE");
-        loadUrl();
+        // console.log("POPSTATE");
+        // loadUrl();
     });
     
     window.addEventListener('load', () => {
@@ -175,12 +166,6 @@ function initPageLoading()
 
     window.addEventListener('hashchange', () => {
         console.log("HASH CHANGE")
-
-        // loadUrl();
+        loadUrl();
     });
 }
-
-export {
-    loadPageToElement,
-    initPageLoading,
-};
