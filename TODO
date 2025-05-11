@@ -3,17 +3,7 @@ loading a page. E.g. explorer/search.js L77, tab creation in general.
 
 tab.js L27 (activeTabs.forEach)
 
-wdoqdwq
-dwwdqqwdqw
-aowidjawoidja
-dawdpawawdj
+openPath also loads pages?
 
 const $ = (id) => document.getElementById(id);
 const $icon = $('explorer-search-icon');
-
-doajdas
-debugasd
-apdojaspdajd
-adoajspdao
-djasdadjad
-sdjapsdoasjdpojaddjasdas
