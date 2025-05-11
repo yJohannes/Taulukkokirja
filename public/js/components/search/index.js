@@ -6,7 +6,7 @@ const searchConfig = {
     fields: ['title', 'content'],
     storeFields: ['id', 'title'], // what we want to get back in results
     searchOptions: {
-        fuzzy: 0.2,
+        fuzzy: 0.1,
         prefix: true
     }
 };
