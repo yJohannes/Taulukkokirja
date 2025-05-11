@@ -1,8 +1,7 @@
-import { loadPageToElement } from '../pages.js';
 import { showSidebar }  from '../../layout/sidebar.js';
 import { createArrow } from '../common/arrow.js';
 import { addRippleToElement } from '../../effects/ripple.js';
-import { formatPathToHash } from '../pages.js';
+import { formatPathToHash } from '/js/pages/index.js';
 import { updateBookmarks } from '../bookmarks/index.js';
 
 import * as defs from './defs.js'
@@ -159,20 +158,9 @@ function generateTabs(data, parentElement, rootPath='pages') {
             tab.addEventListener('click', () => handleTabClick(tab, true, parentElement));
             if (level === 0) tab.style.fontWeight = 'bold';
 
-
         } else {
             tab = createTab(pageName, level, false, currentPath);   // Normal tab
             tab.addEventListener('click', () => handleTabClick(tab, false, parentElement));
-
-            tab.addEventListener('click', () => {
-        
-                const hrefPath = window.location.href.split('/#/')[1] + '.html';
-
-                if (hrefPath !== currentPath.replaceAll(' ', '_'))
-                {
-                    loadPageToElement(currentPath, 'page-container');
-                }
-            });
         }
         
         tab.addEventListener('click', () => updateBookmarks());
