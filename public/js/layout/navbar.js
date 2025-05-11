@@ -1,6 +1,6 @@
 import { addRippleToElement } from "../effects/ripple.js"
 import { addToolTip } from "../components/common/tooltip.js"
-import { loadPageToElement } from "../components/pages.js"
+import { loadPageToElement } from "../pages/index.js"
 import { toggleEditor } from "./editor.js"
 import { updateBookmarks } from "../components/bookmarks/index.js"
 
