@@ -173,9 +173,9 @@
     function setColor(color) {
         let colorFocus;
         if (color.startsWith('rgb')) {
-            colorFocus = color.replace('rgb', 'rgba').replace(')', ', 0.3)');
+            colorFocus = color.replace('rgb', 'rgba').replace(')', ', 0.2)');
         } else {
-            colorFocus = color + "4D" // Append 20 (hex alpha) for 0.3 opacity
+            colorFocus = color + "20" // Append 20 (hex alpha) for 0.3 opacity
         }
 
         document.documentElement.style.setProperty('--color-accent', color);
