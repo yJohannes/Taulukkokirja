@@ -41,8 +41,6 @@ function createTabsFromList(pathsList, $container, deleteTargetListName=null) {
         }
 
         $tab.addEventListener('click', (e) => {
-            loadPageToElement(path, 'page-container');
-
             explorer.openPath(path);
             $tab.scrollIntoView({
                 behavior: 'auto',
