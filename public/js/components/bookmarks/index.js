@@ -49,7 +49,7 @@ function createTabsFromList(pathsList, $container, deleteTargetListName=null) {
                 block: 'center'
             });
 
-            $tab.addEventListener('click', () => updateBookmarks());
+            updateBookmarks();
         });
 
         $container.appendChild($tab);
