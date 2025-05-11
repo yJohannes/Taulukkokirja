@@ -1,8 +1,8 @@
-import { loadPageToElement } from '../pages.js';
 import { addRippleToElement } from '../../effects/ripple.js';
 import { updateBookmarks } from '../bookmarks/index.js';
-import * as explorer from './index.js'
+import * as explorer from './index.js';
 import * as search from '../search/index.js';
+import * as pages from '/js/pages/index.js';
 
 function clearSearch() {
     document.querySelector("#explorer-search").value = '';
@@ -60,10 +60,6 @@ function generateResultView(matches, $container) {
     }
 
     const maxScore = Math.max(...matches.map(r => r.score));
-    // let maxScore = 0;
-    // for (const match of matches) {
-        // if (match.score > maxScore) maxScore = match.score;
-    // }
 
     function getHeatColor(score, max) {
         const t = score / max; // Normalize to [0, 1]
@@ -78,19 +74,21 @@ function generateResultView(matches, $container) {
 
     for (const match of matches) {
         const path = match.id;
-        const score = match.score.toFixed(2);
+        const score = Math.round(match.score);
 
         let $tab;
         if (path.endsWith('.html')) {
             const name = explorer.formatPathLabel(path);
 
             $tab = explorer.createTab(name, 0, false, path);
-
             $tab.addEventListener('click', (e) => {
+                const tabHref = $tab.getAttribute('href');
+                $tab.setAttribute('href', tabHref + `?highlight=${pages.encodeSearchParams(match.terms)}`)
 
-                if (e.button === 0) {
-                    loadPageToElement(path, 'page-container');
-                }
+                // if (e.button === 0) {
+                    // const $pageContainer = document.getElementById('page-container');
+                    // highlightTerms($pageContainer, match.terms);
+                // }
 
                 updateBookmarks();
             });
@@ -133,36 +131,39 @@ function generateResultView(matches, $container) {
         }
 
         $tab.style.setProperty('padding', '0.75rem', 'important');
+        $tab.style.setProperty('padding-right', '2rem', 'important');
         addRippleToElement($tab);
 
         const color = getHeatColor(match.score, maxScore);
-        const $circle = document.createElement('div');
-        $circle.innerText = match.score.toFixed(0);
+        const $scoreBadge = document.createElement('div');
+        $scoreBadge.innerText = score;
 
-        Object.assign($circle.style, {
+        Object.assign($scoreBadge.style, {
             position: 'absolute',
+            right: '0',
+            top: '50%',
+            transform: 'translateY(-50%)',
+
             borderTopLeftRadius: '4px',
             borderBottomLeftRadius: '4px',
+            paddingTop: '0.1rem',
+            paddingBottom: '0.1rem',
             paddingLeft: '0.25rem',
             paddingRight: '0.25rem',
 
             backgroundColor: color,
-            top: '50%',
-            transform: 'translateY(-50%)',
-            right: '-1px',
         });
 
-        // Attach circle inside the button (relative positioning required)
-        $tab.appendChild($circle);
+        $tab.appendChild($scoreBadge);
         $container.appendChild($tab);
     }
 }
 
 function onValueChanged(event) {
-    const query = event.target.value;
     const $searchIcon = document.getElementById('explorer-search-icon');
     const $clearIcon = document.getElementById('explorer-clear-search');
-
+    const query = event.target.value;
+    
     if (query.length <= 0) {
         explorer.showExplorer(true);
         showResults(false);
