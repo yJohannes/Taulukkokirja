@@ -1,11 +1,6 @@
-import * as storage from '../storage/index.js';
-import { loadPageToElement,  } from '../pages.js';
-import { sanitizePath } from '../pages.js';
 import { addRippleToElement } from '../../effects/ripple.js';
-
+import * as storage from '../storage/index.js';
 import * as explorer from '../explorer/index.js';
-
-
 
 function createTabsFromList(pathsList, $container, deleteTargetListName=null) {
     $container.innerHTML = '';
