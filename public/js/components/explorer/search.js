@@ -74,7 +74,7 @@ function generateResultView(matches, $container) {
 
     for (const match of matches) {
         const path = match.id;
-        const score = Math.round(match.score);
+        const score = match.score.toFixed(1); Math.round(match.score);
 
         let $tab;
         if (path.endsWith('.html')) {
@@ -84,12 +84,6 @@ function generateResultView(matches, $container) {
             $tab.addEventListener('click', (e) => {
                 const tabHref = $tab.getAttribute('href');
                 $tab.setAttribute('href', tabHref + `?highlight=${pages.encodeSearchParams(match.terms)}`)
-
-                // if (e.button === 0) {
-                    // const $pageContainer = document.getElementById('page-container');
-                    // highlightTerms($pageContainer, match.terms);
-                // }
-
                 updateBookmarks();
             });
 
@@ -131,7 +125,7 @@ function generateResultView(matches, $container) {
         }
 
         $tab.style.setProperty('padding', '0.75rem', 'important');
-        $tab.style.setProperty('padding-right', '2rem', 'important');
+        $tab.style.setProperty('padding-right', '3rem', 'important');
         addRippleToElement($tab);
 
         const color = getHeatColor(match.score, maxScore);
