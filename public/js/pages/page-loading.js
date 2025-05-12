@@ -148,8 +148,7 @@ export function initPageLoading()
         setPageTitleFromPath(url);
 
         const terms = pages.getDecodedSearchParams('highlight');
-        if (terms) {
-            console.log(terms)
+        if (terms.length > 0) {
             highlightTerms(document.getElementById('page-container'), terms);
         }
     }
