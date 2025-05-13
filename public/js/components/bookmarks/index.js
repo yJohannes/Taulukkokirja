@@ -18,6 +18,7 @@ function createTabsFromList(pathsList, $container, deleteTargetListName=null) {
             const $delete = document.createElement('button');
             $delete.classList.add('btn', 'rounded-circle', 'ripple', 'ripple-dark', 'ripple-centered', 'hover-glow')
             $delete.classList.add('button-with-icon');
+            $delete.style.fontSize = '1rem';
             addRippleToElement($delete);
 
             $delete.addEventListener('click', (e) => {
