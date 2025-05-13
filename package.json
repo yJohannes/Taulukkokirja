@@ -6,7 +6,7 @@
     "mathjax-node": "^2.1.1",
     "minisearch": "^7.1.2"
   },
-  "name": "table-book",
+  "name": "taulukkokirja",
   "version": "1.0.0",
   "main": "app.js",
   "directories": {
