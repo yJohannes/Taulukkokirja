@@ -9,11 +9,6 @@
     z-index: 60;
 }
 
-#sidebar-2.show {
-    display: block !important;
-}
-
-
 /* Show hamburger icon on smaller screens */
 #sidebar-1-toggle {
     /* Hidden by default */
