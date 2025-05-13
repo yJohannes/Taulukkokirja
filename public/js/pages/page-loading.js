@@ -39,8 +39,7 @@ export function setPageTitleFromPath(path) {
 }
 
 export async function loadPageHTML(path) {
-    try
-    {
+    try {
         const response = await fetch(path);
 
         if (!response.ok) {
@@ -49,9 +48,7 @@ export async function loadPageHTML(path) {
         const html = await response.text();
 
         return html;
-    }
-    catch (error)
-    {
+    } catch (error) {
         console.error('Error loading page:', error);
         return 'Error loading page';
     }
