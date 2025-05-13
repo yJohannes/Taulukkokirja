@@ -22,9 +22,19 @@ function showResults(bool) {
 function generateResultView(matches, $container) {
     $container.innerHTML = '';
     $container.innerHTML += `
-        <div style="display: flex; justify-content: space-between; align-items: center; padding: 1rem;">
+        <div style="display: flex; justify-content: space-between; align-items: center; padding: 1rem; padding-left: 0.75rem; padding-right: 0;">
             <p style="margin: 0"><b>Haun tulokset</b></p>
-            <div class="rounded-pill" style="display: inline-block; font-size: 75%; white-space: nowrap; background-color: var(--color-primary); color: var(--color-secondary); padding: 0.4rem 0.6rem;">
+            <div
+                style="
+                    display: inline-block;
+                    white-space: nowrap;
+                    background-color: var(--color-primary);
+                    color: var(--color-secondary);
+                    padding: 0.4rem 0.6rem;
+                    border-top-left-radius: 4px;
+                    border-bottom-left-radius: 4px;
+                "
+            >
                 ${matches.length} osumaa
             </div>
         </div>
