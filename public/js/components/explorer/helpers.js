@@ -1,3 +1,4 @@
+import { getTabDropdown } from './index.js';
 import * as defs from './defs.js';
 import * as storage from '../storage/index.js';
 
@@ -83,7 +84,7 @@ export function openPath(path) {
         const tabClass = `.explorer-tab[data-path="${joinPath}"]`;
 
         const $tab = $explorer.querySelector(tabClass);
-        const $dropdown = getTabDropdown(tab);
+        const $dropdown = getTabDropdown($tab);
 
         if (!$dropdown) {
             $tab.click();

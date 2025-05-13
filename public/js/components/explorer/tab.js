@@ -22,14 +22,14 @@ export function getTabParentDropdown($tab) {
 }
 
 export function setTabActivity($tab, isActive) {
-    if (isActive) {
-        activeTabs.forEach(t => {
-            t.classList.remove(defs.ACTIVE);
+    const $activeTabs = $parentElement.querySelectorAll(`.${defs.ACTIVE}`);
 
-            // Not a dropdown tab
-            if (getTabDropdown($tab) == null) {
+    if (isActive) {
+        $activeTabs.forEach($t => {
+            $t.classList.remove(defs.ACTIVE);
+
+            if (getTabDropdown($tab) == null) // Not a dropdown tab
                 storage.removeFromStorageList('show-states', t.getAttribute('data-path'));
-            }
         });
     }
 }
