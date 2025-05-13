@@ -1,36 +1,44 @@
-import { addRippleToElement } from "../effects/ripple.js"
-import { addToolTip } from "../components/common/tooltip.js"
-import { loadPageToElement } from "../pages/index.js"
-import { toggleEditor } from "./editor.js"
-import { updateBookmarks } from "../components/bookmarks/index.js"
+import { addRippleToElement } from "../effects/ripple.js";
+import { addToolTip } from "../components/common/tooltip.js";
+import { toggleEditor } from "./editor.js";
+import { updateBookmarks } from "../components/bookmarks/index.js";
 
-function initNavbar()
-{
-    const sidebar2 = document.getElementById('sidebar-2')
-    const editor = document.getElementById('latex-editor')
-    const bookmarks = document.getElementById('bookmarks')
+export function initNavbar() {
+    const $sidebar1Toggle = document.getElementById('sidebar-1-toggle');
+    const $sidebar1 = document.getElementById('sidebar-1');
+    const $sidebar2 = document.getElementById('sidebar-2');
+    const $editor = document.getElementById('latex-editor');
+    const $bookmarks = document.getElementById('bookmarks');
+    const $settings = document.getElementById('settings');
 
-    editor.addEventListener('click', () => {
-        toggleEditor()
-    })
-
-    bookmarks.addEventListener('click', () => {
+    $sidebar1Toggle.addEventListener('click', () => {
         updateBookmarks();
         
-        sidebar2.classList.toggle('show')
+        $sidebar2.classList.remove('show');
+        // sidebar.js handles the toggling logic
+    });
+
+    
+    $bookmarks.addEventListener('click', () => {
+        updateBookmarks();
+        
+        $sidebar1.classList.remove('show');
+        $sidebar2.classList.toggle('show');
     });
     
-    // loadPageToElement('Kirjanmerkit.html', 'sidebar2-content', false)
-    
-    let navs = [];
-    navs.push(editor);
-    navs.push(bookmarks);
-    navs.push(document.getElementById('settings'))
-    navs.push(document.getElementById('sidebar-1-toggle'))
-    navs.forEach(nav => {
-        addToolTip(nav, 'bottom')
-        addRippleToElement(nav)
+    $editor.addEventListener('click', () => {
+        toggleEditor();
     })
-}
 
-export { initNavbar };
+    let navs = [
+        $editor,
+        $bookmarks,
+        $settings,
+        $sidebar1Toggle,
+    ];
+
+    navs.forEach($nav => {
+        addToolTip($nav, 'bottom');
+        addRippleToElement($nav);
+    });
+}

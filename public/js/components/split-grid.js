@@ -31,9 +31,9 @@ export function initSplitGrid() {
         },
 
         onDragStart: () => {
-            const hidden = document.querySelectorAll('.explorer-dropdown:not(.show)');
-            hidden.forEach(element => {
-                element.classList.add('hard-hide');
+            const $hidden = document.querySelectorAll('.explorer-dropdown:not(.show)');
+            $hidden.forEach($element => {
+                $element.classList.add('hard-hide');
             })
         },
 
@@ -42,9 +42,9 @@ export function initSplitGrid() {
         },
 
         onDragEnd: () => {
-            const hidden = document.querySelectorAll('.explorer-dropdown:not(.show).hard-hide');
-            hidden.forEach(element => {
-                element.classList.remove('hard-hide');
+            const $hidden = document.querySelectorAll('.explorer-dropdown:not(.show).hard-hide');
+            $hidden.forEach($element => {
+                $element.classList.remove('hard-hide');
             })
 
             localStorage.setItem('grid-template-columns', document.getElementById('content-wrapper').style.gridTemplateColumns);

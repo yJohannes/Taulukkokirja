@@ -79,10 +79,12 @@ export async function loadPageToElement(path, elementId, bookMarkable=true)
     const $wrapper = $headerContainer.querySelector('.d-flex');
     $wrapper.style.flexDirection = 'row';
     $wrapper.style.justifyContent = 'space-between';
+    $wrapper.style.alignItems = 'center';
     
     if (bookMarkable) {
         const $button = document.createElement('button');
         $button.classList.add('btn', 'button-with-icon', 'rounded-circle', 'ripple', 'ripple-dark', 'ripple-centered', 'hover-glow');
+        $button.style.fontSize = '2rem';
         addRippleToElement($button);
         
         const $icon = document.createElement('i');
