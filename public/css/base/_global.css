@@ -29,13 +29,24 @@ html {
 
 /* Selection */
 ::selection {
-    background: var(--color-primary);
+    background: black;
     color: white;
+}
+
+th::selection {
+    background: white;
+    color: black;
 }
 
 ::-moz-selection {
     background: var(--color-primary);
     color: white;
+}
+
+th::-moz-selection {
+    background: white;
+    color: black;
+
 }
 
 body {
@@ -67,19 +78,46 @@ h6 {
     font-size: 1rem;
 }
 
+@media (max-width: 768px) {
+    h1 {
+        font-size: 1.5rem;
+    }
+    
+    h2 {
+        font-size: 1.25rem;
+    }
+    
+    h3 {
+        font-size: 1.15rem;
+    }
+    
+    h4 {
+        font-size: 1rem;
+    }
+    
+    h5 {
+        font-size: 0.75rem;
+    }
+    
+    h6 {
+        font-size: 1rem;
+    }
+}
+
 input {
     color: black !important;
 }
 
 mark {
-    background-color: var(--color-focus);
+    background-color: rgba(255, 255, 0, 0.4);
     color: inherit;
     padding-left: 1px;
     padding-right: 1px;
 }
 
 th mark {
-    background-color: var(--color-accent);
+    background-color: #ff6; /* pale yellow */
+    color: black;
 }
 
 .active {
@@ -105,7 +143,7 @@ th mark {
 }
 
 .button-with-icon > i {
-    font-size: 150%;
+    font-size: 85%;
 }
 
 
