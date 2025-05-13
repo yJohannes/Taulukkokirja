@@ -562,7 +562,7 @@ color: white !important;
 display: grid;
 grid-template-columns: 1fr 1px 4fr 1px 0.75fr;
 grid-template-rows: 2fr 1px 1fr;
-height: calc(100vh - 56px); /* navbar */
+height: calc(100dvh - 56px); /* navbar */
 grid-template-areas:
 "sidebar-1 gutter-col-1 main-content gutter-col-2 sidebar-2"
 "sidebar-1 gutter-col-1 gutter-row-1 gutter-col-2 sidebar-2"
