@@ -3,7 +3,7 @@ import { addRippleToElement } from '../../effects/ripple.js';
 import { updateBookmarks } from '../bookmarks/index.js';
 import * as explorer from './index.js';
 import * as search from '../search/index.js';
-import * as pages from '/js/pages/index.js';
+import * as pages from '../../pages/index.js';
 
 function clearSearch() {
     document.querySelector("#explorer-search").value = '';

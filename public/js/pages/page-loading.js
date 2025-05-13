@@ -1,9 +1,9 @@
-import { initTableHighlights } from '/js/components/tables.js';
-import { initLatex } from '/js/latex/latex.js';
-import { addRippleToElement } from  '/js/effects/ripple.js';
-import { updateBookmarks } from '/js/components/bookmarks/index.js';
+import { initTableHighlights } from '../components/tables.js';
+import { initLatex } from '../latex/latex.js';
+import { addRippleToElement } from  '../effects/ripple.js';
+import { updateBookmarks } from '../components/bookmarks/index.js';
 import { highlightTerms } from '../effects/highlight-terms.js';
-import * as storage from '/js/components/storage/index.js';
+import * as storage from '../components/storage/index.js';
 import * as pages from './index.js';
 
 // Execute any inline scripts within injected HTML
