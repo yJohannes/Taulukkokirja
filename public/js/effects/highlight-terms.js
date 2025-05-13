@@ -4,6 +4,9 @@ function escapeRegExp(s) {
 }
 
 export function highlightTerms(element, terms) {
+    // Sort by length so all words get properly highlighted
+    terms = [...terms].sort((a, b) => b.length - a.length);
+
     const regex = new RegExp(`(${terms.map(escapeRegExp).join('|')})`, 'gi');
     const walker = document.createTreeWalker(element, NodeFilter.SHOW_TEXT);
 
