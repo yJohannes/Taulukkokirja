@@ -1,3 +1,4 @@
+import { getHeatColor, normalization } from '../../common/colors.js';
 import { addRippleToElement } from '../../effects/ripple.js';
 import { updateBookmarks } from '../bookmarks/index.js';
 import * as explorer from './index.js';
@@ -36,20 +37,10 @@ function generateResultView(matches, $container) {
 
     const maxScore = Math.max(...matches.map(r => r.score));
 
-    function getHeatColor(score, max) {
-        const t = score / max; // Normalize to [0, 1]
-        
-        // Map to HSL (red to green, or reverse)
-        const hue = t * 120;  // red to red (or go to green if you want: (1 - t) * 120)
-        const saturation = 100;
-        const lightness = 50 + 20 * (1 - t); // lighter for low scores
-
-        return `hsl(${hue}, ${saturation}%, ${lightness}%)`;
-    }
-
     for (const match of matches) {
         const path = match.id;
         const score = match.score.toFixed(1); Math.round(match.score);
+        const heatColor = getHeatColor(match.score, maxScore, normalization.log);
 
         let $tab;
         if (path.endsWith('.html')) {
@@ -103,7 +94,6 @@ function generateResultView(matches, $container) {
         $tab.style.setProperty('padding-right', '3rem', 'important');
         addRippleToElement($tab);
 
-        const color = getHeatColor(match.score, maxScore);
         const $scoreBadge = document.createElement('div');
         $scoreBadge.innerText = score;
 
@@ -120,7 +110,7 @@ function generateResultView(matches, $container) {
             paddingLeft: '0.25rem',
             paddingRight: '0.25rem',
 
-            backgroundColor: color,
+            backgroundColor: heatColor,
         });
 
         $tab.appendChild($scoreBadge);
