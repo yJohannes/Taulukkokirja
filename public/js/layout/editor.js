@@ -6,11 +6,7 @@ let cachedPageHeight
 let cachedEditorHeight
 
 export function toggleEditor() {
-    if (hidden) {
-        showEditor()
-    } else {
-        hideEditor()
-    }
+    hidden ? showEditor() : hideEditor();
 }
 
 export function showEditor() {
