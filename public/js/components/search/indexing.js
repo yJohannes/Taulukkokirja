@@ -1,4 +1,5 @@
 import { formatPathLabel } from "../explorer/index.js";
+import { loadExplorerStructure } from "../explorer/index.js";
 
 export function extractStructurePaths(obj, basePath = '') {
     const paths = [];
@@ -19,9 +20,8 @@ export function extractStructurePaths(obj, basePath = '') {
 }
 
 export async function indexPages(miniSearchRef) {
-    const response = await fetch('/api/pages-structure');
-    const json = await response.json();
-    const paths = extractStructurePaths(json);
+    const structure = await loadExplorerStructure();
+    const paths = extractStructurePaths(structure);
 
     for (let path of paths) {
         try {
