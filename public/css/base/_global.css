@@ -146,7 +146,6 @@ th mark {
     font-size: 85%;
 }
 
-
 .hover-glow:hover::before {
     content: "";
     position: absolute;

@@ -163,6 +163,9 @@ border: 1px dashed #7777773f;
 border-radius: 4px;
 pointer-events: none;   /* Let mouse interactions pass through */
 }
+.rich-text-editor:focus {
+border: 1px solid rgb(58, 155, 183);
+}
 .fit-container {
 overflow-x: auto;
 /* Shows latex pseudo borders */

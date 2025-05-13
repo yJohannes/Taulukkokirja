@@ -1,0 +1,3 @@
+.rich-text-editor:focus {
+    border: 1px solid rgb(58, 155, 183);
+}
