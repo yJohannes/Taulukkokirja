@@ -1,46 +1,22 @@
-#sidebar {
+.sidebar {
     background-color: white;
-    border: 1px solid;
-    border-color: gainsboro;
-    height: calc(100vh - 56px); /* header */
     position: sticky;
     top: 0;
+    height: calc(100vh - 56px); /* header */
+    min-width: 250px;
     padding: 1.25rem;
     overflow-y: auto;
-    z-index: 110;
-}
-
-/* Hide sidebar only on smaller screens */
-@media (max-width: 768px) {
-
-    #sidebar,
-    #main-splitter {
-        display: none; /* REMOVE from grid layout */
-    }
-
-    #sidebar {
-        position: fixed; /* Detach from grid */
-        top: 56px;       /* Align below navbar */
-        left: 0;
-    }  
-
-    #sidebar.show {
-        width: 100%;
-        display: block;
-    }
-
-    #content-wrapper {
-        grid-template-columns: minmax(0, 1fr); /* Make content full width */
-    }
+    z-index: 60;
 }
 
 /* Show hamburger icon on smaller screens */
-#sidebar-toggle {
+#sidebar-1-toggle {
     /* Hidden by default */
     display: none !important; 
     box-shadow: none !important;
 
+
     @media (max-width: 768px) {
-        display: block !important;
+        display: flex !important;
     }
 }

@@ -1,0 +1,75 @@
+/* https://www.npmjs.com/package/split-grid */
+
+/*************/
+/** General **/
+/*************/
+.gutter {
+    position: relative;
+    background-color: rgba(0, 0, 0, 0.1);
+    transition: background-color ease-in-out 0.3s;
+}
+
+.gutter::before {
+    transition: background-color ease-in-out 0.3s;
+}
+
+.gutter::after {
+    transition: background-color ease-in-out 0.3s;
+}
+
+/*****************/
+/** Directional **/
+/*****************/
+.gutter-vertical {
+    cursor: row-resize;
+}
+
+.gutter-horizontal {
+    cursor: col-resize;
+}
+
+.gutter-vertical::after {
+    content: '';
+    position: absolute;
+    top:    -4px;
+    bottom: -4px;
+    left:    0;
+    right:   0;
+}
+
+.gutter-horizontal::after {
+    content: '';
+    position: absolute;
+    top:    0;
+    bottom: 0;
+    left:  -4px;
+    right: -4px;
+}
+
+.gutter-vertical::before {
+    content: '';
+    position: absolute;
+    top:    -1px;
+    bottom: -1px;
+    left:    0;
+    right:   0;
+    z-index: 1000;
+}
+
+.gutter-horizontal::before {
+    content: '';
+    position: absolute;
+    top:    0;
+    bottom: 0;
+    left:  -1px;
+    right: -1px;
+    z-index: 1000;
+}
+
+.gutter-vertical:hover::before {
+    background-color: var(--color-accent);
+}
+
+.gutter-horizontal:hover::before {
+    background-color: var(--color-accent);
+}

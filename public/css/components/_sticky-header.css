@@ -2,20 +2,29 @@
 
 .sticky-page-header {
     position: sticky;
-    top: 1rem; /* match page container padding */
-    /* background: rgba(250, 249, 245, 0.1); */
-    background: rgba(255, 255, 255, 0.1);
+    top: 0;
     z-index: 50;
 } 
 
 .sticky-page-header::before {
     content: "";
     position: absolute;
-    top: -1rem; /* match page container padding */
+    top: -1.25rem; /* match page container padding */
     bottom: 0;
-    left: calc(-1rem - 5px); /* padding + splitter, this is redundant though */
+    left: -1rem;
     right: -1rem;
+
     background: rgba(250, 249, 245, 0.825);
+
+    backdrop-filter: blur(1.4px);
     z-index: -1;
-    backdrop-filter: blur(2px);
+}
+
+.sidebar .sticky-page-header::before {
+    background: rgba(255, 255, 255, 0.825);
+}
+
+
+.sticky-page-header hr {
+    margin-top: 0.5rem;
 }

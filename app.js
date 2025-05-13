@@ -2,12 +2,15 @@ const express = require('express');
 const compression = require('compression');
 const path = require('path');
 const fs = require('fs');
+const mathSvg = require('./public/vendor/rich-text-editor/server/mathSvg');
 
 const PORT = 5500;
 const app = express();
 
 app.use(compression());
 app.use(express.static(path.join(__dirname, 'public')));
+
+app.get('/math.svg', mathSvg.mathSvgResponse);
 
 app.get('/api/pages-structure', (req, res) => {
   const pagesDir = path.join(__dirname, 'public', 'pages');
@@ -38,7 +41,7 @@ app.get('/api/pages-structure', (req, res) => {
 
   try {
     const pageStructure = getFolderStructure(pagesDir);
-    res.json(pageStructure);
+    res.json({ pages: pageStructure});
   } catch (err) {
     res.status(500).send('Error reading directory');
   }

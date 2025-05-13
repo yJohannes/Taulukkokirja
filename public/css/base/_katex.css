@@ -4,7 +4,14 @@
     overflow-y: hidden;  /* Hide vertical scrollbar */
 }
 
-.katex {
+/* override KaTeX's default block display */
+.katex-display {
+    display: inline-block !important; 
+    text-align: left !important;
+    margin: 0 !important;
+}
+
+.katex:not(.katex-ignore) {
     position: relative;
     margin: 3px;
     border-radius: 4px; /* Rounds the highlight */
@@ -18,18 +25,11 @@
     transition: box-shadow 0.5s ease-in-out;
 }
 
-/* override KaTeX's default block display */
-.katex-display {
-    display: inline-block !important; 
-    text-align: left !important;
-    margin: 0 !important;
-}
-
-.katex:hover {
+.katex:not(.katex-ignore):hover {
     color: var(--color-accent);
 }
 
-.katex:hover::before {
+.katex:not(.katex-ignore):hover::before {
     content: "";
     position: absolute;
     top:    -6px;

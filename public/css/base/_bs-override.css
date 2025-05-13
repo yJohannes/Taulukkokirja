@@ -1,0 +1,7 @@
+.btn:focus {
+    box-shadow: none !important;
+}
+
+.btn:focus-visible {
+    box-shadow: 0 0 0 2px var(--color-focus) !important;
+}

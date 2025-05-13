@@ -1,192 +1,182 @@
-import { loadPageToElement } from '../pages.js';
-import { getTabByPath, loadExplorerStructure, openPath, showExplorer } from './explorer.js';
-import { createTab } from './tab.js';
+import { getHeatColor, normalization } from '../../common/colors.js';
+import { addRippleToElement } from '../../effects/ripple.js';
+import { updateBookmarks } from '../bookmarks/index.js';
+import * as explorer from './index.js';
+import * as search from '../search/index.js';
+import * as pages from '/js/pages/index.js';
 
-import * as defs from './defs.js'
-
-let explorerStructure = null;
+function clearSearch() {
+    document.querySelector("#explorer-search").value = '';
+}
 
 function showResults(bool) {
-    const searchContainer = document.getElementById('search-container');
+    const $searchContainer = document.getElementById('search-container');
 
     if (bool) {
-        searchContainer.style.display = 'inline-block';
+        $searchContainer.style.display = 'inline-block';
     } else {
-        searchContainer.style.display = 'none';
+        $searchContainer.style.display = 'none';
     }
-
 }
 
-// Recursively search the explorer structure
-function searchInStructure(structure, searchString, path = '') {
-    let matches = [];
-    const lowerSearchString = searchString.toLowerCase();
-
-    for (const key in structure) {
-        if (structure.hasOwnProperty(key)) {
-            const lowerKey = key.toLowerCase();
-            const currentPath = path ? `${path}/${key}` : key;
-
-            // Check if the key matches the search string
-            if (lowerKey.includes(lowerSearchString)) {
-                matches.push(currentPath);
-            }
-
-            // If the value is an object, search recursively
-            if (typeof structure[key] === 'object' && structure[key] !== null) {
-                matches = matches.concat(searchInStructure(structure[key], searchString, currentPath));
-            }
-        }
-    }
-
-    return matches;
-}
-
-function generateResultView(matches, resultContainer) {
-    resultContainer.innerHTML = '';
-    resultContainer.innerHTML += `
-        <div style="display: flex; justify-content: space-between; align-items: center; padding: 1rem;">
+function generateResultView(matches, $container) {
+    $container.innerHTML = '';
+    $container.innerHTML += `
+        <div style="display: flex; justify-content: space-between; align-items: center; padding: 1rem; padding-left: 0.75rem; padding-right: 0;">
             <p style="margin: 0"><b>Haun tulokset</b></p>
-            <div class="rounded-pill" style="display: inline-block; font-size: 75%; white-space: nowrap; background-color: var(--color-primary); color: var(--color-secondary); padding: 0.4rem 0.6rem;">
+            <div
+                style="
+                    display: inline-block;
+                    white-space: nowrap;
+                    background-color: var(--color-primary);
+                    color: var(--color-secondary);
+                    padding: 0.4rem 0.6rem;
+                    border-top-left-radius: 4px;
+                    border-bottom-left-radius: 4px;
+                "
+            >
                 ${matches.length} osumaa
             </div>
         </div>
     `
 
     if (matches.length === 0) {
-        resultContainer.innerHTML += '<p style="padding-left: 1rem;">Ei tuloksia</p>'
+        $container.innerHTML += '<p style="padding-left: 1rem;">Ei tuloksia</p>'
         return;
     }
 
+    const maxScore = Math.max(...matches.map(r => r.score));
+
     for (const match of matches) {
-        const split = match.split('/')
-        const last = split.length - 1;
-        
-        let tab;
-        if (match.endsWith('.html')) {
-            let name = '<b>' + split[last] + '</b>';
-            if (last > 0) {
-                name = '<small><i>' + split[last-1] + '</i></small> / ' + name;
-            }
+        const path = match.id;
+        const score = match.score.toFixed(1); Math.round(match.score);
+        const heatColor = getHeatColor(match.score, maxScore, normalization.log);
 
-            tab = createTab(name.replace('.html', ''), 1, false, resultContainer);
+        let $tab;
+        if (path.endsWith('.html')) {
+            const name = explorer.formatPathLabel(path);
 
-            tab.addEventListener('click', (e) => {
-                // console.log(`Opening: ${match}`);
-
-                // const explorer = document.getElementById('explorer')
-                // const activeTabs = explorer.querySelectorAll(`.${defs.ACTIVE}`);
-                
-                // activeTabs.forEach(t => {
-                //     t.classList.remove(defs.ACTIVE);
-                //     if (!isDropdown) {
-                //         localStorage.removeItem(t.getAttribute('data-path'));
-                //     }
-            
-                // });
-
-                if (e.button === 0) {
-                    loadPageToElement('pages/' + match, 'page-container');
-                }
+            $tab = explorer.createTab(name, 0, false, path);
+            $tab.addEventListener('click', (e) => {
+                const tabHref = $tab.getAttribute('href');
+                $tab.setAttribute('href', tabHref + `?highlight=${pages.encodeSearchParams(match.terms)}`)
+                updateBookmarks();
             });
 
             // Right click
-            tab.addEventListener('contextmenu', (e) => {
+            $tab.addEventListener('contextmenu', (e) => {
                 e.preventDefault();
 
-                resultContainer.innerHTML = '';
-                showExplorer(true);
+                $container.innerHTML = '';
+                explorer.showExplorer(true);
                 showResults(false);
 
-                const parentPath = match.substring(0, match.lastIndexOf('/'));
+                const parentPath = path.substring(0, path.lastIndexOf('/'));
 
-                openPath(parentPath);
-                getTabByPath(parentPath).scrollIntoView({
+                explorer.openPath(parentPath);
+                explorer.getTabByPath(parentPath).scrollIntoView({
                     behavior: 'auto',     // smooth scrolling animation
                     block: 'center',        // align element to center of the viewport
-                  });
+                });
+
+                clearSearch();
             });
         } else {
-            let name = split[last];
-            if (last > 0) {
-                name = '<small>' + split[last-1] + '</small> / ' + name;
-            }
+            const name = explorer.formatPathLabel(path);
 
-            name = '<i>' + name + '</i>';
-
-            tab = createTab(name.replace('.html', ''), 1, false, resultContainer);
-            tab.addEventListener('click', () => {
-                resultContainer.innerHTML = '';
-                showExplorer(true);
+            $tab = explorer.createTab(name, 0, false, path);
+            $tab.addEventListener('click', () => {
+                $container.innerHTML = '';
+                explorer.showExplorer(true);
                 showResults(false);
 
-                openPath(match);
-                getTabByPath(match).scrollIntoView({
+                explorer.openPath(path);
+                explorer.getTabByPath(path).scrollIntoView({
                     behavior: 'auto',     // smooth scrolling animation
                     block: 'center',        // align element to center of the viewport
-                  });
+                });
+
+                clearSearch();
             });
         }
 
+        $tab.style.setProperty('padding', '0.75rem', 'important');
+        $tab.style.setProperty('padding-right', '3rem', 'important');
+        addRippleToElement($tab);
 
-        resultContainer.appendChild(tab);
+        const $scoreBadge = document.createElement('div');
+        $scoreBadge.innerText = score;
+
+        Object.assign($scoreBadge.style, {
+            position: 'absolute',
+            right: '0',
+            top: '50%',
+            transform: 'translateY(-50%)',
+
+            borderTopLeftRadius: '4px',
+            borderBottomLeftRadius: '4px',
+            paddingTop: '0.1rem',
+            paddingBottom: '0.1rem',
+            paddingLeft: '0.25rem',
+            paddingRight: '0.25rem',
+
+            backgroundColor: heatColor,
+        });
+
+        $tab.appendChild($scoreBadge);
+        $container.appendChild($tab);
     }
 }
 
-function search(searchString) {
-
-    if (searchString.length <= 0) {
-        showExplorer(true);
+function onValueChanged(event) {
+    const $searchIcon = document.getElementById('explorer-search-icon');
+    const $clearIcon = document.getElementById('explorer-clear-search');
+    const query = event.target.value;
+    
+    if (query.length <= 0) {
+        explorer.showExplorer(true);
         showResults(false);
         
-        document.getElementById('explorer-search-icon').style.display = 'inline';
-        document.getElementById('explorer-clear-search').style.display = 'none';
+        $searchIcon.style.display = 'inline';
+        $clearIcon.style.display = 'none';
         
         return;
     }
 
-    showExplorer(false);
+    explorer.showExplorer(false);
     showResults(true);
 
-    document.getElementById('explorer-search-icon').style.display = 'none';
-    document.getElementById('explorer-clear-search').style.display = 'flex';
+    $searchIcon.style.display = 'none';
+    $clearIcon.style.display = 'flex';
     
-    if (!explorerStructure) {
-        console.error('Explorer structure is not initialized.');
-        return;
-    }
-    const searchContainer = document.getElementById('search-container');
-
-    const matches = searchInStructure(explorerStructure, searchString);
-    generateResultView(matches, searchContainer)
+    const results = search.search(query);
+    generateResultView(results, document.getElementById('search-container'))
 }
 
-async function initSearchToInput(element)
+async function initSearchToInput($element)
 {
-    explorerStructure = await loadExplorerStructure();
+    $element.addEventListener('input', onValueChanged);
 
-    element.addEventListener('input', (event) => {
-        search(event.target.value);
-    });
-
-    const clearBtn = document.getElementById('explorer-clear-search');
-    const searchInput = document.querySelector("#explorer-search");
+    const $clear = document.getElementById('explorer-clear-search');
+    const $search = document.getElementById("explorer-search");
     
-    clearBtn.addEventListener("click", () => {
-        searchInput.value = '';
+    addRippleToElement($clear);
+
+    $clear.addEventListener("click", () => {
+        clearSearch();
 
         // simulate input
         const event = new Event('input', { bubbles: true });
-        searchInput.dispatchEvent(event);
+        $search.dispatchEvent(event);
 
-        searchInput.focus();
+        $search.focus();
     });
 
     document.addEventListener("keydown", function(event) {
         if (event.altKey && event.key === "s") {
             event.preventDefault();
-            if (searchInput) {
-                searchInput.focus();
+            if ($search) {
+                $search.focus();
             }
         }
     });

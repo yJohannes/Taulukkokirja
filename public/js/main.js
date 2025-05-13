@@ -1,23 +1,27 @@
-import { loadExplorerToElement, loadExplorerSave } from './components/explorer/explorer.js';
-import { initPageLoading } from './components/pages.js';
-import { initSidebar } from './components/sidebar.js';
-import { initNavbar } from './components/navbar.js';
-import { initRipple } from './effects/ripple.js';
-import { loadSettings } from './components/settings.js';
+import * as explorer from './components/explorer/index.js'
 
-const ACTIVE = 'active';
-const SHOW = 'show';
-const ARROW_FLIPPED = 'flipped';
+import { initSplitGrid } from './components/split-grid.js';
+import { initPageLoading } from './pages/index.js';
+import { initSidebar } from './layout/sidebar.js';
+import { initNavbar } from './layout/navbar.js';
+import { loadSettings } from './components/settings.js';
+import * as editor from './rich-text-editor/index.js'
+import * as bookmarks from './components/bookmarks/index.js';
+import * as search from './components/search/index.js';
 
 document.addEventListener('DOMContentLoaded', async () => {
+    initSplitGrid();
     initPageLoading();
     initNavbar();
     initSidebar();
+    explorer.initSearchToInput(document.getElementById('explorer-search'))
+    bookmarks.updateBookmarks();
 
-    await loadExplorerToElement(document.getElementById('explorer-container'));
-    loadExplorerSave();
-
-    initRipple();
-
+    await explorer.loadExplorerToElement(document.getElementById('explorer-container'));
+    explorer.loadExplorerSave();
     loadSettings();
+
+    editor.init();
+
+    await search.initSearch();
 });

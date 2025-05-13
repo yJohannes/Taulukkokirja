@@ -1,0 +1,9 @@
+#explorer-buttons > button:focus,
+#explorer-search-wrapper button:focus {
+    box-shadow: none !important;
+}
+
+#explorer-buttons button:focus-visible,
+#explorer-search-wrapper button:focus-visible {
+    box-shadow: 0 0 0 2px var(--color-focus) !important; /* Example: Set a custom focus style for tab focus */
+}
