@@ -166,6 +166,46 @@ pointer-events: none;   /* Let mouse interactions pass through */
 .rich-text-editor:focus {
 border: 1px solid rgb(58, 155, 183);
 }
+.rich-text-editor {
+box-sizing: border-box;
+border: 1px solid #aaa;
+padding: 5px;
+font: 17px 'Times New Roman', serif;
+white-space: pre-wrap;
+height: 100%;
+overflow-y: auto;
+}
+.rich-text-editor img {
+padding: 5px;
+max-width: 100%;
+max-height: 1000px;
+vertical-align: middle;
+}
+.rich-text-editor:focus > img {
+box-shadow: 0 0 3px 1px rgba(0, 0, 0, 0.2);
+}
+.rich-text-editor .mq-math-mode .mq-root-block {
+white-space: nowrap;
+}
+.rich-text-editor:focus,
+.rich-text-editor .mq-editable-field.mq-focused,
+.rich-text-editor textarea:focus {
+box-shadow: none;
+outline: 1px solid #359bb7;
+z-index: 2;
+}
+.rich-text-editor img.equation {
+min-height: 20px;
+min-width: 20px;
+box-shadow: none;
+}
+.rich-text-editor:focus img.equation {
+background-color: #edf9ff;
+}
+.rich-text-editor img.equation.active {
+border: 2px solid #caedff;
+border-radius: 3px;
+}
 .fit-container {
 overflow-x: auto;
 /* Shows latex pseudo borders */
