@@ -9,8 +9,8 @@ import * as editor from './rich-text-editor/index.js'
 import * as bookmarks from './components/bookmarks/index.js';
 import * as search from './components/search/index.js';
 
-window.addEventListener('resize', setFullHeight);
-window.addEventListener('load', setFullHeight);
+window.addEventListener('resize', setRealVH);
+window.addEventListener('load', setRealVH);
 
 document.addEventListener('DOMContentLoaded', async () => {
     initSplitGrid();
