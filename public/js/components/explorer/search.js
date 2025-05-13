@@ -18,31 +18,6 @@ function showResults(bool) {
     }
 }
 
-// Recursively search the explorer structure
-// function searchInStructure(structure, searchString, path = '') {
-//     let matches = [];
-//     const lowerSearchString = searchString.toLowerCase();
-
-//     for (const key in structure) {
-//         if (structure.hasOwnProperty(key)) {
-//             const lowerKey = key.toLowerCase();
-//             const currentPath = path ? `${path}/${key}` : key;
-
-//             // Check if the key matches the search string
-//             if (lowerKey.includes(lowerSearchString)) {
-//                 matches.push(currentPath);
-//             }
-
-//             // If the value is an object, search recursively
-//             if (typeof structure[key] === 'object' && structure[key] !== null) {
-//                 matches = matches.concat(searchInStructure(structure[key], searchString, currentPath));
-//             }
-//         }
-//     }
-
-//     return matches;
-// }
-
 function generateResultView(matches, $container) {
     $container.innerHTML = '';
     $container.innerHTML += `
