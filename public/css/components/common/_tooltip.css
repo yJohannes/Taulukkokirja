@@ -36,3 +36,9 @@
 .tooltip[x-placement='right'] .tooltip-inner {
     transform-origin: left;
 }
+
+@media (max-width: 768px) {
+    .tooltip.show {
+        display: none;
+    }
+}
