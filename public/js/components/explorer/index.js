@@ -1,8 +1,9 @@
 export * from './buttons.js'
 export * from './defs.js'
-export * from './explorer.js'
+export * from './load.js'
 export * from './search.js'
 export * from './tab.js'
+export * from './helpers.js'
 
 export function formatPathLabel(tabPath, withHTML=true, separator=', ') {
     tabPath = decodeURIComponent(tabPath);
