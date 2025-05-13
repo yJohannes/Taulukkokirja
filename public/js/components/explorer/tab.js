@@ -1,7 +1,7 @@
 import { showSidebar }  from '../../layout/sidebar.js';
 import { createArrow } from '../common/arrow.js';
 import { addRippleToElement } from '../../effects/ripple.js';
-import { formatPathToHash } from '/js/pages/index.js';
+import { formatPathToHash } from '../../pages/index.js';
 import { updateBookmarks } from '../bookmarks/index.js';
 
 import * as defs from './defs.js'
