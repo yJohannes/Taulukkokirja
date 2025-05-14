@@ -81,11 +81,13 @@ export async function loadPageToElement(path, elementId, bookMarkable=true)
     if (bookMarkable) {
         const $button = document.createElement('button');
         $button.classList.add('btn', 'button-with-icon', 'rounded-circle', 'ripple', 'ripple-dark', 'ripple-centered', 'hover-glow');
-        $button.style.fontSize = '2rem';
         addRippleToElement($button);
         
+        const $headerWrapper = document.createElement('h1');
+        $headerWrapper.style.margin = '0';
         const $icon = document.createElement('i');
-        $button.appendChild($icon);
+        $headerWrapper.appendChild($icon);
+        $button.appendChild($headerWrapper);
 
         $button.addEventListener('click', () => {
             if ($icon.classList.toggle('bi-bookmark')) {
