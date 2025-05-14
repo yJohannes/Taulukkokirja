@@ -31,6 +31,7 @@ function generateResultView(matches, $container) {
                     background-color: var(--color-primary);
                     color: var(--color-secondary);
                     padding: 0.4rem 0.6rem;
+                    border-radius: 4px;
                     border-top-left-radius: 4px;
                     border-bottom-left-radius: 4px;
                 "
@@ -113,6 +114,7 @@ function generateResultView(matches, $container) {
             top: '50%',
             transform: 'translateY(-50%)',
 
+            borderRadius: '4px',
             borderTopLeftRadius: '4px',
             borderBottomLeftRadius: '4px',
             paddingTop: '0.1rem',

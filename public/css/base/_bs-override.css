@@ -1,7 +1,19 @@
+.btn-light {
+    background-color: transparent;
+    border: none;
+    /* border-right: 2px solid black; */
+    /* border-top-right-radius: 0; */
+    /* border-bottom-right-radius: 0; */
+}
+
 .btn:focus {
     box-shadow: none !important;
 }
 
 .btn:focus-visible {
     box-shadow: 0 0 0 2px var(--color-focus) !important;
+}
+
+.form-control:focus {
+    box-shadow: none !important;
 }
