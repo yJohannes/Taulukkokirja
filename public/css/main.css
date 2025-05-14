@@ -12,7 +12,7 @@
 
 @import './components/explorer/_search.css';
 @import './components/explorer/_buttons.css';
-@import './components/explorer/_nav.css';
+@import './components/explorer/_tabs-dropdowns.css';
 
 @import './components/common/_arrow.css';
 @import './components/common/_popup.css';
