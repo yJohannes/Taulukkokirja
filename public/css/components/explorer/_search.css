@@ -30,7 +30,7 @@
 }
 
 #explorer-search {
-    background-color: #f8f9fa;
+    background-color: white;
 
     width: calc(100% + 1.2rem); /* Extend beyond container */
     height: 100%;
