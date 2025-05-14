@@ -1,8 +1,18 @@
+.btn-light {
+background-color: transparent;
+border: none;
+/* border-right: 2px solid black; */
+/* border-top-right-radius: 0; */
+/* border-bottom-right-radius: 0; */
+}
 .btn:focus {
 box-shadow: none !important;
 }
 .btn:focus-visible {
 box-shadow: 0 0 0 2px var(--color-focus) !important;
+}
+.form-control:focus {
+box-shadow: none !important;
 }
 /** https://imagecolorpicker.com/color-code/96a1ff */
 /** https://www.anthropic.com/claude */
@@ -101,23 +111,20 @@ color: black;
 }
 .active {
 background-color: var(--color-primary) !important;
+background: var(--color-primary) !important;
 color: var(--color-secondary) !important;
 }
 .button-with-icon {
 display: flex;
 justify-content: center;
 align-items: center;
-padding: 0 !important;
-height: 2.75rem;
-min-width: 2.75rem;
+padding: 0.5rem !important;
 aspect-ratio: 1 / 1;
+flex-shrink: 0;
 color: black;
 }
 .button-with-icon:hover {
 color: var(--color-accent);
-}
-.button-with-icon > i {
-font-size: 85%;
 }
 .hover-glow:hover::before {
 content: "";
@@ -344,6 +351,63 @@ box-shadow: none !important;
 #explorer-search-wrapper button:focus-visible {
 box-shadow: 0 0 0 2px var(--color-focus) !important; /* Example: Set a custom focus style for tab focus */
 }
+#explorer-search-wrapper {
+position: sticky;
+top: 0;
+width: 100%;
+z-index: 50;
+}
+#explorer-search-icon {
+pointer-events: none;
+position: absolute;
+top: 50%;
+right: 0;
+transform: translateY(-50%);
+color: black;
+}
+#explorer-clear-search {
+display: flex;
+justify-content: center;
+align-items: center;
+position: absolute !important;
+top: 50%;
+right: 0;
+width: 2rem;
+height: 2rem;
+transform: translateY(-50%) translateX(25%);
+color: black;
+}
+#explorer-search {
+background-color: white;
+width: calc(100% + 1.2rem); /* Extend beyond container */
+height: 100%;
+margin: 0 -0.6rem; /* Offset padding */
+padding-right: 3rem; /* Add space for the search icon */
+padding-top: 0.6rem;
+padding-bottom: 0.6rem;
+box-sizing: border-box; /* Includes padding in the total width */
+}
+#explorer-search-wrapper::before {
+content: "";
+position: absolute;
+display: block;
+top: -2rem;
+bottom: 0;
+left: -1rem;
+right: -1rem;
+background: rgba(250, 249, 245, 0.3);
+z-index: -1;
+backdrop-filter: blur(1.4px);
+}
+#explorer-search:focus {
+border-color: var(--color-accent) !important;
+}
+#search-container {
+width: 100%;
+}
+#explorer-container {
+width: 100%;
+}
 .explorer-ul {
 list-style-type: none; /* Removes bullet points */
 padding-left: 0; /* No padding on the <ul> */
@@ -398,63 +462,6 @@ visibility: visible;
 /* Fully hidden, layout-skipped state (used only during resize) */
 .explorer-dropdown:not(.show).hard-hide {
 display: none !important;
-}
-#explorer-search-wrapper {
-position: sticky;
-top: 0;
-width: 100%;
-z-index: 50;
-}
-#explorer-search-icon {
-pointer-events: none;
-position: absolute;
-top: 50%;
-right: 0;
-transform: translateY(-50%);
-color: black;
-}
-#explorer-clear-search {
-display: flex;
-justify-content: center;
-align-items: center;
-position: absolute !important;
-top: 50%;
-right: 0;
-width: 2rem;
-height: 2rem;
-transform: translateY(-50%) translateX(25%);
-color: black;
-}
-#explorer-search {
-background-color: #f8f9fa;
-width: calc(100% + 1.2rem); /* Extend beyond container */
-height: 100%;
-margin: 0 -0.6rem; /* Offset padding */
-padding-right: 3rem; /* Add space for the search icon */
-padding-top: 0.6rem;
-padding-bottom: 0.6rem;
-box-sizing: border-box; /* Includes padding in the total width */
-}
-#explorer-search-wrapper::before {
-content: "";
-position: absolute;
-display: block;
-top: -2rem;
-bottom: 0;
-left: -1rem;
-right: -1rem;
-background: rgba(250, 249, 245, 0.3);
-z-index: -1;
-backdrop-filter: blur(1.4px);
-}
-#explorer-search:focus {
-border-color: var(--color-accent) !important;
-}
-#search-container {
-width: 100%;
-}
-#explorer-container {
-width: 100%;
 }
 .highlight-row,
 .highlight-col {
@@ -692,9 +699,9 @@ margin-bottom: 10rem;
 background-color: white;
 position: sticky;
 top: 0;
-height: calc(100vh - 56px); /* header */
 min-width: 250px;
-padding: 1.25rem;
+padding: 1rem;
+box-sizing: border-box;
 overflow-y: auto;
 z-index: 60;
 }
