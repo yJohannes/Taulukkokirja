@@ -21,7 +21,7 @@ export function hideEditor() {
     const split = rowStyle.split(' ')
     cachedPageHeight = split[0]
     cachedEditorHeight = split[2]
-    grid.style.gridTemplateRows = `1fr 1px 0fr`
+    grid.style.gridTemplateRows = `1fr 0px 0px`
     hidden = true
 }
 
