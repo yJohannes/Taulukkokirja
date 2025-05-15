@@ -58,9 +58,11 @@ function generateResultView(matches, $container) {
             const name = explorer.formatPathLabel(path);
 
             $tab = explorer.createTab(name, 0, false, path);
+            
+            const tabHref = $tab.getAttribute('href');
+            $tab.setAttribute('href', tabHref + `?highlight=${pages.encodeSearchParams(match.terms)}`)
+
             $tab.addEventListener('click', (e) => {
-                const tabHref = $tab.getAttribute('href');
-                $tab.setAttribute('href', tabHref + `?highlight=${pages.encodeSearchParams(match.terms)}`)
                 updateBookmarks();
             });
 
