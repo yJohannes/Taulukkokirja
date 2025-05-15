@@ -186,49 +186,6 @@ const defaultStructure = {
                 "Tähtisumuja.html": null
             }
         },
-        "Kemia": {
-            "Alkuaineet": {
-                "Alkuaineiden jaksollinen järjestelmä.html": null,
-                "Alkuaineiden suhteelliset atomimassat (IUPAC 2018).html": null,
-                "Atomien ja ionien suhteelliset koot.html": null,
-                "Elektronegatiivisuus.html": null,
-                "Elektronien sijoittuminen energiatasoille.html": null,
-                "Kovalenttisidoksen ioniluonne.html": null,
-                "Pääryhmien alkuaineiden ionisoitumisenergioita.html": null,
-                "Yleisimmät hapetusluvut.html": null
-            },
-            "Hapot, emäkset": {
-                "Emäsvakioita.html": null,
-                "Happo- ja emäsliuosten pitoisuuksia ja tiheyksiä.html": null,
-                "Happovakioita.html": null,
-                "Veden ionitulo.html": null
-            },
-            "Hiilen yhdisteitä": {
-                "Hiilen yhdisteiden triviaalinimiä ja IUPAC-nimiä.html": null,
-                "Yleisesti käytettyjä nimilyhenteitä.html": null
-            },
-            "Merkintöjä ja kaavoja": {
-                "Kreikkalaiset numeeriset etuliitteet.html": null,
-                "Laskukaavoja.html": null,
-                "Vakioita.html": null
-            },
-            "Sähkökemia": {
-                "Metallien jännitesarja yleisille metalleille.html": null,
-                "Standardipotentiaaleja.html": null
-            },
-            "Yhdisteet": {
-                "Anioneja.html": null,
-                "Kaasujen ominaisuuksia.html": null,
-                "Kationeja.html": null,
-                "Kompleksi-ioneja.html": null,
-                "Kovalenttisidosten pituuksia ja sidosenergioita.html": null,
-                "Liukoisuustuloja.html": null,
-                "Mineraaleja.html": null,
-                "Muodostumislämpöjä.html": null,
-                "Spektrien tulkinta.html": null,
-                "Yhdisteiden kauppanimiä ja koostumuksia.html": null
-            }
-        },
         "Matematiikka": {
             "Analyyttinen geometria": {
                 "Ellipsi.html": null,
@@ -365,6 +322,49 @@ const defaultStructure = {
             "LaTeX ja kopiointi.html": null,
             "Lorem ipsum.html": null,
             "Tyhjä.html": null
-        }
+        },
+        "Kemia": {
+            "Alkuaineet": {
+                "Alkuaineiden jaksollinen järjestelmä.html": null,
+                "Alkuaineiden suhteelliset atomimassat (IUPAC 2018).html": null,
+                "Atomien ja ionien suhteelliset koot.html": null,
+                "Elektronegatiivisuus.html": null,
+                "Elektronien sijoittuminen energiatasoille.html": null,
+                "Kovalenttisidoksen ioniluonne.html": null,
+                "Pääryhmien alkuaineiden ionisoitumisenergioita.html": null,
+                "Yleisimmät hapetusluvut.html": null
+            },
+            "Hapot, emäkset": {
+                "Emäsvakioita.html": null,
+                "Happo- ja emäsliuosten pitoisuuksia ja tiheyksiä.html": null,
+                "Happovakioita.html": null,
+                "Veden ionitulo.html": null
+            },
+            "Hiilen yhdisteitä": {
+                "Hiilen yhdisteiden triviaalinimiä ja IUPAC-nimiä.html": null,
+                "Yleisesti käytettyjä nimilyhenteitä.html": null
+            },
+            "Merkintöjä ja kaavoja": {
+                "Kreikkalaiset numeeriset etuliitteet.html": null,
+                "Laskukaavoja.html": null,
+                "Vakioita.html": null
+            },
+            "Sähkökemia": {
+                "Metallien jännitesarja yleisille metalleille.html": null,
+                "Standardipotentiaaleja.html": null
+            },
+            "Yhdisteet": {
+                "Anioneja.html": null,
+                "Kaasujen ominaisuuksia.html": null,
+                "Kationeja.html": null,
+                "Kompleksi-ioneja.html": null,
+                "Kovalenttisidosten pituuksia ja sidosenergioita.html": null,
+                "Liukoisuustuloja.html": null,
+                "Mineraaleja.html": null,
+                "Muodostumislämpöjä.html": null,
+                "Spektrien tulkinta.html": null,
+                "Yhdisteiden kauppanimiä ja koostumuksia.html": null
+            }
+        },
     }
 }
