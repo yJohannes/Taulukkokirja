@@ -46,8 +46,12 @@ export function initSplitGrid() {
                 $element.classList.remove('hard-hide');
             })
 
-            localStorage.setItem('grid-template-columns', document.getElementById('content-wrapper').style.gridTemplateColumns);
-            localStorage.setItem('grid-template-rows',    document.getElementById('content-wrapper').style.gridTemplateRows);
+            saveGridState();
         }
     });
+}
+
+export function saveGridState() {
+    localStorage.setItem('grid-template-columns', document.getElementById('content-wrapper').style.gridTemplateColumns);
+    localStorage.setItem('grid-template-rows',    document.getElementById('content-wrapper').style.gridTemplateRows);
 }
