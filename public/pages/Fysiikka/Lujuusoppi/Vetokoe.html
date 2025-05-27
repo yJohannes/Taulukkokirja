@@ -1,0 +1,78 @@
+<div class="sticky-page-header">
+    <div class="d-flex">
+        <h1>Vetokoe</h1>
+    </div>
+    <hr>
+</div>
+
+<p>
+    Vetokokeessa venytetään sauvaa ja tarkastellaan sen <b>jännitysvenymäpiirrosta/jännitys-venymäkäyrää</b>.
+</p>
+<img src="./img-unlicensed/physics/Lujuusoppi/jännitysvenymäpiirros.jpg" alt="Jännitysvenymäpiirros" style="width: 80%;">
+
+
+<h3 class="mt-3">Vetokokeen tunnuslukuja</h3>
+
+<div class="fit-container">
+    <table class="table-striped">
+        <thead>
+            <tr>
+                <th>Tunnusluku</th>
+                <th>Tunnus</th>
+                <th>Selite</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>suhteellisuusraja</td>
+                <td><span class="latex-container display">\sigma_E</span></td>
+                <td>
+                    Venymä noudattaa yleensa aluksi Hooken lakia, kunnes saavutetaan suhteellisuusraja.
+                    Sen jälkeen venymä kasvaa Hooken lakia voimakkaammin, kunnes saavutetaan myötöraja.
+                </td>
+            </tr>
+            <tr>
+                <td>myötöraja</td>
+                <td><span class="latex-container display">\sigma_m</span></td>
+                <td>
+                    Tämän jälkeen venymä kasvaa voimaa lisäämättä.
+                </td>
+            </tr>
+            <tr>
+                <td>kimmoraja</td>
+                <td><span class="latex-container display">\sigma_k</span></td>
+                <td>
+                    Suhteellisuus- ja myötörajan välissä on kimmoraja, johon asti muodonmuutos on ollut kimmoisa,
+                    eli sauva palaa alkuperäiseen muotoonsa vedon loppuessa.
+                    Kimmorajaa edeltävää aluetta kutsutaan <b>kimmoisaksi alueeksi</b>.
+                    Kimmorajan jälkeistä ja myötörajan välistä aluetta kutsutaan <b>myötöalueeksi</b>.
+                    Tällä alueella muutos on plastista eli pysyvää.
+                </td>
+            </tr>
+            <tr>
+                <td>murtolujuus</td>
+                <td><span class="latex-container display">\sigma_M</span></td>
+                <td>
+                    Suurin jännityksen arvo. Venytystä jatkettaessa nimellinen jännitys alkaa vähetä (todellinen jännitys
+                    <span class="latex-container display">F/A</span>
+                    kasvaa). Tämän ja myötörajan välissä on <b>tasaisen plastisen venymän alue</b>,
+                    jossa venymä kasvaa ei-lineaarisesti jännityksen kasvaessa.
+                    Murtolujuuden jälkeen on <b>kuroumavenymän alue</b>. Tällä alueella sauva venyy paikallisesti ja ohenee venymäkohdastaan,
+                    kunnes sauva menee poikki.
+                </td>
+            </tr>
+            <tr>
+                <td>sallittu jännitys</td>
+                <td><span class="latex-container display">\sigma_{\text{sal}} = \frac{\sigma_m}{k}</span></td>
+                <td>
+                    Säädöksissä esiintyvä tietyn materiaalin tai rakenteen suurin sallittu jännitys. Joko myötöraja
+                    <span class="latex-container display">\sigma_m</span>
+                    (kuormituksen vaihdellessa, esim. moottorit) tai murtolujuus 
+                    <span class="latex-container display">\sigma_M</span>
+                    (vakiokuormitus, esim. perustus) jaettuna <b>varmuuskertoimella</b>
+                    <span class="latex-container display">k</span>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
