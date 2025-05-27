@@ -115,6 +115,14 @@ mark {
     padding-right: 1px;
 }
 
+.link {
+    color: var(--color-accent);
+}
+
+.link:hover {
+    color: var(--color-accent);
+}
+
 th mark {
     background-color: #ff6; /* pale yellow */
     color: black;
