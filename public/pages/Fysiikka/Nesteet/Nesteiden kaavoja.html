@@ -5,6 +5,12 @@
 	<hr>
 </div>
 
+<ul>
+    <li>
+        <a class="link" href="https://www.energia.agrotekno.fi/wp-content/uploads/2021/04/Maatilakuivurit.pdf">Maatilakuivurit</a>
+    </li>
+</ul>
+
 <h3>Hydrostatiikka</h3>
 <div class="fit-container">
     <table class="table-striped">
@@ -177,6 +183,90 @@
                 </td>
             </tr>
             <tr>
+                <td>Bernoullin yhtälö, pumput ja kitkahäviöt</td>
+                <td>
+                    <span class="latex-container display">p_1+C\frac{\rho v_1^2}{2}+\rho gh_1+\Delta p_P</span>
+                    <span class="latex-container display">=p_2+C\frac{\rho v_2^2}{2}+\rho gh_2+\Delta p_h</span>
+                </td>
+                <td></td>
+                <td>
+                    <ul>
+                        <li>
+                            pumpun aiheuttama painelisäys
+                            <span class="latex-container display">\Delta p_P</span>
+                        </li>
+                        <li>
+                            kitkasta aiheutuva painehäviö 
+                            <span class="latex-container display">\Delta p_h</span>
+                        </li>
+                        <li>
+                            korjauskerroin
+                            <span class="latex-container display">C</span>
+                            , joka riippuu virtauksen laadusta. Turbulentti
+                            <span class="latex-container display">\Rightarrow</span>
+                            <span class="latex-container display">C \approx 1</span>
+                            , laminaari
+                            <span class="latex-container display">\Rightarrow</span>
+                            <span class="latex-container display">C = 2</span>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <td><ul><li>pumpun teho</li></ul></td>
+                <td><span class="latex-container display">P=\Delta p_P q_V</span></td>
+                <td></td>
+                <td>
+                    <p>
+                        Pumpun kehittämä painelisäys esitetään usein muodossa
+                        <span class="latex-container display">\Delta p_P = H \rho g</span>
+                        , jossa
+                        <span class="latex-container display">H</span>
+                        on nimeltään nostokorkeus.
+                    </p>
+                    <p>
+                        Teoreettinen pumpun fluidiin tekemä työ on 
+                        <span class="latex-container display">\Delta W = Hg \Delta m</span>
+                        , kun se siirtää lävikseen
+                        <span class="latex-container display">\Delta m</span>
+                        verran fluidia. Ts.
+                        <span class="latex-container display">P=\Delta W/\Delta t = Hg \Delta m/ \Delta t</span>
+                        <span class="latex-container display">= Hg \rho \Delta V / \Delta t = \Delta p_P q_V</span>
+                    </p>
+                </td>
+            </tr>
+            <tr>
+                <td>Fanningin yhtälö</td>
+                <td><span class="latex-container display">\Delta p_h = 8f \frac{L}{D} \frac{1}{2}\rho v^2</span></td>
+                <td></td>
+                <td>
+                    Laminaarissa virtauksessa suorassa putkessa tapahtuva kitkahäviö.
+                    <span class="latex-container display">L</span>
+                    on putken pituus, 
+                    <span class="latex-container display">D</span>
+                    putken halkaisija ja 
+                    <span class="latex-container display">8f</span>
+                    on vakio (
+                    <span class="latex-container display">64 / Re</span>
+                    laminaarisen virtauksen tapauksessa).
+                    
+                    Yhtälö saadaan aiemmasta tilavuusvirran lausekkeesta.
+                    <span class="latex-container display">\Delta p_h=q_V\frac{1}{H\cdot \pi R^2}\Delta z</span>
+                    <span class="latex-container display">=q_V\frac{8\eta }{\pi R^4}L=v\pi R^2\frac{8\eta }{\pi R^4}L</span>
+                    <span class="latex-container display">=v\frac{8\eta }{R^2}L=v\frac{8\rho vD/Re}{\left(D/2\right)^2}L</span>
+                    <span class="latex-container display">=\frac{64}{Re}\frac{L}{D}\frac{1}{2}\rho v^2=8f\frac{L}{D}\frac{1}{2}\rho v^2</span>
+                </td>
+            </tr>
+            <tr>
+                <td>Yleiset paikalliset painehäviöt putkessa</td>
+                <td><span class="latex-container display">\Delta p_{\zeta}=\zeta \frac{1}{2}\rho v^2</span></td>
+                <td></td>
+                <td>
+                    <span class="latex-container display">\zeta</span>
+                    on paikallisvastuskerroin
+                </td>
+            </tr>
+            <tr>
                 <td>viskositeetti</td>
                 <td><span class="latex-container display">\eta</span></td>
                 <td><span class="latex-container display">\text{Ns}</span></td>
@@ -203,6 +293,25 @@
                 </td>
             </tr>
             <tr>
+                <td>viskositeetin mittaus pudotusviskosimetrillä</td>
+                <td><span class="latex-container display">\eta = \frac{2}{9} \frac{\left(\rho_k-\rho\right)r_k^2 g}{v_r}</span></td>
+                <td></td>
+                <td>
+                    kuulan säde
+                    <span class="latex-container display">r_k</span>
+                    , rajanopeus
+                    <span class="latex-container display">v_r</span>
+                </td>
+            </tr>
+            <tr>
+                <td>viskositeetin mittaus Ostwaldin viskorimetrillä</td>
+                <td><span class="latex-container display">\frac{\nu}{\nu_0}=\frac{t}{t_0}</span></td>
+                <td></td>
+                <td>
+                    Valumisaikojen suhde on yhtä suuri kuin kinemaattisten viskositeettien suhde.
+                </td>
+            </tr>
+            <tr>
                 <td>Sylinterin nesteen nopeusjakauma putken keskiakselista</td>
                 <td><span class="latex-container display">v\left(r\right)=v_{\max} \left[ 1 - \left( \frac{r}{R} \right)^2 \right]</span></td>
                 <td></td>
@@ -218,7 +327,7 @@
                 <td></td>
                 <td>
                     <span class="latex-container display">H=</span>
-                    hydraulinen johtavuus. Tilavuusvirta riippuu hyvin merkittävästi putken sätesstä,
+                    hydraulinen johtavuus. Tilavuusvirta riippuu hyvin merkittävästi putken säteestä,
                     <span class="latex-container display">q_V \sim R^4</span>
                 </td>
             </tr>
@@ -240,6 +349,33 @@
                     Putken virtausnopeudella tarkoitetaan aina
                     <span class="latex-container display">v_k</span>
                     :ta.
+                </td>
+            </tr>
+            <tr>
+                <td>fluidin aiheuttama voima virtauksessa olevaan kappaleeseen, vakionopeus</td>
+                <td>
+                    <p>
+                        Laminaari virtaus, yleinen:
+                        <span class="latex-container display">F_{\eta} = -bv</span>
+
+                        <br>
+                        Laminaari virtaus, pallo (Stokesin laki):
+                        <span class="latex-container display">F_{\eta} = -6 \pi \eta r \ v</span>
+                    </p>
+                    <p>
+                        Turbulentti virtaus, yleinen:
+                        <span class="latex-container display">F = CA \cdot \frac{1}{2} \rho v^2</span> 
+                    </p>
+                </td>
+                <td></td>
+                <td>
+                    <p>
+                        Vastuskertoimet
+                        <span class="latex-container display">b</span>
+                        ja
+                        <span class="latex-container display">C</span>
+                        riippuvat kappaleen muodosta.
+                    </p>
                 </td>
             </tr>
         </tbody>
