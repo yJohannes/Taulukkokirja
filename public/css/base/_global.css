@@ -6,7 +6,8 @@
     --color-secondary: #ffffff;
     --color-accent: rgb(46, 111, 64);
     --color-focus: rgba(46, 111, 64, 0.2);
-    --color-background: #FAF9F5; /* #212121 #303030 #414141 */
+    --color-bg-primary: #FAF9F5;
+    --color-bg-secondary: #FFFFFF; /* #212121 #303030 #414141 */
     --color-text: #000000;
 }
 
@@ -50,7 +51,7 @@ th::-moz-selection {
 }
 
 body {
-    background-color: var(--color-background);
+    background-color: var(--color-bg-primary);
     color: var(--color-text) !important;
     overflow: hidden;
 }
@@ -144,7 +145,7 @@ th mark {
     aspect-ratio: 1 / 1;    
     flex-shrink: 0;
 
-    color: black;
+    color: var(--color-text);
 }
 
 .button-with-icon:hover {
