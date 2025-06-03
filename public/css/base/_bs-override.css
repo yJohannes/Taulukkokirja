@@ -9,3 +9,7 @@
 .form-control:focus {
     box-shadow: none !important;
 }
+
+i .bi {
+    color: var(--color-text);
+}
