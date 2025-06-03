@@ -123,7 +123,7 @@ function createTab(textOrHTML, level, isDropdown, path, tagName='')
     $tab.setAttribute('data-path', path)
     $tab.setAttribute('href', formatPathToHash(path));
 
-    $tab.classList.add('btn', 'btn-light', 'explorer-tab', 'ripple');
+    $tab.classList.add('explorer-tab', 'ripple');
     $tab.style.setProperty('--level', level);
 
     const $span = document.createElement('span');

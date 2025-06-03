@@ -24,8 +24,26 @@
         max(94%, 100% - var(--level, 0) * 2%)
     ) !important;
 
+    color: var(--color-text);
+    background-color: transparent;
+
     cursor: pointer;
-    transition: none !important;
+    
+    /* From Bootstrap .btn */
+    display: inline-block;
+    font-weight: 400;
+    text-align: center;
+    vertical-align: middle;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    background-color: transparent;
+    border: 1px solid transparent;
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    border-radius: .25rem;
 }
 
 .explorer-tab > span {
@@ -33,6 +51,12 @@
     hyphens: auto;
     line-height: 1.25;
     overflow-wrap: anywhere;
+}
+
+.explorer-tab:hover {
+    background-color: #e2e6ea;
+    color: var(--color-text);
+    text-decoration: none;
 }
 
 .explorer-tab:focus {
