@@ -51,6 +51,7 @@ th::-moz-selection {
 
 body {
     background-color: var(--color-background);
+    color: var(--color-text) !important;
     overflow: hidden;
 }
 
