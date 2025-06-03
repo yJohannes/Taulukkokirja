@@ -6,7 +6,7 @@
     --color-secondary: #ffffff;
     --color-accent: rgb(46, 111, 64);
     --color-focus: rgba(46, 111, 64, 0.2);
-    --color-background: #FAF9F5;
+    --color-background: #FAF9F5; /* #212121 #303030 #414141 */
     --color-text: #000000;
 }
 
