@@ -83,109 +83,6 @@ export {
 
 const defaultStructure = {
     "pages": {
-        "Fysiikka": {
-            "Aaltoliike- ja valo-oppi": {
-                "Dopplerin ilmiö.html": null,
-                "Kaavoja.html": null,
-                "Taulukoita": {
-                    "Aineiden taitekertoimia.html": null,
-                    "Ilman taitekerroin eri aallonpituuksille.html": null,
-                    "Näkyvän valon spektri ilmassa.html": null,
-                    "Ultraviolettivalon luokittelu.html": null,
-                    "Äänen intensiteettitasoja.html": null,
-                    "Äänen nopeus väliaineessa.html": null,
-                    "Äänen turvallisuusrajat.html": null
-                }
-            },
-            "Atomi-, säteily- ja ydinfysiikka": {
-                "Alkuaineiden isotooppeja.html": null,
-                "Irrotustöitä.html": null,
-                "Kaavoja.html": null,
-                "Nukleonit.html": null,
-                "Radioaktiivinen hajominen.html": null,
-                "Standardimallin alkeishiukkaset.html": null,
-                "Säteilyn laatukertoimia.html": null
-            },
-            "Kvanttifysiikka": {
-                "Kaavoja.html": null,
-                "Kvanttiluvut.html": null,
-                "Schrödingerin yhtälö.html": null
-            },
-            "Mekaniikka": {
-                "Mekaniikan kaavoja.html": null
-            },
-            "Nesteet": {
-                "Kavitaatio.html": null,
-                "Nesteiden kaavoja.html": null,
-                "Hydrodynamiikka": {
-                    "Lentokoneen siipi.html": null,
-                    "Tilavuusvirta.html": null,
-                    "Tuulivoimala.html": null
-                },
-                "Hydrostatiikka": {
-                    "Hydrostaattinen tehonsiirto.html": null,
-                    "Ilmastointikanava.html": null,
-                    "Nestepatsasmanometri.html": null
-                }
-            },
-            "Suhteellisuusteoria": {
-                "Suppea suhteellisuusteoria.html": null
-            },
-            "Suureet, yksiköt ja vakiot": {
-                "Johdannaisyksiköt.html": null,
-                "Kerrannaisyksiköiden etuliitteet.html": null,
-                "Luonnonvakioita.html": null,
-                "Muuntokertoimia.html": null,
-                "Perusyksiköiden määritelmät.html": null,
-                "SI-järjestelmä.html": null
-            },
-            "Sähkömagnetismi": {
-                "Kaavoja.html": null,
-                "Maxwellin yhtälöt.html": null,
-                "Värähtelypiiri.html": null,
-                "Taulukoita": {
-                    "Alkuaineiden ominaisuuksia.html": null,
-                    "Curie-lämpötiloja.html": null,
-                    "Eristeiden ominaisuuksia.html": null,
-                    "Ferromagneettisten aineiden ominaisuuksia.html": null,
-                    "Metalliseosten ominaisuuksia.html": null,
-                    "Suprajohteita.html": null,
-                    "Sähköteknisiä piirrosmerkkejä.html": null
-                }
-            },
-            "Taulukoita": {
-                "Ilmakehän koostumus.html": null,
-                "Putoamiskiihtyvyys merenpinnan tasolla.html": null,
-                "Mekaniikka ja termodynamiikka": {
-                    "Ilmakehän ominaisuuksia.html": null,
-                    "Kiinteiden aineiden ominaisuuksia.html": null,
-                    "Kiinteiden alkuaineiden ominaisuuksia.html": null,
-                    "Kitkakertoimia.html": null,
-                    "Kylläisen vesihöyryn paine ja tiheys.html": null,
-                    "Metalliseosten ominaisuuksia.html": null,
-                    "Nesteiden ja kaasujen ominaisuuksia.html": null,
-                    "Polttoaineiden lämpöarvoja.html": null,
-                    "Veden ominaisuuksia.html": null,
-                    "Veden tiheys lämpötiloissa.html": null
-                }
-            },
-            "Termodynamiikka": {
-                "Lämpökone.html": null,
-                "Termodynamiikan kaavoja.html": null
-            },
-            "Tähtitiede": {
-                "Aurinko.html": null,
-                "Kirkkaimmat tähdet.html": null,
-                "Komeettoja.html": null,
-                "Kuu.html": null,
-                "Linnunrata.html": null,
-                "Lähimmät tähdet.html": null,
-                "Maa.html": null,
-                "Pikkuplaneettoja ja asteroideja.html": null,
-                "Planeetat.html": null,
-                "Tähtisumuja.html": null
-            }
-        },
         "Matematiikka": {
             "Analyyttinen geometria": {
                 "Ellipsi.html": null,
@@ -318,10 +215,125 @@ const defaultStructure = {
                 "Trigonometristen funktioiden tarkkoja arvoja.html": null
             }
         },
-        "Testit": {
-            "LaTeX ja kopiointi.html": null,
-            "Lorem ipsum.html": null,
-            "Tyhjä.html": null
+        "Fysiikka": {
+            "Aaltoliike- ja valo-oppi": {
+                "Dopplerin ilmiö.html": null,
+                "Kaavoja.html": null,
+                "Taulukoita": {
+                    "Aineiden taitekertoimia.html": null,
+                    "Ilman taitekerroin eri aallonpituuksille.html": null,
+                    "Näkyvän valon spektri ilmassa.html": null,
+                    "Ultraviolettivalon luokittelu.html": null,
+                    "Äänen intensiteettitasoja.html": null,
+                    "Äänen nopeus väliaineessa.html": null,
+                    "Äänen turvallisuusrajat.html": null
+                }
+            },
+            "Atomi-, säteily- ja ydinfysiikka": {
+                "Alkuaineiden isotooppeja.html": null,
+                "Irrotustöitä.html": null,
+                "Kaavoja.html": null,
+                "Nukleonit.html": null,
+                "Radioaktiivinen hajominen.html": null,
+                "Standardimallin alkeishiukkaset.html": null,
+                "Säteilyn laatukertoimia.html": null
+            },
+            "Kvanttifysiikka": {
+                "Kaavoja.html": null,
+                "Kvanttiluvut.html": null,
+                "Schrödingerin yhtälö.html": null
+            },
+            "Lujuusoppi": {
+                "Lujuusopin kaavoja.html": null,
+                "Vetokoe.html": null
+            },
+            "Mekaniikka": {
+                "Mekaniikan kaavoja.html": null
+            },
+            "Nesteet": {
+                "Ilmastointi.html": null,
+                "Kavitaatio.html": null,
+                "Nesteiden kaavoja.html": null,
+                "Hydrodynamiikka": {
+                    "Lentokoneen siipi.html": null,
+                    "Reynoldsin luku ja turbulentti virtaus.html": null,
+                    "Tilavuusvirta.html": null,
+                    "Tuulivoimala.html": null,
+                    "Viskositeetti.html": null
+                },
+                "Hydrostatiikka": {
+                    "Hydrostaattinen tehonsiirto.html": null,
+                    "Ilmastointikanava.html": null,
+                    "Nestepatsasmanometri.html": null
+                }
+            },
+            "Suhteellisuusteoria": {
+                "Suppea suhteellisuusteoria.html": null
+            },
+            "Suureet, yksiköt ja vakiot": {
+                "Johdannaisyksiköt.html": null,
+                "Kerrannaisyksiköiden etuliitteet.html": null,
+                "Luonnonvakioita.html": null,
+                "Muuntokertoimia.html": null,
+                "Perusyksiköiden määritelmät.html": null,
+                "SI-järjestelmä.html": null
+            },
+            "Sähkömagnetismi": {
+                "Kaavoja.html": null,
+                "Maxwellin yhtälöt.html": null,
+                "Sähkövuo ja sähkövuon tiheys.html": null,
+                "Värähtelypiiri.html": null,
+                "Taulukoita": {
+                    "Alkuaineiden ominaisuuksia.html": null,
+                    "Curie-lämpötiloja.html": null,
+                    "Eristeiden ominaisuuksia.html": null,
+                    "Ferromagneettisten aineiden ominaisuuksia.html": null,
+                    "Metalliseosten ominaisuuksia.html": null,
+                    "Suprajohteita.html": null,
+                    "Sähköteknisiä piirrosmerkkejä.html": null
+                }
+            },
+            "Taulukoita": {
+                "Ilmakehän koostumus.html": null,
+                "Putoamiskiihtyvyys merenpinnan tasolla.html": null,
+                "Mekaniikka ja termodynamiikka": {
+                    "Ilmakehän ominaisuuksia.html": null,
+                    "Kiinteiden aineiden ominaisuuksia.html": null,
+                    "Kiinteiden alkuaineiden ominaisuuksia.html": null,
+                    "Kitkakertoimia.html": null,
+                    "Kylläisen vesihöyryn paine ja tiheys.html": null,
+                    "Metalliseosten ominaisuuksia.html": null,
+                    "Nesteiden ja kaasujen ominaisuuksia.html": null,
+                    "Polttoaineiden lämpöarvoja.html": null,
+                    "Veden ominaisuuksia.html": null,
+                    "Veden tiheys lämpötiloissa.html": null
+                }
+            },
+            "Termodynamiikka": {
+                "Aikavakio (lämpömittari).html": null,
+                "Fourierin I laki.html": null,
+                "Fourierin II laki.html": null,
+                "Lämmön siirtyminen.html": null,
+                "Lämpöhaude.html": null,
+                "Lämpökone.html": null,
+                "Lämpösäteily.html": null,
+                "Rajapinnan vaikutus lämmön siirtymiseen.html": null,
+                "Takan lämpötilajakauman simulointi.html": null,
+                "Termodynamiikan kaavoja.html": null,
+                "Termodynamiikan peruskäsitteitä.html": null
+            },
+            "Tähtitiede": {
+                "Aurinko.html": null,
+                "Kirkkaimmat tähdet.html": null,
+                "Komeettoja.html": null,
+                "Kuu.html": null,
+                "Linnunrata.html": null,
+                "Lähimmät tähdet.html": null,
+                "Maa.html": null,
+                "Pikkuplaneettoja ja asteroideja.html": null,
+                "Planeetat.html": null,
+                "Tähtisumuja.html": null
+            }
         },
         "Kemia": {
             "Alkuaineet": {
