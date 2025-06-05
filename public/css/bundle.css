@@ -94,6 +94,9 @@ h6 {
 font-size: 1rem;
 }
 }
+figcaption {
+font-size: 0.875rem;
+}
 input {
 color: black !important;
 }
@@ -138,19 +141,19 @@ width: 100%; height: 100%;
 z-index: 1;
 background-color: rgba(200, 200, 200, 0.1) !important;
 }
-.latex-container {
-max-width: 100%;
-overflow-x: auto;    /* Horizontal scrolling */
-overflow-y: hidden;  /* Hide vertical scrollbar */
-}
 /* override KaTeX's default block display */
 .katex-display {
-display: inline-block !important;
+/* display: inline-block !important;  */
 text-align: left !important;
 margin: 0 !important;
 }
-.katex:not(.katex-ignore) {
+.latex-container {
+display: inline-flex; /* Fills the area required by content */
 position: relative;
+max-width: 100%;
+overflow: visible;
+/* overflow-x: auto;    Horizontal scrolling */
+/* overflow-y: hidden;  Hide vertical scrollbar */
 margin: 3px;
 border-radius: 4px; /* Rounds the highlight */
 cursor: pointer;
@@ -160,10 +163,21 @@ user-select: none;
 -ms-user-select: none;      /* IE10+/Edge */
 transition: box-shadow 0.5s ease-in-out;
 }
-.katex:not(.katex-ignore):hover {
+.latex-container.display {
+display: block;
+width: fit-content;
+margin: 1rem auto;
+}
+.latex-container:hover {
 color: var(--color-accent);
 }
-.katex:not(.katex-ignore):hover::before {
+.latex-container.readonly:hover {
+color: var(--color-text);
+}
+.latex-container.theorem:hover {
+color: rgb(152, 83, 0) !important;
+}
+.latex-container:not(.readonly):not(.theorem):hover::before {
 content: "";
 position: absolute;
 top:    -6px;
@@ -172,7 +186,14 @@ right:  -6px;
 bottom: -6px;
 border: 1px dashed #7777773f;
 border-radius: 4px;
-pointer-events: none;   /* Let mouse interactions pass through */
+pointer-events: none;
+}
+.latex-container.theorem {
+padding: 5px;
+border-radius: 0;
+border: solid 2px orange;
+background-color: rgb(255, 226, 109);
+box-shadow: none !important;
 }
 .rich-text-editor:focus {
 border: 1px solid rgb(58, 155, 183);
