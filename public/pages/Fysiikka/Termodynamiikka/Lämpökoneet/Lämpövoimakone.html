@@ -1,0 +1,85 @@
+<div class="sticky-page-header">
+    <div class="d-flex">
+        <h1>Lämpövoimakone</h1>
+    </div>
+    <hr>
+</div>
+
+<p>
+    Lämpövoimakone muuntaa lämpöenergiaa mekaaniseksi työksi toistuvalla kiertoprosessilla. Kone ottaa jokaisella kierrolla lämpöenergian
+    <span class="latex-container full">Q_H</span>
+    ns. kuumasäiliöstä. Osan
+    <span class="latex-container full">Q_C</span>
+    sieltä otetusta lämmöstä systeemi luovuttaa ns. kylmäsäiliöön, jolloin koneen yhden kierron aikana saama lämpöenergia on
+    <span class="latex-container full">Q = Q_H - Q_C</span>
+    . Kiertoprosessissa kone palaa alkutilaansa kierron päätteksi ja siten myös alkulämpötilaansa, joten koneen sisäenergia ei kasva.
+    Termodynamiikan 1. pääsäännön mukaan pätee
+    <span class="latex-container full">W + Q = 0</span>
+    eli
+    <span class="latex-container full">Q = -W</span>
+    . Miinusmerkki johtuu siitä, että kaasun tekemä työ sovittiin lain yhteydessä negatiiviseksi.
+    Kone käyttää siis saamansa lämpöenergian
+    <span class="latex-container full">Q</span>
+    ulkoisen työn tekemiseen.
+</p>
+
+<figure>
+    <a href="https://commons.wikimedia.org/wiki/File:Carnot_cycle.png">
+        <img src="./img/physics/thermodynamics/Carnot_cycle.png" alt="Carnot cycle" style="max-width: 70%;">
+    </a>
+    <figcaption>
+        Carnot'n kiertoprosessi.
+        <a href="https://commons.wikimedia.org/wiki/File:Carnot_cycle.png">E. Generalic</a>, <a href="https://creativecommons.org/licenses/by-sa/4.0">CC BY-SA 4.0</a>, via Wikimedia Commons
+    </figcaption>
+</figure>
+
+<p>
+    Sadi Carnot oli Ranskalainen insinööri. 
+    Carnot'n kiertoprosessi on ideaalisen lämpövoimakoneen 
+    <ol>
+        <li>
+            Palautuva isoterminen laajeneminen lämpötilassa
+            <span class="latex-container full">T_H</span>
+            , jolloin systeemiin tuodaan lämpömäärä
+            <span class="latex-container full">Q_H</span>
+        </li>
+        <li>
+            Palautuva adiabaattinen prosessi, jonka aikana lämpötila pienenee
+            <span class="latex-container full">T_H</span>
+            :sta
+            <span class="latex-container full">T_C</span>
+            :hen.
+        </li>
+        <li>
+            Palautuva isoterminen kokoon puristuminen lämpötilassa
+            <span class="latex-container full">T_C</span>
+            , jolloin systeemistä poistuu lämpömäärä
+            <span class="latex-container full">Q_C</span>
+        </li>
+        <li>
+            Palautuva adiabaattinen prosessi, jonka aikana lämpötila kasvaa
+            <span class="latex-container full">T_C</span> 
+            :stä
+            <span class="latex-container full">T_H</span> 
+            :hon
+        </li>
+    </ol>
+</p>
+
+<p>
+    Jos
+    <span class="latex-container full">Q_C = 0</span>
+    , niin tällöin hyötysuhde
+    <span class="latex-container full">\eta = 1 = 100 %</span>
+    ja kone muuntaisi kaiken tuodun lämmön mekaaniseksi työksi. Tällaista konetta kutsutaan toisen lajin ikiliikkujaksi. 
+</p>
+
+<p>
+    Maksimihyötysuhteella toimivassa lämpövoimakoneessa
+    <span class="latex-container full">\frac{Q_C}{Q_H} = \frac{T_C}{T_H}</span>
+    . Kaikilla Carnot'n kiertoprosessin tapaan palautuviin prosesseihin perustuvilla lämpövoimakoneilla, jotka toimivat samalla lämpötilavälillä on sama hyötysuhde.
+</p>
+
+<p>
+    Bensiinimoottorin hyötysuhde on n. 20-25 % ja dieselmoottorin n. 25-30 %.
+</p>
