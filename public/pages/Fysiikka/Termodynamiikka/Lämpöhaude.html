@@ -7,62 +7,51 @@
 
 <p>
     Olkoon kappale, jonka alkulämpötila on 
-    <span class="latex-container display">T_0</span>
+    <span class="latex-container full">T_0</span>
     lämpöhauteessa, jonka lämpötila on
-    <span class="latex-container display">T_{lh}</span>
+    <span class="latex-container full">T_{lh}</span>
     . Olkoot kappaleen pinnan, jonka kautta lämpö siirtyy pinta-ala
-    <span class="latex-container display">A</span>
+    <span class="latex-container full">A</span>
     ja lämmönläpäisykerroin
-    <span class="latex-container display">U</span>
+    <span class="latex-container full">U</span>
     .
-    <span class="latex-container display">U</span>
+    <span class="latex-container full">U</span>
     :ssa on mukana eri kerrokset ja rajapinnat.
     Loppulämpötilaksi halutaan
-    <span class="latex-container display">T_l</span> 
+    <span class="latex-container full">T_l</span> 
     . Määritetään lämmitysaika.
 </p>
 
 <p>
     Kappaleeseen siirtyy aikayksikössä lämpöä
-    <span class="latex-container display">\Phi = \frac{dQ}{dt} = UA\left(T_{lh} - T\right)</span>
+    <span class="latex-container full">\Phi = \frac{dQ}{dt} = UA\left(T_{lh} - T\right)</span>
     , jossa
-    <span class="latex-container display">T</span>
+    <span class="latex-container full">T</span>
     on kappaleen tarkasteluhetken lämpötila. Oletetaan 
-    <span class="latex-container display">U</span>
+    <span class="latex-container full">U</span>
     :n olevan vakio.
     Jotta lämpötilan voi ratkaista ajan funktiona, tulee tietää miten kappaleeseen siirtynyt lämpö
-    <span class="latex-container display">dQ</span>
+    <span class="latex-container full">dQ</span>
     muuttaa kappaleen lämpötilaa. Tämä saadaan ominaislämpökapasiteetin määritelmästä
-    <span class="latex-container display">dQ=cm\ dT</span>
+    <span class="latex-container full">dQ=cm\ dT</span>
     . Saadaan
-    <span class="latex-container display">mc \frac{dT}{dt} = UA\left(T_{lh} - T\right)</span>
+    <span class="latex-container full">mc \frac{dT}{dt} = UA\left(T_{lh} - T\right)</span>
     , joka on ensimmäisen kertaluvun differentiaaliyhtälö. Integroidaan, kun alkuehto on
-    <span class="latex-container display">T\left(t=0\right) = T_0</span>
+    <span class="latex-container full">T\left(t=0\right) = T_0</span>
     .
-    <br>
     <span class="latex-container display">mc\ dT=UA\left(T_{lh}-T\right)\ dt</span>
-    <br>
     <span class="latex-container display">\frac{1}{T_{lh}-T}\ dT=\frac{UA}{mc}\ dt</span>
-    <br>
     <span class="latex-container display">\int _{T_0}^{T_l}\frac{1}{T_{lh}-T}\ dT=\int _0^t\frac{UA}{mc}\ dt</span>
-    <br>
     <span class="latex-container display">-\int _{T_0}^{T_l}\frac{-1}{T_{lh}-T}\ dT=\frac{UA}{mc}t</span>
-    <br>
     <span class="latex-container display">-\bigg/_{\!\!\!\!\!{T_0}}^{T_l}\ln \left|T_{lh}-T\right|=\frac{UA}{mc}t</span>
-    <br>
     <span class="latex-container display">-\left[\ln \left|T_{lh}-T_l\right|-\bigg/_{\!\!\!\!\!{T_0}}^{T_l}\ln \left|T_{lh}-T_0\right|\right]=\frac{UA}{mc}t</span>
-    <br>
     <span class="latex-container display">\ln \left|T_{lh}-T_0\right|-\ln \left|T_{lh}-T_l\right|=\frac{UA}{mc}t</span>
-    <br>
     <span class="latex-container display">\ln \left|\frac{T_{lh}-T_0}{T_{lh}-T_l}\right|=\frac{UA}{mc}t</span>
-    <br>
     <span class="latex-container display">\ln \left|\frac{T_{lh}-T_0}{T_{lh}-T_l}\right|=\frac{UA}{mc}t</span>
-    <br>
-    <span class="latex-container display">t=\frac{mc}{UA}\ln \left|\frac{T_{lh}-T_0}{T_{lh}-T_l}\right|</span>
+    <span class="latex-container full display theorem">t=\frac{mc}{UA}\ln \left|\frac{T_{lh}-T_0}{T_{lh}-T_l}\right|</span>
 </p>
 
 <p>
     Lisäksi ylemmästä saadaan
-    <br>
-    <span class="latex-container display">T\left(t\right)=T_{lh}-\left(T_{lh}-T_0\right)e^{-\frac{UA}{mc}t}</span>
+    <span class="latex-container full display theorem">T\left(t\right)=T_{lh}-\left(T_{lh}-T_0\right)e^{-\frac{UA}{mc}t}</span>
 </p>

@@ -30,7 +30,7 @@ function initLatex()
 
     filtered.forEach(element => {
         const latex = element.innerText;
-        const displayMode = element.classList.contains('display');
+        const displayMode = element.classList.contains('full');
         
         katex.render(latex, element, {
             displayMode: displayMode,
