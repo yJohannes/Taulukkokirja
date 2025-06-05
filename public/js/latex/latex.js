@@ -6,10 +6,9 @@ function getLatex(element) {
 }
 
 function addClickListener(element, latex) {
-    const katex_span = element.querySelector('.katex');
-    katex_span.addEventListener('click', () => {
-        katex_span.classList.add('highlight');
-        setTimeout(() => katex_span.classList.remove('highlight'), 750);
+    element.addEventListener('click', () => {
+        element.classList.add('highlight');
+        setTimeout(() => element.classList.remove('highlight'), 750);
 
         if (!latex) return;
         
