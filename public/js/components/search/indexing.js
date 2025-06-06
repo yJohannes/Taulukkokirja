@@ -19,13 +19,13 @@ export function extractStructurePaths(obj, basePath = '') {
     return paths;
 }
 
-export async function indexPages(miniSearchRef) {
+export async function indexPages(miniSearch) {
     const structure = await loadExplorerStructure();
     const paths = extractStructurePaths(structure);
 
     for (let path of paths) {
         try {
-            const response = await fetch(path);
+            const response = await fetch(encodeURI(path));
             const html = await response.text();
             
             // Strip HTML to plain text
@@ -34,7 +34,7 @@ export async function indexPages(miniSearchRef) {
             const content = tempDiv.textContent || tempDiv.innerText || '';
             
             // Add to index
-            miniSearchRef.add({ id: path, title: formatPathLabel(path, false), content: content });
+            miniSearch.add({ id: path, title: formatPathLabel(path, false), content: content });
         } catch (err) {
             console.error(`Failed to fetch ${path}`, err);
         }
