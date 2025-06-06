@@ -8,20 +8,18 @@
 .latex-container {
     display: inline-flex; /* Fills the area required by content */
     position: relative;
-
-    max-width: 100%;
     overflow: visible;
-    /* overflow-x: auto;    Horizontal scrolling */
-    /* overflow-y: hidden;  Hide vertical scrollbar */
-    
-    margin: 3px;
+
+    margin-top: 2.5px;
+    margin-bottom: 2.5px;
+    max-width: 100%;
     border-radius: 4px; /* Rounds the highlight */
-    cursor: pointer;
     
     user-select: none;
     -webkit-user-select: none;  /* Safari */
     -moz-user-select: none;     /* Firefox */
     -ms-user-select: none;      /* IE10+/Edge */
+    cursor: pointer;
     
     transition: box-shadow 0.5s ease-in-out;
 }
@@ -40,9 +38,6 @@
     color: var(--color-text);
 }
 
-.latex-container.theorem:hover {
-    color: rgb(152, 83, 0) !important;
-}
 
 .latex-container:not(.readonly):not(.theorem):hover::before {
     content: "";
@@ -63,5 +58,12 @@
     border-radius: 0;
     border: solid 2px orange;
     background-color: rgb(255, 226, 109);
+    border: solid 2px navy;
+    background-color: #daedff;
     box-shadow: none !important;
+}
+
+.latex-container.theorem:hover {
+    color: rgb(152, 83, 0) !important;
+    color: rgb(0, 58, 152) !important;
 }
