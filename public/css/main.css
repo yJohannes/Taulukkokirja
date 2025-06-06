@@ -1,7 +1,7 @@
 @import './base/_global.css';
 @import './base/_bs-override.css';
 @import './base/_rich-text-editor.css';
-@import './base/_katex.css';
+@import './base/_latex.css';
 
 @import './layout/_header.css';
 @import './layout/_grid.css';
