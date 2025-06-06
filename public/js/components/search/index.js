@@ -5,23 +5,27 @@ let miniSearch;
 const searchConfig = {
     fields: ['title', 'content'],
     storeFields: ['id', 'title'], // what we want to get back in results
+    fieldOptions: {
+        title: { boost: 2 },     // boost title weight by 2
+        content: { boost: 1 }    // default weight
+    },
     searchOptions: {
         fuzzy: 0.1,
-        prefix: true
+        prefix: true,
     }
 };
 
 export async function initSearch() {
-    miniSearch = new MiniSearch(searchConfig);
-
     const savedIndex = localStorage.getItem('search-index');
-    if (savedIndex) {
+    if (savedIndex)
         miniSearch = MiniSearch.loadJSON(savedIndex, searchConfig);
-    } else {
-        await indexPages(miniSearch);
-        const serializedIndex = JSON.stringify(miniSearch.toJSON());
-        localStorage.setItem('search-index', serializedIndex);
-    }
+
+    const updatedSearch = new MiniSearch(searchConfig)
+    await indexPages(updatedSearch);
+
+    miniSearch = updatedSearch;
+    const serializedIndex = JSON.stringify(miniSearch.toJSON());
+    localStorage.setItem('search-index', serializedIndex);
 }
 
 export function search(query) {
