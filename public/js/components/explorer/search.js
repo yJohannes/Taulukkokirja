@@ -115,6 +115,7 @@ function generateResultView(matches, $container) {
             right: '0',
             top: '50%',
             transform: 'translateY(-50%)',
+            color: 'black',
 
             borderRadius: '4px',
             borderTopLeftRadius: '4px',
