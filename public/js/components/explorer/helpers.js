@@ -25,7 +25,7 @@ export function expandExplorer()
         
         const $lis = $ul.querySelectorAll('li');
         $lis.forEach(($li) => {
-            const $tabs = $li.querySelectorAll('.explorer-tab');
+            const $tabs = $li.querySelectorAll('.tab');
             $tabs.forEach(($tab) => {
                 storage.addToStorageList('show-states', $tab.getAttribute('data-path'));
 
@@ -50,7 +50,7 @@ export function collapseExplorer()
         
         const $lis = $ul.querySelectorAll('li');
         $lis.forEach(($li) => {
-            const $tabs = $li.querySelectorAll('.explorer-tab');
+            const $tabs = $li.querySelectorAll('.tab');
             $tabs.forEach(($tab) => {
                 $tab.classList.remove(defs.ACTIVE);
                 storage.removeFromStorageList('show-states', $tab.getAttribute('data-path'));
@@ -66,7 +66,7 @@ export function collapseExplorer()
 
 export function getTabByPath(path) {
     const $explorer = document.querySelector('#explorer-container');
-    const tabClass = `.explorer-tab[data-path="${path}"]`;
+    const tabClass = `.tab[data-path="${path}"]`;
     return $explorer.querySelector(tabClass);
 }
 
@@ -81,7 +81,7 @@ export function openPath(path) {
         // Don't try to get the pages tab which doesn't exist
         if (joinPath === 'pages') continue;
 
-        const tabClass = `.explorer-tab[data-path="${joinPath}"]`;
+        const tabClass = `.tab[data-path="${joinPath}"]`;
 
         const $tab = $explorer.querySelector(tabClass);
         const $dropdown = getTabDropdown($tab);

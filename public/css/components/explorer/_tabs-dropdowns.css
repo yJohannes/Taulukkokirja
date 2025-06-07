@@ -4,7 +4,7 @@
     margin-bottom: 0;
 }
 
-.explorer-tab {
+.tab {
     display: flex !important;
     justify-content: space-between;
     align-items: center;
@@ -28,6 +28,7 @@
     background-color: transparent;
 
     cursor: pointer;
+    text-decoration: none;
     
     /* From Bootstrap .btn */
     display: inline-block;
@@ -44,27 +45,23 @@
     font-size: 1rem;
     line-height: 1.5;
     border-radius: .25rem;
+
+    > .tab-content {
+        text-align: left;
+        hyphens: auto;
+        line-height: 1.25;
+        overflow-wrap: anywhere;
+    }
 }
 
-.explorer-tab > span {
-    text-align: left;
-    hyphens: auto;
-    line-height: 1.25;
-    overflow-wrap: anywhere;
-}
-
-.explorer-tab:hover {
+.tab:hover {
     background-color: #e2e6ea;
     color: var(--color-text);
     text-decoration: none;
 }
 
-.explorer-tab:focus {
-    box-shadow: none !important;
-}
 
 .explorer-dropdown {
-    /* display: none; */
     overflow: hidden;
     max-height: 0;
     opacity: 0;
@@ -76,7 +73,6 @@
 }
 
 .explorer-dropdown.show {
-    /* display: block; */
     height: auto;
     max-height: 10000px;
     opacity: 1;
