@@ -10,10 +10,6 @@
     box-shadow: 0 0 0 2px var(--color-focus) !important;
 }
 
-.form-control:focus {
-    box-shadow: none !important;
-}
-
 i .bi {
     color: var(--color-text);
 }
