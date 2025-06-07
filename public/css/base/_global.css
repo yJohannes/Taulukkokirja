@@ -13,6 +13,7 @@
     --color-bg-secondary-rgb: 255, 255, 255;
     --color-text: #000000;
     --color-lines: rgba(0, 0, 0, 0.1);
+    --color-lines-secondary: #232323;
     --color-mark-transparent: rgba(255, 255, 0, 0.4);
     --color-mark: #FF0;
 }
@@ -28,6 +29,7 @@
     --color-bg-secondary-rgb: 33, 33, 33;
     --color-text: #ffffff;
     --color-lines: rgba(255, 255, 255, 0.1);
+    --color-lines-secondary: #232323;
     --color-mark-transparent: rgb(255 230 100 / 78%);
     --color-mark: rgb(255 230 100);
 }

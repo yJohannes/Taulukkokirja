@@ -9,7 +9,7 @@ table tbody tr:nth-of-type(odd) {
 }
 
 th {
-    border: 1px #232323 solid;
+    border: solid 1px var(--color-lines-secondary);
     background-color: var(--color-primary);
     color: var(--color-secondary);
 
