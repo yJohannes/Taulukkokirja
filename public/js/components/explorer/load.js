@@ -1,13 +1,11 @@
 import { initSearchToInput } from './search.js';
-import { generateTabs, getTabDropdown, isDropdownTab } from './tab.js';
+import { generateTabs, isDropdownTab } from './tab.js';
 import { initExplorerButtons } from './buttons.js';
 
 import * as defs from './defs.js';
 import * as storage from '../storage/index.js';
 
-
-function loadExplorerSave()
-{
+export function loadExplorerSave() {
     const $explorer = document.querySelector('#explorer-container');
     const $uls = $explorer.querySelectorAll('.explorer-ul');
     
@@ -15,7 +13,7 @@ function loadExplorerSave()
     $uls.forEach($ul => {
         const $lis = $ul.querySelectorAll('li');
         $lis.forEach(($li) => {
-            const $tabs = $li.querySelectorAll('.explorer-tab');
+            const $tabs = $li.querySelectorAll('.tab');
             $tabs.forEach(($tab) => {
                 const path = $tab.getAttribute('data-path');
                 if (isDropdownTab($tab)) {
@@ -37,11 +35,10 @@ function loadExplorerSave()
     });
 }
 
-async function loadExplorerStructure()
-{
+export async function loadExplorerStructure() {
     const response = await fetch('/api/pages-structure');
     if (!response.ok) {
-        console.error("Failed to fetch the page structure");
+        console.error('Failed to fetch the page structure: ', error);
         return defaultStructure;
     }
     
@@ -50,36 +47,17 @@ async function loadExplorerStructure()
     return structure;
 }
 
-async function loadExplorer($parentElement)
-{
-    try {
-        const structure = await loadExplorerStructure();
-        const $tabs = generateTabs(structure, $parentElement);
-        return $tabs;
-
-    } catch (error) {
-        console.error('Failed to fetch the page structure: ', error);
-    }
-
-    return null;
-};
-
-async function loadExplorerToElement($element)
+export async function loadExplorerToElement($parentElement)
 {    
     const $search = document.getElementById('explorer-search');
     initSearchToInput($search)
-    const $ul = await loadExplorer($element);
-    $element.appendChild($ul);
+    
+    const structure = await loadExplorerStructure();
+    const $tabs = generateTabs(structure, $parentElement);
+    $parentElement.appendChild($tabs);
 
     initExplorerButtons();
 }
-
-export {
-    loadExplorerStructure,
-    loadExplorer,
-    loadExplorerToElement,
-    loadExplorerSave,
-};
 
 const defaultStructure = {
     "pages": {
