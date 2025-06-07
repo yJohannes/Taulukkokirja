@@ -215,6 +215,7 @@ const defaultStructure = {
                 "Trigonometristen funktioiden tarkkoja arvoja.html": null
             }
         },
+
         "Fysiikka": {
             "Aaltoliike- ja valo-oppi": {
                 "Dopplerin ilmiö.html": null,
@@ -311,16 +312,21 @@ const defaultStructure = {
             },
             "Termodynamiikka": {
                 "Aikavakio (lämpömittari).html": null,
+                "Entropia ja termodynamiikan toinen pääsääntö.html": null,
                 "Fourierin I laki.html": null,
                 "Fourierin II laki.html": null,
                 "Lämmön siirtyminen.html": null,
                 "Lämpöhaude.html": null,
-                "Lämpökone.html": null,
                 "Lämpösäteily.html": null,
                 "Rajapinnan vaikutus lämmön siirtymiseen.html": null,
                 "Takan lämpötilajakauman simulointi.html": null,
                 "Termodynamiikan kaavoja.html": null,
-                "Termodynamiikan peruskäsitteitä.html": null
+                "Termodynamiikan peruskäsitteitä.html": null,
+                "Lämpökoneet": {
+                    "Jäähdytyskone ja lämpöpumppu.html": null,
+                    "Lämpökoneiden kaavoja.html": null,
+                    "Lämpövoimakone.html": null
+                }
             },
             "Tähtitiede": {
                 "Aurinko.html": null,
@@ -378,5 +384,10 @@ const defaultStructure = {
                 "Yhdisteiden kauppanimiä ja koostumuksia.html": null
             }
         },
+        "Testit": {
+            "LaTeX ja kopiointi.html": null,
+            "Lorem ipsum.html": null,
+            "Tyhjä.html": null
+        }
     }
 }
