@@ -25,7 +25,7 @@ function createTabsFromList(pathsList, $container, deleteTargetListName=null) {
             });
 
             const $x = document.createElement('i');
-            $x.classList.add('bi', 'bi-trash3-fill');
+            $x.classList.add('bi', 'bi-trash3');
             $x.style.fontSize = '110%'
 
             $delete.appendChild($x);
