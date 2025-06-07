@@ -131,49 +131,23 @@ function generateResultView(matches, $container) {
     }
 }
 
-function onValueChanged(event) {
-    const $searchIcon = document.getElementById('explorer-search-icon');
-    const $clearIcon = document.getElementById('explorer-clear-search');
-    const query = event.target.value;
-    
-    if (query.length <= 0) {
-        explorer.showExplorer(true);
-        showResults(false);
-        
-        $searchIcon.style.display = 'inline';
-        $clearIcon.style.display = 'none';
-        
-        return;
-    }
-
-    explorer.showExplorer(false);
-    showResults(true);
-
-    $searchIcon.style.display = 'none';
-    $clearIcon.style.display = 'flex';
-    
-    const results = search.search(query);
-    generateResultView(results, document.getElementById('search-container'))
-}
-
 async function initSearchToInput($element)
 {
-    $element.addEventListener('input', onValueChanged);
-
-    const $clear = document.getElementById('explorer-clear-search');
-    const $search = document.getElementById("explorer-search");
-    
-    addRippleToElement($clear);
-
-    $clear.addEventListener("click", () => {
-        clearSearch();
-
-        // simulate input
-        const event = new Event('input', { bubbles: true });
-        $search.dispatchEvent(event);
-
-        $search.focus();
+    $element.addEventListener('input', (e) => {
+        const query = e.target.value;
+        
+        if (query.length <= 0) {
+            explorer.showExplorer(true);
+            showResults(false);
+        } else {
+            explorer.showExplorer(false);
+            showResults(true);
+            
+            const results = search.search(query);
+            generateResultView(results, document.getElementById('search-container'))
+        }
     });
+    const $search = document.getElementById("explorer-search");
 
     document.addEventListener("keydown", function(event) {
         if (event.altKey && event.key === "s") {
