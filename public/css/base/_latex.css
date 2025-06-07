@@ -56,14 +56,15 @@
 .latex-container.theorem {
     padding: 5px;
     border-radius: 0;
+    border: solid 2px navy;
+    background-color: #ecf2ff;
     border: solid 2px orange;
     background-color: rgb(255, 226, 109);
-    border: solid 2px navy;
-    background-color: #daedff;
+    color: black;
     box-shadow: none !important;
 }
 
 .latex-container.theorem:hover {
-    color: rgb(152, 83, 0) !important;
     color: rgb(0, 58, 152) !important;
+    color: rgb(152, 83, 0) !important;
 }
