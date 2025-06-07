@@ -9,6 +9,9 @@ import * as editor from './rich-text-editor/index.js'
 import * as bookmarks from './components/bookmarks/index.js';
 import * as search from './components/search/index.js';
 
+import '../components/search_bar/search-bar.js';
+import '../components/ripple/ripple.js';
+
 window.addEventListener('resize', setRealVH);
 window.addEventListener('load', setRealVH);
 

@@ -1,3 +1,4 @@
+// Deprecated, use components/ripple
 export function addRippleToElement(element)
 {
     element.addEventListener('mousedown', (e) => {

@@ -1,4 +1,3 @@
-import { addRippleToElement } from "../effects/ripple.js";
 import { addToolTip } from "../components/common/tooltip.js";
 import { toggleEditor } from "./editor.js";
 import { updateBookmarks } from "../components/bookmarks/index.js";
@@ -39,6 +38,5 @@ export function initNavbar() {
 
     navs.forEach($nav => {
         addToolTip($nav, 'bottom');
-        addRippleToElement($nav);
     });
 }

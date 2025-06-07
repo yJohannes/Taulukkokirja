@@ -1,5 +1,4 @@
 import { getHeatColor, normalization } from '../../common/colors.js';
-import { addRippleToElement } from '../../effects/ripple.js';
 import { updateBookmarks } from '../bookmarks/index.js';
 import * as explorer from './index.js';
 import * as search from '../search/index.js';
@@ -105,7 +104,6 @@ function generateResultView(matches, $container) {
 
         $tab.style.setProperty('padding', '0.75rem', 'important');
         $tab.style.setProperty('padding-right', '3rem', 'important');
-        addRippleToElement($tab);
 
         const $scoreBadge = document.createElement('div');
         $scoreBadge.innerText = score;

@@ -1,5 +1,3 @@
-import { addRippleToElement } from '../effects/ripple.js'
-
 export function init() {
     const baseOpts = {
         baseUrl: 'http://localhost:5500',
@@ -15,9 +13,4 @@ export function init() {
     }
     
     window.makeRichText(baseOpts)
-
-    const wrapper = document.getElementById('editor-control-buttons');
-    wrapper.childNodes.forEach(btn => {
-        addRippleToElement(btn)
-    })
 }

@@ -1,6 +1,5 @@
 import { initTableHighlights } from '../components/tables.js';
 import { initLatex } from '../latex/latex.js';
-import { addRippleToElement } from  '../effects/ripple.js';
 import { updateBookmarks } from '../components/bookmarks/index.js';
 import { highlightTerms } from '../effects/highlight-terms.js';
 import * as storage from '../components/storage/index.js';
@@ -81,7 +80,6 @@ export async function loadPageToElement(path, elementId, bookMarkable=true)
     if (bookMarkable) {
         const $button = document.createElement('button');
         $button.classList.add('btn', 'button-with-icon', 'rounded-circle', 'ripple', 'ripple-dark', 'ripple-centered', 'hover-glow');
-        addRippleToElement($button);
         
         const $headerWrapper = document.createElement('h1');
         $headerWrapper.style.margin = '0';

@@ -1,6 +1,5 @@
 import { showSidebar }  from '../../layout/sidebar.js';
 import { createArrow } from '../common/arrow.js';
-import { addRippleToElement } from '../../effects/ripple.js';
 import { formatPathToHash } from '../../pages/index.js';
 import { updateBookmarks } from '../bookmarks/index.js';
 
@@ -169,8 +168,6 @@ function generateTabs(data, $parentElement, rootPath='pages') {
         
         $tab.addEventListener('click', () => updateBookmarks());
 
-        addRippleToElement($tab);
-        
         $li.appendChild($tab);
 
         // If the value is an object (i.e., nested dropdown), recursively create a nested dropdown

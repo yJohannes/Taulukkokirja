@@ -1,7 +1,6 @@
 import * as defs from "./defs.js"
 import { expandExplorer, collapseExplorer } from "./index.js";
 import { addToolTip } from "../common/tooltip.js";
-import { addRippleToElement } from "../../effects/ripple.js";
 import * as storage from '../storage/index.js';
 
 export function initExplorerButtons()
@@ -12,7 +11,6 @@ export function initExplorerButtons()
 
     for (let $button of [$expand, $collapse, $autoCollapse]) {
         addToolTip($button, 'top');
-        addRippleToElement($button);
     }
     
     if (storage.getFromStorageList('active-states').includes('explorer-auto-collapse')) {

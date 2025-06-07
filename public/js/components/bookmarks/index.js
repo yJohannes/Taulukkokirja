@@ -1,4 +1,3 @@
-import { addRippleToElement } from '../../effects/ripple.js';
 import * as storage from '../storage/index.js';
 import * as explorer from '../explorer/index.js';
 
@@ -12,14 +11,11 @@ function createTabsFromList(pathsList, $container, deleteTargetListName=null) {
         $tab.style.setProperty('padding', '0.5rem', 'important');
         $tab.style.setProperty('padding-left', '0.75rem', 'important');
 
-        addRippleToElement($tab);
-
        if (deleteTargetListName) {
             const $delete = document.createElement('button');
             $delete.classList.add('btn', 'rounded-circle', 'ripple', 'ripple-dark', 'ripple-centered', 'hover-glow')
             $delete.classList.add('button-with-icon');
             $delete.style.fontSize = '1rem';
-            addRippleToElement($delete);
 
             $delete.addEventListener('click', (e) => {
                 e.stopPropagation(); // Prevents event from reaching <a>
