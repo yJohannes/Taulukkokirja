@@ -105,23 +105,23 @@ h6 {
     h1 {
         font-size: 1.5rem;
     }
-    
+
     h2 {
         font-size: 1.25rem;
     }
-    
+
     h3 {
         font-size: 1.15rem;
     }
-    
+
     h4 {
         font-size: 1rem;
     }
-    
+
     h5 {
         font-size: 0.75rem;
     }
-    
+
     h6 {
         font-size: 1rem;
     }
@@ -168,7 +168,7 @@ mark {
     align-items: center;
 
     padding: 0.5rem !important;
-    aspect-ratio: 1 / 1;    
+    aspect-ratio: 1 / 1;
     flex-shrink: 0;
 
     color: var(--color-text);
@@ -181,8 +181,10 @@ mark {
 .hover-glow:hover::before {
     content: "";
     position: absolute;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
     z-index: 1;
     background-color: rgba(200, 200, 200, 0.1) !important;
 }
