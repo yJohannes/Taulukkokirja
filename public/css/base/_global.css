@@ -1,14 +1,35 @@
 /** https://imagecolorpicker.com/color-code/96a1ff */
 /** https://www.anthropic.com/claude */
 
-:root {
+/* :root { */
+.light {
     --color-primary: #000000;
     --color-secondary: #ffffff;
     --color-accent: rgb(46, 111, 64);
     --color-focus: rgba(46, 111, 64, 0.2);
     --color-bg-primary: #FAF9F5;
-    --color-bg-secondary: #FFFFFF; /* #212121 #303030 #414141 */
+    --color-bg-secondary: #FFFFFF;
+    --color-bg-primary-rgb: 250, 249, 245;
+    --color-bg-secondary-rgb: 255, 255, 255;
     --color-text: #000000;
+    --color-lines: rgba(0, 0, 0, 0.1);
+    --color-mark-transparent: rgba(255, 255, 0, 0.4);
+    --color-mark: #FF0;
+}
+
+.dark {
+    --color-primary: #000000;
+    --color-secondary: #ffffff;
+    --color-accent: rgb(46, 111, 64);
+    --color-focus: rgba(46, 111, 64, 0.2);
+    --color-bg-primary: #303030;
+    --color-bg-secondary: #212121;
+    --color-bg-primary-rgb: 48, 48, 48;
+    --color-bg-secondary-rgb: 33, 33, 33;
+    --color-text: #ffffff;
+    --color-lines: rgba(255, 255, 255, 0.1);
+    --color-mark-transparent: rgb(255 230 100 / 78%);
+    --color-mark: rgb(255 240 60);
 }
 
 /* Scrollbar */
@@ -30,7 +51,7 @@ html {
 
 /* Selection */
 ::selection {
-    background: black;
+    background: rgba(0,0,0,0.8);
     color: white;
 }
 
@@ -40,7 +61,7 @@ th::selection {
 }
 
 ::-moz-selection {
-    background: var(--color-primary);
+    background: rgba(0,0,0,0.8);
     color: white;
 }
 
@@ -110,12 +131,18 @@ figcaption {
     font-size: 0.875rem;
 }
 
+hr {
+    border-top-color: var(--color-lines);
+}
+
 input {
-    color: black !important;
+    color: var(--color-text) !important;
+    border-color: var(--color-lines) !important;
+    background-color: rgba(255, 255, 255, 0.1);
 }
 
 mark {
-    background-color: rgba(255, 255, 0, 0.4);
+    background-color: var(--color-mark-transparent);
     color: inherit;
     padding-left: 1px;
     padding-right: 1px;
@@ -127,11 +154,6 @@ mark {
 
 .link:hover {
     color: var(--color-accent);
-}
-
-th mark {
-    background-color: #ff6; /* pale yellow */
-    color: black;
 }
 
 .active {

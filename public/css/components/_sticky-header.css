@@ -14,17 +14,11 @@
     left: -1rem;
     right: -1rem;
 
-    background: rgba(250, 249, 245, 0.825);
-
-    backdrop-filter: blur(1.4px);
+    background: rgba(var(--color-bg-primary-rgb), 0.75);
+    backdrop-filter: blur(1.4px) grayscale(.3);
     z-index: -1;
 }
 
 .sidebar .sticky-page-header::before {
-    background: rgba(255, 255, 255, 0.825);
-}
-
-
-.sticky-page-header hr {
-    margin-top: 0.5rem;
+    background: rgba(var(--color-bg-secondary-rgb), 0.75);
 }

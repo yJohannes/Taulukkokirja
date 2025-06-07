@@ -5,7 +5,7 @@
 /*************/
 .gutter {
     position: relative;
-    background-color: rgba(0, 0, 0, 0.1);
+    background-color: var(--color-lines);
     transition: background-color ease-in-out 0.3s;
 }
 

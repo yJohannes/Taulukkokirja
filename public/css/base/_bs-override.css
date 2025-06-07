@@ -1,3 +1,7 @@
+.btn {
+    color: var(--color-text);
+}
+
 .btn:focus {
     box-shadow: none !important;
 }
