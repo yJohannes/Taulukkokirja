@@ -1,3 +1,5 @@
+const FADE_OUT_DURATION = 200;
+const HOLD_DURATION = 250;
 
 // Inject stylesheet
 if (!document.getElementById('ripple-style')) {
@@ -40,40 +42,19 @@ document.addEventListener('mousedown', (e) => {
     ripple.style.top = `${y}px`;
     rippleTarget.appendChild(ripple);
 
-    let isMouseUp = false;
-
     const cleanup = () => {
         ripple.remove();
         rippleTarget.removeEventListener('mouseup', onMouseUp);
         rippleTarget.removeEventListener('mouseleave', onMouseUp);
     };
-
+    
     const onMouseUp = () => {
-        isMouseUp = true;
-        ripple.classList.add('fade-out');
-        setTimeout(cleanup, 300); // Match the fade-out duration
+        setTimeout(() => {
+            ripple.classList.add('fade-out');
+            setTimeout(cleanup, FADE_OUT_DURATION); // Match the fade-out duration
+        }, HOLD_DURATION);
     };
 
     rippleTarget.addEventListener('mouseup', onMouseUp);
     rippleTarget.addEventListener('mouseleave', onMouseUp);
-
-    setTimeout(() => {
-        if (isMouseUp) onMouseUp();
-    }, 1500); // Keep the ripple visible for 600ms
 });
-// const rect = rippleTarget.getBoundingClientRect();
-// const ripple = document.createElement('span');
-// ripple.className = 'ripple-effect';
-
-// // Size and position
-// const size = Math.max(rect.width, rect.height);
-// ripple.style.width = ripple.style.height = size + 'px';
-// ripple.style.left = (e.clientX - rect.left - size / 2) + 'px';
-// ripple.style.top = (e.clientY - rect.top - size / 2) + 'px';
-
-// rippleTarget.appendChild(ripple);
-
-// ripple.addEventListener('animationend', () => {
-//   ripple.remove();
-// });
-
