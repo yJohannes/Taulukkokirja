@@ -191,6 +191,10 @@ mark {
     color: var(--color-accent);
 }
 
+.hover-glow {
+    position: relative;
+}
+
 .hover-glow:hover::before {
     content: "";
     position: absolute;
