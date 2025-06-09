@@ -1,15 +1,19 @@
 /** https://imagecolorpicker.com/color-code/96a1ff */
+/* https://m3.material.io/components/buttons/overview */
 
 :root {
     --color-valio-blue: #002f6d;
     --color-valio-blue-rgb: #002f6d;
+    --color-valio-blue-light: rgb(0 77 179);
+    --color-dark-navy: #041123;
     --color-black: #000;
     --color-white: #fff;
 }
+
 .light {
     --color-primary: var(--color-valio-blue);
-    --color-secondary: #ffffff;
-    --color-accent: var(--color-valio-blue);
+    --color-secondary: var(--color-dark-navy);
+    --color-accent: var(--color-valio-blue-light);
     --color-focus: var(--color-valio-blue);
     --color-enabled: var(--color-valio-blue);
     --color-highlight: #523;
@@ -25,7 +29,8 @@
     --color-button: transparent;
     --color-button-hover: #0000000d;
     --color-input: var(--color-white);
-    --color-table-heading: var(--color-black);
+    --color-table-heading: var(--color-secondary);
+    --color-table-stripe-color: rgba(0, 0, 0, 0.05);
     --color-lines: rgba(0, 0, 0, 0.1);
     --color-lines-secondary: #232323;
     --color-arrow: rgb(120, 120, 120);
@@ -40,9 +45,10 @@
 .dark {
     --color-primary: #232323;
     --color-secondary: #ffffff;
-    --color-accent: rgb(46, 111, 64);
-    --color-focus: rgba(46, 111, 64, 0.2);
-    --color-enabled: #ffffff0d;
+    --color-accent: var(--color-valio-blue-light);
+    --color-focus: var(--color-valio-blue-light);
+    /* --color-enabled: #ffffff0d; */
+    --color-enabled: #2c2c35;
     --color-bg-primary: #161616;
     --color-bg-secondary: #121212;
     --color-bg-tertiary: #1e1e1e;
@@ -53,9 +59,13 @@
     --color-text: var(--color-white);
     --color-heading: var(--color-white);
     --color-button: transparent;
-    --color-button-hover: #ffffff1a;
+    /* --color-button-hover: #ffffff1a; */
+    --color-button-hover: #45455a;
     --color-input: #353535;
-    --color-table-heading: #232323;
+    /* --color-table-heading: #232323; */
+    --color-table-heading: #2c2c35;
+    --color-table-stripe-color: rgba(156, 151, 207, 0.048);
+
     --color-lines: rgba(255, 255, 255, 0.1);
     --color-lines-secondary: #232323;
     --color-arrow: rgb(150, 150, 150);
@@ -169,6 +179,7 @@ hr {
 input {
     padding-left: 0.5rem;
     padding-right: 0.5rem;
+    border-radius: 999rem !important;
     color: var(--color-text) !important;
     border-color: var(--color-lines) !important;
     background-color: var(--color-input) !important;
