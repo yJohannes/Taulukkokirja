@@ -6,7 +6,7 @@
 }
 
 .latex-container {
-    display: inline-flex; /* Fills the area required by content */
+    display: inline-flex; /* Fills only the area required by content */
     position: relative;
     overflow: visible;
 
@@ -67,4 +67,21 @@
 .latex-container.theorem:hover {
     color: rgb(0, 58, 152) !important;
     color: rgb(152, 83, 0) !important;
+}
+
+
+.derivation {
+    border-left: solid 3px rgb(0, 0, 172);
+    padding-left: 10px;
+}
+
+.insight {
+    box-sizing: border-box;
+    background-color: #ecf2ff;
+    border-left: solid 3px rgb(0, 0, 172);
+    padding-left: 10px;
+    padding-top:    1rem;
+    margin-bottom: 1rem;
+    display: flow-root;
+    color: black;
 }
