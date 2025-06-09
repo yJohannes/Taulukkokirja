@@ -1,7 +1,6 @@
 import { saveGridState } from "../components/split-grid.js";
 
 const grid = document.getElementById('content-wrapper');
-const editor = document.getElementById('editor');
 
 let cachedPageHeight = '0px';
 let cachedEditorHeight = '0px';
@@ -15,9 +14,6 @@ export function toggleEditor() {
 }
 
 export function showEditor() {
-    const rowStyle = grid.style.gridTemplateRows;
-    const split = rowStyle.split(' ');
-    
     if (cachedEditorHeight === '0px')
         grid.style.gridTemplateRows = `2fr 1px 1fr`;
     else
@@ -37,11 +33,6 @@ export function hideEditor() {
     saveGridState();
 }
 
-/*
-rowMinSizes:
-    0: 300,
-    2: 44,
-*/
 export function maximizeEditor() {
     const gridHeight = parseFloat(getComputedStyle(grid).height);
     const row0Ratio = 300 / gridHeight;
@@ -58,18 +49,18 @@ export function minimizeEditor() {
 }
 
 
-const maximizeBtn = document.getElementById('maximize-editor');
-const minimizeBtn = document.getElementById('minimize-editor');
-const closeBtn = document.getElementById('close-editor');
+const $maximizeBtn = document.getElementById('maximize-editor');
+const $minimizeBtn = document.getElementById('minimize-editor');
+const $closeBtn = document.getElementById('close-editor');
 
-minimizeBtn.addEventListener('click', () => {
+$minimizeBtn.addEventListener('click', () => {
     minimizeEditor();
 })
 
-maximizeBtn.addEventListener('click', () => {
+$maximizeBtn.addEventListener('click', () => {
     maximizeEditor();
 })
 
-closeBtn.addEventListener('click', () => {
+$closeBtn.addEventListener('click', () => {
     hideEditor();
 })
