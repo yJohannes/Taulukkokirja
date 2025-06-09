@@ -2,21 +2,13 @@
     width: 24px;
     min-width: 24px;
     height: 24px;
-    fill: rgb(120, 120, 120);
+    fill: var(--color-arrow);
     
     transition: transform 0.3s ease;
     transform: rotate(180deg);
 }
 
 .flip-arrow.flipped {
-    fill: black;
+    fill: var(--color-arrow-flipped);
     transform: rotate(360deg);
-}
-
-.active .flip-arrow {
-    fill: rgb(200, 200, 200);
-}
-
-.active .flip-arrow.flipped {
-    fill: white;
 }

@@ -17,8 +17,8 @@ td {
 
 th {
     border: solid 1px var(--color-lines-secondary);
-    background-color: var(--color-primary);
-    color: var(--color-secondary);
+    background-color: var(--color-table-heading);
+    color: var(--color-white);
 
     font-weight: normal !important;
     white-space: nowrap;
@@ -44,10 +44,4 @@ td {
     ol {
         margin: 0;
     }
-}
-
-
-th::-moz-selection {
-    background: white;
-    color: black;
 }

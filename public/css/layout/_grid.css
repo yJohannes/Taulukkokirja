@@ -17,10 +17,8 @@
         "sidebar-1 gutter-col-1 gutter-row-1 gutter-col-2 sidebar-2"
         "sidebar-1 gutter-col-1 editor       gutter-col-2 sidebar-2";
 
-    background-color: var(--color-bg-primary);
     overflow-y: hidden;
 }
-
 
 @media (max-width: 768px) {
     #content-wrapper {

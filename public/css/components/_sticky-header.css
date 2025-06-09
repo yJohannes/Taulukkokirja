@@ -1,5 +1,3 @@
-
-
 .sticky-page-header {
     position: sticky;
     top: 0;
@@ -28,5 +26,5 @@
 }
 
 .sidebar .sticky-page-header::before {
-    background: rgba(var(--color-bg-secondary-rgb), 0.75);
+    background: rgba(var(--color-bg-tertiary-rgb), 0.75);
 }
