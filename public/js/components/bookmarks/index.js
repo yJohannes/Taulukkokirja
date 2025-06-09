@@ -14,7 +14,7 @@ function createTabsFromList(pathsList, $container, deleteTargetListName=null) {
        if (deleteTargetListName) {
             const $delete = document.createElement('button');
             $delete.classList.add('btn', 'rounded-circle', 'ripple', 'ripple-dark', 'ripple-centered', 'hover-glow')
-            $delete.classList.add('button-with-icon');
+            $delete.classList.add('icon-button');
             $delete.style.fontSize = '1rem';
 
             $delete.addEventListener('click', (e) => {
@@ -53,7 +53,7 @@ export function updateBookmarks() {
     const bookmarks = storage.getFromStorageList('bookmarks');
     const recents = storage.getFromStorageList('recently-viewed');
     
-    
     createTabsFromList(bookmarks, $bookmarksContainer, 'bookmarks');
     createTabsFromList(recents, $recentsContainer);
 }
+
