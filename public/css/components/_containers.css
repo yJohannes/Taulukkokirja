@@ -5,19 +5,3 @@
     padding-top: 0.1875rem;
     padding-left: 0.1875rem;
 }
-
-.derivation {
-    border-left: solid 3px navy;
-    padding-left: 10px;
-}
-
-.insight {
-    box-sizing: border-box;
-    background-color: #ecf2ff;
-    border-left: solid 3px navy;
-    padding-left: 10px;
-    padding-top:    1rem;
-    margin-bottom: 1rem;
-    display: flow-root;
-    color: black;
-}
