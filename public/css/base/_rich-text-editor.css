@@ -1,7 +1,3 @@
-.rich-text-editor:focus {
-    border: 1px solid rgb(58, 155, 183);
-}
-
 .rich-text-editor {
   box-sizing: border-box;
   border: 1px solid #aaa;
@@ -13,6 +9,11 @@
   overflow-y: auto;
 }
 
+.rich-text-editor:focus {
+  /* border: 1px solid rgb(58, 155, 183); */
+  border: 1px solid var(--color-accent);
+}
+
 .rich-text-editor img {
   padding: 5px;
   max-width: 100%;
@@ -20,12 +21,14 @@
   vertical-align: middle;
 }
 
-.rich-text-editor:focus > img {
+.rich-text-editor:focus>img {
   box-shadow: 0 0 3px 1px rgba(0, 0, 0, 0.2);
 }
 
+/* Mathquill */
 .rich-text-editor .mq-math-mode .mq-root-block {
   white-space: nowrap;
+  color: black;
 }
 
 .rich-text-editor:focus,
@@ -40,6 +43,9 @@
   min-height: 20px;
   min-width: 20px;
   box-shadow: none;
+
+  background-color: #edf9ff;
+  border-radius: 4px;
 }
 
 .rich-text-editor:focus img.equation {
