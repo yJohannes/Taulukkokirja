@@ -14,33 +14,35 @@
     --color-text: #000000;
     --color-lines: rgba(0, 0, 0, 0.1);
     --color-lines-secondary: #232323;
+    --color-scrollbar: #949494;
     --color-mark-transparent: rgba(255, 255, 0, 0.4);
     --color-mark: #FF0;
 }
 
 .dark {
-    --color-primary: #000000;
+    --color-primary: #232323;
     --color-secondary: #ffffff;
     --color-accent: rgb(46, 111, 64);
     --color-focus: rgba(46, 111, 64, 0.2);
-    --color-bg-primary: #303030;
-    --color-bg-secondary: #212121;
-    --color-bg-primary-rgb: 48, 48, 48;
-    --color-bg-secondary-rgb: 33, 33, 33;
+    --color-bg-primary: #1e1e1e;
+    --color-bg-secondary: #121212;
+    --color-bg-primary-rgb: 31, 31, 31;
+    --color-bg-secondary-rgb: 18, 18, 18;
     --color-text: #ffffff;
     --color-lines: rgba(255, 255, 255, 0.1);
     --color-lines-secondary: #232323;
+    --color-scrollbar: #888;
     --color-mark-transparent: rgb(255 230 100 / 78%);
     --color-mark: rgb(255 230 100);
 }
 
 /* Scrollbar */
-::-webkit-scrollbar-thumb {
-    background: transparent;
+html {
+    scrollbar-color: var(--color-scrollbar) transparent;
 }
 
-html {
-    scrollbar-color: rgba(148, 148, 148, 1) transparent;
+::-webkit-scrollbar-thumb {
+    background: transparent;
 }
 
 *::-webkit-scrollbar {
@@ -129,6 +131,7 @@ figcaption {
 
 hr {
     border-top-color: var(--color-lines);
+    opacity: 1;
 }
 
 input {
