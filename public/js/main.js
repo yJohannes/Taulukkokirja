@@ -11,6 +11,7 @@ import * as search from './components/search/index.js';
 
 import '../components/search_bar/search-bar.js';
 import '../components/ripple/ripple.js';
+import '../components/toggle_button/toggle-button.js';
 
 window.addEventListener('resize', setRealVH);
 window.addEventListener('load', setRealVH);

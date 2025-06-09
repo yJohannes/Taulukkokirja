@@ -39,4 +39,11 @@ export function initNavbar() {
     navs.forEach($nav => {
         addToolTip($nav, 'bottom');
     });
+
+
+    document.getElementById('dark-mode').addEventListener('toggle-change', (e) => {
+        const toggled = e.detail.toggled;
+        document.documentElement.classList.toggle('light', !toggled);
+        document.documentElement.classList.toggle('dark', toggled);
+    });
 }
