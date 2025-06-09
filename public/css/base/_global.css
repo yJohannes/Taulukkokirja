@@ -67,12 +67,6 @@ th::selection {
     color: white;
 }
 
-th::-moz-selection {
-    background: white;
-    color: black;
-
-}
-
 body {
     background-color: var(--color-bg-primary);
     color: var(--color-text) !important;
