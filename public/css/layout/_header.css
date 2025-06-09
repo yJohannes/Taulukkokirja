@@ -5,9 +5,8 @@ header {
 header.navbar {
     background-image: url('../img/icon/damascus.png');
     background-size: 1500px auto;
-    /* background-size: cover; */
     background-position: center;
-    background-repeat: no-repeat;
+    background-repeat: repeat;
 }
 
 .nav-link {
