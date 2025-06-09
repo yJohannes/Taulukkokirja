@@ -78,36 +78,9 @@ export async function loadPageToElement(path, elementId, bookMarkable=true)
     $wrapper.style.alignItems = 'center';
     
     if (bookMarkable) {
-        const $button = document.createElement('button');
-        $button.classList.add('btn', 'button-with-icon', 'rounded-circle', 'ripple', 'ripple-dark', 'ripple-centered', 'hover-glow');
-        
-        const $headerWrapper = document.createElement('h1');
-        $headerWrapper.style.margin = '0';
-        const $icon = document.createElement('i');
-        $headerWrapper.appendChild($icon);
-        $button.appendChild($headerWrapper);
-
-        $button.addEventListener('click', () => {
-            if ($icon.classList.toggle('bi-bookmark')) {
-                storage.removeFromStorageList('bookmarks', path)
-            }
-            
-            if ($icon.classList.toggle('bi-bookmark-fill')) {
-                storage.addToStorageList('bookmarks', path, true)
-            }
-
-            updateBookmarks();
-        });
-
-        const bookmarks = storage.getFromStorageList('bookmarks');
-        
-        if (bookmarks.includes(path)) {
-            $icon.classList.add('bi', 'bi-bookmark-fill');
-        } else {
-            $icon.classList.add('bi', 'bi-bookmark');
-        }
-
+        const $button = createBookmarkButton();
         $wrapper.appendChild($button);
+
     }
 
     const recents = storage.getFromStorageList('recently-viewed');
@@ -166,4 +139,38 @@ export function initPageLoading()
         console.log("HASH CHANGE")
         loadUrl();
     });
+}
+
+export function createBookmarkButton(pagePath) {
+    const $button = document.createElement('button');
+    $button.classList.add('btn', 'icon-button', 'rounded-circle', 'ripple', 'ripple-dark', 'ripple-centered', 'hover-glow');
+    
+    const $headerWrapper = document.createElement('h1');
+    $headerWrapper.style.margin = '0';
+    $headerWrapper.style.color = 'inherit';
+
+    const $icon = document.createElement('i');
+    $headerWrapper.appendChild($icon);
+    $button.appendChild($headerWrapper);
+    $button.addEventListener('click', () => {
+        if ($icon.classList.toggle('bi-bookmark')) {
+            storage.removeFromStorageList('bookmarks', pagePath)
+        }
+        
+        if ($icon.classList.toggle('bi-bookmark-fill')) {
+            storage.addToStorageList('bookmarks', pagePath, true)
+        }
+
+        updateBookmarks();
+    });
+
+    const bookmarks = storage.getFromStorageList('bookmarks');
+    
+    if (bookmarks.includes(pagePath)) {
+        $icon.classList.add('bi', 'bi-bookmark-fill');
+    } else {
+        $icon.classList.add('bi', 'bi-bookmark');
+    }
+
+    return $button;
 }
