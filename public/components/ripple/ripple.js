@@ -6,7 +6,7 @@ if (!document.getElementById('ripple-style')) {
     const link = document.createElement('link');
     link.id = 'ripple-style';
     link.rel = 'stylesheet';
-    link.href = '/components/ripple/ripple.css';
+    link.href = './components/ripple/ripple.css';
     document.head.appendChild(link);
 }
 
