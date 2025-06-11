@@ -7,18 +7,45 @@ import * as pages from './index.js';
 
 // Execute any inline scripts within injected HTML
 // Scripts will get the class 'injected' 
-function injectScripts() {
+
+// DOES NOT WORK
+function injectPageScripts($pageContainer) {
     document.querySelectorAll('script.injected').forEach(script => {
         script.remove();
     });
 
-    const scripts = document.querySelectorAll('#page-container script');
+    const scripts = $pageContainer.querySelectorAll('script');
     scripts.forEach(script => {
         const newScript = document.createElement('script');
         newScript.classList.add('injected');
-        newScript.textContent = script.textContent;
+
+        if (script.src) {
+            // Handle external scripts
+            newScript.src = script.src;
+        } else {
+            // Execute inline scripts using innerHTML
+            newScript.innerHTML = script.innerHTML;
+        }
+
         document.body.appendChild(newScript);
     });
+}
+
+function updateHistory(path) {
+    const recents = storage.getFromStorageList('recently-viewed');
+    let idx = recents.indexOf(path);
+    
+    // If the path already exists, remove it
+    if (idx !== -1)
+        recents.splice(idx, 1);
+
+    recents.unshift(path); // Add the new path to the front of the array (index 0)
+    
+    // If there are more than 20 items, remove the oldest item (last item in array)
+    if (recents.length + 1 > 10)
+        recents.pop();
+
+    storage.setStorageItem('recently-viewed', recents);
 }
 
 export function setPageTitleFromPath(path) {
@@ -34,7 +61,6 @@ export function setPageTitleFromPath(path) {
     } else {
         pageName ? document.title = pageName + ' | Taulukkokirja' : document.title = 'Taulukkokirja';
     }
-
 }
 
 export async function loadPageHTML(path) {
@@ -53,22 +79,18 @@ export async function loadPageHTML(path) {
     }
 }
 
-export async function loadPageToElement(path, elementId, bookMarkable=true)
+export async function loadPageToElement(path, $element, bookMarkable=true)
 {
-    console.log('Loading page to element')
-
     if (!path.endsWith('.html')) {
         explorer.openPath(path);
     }
 
     const html = await loadPageHTML(path);
     if (!html || html === 'Error loading page') {
-        const $element = document.getElementById(elementId);
         $element.innerHTML = html;
         return
     };
 
-    const $element = document.getElementById(elementId);
     $element.innerHTML = html;
     
     const $headerContainer = $element.querySelector('.sticky-page-header');
@@ -80,64 +102,40 @@ export async function loadPageToElement(path, elementId, bookMarkable=true)
     if (bookMarkable) {
         const $button = createBookmarkButton();
         $wrapper.appendChild($button);
-
     }
 
-    const recents = storage.getFromStorageList('recently-viewed');
-    let idx = recents.indexOf(path);
-    
-    // If the path already exists, remove it
-    if (idx !== -1)
-        recents.splice(idx, 1);
-
-    recents.unshift(path); // Add the new path to the front of the array (index 0)
-    
-    // If there are more than 20 items, remove the oldest item (last item in array)
-    if (recents.length + 1 > 10)
-        recents.pop();
-
-    storage.setStorageItem('recently-viewed', recents);
-    
     setPageTitleFromPath(path);
     initLatex();
     initTableHighlights();
-    injectScripts();
+    injectPageScripts();
+    updateHistory(path);
+}
+
+async function loadHashUrl() {
+    let url = pages.formatLocationHashForFetch(window.location.hash);
+
+    if (!url || url === '/') {
+        fetch('index.html');
+        return;
+    }
+
+    await loadPageToElement(url, document.getElementById('page-container'));
+    setPageTitleFromPath(url);
+
+    const terms = pages.getDecodedSearchParams('highlight');
+    if (terms.length > 0) {
+        highlightTerms(document.getElementById('page-container'), terms);
+    }
 }
 
 export function initPageLoading()
 {
-    const loadUrl = async () => {
-        let url = pages.formatLocationHashForFetch(window.location.hash);
-
-        if (!url || url === '/') {
-            fetch('index.html');
-            return;
-        }
-
-        // const newUrl = pages.formatPathToHash(url);
-        // history.pushState(null, '', newUrl);
-        await loadPageToElement(url, 'page-container');
-        setPageTitleFromPath(url);
-
-        const terms = pages.getDecodedSearchParams('highlight');
-        if (terms.length > 0) {
-            highlightTerms(document.getElementById('page-container'), terms);
-        }
-    }
-
-    window.addEventListener('popstate', () => {
-        // console.log("POPSTATE");
-        // loadUrl();
-    });
-    
     window.addEventListener('load', () => {
-        console.log("LOAD");
-        loadUrl();
+        loadHashUrl();
     });
 
     window.addEventListener('hashchange', () => {
-        console.log("HASH CHANGE")
-        loadUrl();
+        loadHashUrl();
     });
 }
 
