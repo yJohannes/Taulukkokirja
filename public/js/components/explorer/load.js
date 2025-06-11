@@ -38,7 +38,7 @@ export function loadExplorerSave() {
 export async function loadExplorerStructure() {
     const response = await fetch('/api/pages-structure');
     if (!response.ok) {
-        console.error('Failed to fetch the page structure: ', error);
+        console.error('Failed to fetch the page structure, using fallback.');
         return defaultStructure;
     }
     
