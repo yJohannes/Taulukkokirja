@@ -6,7 +6,7 @@ import * as defs from './defs.js';
 import * as storage from '../storage/index.js';
 
 export function loadExplorerSave() {
-    const $explorer = document.querySelector('#explorer-container');
+    const $explorer = document.querySelector('#explorer-nav-container');
     const $uls = $explorer.querySelectorAll('.explorer-ul');
     
     // Collapse all dropdowns and unflip arrows
