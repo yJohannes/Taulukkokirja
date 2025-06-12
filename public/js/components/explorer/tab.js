@@ -76,7 +76,7 @@ function handleTabClick($tab, isDropdown, $parentElement)
         const $parentTab = $parentDropdown.parentElement.querySelector('button');
 
         // Dismiss highest level dropdown
-        if (!($parentDropdown.parentElement.id === 'explorer-container')) {
+        if (!($parentDropdown.parentElement.id === 'explorer-nav-container')) {
             $parentTab.classList.add(defs.ACTIVE);
             
             storage.addToStorageList('show-states', $parentTab.getAttribute('data-path'));
