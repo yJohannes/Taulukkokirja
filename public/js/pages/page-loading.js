@@ -1,4 +1,3 @@
-import { initTableHighlights } from '../components/tables.js';
 import { initLatex } from '../latex/latex.js';
 import { updateBookmarks } from '../components/bookmarks/index.js';
 import { highlightTerms } from '../effects/highlight-terms.js';
@@ -42,7 +41,7 @@ function updateHistory(path) {
     recents.unshift(path); // Add the new path to the front of the array (index 0)
     
     // If there are more than 20 items, remove the oldest item (last item in array)
-    if (recents.length + 1 > 10)
+    if (recents.length > 20)
         recents.pop();
 
     storage.setStorageItem('recently-viewed', recents);
@@ -93,7 +92,7 @@ export async function loadPageToElement(path, $element, bookMarkable=true)
 
     $element.innerHTML = html;
     
-    const $headerContainer = $element.querySelector('.sticky-page-header');
+    const $headerContainer = $element.querySelector('.sticky-header');
     const $wrapper = $headerContainer.querySelector('.d-flex');
     $wrapper.style.flexDirection = 'row';
     $wrapper.style.justifyContent = 'space-between';
@@ -106,8 +105,8 @@ export async function loadPageToElement(path, $element, bookMarkable=true)
 
     setPageTitleFromPath(path);
     initLatex();
-    initTableHighlights();
-    injectPageScripts();
+    injectPageScripts($element);
+    // initTableHighlights();
     updateHistory(path);
 }
 
