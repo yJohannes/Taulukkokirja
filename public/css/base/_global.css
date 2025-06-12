@@ -3,25 +3,38 @@
 
 :root {
     --color-valio-blue: #002f6d;
-    --color-valio-blue-rgb: #002f6d;
+    --color-valio-blue-80: #000916;
+    --color-valio-blue-30: #00214c;
+    --color-valio-blue-20: #002657;
+    --color-valio-blue-rgb: 0, 47, 109;
     --color-valio-blue-light: rgb(0 77 179);
+    --color-m3-dark-purple: #271430;
+    --color-m3-lavender: #e2e0f9;
+    --color-m3-snow: #f2ecee;
     --color-dark-navy: #041123;
     --color-black: #000;
     --color-white: #fff;
+
+    --table-border-radius: 1rem;
 }
 
 .light {
     --color-primary: var(--color-valio-blue);
-    --color-secondary: var(--color-dark-navy);
-    --color-accent: var(--color-valio-blue-light);
+    --color-primry-80: var(--color-valio-blue-80);
+    --color-primry-30: var(--color-valio-blue-30);
+    --color-primry-20: var(--color-valio-blue-20);
+    --color-primary-rgb: var(--color-valio-blue-rgb);;
+    --color-secondary: #6442d6;
+    --color-accent: var(--color-valio-blue);
     --color-focus: var(--color-valio-blue);
     --color-enabled: var(--color-valio-blue);
-    --color-highlight: #523;
+    --color-enabled-text: var(--color-white);
+    --color-highlight: #a3afff2b;
     --color-bg-primary: #FAF9F5;
-    --color-bg-secondary: #f7f3ed;
+    --color-bg-secondary: #f8f9fa;
     --color-bg-tertiary: #FFFFFF;
     --color-bg-primary-rgb: 250, 249, 245;
-    --color-bg-secondary-rgb: 247, 243, 237;
+    --color-bg-secondary-rgb: 248, 249, 250;
     --color-bg-tertiary-rgb: 255, 255, 255;
 
     --color-text: var(--color-black);
@@ -29,9 +42,11 @@
     --color-button: transparent;
     --color-button-hover: #0000000d;
     --color-input: var(--color-white);
-    --color-table-heading: var(--color-secondary);
+    --color-table-heading: var(--color-m3-dark-purple);
     --color-table-stripe-color: rgba(0, 0, 0, 0.05);
-    --color-lines: rgba(0, 0, 0, 0.1);
+    --color-nav-link: #555;
+    --color-nav-link-hover: #000;
+    --color-lines: #dee2e6;
     --color-lines-secondary: #232323;
     --color-arrow: rgb(120, 120, 120);
     --color-arrow-flipped: var(--color-primary);
@@ -43,12 +58,13 @@
 
 /* background: #252525; */
 .dark {
-    --color-primary: #232323;
+    --color-primary: #553f5d;
     --color-secondary: #ffffff;
-    --color-accent: var(--color-valio-blue-light);
+    --color-accent: #ba68b7;
     --color-focus: var(--color-valio-blue-light);
-    /* --color-enabled: #ffffff0d; */
     --color-enabled: #2c2c35;
+    --color-enabled-text: var(--color-white);
+    --color-highlight: #553f5d52;
     --color-bg-primary: #161616;
     --color-bg-secondary: #121212;
     --color-bg-tertiary: #1e1e1e;
@@ -59,11 +75,13 @@
     --color-text: var(--color-white);
     --color-heading: var(--color-white);
     --color-button: transparent;
-    /* --color-button-hover: #ffffff1a; */
     --color-button-hover: #45455a;
     --color-input: #353535;
+
+    --color-nav-link: #bbb;
+    --color-nav-link-hover: #fff;
     /* --color-table-heading: #232323; */
-    --color-table-heading: #2c2c35;
+    --color-table-heading: #594d66;
     --color-table-stripe-color: rgba(156, 151, 207, 0.048);
 
     --color-lines: rgba(255, 255, 255, 0.1);
@@ -73,7 +91,7 @@
     --color-mark-transparent: rgb(255 230 100 / 78%);
     --color-mark: rgb(255 230 100);
     --color-scrollbar: #888;
-    --color-selection: rgb(74 126 255 / 56%);
+    --color-selection: rgb(161 74 255 / 25%);
 }
 
 body, 
@@ -107,8 +125,21 @@ html {
     background: var(--color-selection);
 }
 
+
+.bg-primary {
+    background-color: var(--color-bg-primary) !important;
+}
+
+.bg-secondary {
+    background-color: var(--color-bg-secondary) !important;
+}
+
+
+.bg-tertiary {
+    background-color: var(--color-bg-tertiary) !important;
+}
+
 body {
-    background-color: var(--color-bg-secondary);
     color: var(--color-text) !important;
     overflow: hidden;
 }
@@ -176,6 +207,11 @@ hr {
     opacity: 1;
 }
 
+button:focus-visible {
+    box-shadow: 0 0 0 2px var(--color-primary);
+
+}
+
 input {
     padding-left: 0.5rem;
     padding-right: 0.5rem;
@@ -225,20 +261,29 @@ mark {
 
 
 .icon-button {
-    display: flex;
+    display: flex !important;
     justify-content: center;
     align-items: center;
+    /* border-radius: .75rem; */
 
     padding: 0.5rem !important;
     aspect-ratio: 1 / 1;
     flex-shrink: 0;
 
     color: var(--color-text);
+
+    .bi {
+        filter: brightness(1.2);
+    }
 }
 
 .icon-button:hover {
-    color: var(--color-accent);
+    .bi {
+        filter: brightness(1);
+    }
 }
+
+
 
 .hover-glow {
     position: relative;
