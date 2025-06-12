@@ -1,7 +1,8 @@
 .rich-text-editor {
   box-sizing: border-box;
   border: 1px solid #aaa;
-  padding: 5px;
+  border-radius: 0.5rem;
+  padding: 0.5rem;
   font: 17px 'Times New Roman', serif;
   white-space: pre-wrap;
 
@@ -31,7 +32,7 @@
   color: black;
 }
 
-.rich-text-editor:focus,
+/* .rich-text-editor:focus, */
 .rich-text-editor .mq-editable-field.mq-focused,
 .rich-text-editor textarea:focus {
   box-shadow: none;
@@ -55,4 +56,21 @@
 .rich-text-editor img.equation.active {
   border: 2px solid #caedff;
   border-radius: 3px;
+}
+
+#rich-text-editor-root {
+    height: 100%;
+    overflow-y: auto;
+}
+
+.rich-text-editor *::selection,
+.rich-text-editor::selection {
+    background: #3367d1;
+    color: white !important;
+}
+
+.rich-text-editor *::-moz-selection,
+.rich-text-editor::-moz-selection {
+    background: #3367d1;
+    color: white !important;
 }
