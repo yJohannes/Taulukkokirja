@@ -26,7 +26,7 @@ export function initSplitGrid() {
         },
 
         rowMinSizes: {
-            2: 44, // Editor 
+            2: 0, // Editor 
         },
 
         onDragStart: () => {
