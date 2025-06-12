@@ -1,0 +1,4 @@
+.rounded-top-xxl {
+    border-top-left-radius: var(--bs-border-radius-xxl);
+    border-top-right-radius: var(--bs-border-radius-xxl);
+}
