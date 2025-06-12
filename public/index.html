@@ -118,9 +118,9 @@
             <!-- Right column: main content -->
             <main class="bg-secondary overflow-auto order-0 order-md-1">
                 <div id="content-wrapper" class="h-100">
-                    <aside id="sidebar-1" class="sidebar bg-tertiary">
-                        <section id="explorer" class="" aria-label="Explorer">
-                            <div class="sticky-page-header">
+                    <aside id="sidebar-1" class="sidebar bg-tertiary p-3">
+                        <section id="explorer" aria-label="Explorer">
+                            <div class="sticky-header">
                                 <search-bar id="explorer-search"></search-bar>
                             </div>
 
@@ -244,31 +244,24 @@
 
                     <div id="gutter-col-2" class="gutter gutter-horizontal"></div>
 
-                    <aside id="sidebar-2" class="sidebar bg-tertiary">
-                        <div id="sidebar-2-content">
-                            <section id="bookmarks" class="mb-4">
-                                <div class="sticky-page-header">
-                                    <div class="d-flex">
-                                        <h3>Kirjanmerkit</h3>
-                                    </div>
-                                    <hr>
-                                </div>
-                                <nav id="bookmark-container" class=" rounded"></nav>
-                            </section>
+                    <aside id="sidebar-2" class="sidebar bg-tertiary p-3">
+                        <section id="bookmarks" class="mb-4">
+                            <div class="sticky-header">
+                                <h3>Kirjanmerkit</h3>
+                                <hr>
+                            </div>
+                            <nav id="bookmark-container" class=" rounded"></nav>
+                        </section>
 
-                            <section id="recently-viewed" style="margin-bottom: 10rem;">
-                                <div class="sticky-page-header">
-                                    <div class="d-flex">
-                                        <h3>Viimeksi selatut</h3>
-                                    </div>
-                                    <hr>
-                                </div>
-                                <nav id="recently-viewed-container" class=" rounded"></nav>
-                            </section>
-                            <!-- <label for="color-picker">Pick a color:</label> -->
-                            <!-- <input type="color" id="color-picker" value="#ff0000"/> -->
-
-                        </div>
+                        <section id="recently-viewed" style="margin-bottom: 10rem;">
+                            <div class="sticky-header">
+                                <h3>Viimeksi selatut</h3>
+                                <hr>
+                            </div>
+                            <nav id="recently-viewed-container" class=" rounded"></nav>
+                        </section>
+                        <!-- <label for="color-picker">Pick a color:</label> -->
+                        <!-- <input type="color" id="color-picker" value="#ff0000"/> -->
                     </aside>
                 </div>
             </main>
