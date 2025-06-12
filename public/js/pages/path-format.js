@@ -5,7 +5,7 @@ export function sanitizePath(path) {
 }
 
 export function formatPathToHash(path) {
-    return '#/' + path.replaceAll(' ', '_').replace('.html', '')
+    return path ? '#/' + path.replaceAll(' ', '_').replace('.html', '') : '';
 }
 
 export function formatLocationHashForFetch(hash) {
