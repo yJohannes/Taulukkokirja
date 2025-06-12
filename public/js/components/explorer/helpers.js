@@ -4,7 +4,7 @@ import * as storage from '../storage/index.js';
 
 export function showExplorer(bool)
 {
-    const $explorerContainer = document.getElementById('explorer-container');
+    const $explorerContainer = document.getElementById('explorer-nav-container');
 
     if (bool) {
         $explorerContainer.style.display = 'inline-block';
@@ -16,7 +16,7 @@ export function showExplorer(bool)
 
 export function expandExplorer()
 {
-    const $explorer = document.querySelector('#explorer-container');
+    const $explorer = document.querySelector('#explorer-nav-container');
     const $uls = $explorer.querySelectorAll('.explorer-ul');
     
     // Expand all dropdowns and flip arrows
@@ -40,7 +40,7 @@ export function expandExplorer()
 
 export function collapseExplorer()
 {
-    const $explorer = document.querySelector('#explorer-container');
+    const $explorer = document.querySelector('#explorer-nav-container');
     const $uls = $explorer.querySelectorAll('.explorer-ul');
     
     // Collapse all dropdowns and unflip arrows
@@ -65,13 +65,13 @@ export function collapseExplorer()
 }
 
 export function getTabByPath(path) {
-    const $explorer = document.querySelector('#explorer-container');
+    const $explorer = document.querySelector('#explorer-nav-container');
     const tabClass = `.tab[data-path="${path}"]`;
     return $explorer.querySelector(tabClass);
 }
 
 export function openPath(path) {
-    const $explorer = document.querySelector('#explorer-container');
+    const $explorer = document.querySelector('#explorer-nav-container');
     const parts = path.split('/'); // Split the path into parts for navigation
     let joinPath = '';
 
