@@ -1,5 +1,4 @@
 .sidebar {
-    background-color: var(--color-bg-tertiary);
     position: sticky;
     top: 0;
     height: 100%;
@@ -11,7 +10,7 @@
 }
 
 /* Show hamburger icon on smaller screens */
-#sidebar-1-toggle {
+#sidebar-toggle {
     /* Hidden by default */
     display: none !important; 
     box-shadow: none !important;
