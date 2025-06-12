@@ -14,7 +14,6 @@ document.addEventListener('mousedown', (e) => {
     // Find the closest ancestor with class 'ripple' (or self)
     const rippleTarget = e.target.closest('.ripple');
     if (!rippleTarget) return;
-    console.log(rippleTarget);
 
     const ripple = document.createElement('div');
 
