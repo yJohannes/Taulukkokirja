@@ -49,7 +49,7 @@
     <script defer type="module" src="./js/main.js"></script>
 </head>
 <body>
-    <div class="container-fluid vh-100 p-0">
+    <div class="container-fluid p-0" style="height: calc(var(--vh) * 100);">
         <div class="d-flex flex-column flex-md-row h-100">
             <div id="nav-rail" class="bg-secondary d-flex flex-md-column justify-content-between flex-shrink-0 p-2 border-end order-1 order-md-0">
 
@@ -116,52 +116,50 @@
             </div>
 
             <!-- Right column: main content -->
-            <main class="bg-secondary overflow-auto order-0 order-md-1">
+            <main class="bg-secondary flex-grow-1 overflow-auto order-0 order-md-1">
                 <div id="content-wrapper" class="h-100">
                     <aside id="sidebar-1" class="sidebar bg-tertiary p-3">
                         <section id="explorer" aria-label="Explorer">
                             <div class="sticky-header">
                                 <search-bar id="explorer-search"></search-bar>
+                                
+                                <div id="explorer-buttons" class="d-flex justify-content-end mt-2" role="group">
+                                    <button id="explorer-expand"
+                                        class="btn btn-sm ripple ripple-dark ripple-centered hover-glow"
+                                        title="Laajenna välilehdet (alt + 1)" aria-label="Laajenna välilehdet"
+                                        style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: 1rem;"
+                                    >
+                                        <i class="bi bi-arrows-expand" style="font-size: 120%;"></i>
+                                    </button>
+                                    <button id="explorer-collapse"
+                                        class="btn btn-sm ripple ripple-dark ripple-centered hover-glow"
+                                        title="Sulje välilehdet (alt + 2)" aria-label="Sulje välilehdet"
+                                        style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: 1rem;"
+                                    >
+                                        <i class="bi bi-arrows-collapse" style="font-size: 120%;"></i>
+                                    </button>
+                                    <button id="explorer-auto-collapse"
+                                        class="btn btn-sm ripple ripple-dark ripple-centered hover-glow"
+                                        title="Automaattinen sulkeminen (alt + 3)" aria-label="Automaattinen sulkeminen"
+                                        style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: 1rem;"
+                                    >
+                                        <i class="bi bi-list-nested" style="font-size: 120%;"></i>
+                                    </button>
+                                </div>
                             </div>
-
-                            <div id="explorer-buttons" class="d-flex justify-content-end mt-3 mb-1" role="group">
-                                <button id="explorer-expand"
-                                    class="btn btn-sm ripple ripple-dark ripple-centered hover-glow"
-                                    title="Laajenna välilehdet (alt + 1)" aria-label="Laajenna välilehdet"
-                                    style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: 1rem;">
-
-                                    <i class="bi bi-arrows-expand" style="font-size: 120%;"></i>
-                                </button>
-                                <button id="explorer-collapse"
-                                    class="btn btn-sm ripple ripple-dark ripple-centered hover-glow"
-                                    title="Sulje välilehdet (alt + 2)" aria-label="Sulje välilehdet"
-                                    style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: 1rem;">
-
-                                    <i class="bi bi-arrows-collapse" style="font-size: 120%;"></i>
-                                </button>
-                                <button id="explorer-auto-collapse"
-                                    class="btn btn-sm ripple ripple-dark ripple-centered hover-glow"
-                                    title="Automaattinen sulkeminen (alt + 3)" aria-label="Automaattinen sulkeminen"
-                                    style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: 1rem;">
-
-                                    <i class="bi bi-list-nested" style="font-size: 120%;"></i>
-                                </button>
-                            </div>
-
-                            <nav id="search-container" class="rounded w-100"></nav>
-                            <nav id="explorer-container" class="rounded w-100"></nav>
+                            <div id="explorer-search-result-container" class="rounded w-100"></div>
+                            <nav id="explorer-nav-container" class="rounded w-100"></nav>
                         </section>
-
                     </aside>
 
 
                     <div id="gutter-col-1" class="gutter gutter-horizontal"></div>
 
-                    <main id="main-content" class="container-md bg-primary shadow">
+                    <main id="main-content" class="container-md bg-primary overflow-y-auto p-3 shadow">
                         <div class="rich-text-editor-toolbar-root"></div>
 
-                        <article id="page-container">
-                            <div class="sticky-page-header">
+                        <article id="page-container" style="margin-bottom: 10rem;">
+                            <div class="sticky-header">
                                 <div class="d-flex">
                                     <h1>Etusivu</h1>
                                 </div>
@@ -202,20 +200,10 @@
                                 </li>
                             </ul>
                         </article>
-
                     </main>
 
                     <div id="gutter-row-1" class="gutter gutter-vertical bg-primary">
-                        <div
-                            class="bg-secondary px-3 py-2"
-                            style="
-                            background-color: var(--color-bg-secondary);
-                            border-top: 1px solid var(--color-lines);
-                            border-top-left-radius: var(--bs-border-radius-xxl);
-                            border-top-right-radius: var(--bs-border-radius-xxl);
-                            ">
-                            
-                            
+                        <div class="bg-secondary border-top px-3 py-2 rounded-top-xxl">                           
                             <div class="d-flex flex-row align-items-center justify-content-between">
                             <h4 class="logo tex mb-0" data-expr="\LaTeX">
                                 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtext>LaTeX</mtext></mrow><annotation encoding="application/x-tex">\KaTeX</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.8988em; vertical-align: -0.2155em;"></span><span class="mord text"><span class="mord textrm">L</span><span class="mspace" style="margin-right: -0.17em;"></span><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height: 0.6833em;"><span class="" style="top: -2.905em;"><span class="pstrut" style="height: 2.7em;"></span><span class="mord"><span class="mord textrm mtight sizing reset-size6 size3">A</span></span></span></span></span></span><span class="mspace" style="margin-right: -0.15em;"></span><span class="mord text"><span class="mord textrm">T</span><span class="mspace" style="margin-right: -0.1667em;"></span><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height: 0.4678em;"><span class="" style="top: -2.7845em;"><span class="pstrut" style="height: 3em;"></span><span class="mord"><span class="mord textrm">E</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height: 0.2155em;"><span class=""></span></span></span></span><span class="mspace" style="margin-right: -0.125em;"></span><span class="mord textrm">X</span></span></span></span></span></span>
@@ -223,19 +211,18 @@
                             </h4>
                                 <div id="editor-control-buttons">
                                     </button>
-                                    <button id="maximize-editor" class="btn btn-sm hover-glow" aria-label="Suurenna">
+                                    <button id="maximize-editor" class="btn btn-sm rounded hover-glow" aria-label="Suurenna">
                                         <i class="bi bi-chevron-up" style="font-size: 120%;"></i>
                                     </button>
-                                    <button id="minimize-editor" class="btn btn-sm hover-glow" aria-label="Pienennä">
+                                    <button id="minimize-editor" class="btn btn-sm rounded hover-glow" aria-label="Pienennä">
                                         <i class="bi bi-chevron-down" style="font-size: 120%;"></i>
                                     </button>
-                                    <button id="close-editor" class="btn btn-sm hover-glow" aria-label="Sulje">
+                                    <button id="close-editor" class="btn btn-sm rounded hover-glow" aria-label="Sulje">
                                         <i class="bi bi-x-lg" style="font-size: 120%;"></i>
                                     </button>
                                 </div>
                             </div>
                         </div>
-
                     </div>
                     
                     <div id="editor" class="bg-secondary d-flex flex-column overflow-y-hidden h-100 p-3 pt-0">
