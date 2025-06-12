@@ -1,6 +1,5 @@
 import { saveGridState } from "../components/split-grid.js";
 
-const GUTTER_HEIGHT = '64px';
 const grid = document.getElementById('content-wrapper');
 
 let cachedPageHeight = '0px';
@@ -16,9 +15,9 @@ export function toggleEditor() {
 
 export function showEditor() {
     if (cachedEditorHeight === '0px')
-        grid.style.gridTemplateRows = `2fr ${GUTTER_HEIGHT} 1fr`;
+        grid.style.gridTemplateRows = `2fr auto 1fr`;
     else
-        grid.style.gridTemplateRows = `${cachedPageHeight} ${GUTTER_HEIGHT} ${cachedEditorHeight}`;
+        grid.style.gridTemplateRows = `${cachedPageHeight} auto ${cachedEditorHeight}`;
 
     saveGridState();
 }
@@ -39,14 +38,14 @@ export function maximizeEditor() {
     const row0Ratio = 300 / gridHeight;
     const row2Ratio = 1 - row0Ratio;
 
-    grid.style.gridTemplateRows = `${row0Ratio}fr ${GUTTER_HEIGHT} ${row2Ratio}fr`;
+    grid.style.gridTemplateRows = `${row0Ratio}fr auto ${row2Ratio}fr`;
 }
 export function minimizeEditor() {
     const gridHeight = parseFloat(getComputedStyle(grid).height);
     const row2Ratio = 44 / gridHeight;
     const row0Ratio = 1 - row2Ratio;
 
-    grid.style.gridTemplateRows = `${row0Ratio}fr ${GUTTER_HEIGHT} ${row2Ratio}fr`;
+    grid.style.gridTemplateRows = `${row0Ratio}fr auto ${row2Ratio}fr`;
 }
 
 
