@@ -38,7 +38,8 @@
     .sidebar {
         display: none; 
         position: fixed !important; /* Detach from grid */
-        top: 56px !important;       /* Align below navbar */
+        top: 0;
+        height: 90vh !important;
         left: 0;
         z-index: 5000 !important;
     }  

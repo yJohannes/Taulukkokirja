@@ -66,10 +66,13 @@
     z-index: 1000;
 }
 
-.gutter-vertical:hover::before {
+.gutter-vertical:hover::before,
+.gutter-horizontal:hover::before {
     background-color: var(--color-accent);
 }
 
-.gutter-horizontal:hover::before {
-    background-color: var(--color-accent);
+#gutter-row-1::before,
+#gutter-row-1::after {
+    content: none;
+    display: none;
 }
