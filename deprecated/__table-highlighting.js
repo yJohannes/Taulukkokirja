@@ -1,5 +1,4 @@
-function initTableHighlights()
-{
+export function initTableHighlights() {
     const $tables = document.querySelectorAll('table');
     
     $tables.forEach($table => {
@@ -61,5 +60,3 @@ function initTableHighlights()
         });
     });
 }
-
-export { initTableHighlights };
