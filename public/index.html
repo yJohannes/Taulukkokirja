@@ -16,7 +16,6 @@
         integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO"
         crossorigin="anonymous"></script>
 
-    
     <!-- Katex -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.css">
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.js"></script>
@@ -114,142 +113,167 @@
                     </li>
                     </li>
                 </ul>
-            </nav>
-        </div>
-    </header>
-
-    <!-- Content area -->
-    <div id="content-wrapper">
-        <aside id="sidebar-1" class="sidebar shadow">
-            
-            <section id="explorer" class="" aria-label="Explorer">
-                <div id="explorer-search-wrapper">
-                    <search-bar id="explorer-search"></search-bar>
-                </div>
-
-                <div id="explorer-buttons" class="mt-3 mb-1" role="group" style="display: flex; justify-content: flex-end;">
-                    <button id="explorer-expand" class="btn btn-sm ripple ripple-dark ripple-centered hover-glow" title="Laajenna välilehdet (alt + 1)" aria-label="Laajenna välilehdet">
-                        <i class="bi bi-arrows-expand" style="font-size: 120%;"></i>
-                    </button>
-                    <button id="explorer-collapse" class="btn btn-sm ripple ripple-dark ripple-centered hover-glow" title="Sulje välilehdet (alt + 2)" aria-label="Sulje välilehdet">
-                        <i class="bi bi-arrows-collapse" style="font-size: 120%;"></i>
-                    </button>
-                    <button id="explorer-auto-collapse" class="btn btn-sm ripple ripple-dark ripple-centered hover-glow" title="Automaattinen sulkeminen (alt + 3)" aria-label="Automaattinen sulkeminen">
-                        <i class="bi bi-list-nested" style="font-size: 120%;"></i>
-                    </button>
-                </div>
-                
-                <nav id="search-container" class="rounded"></nav>
-                <nav id="explorer-container" class="rounded"></nav>
-            </section>
-            
-        </aside>
-
-
-        <div id="gutter-col-1" class="gutter gutter-horizontal"></div>
-
-        <main id="main-content" class="container shadow">
-            <div class="rich-text-editor-toolbar-root"></div>
-
-            <article id="page-container">
-                <div class="sticky-page-header">
-                    <div class="d-flex">
-                        <h1>Etusivu</h1>
-                    </div>
-                    <hr>
-                </div>
-
-                <p>Tämä on taulukkokirjan etusivu.</p>
-
-                <h3>Lähteet</h3>
-                <ul>
-                    <li>
-                        <p>MAOL-taulukkokirja</p>
-                    </li>
-                    <li>
-                        <p>Algebra I — Antti Majaniemi</p>
-                    </li>
-                    <li>
-                        <p>Matematiikka I (differentiaali- ja integraalilaskentaa insinööriopiskelijoilla) — Antti Majaniemi</p>
-                    </li>
-                    <li>
-                        <p>Geometria (geometriaa, trigonometriaa ja vektorilaskentaa) — Antti Majaniemi</p>
-                    </li>
-                    <li>
-                        <p>Insinöörin (AMK) fysiikka osa I — Mikko Hautala, Hannu Peltonen, Lahden Teho-Opetus Oy</p>
-                    </li>
-                    <li>
-                        <p>Insinöörin (AMK) fysiikka osa II — Hannu Peltonen, Juha Perkkiö, Kari Vierinen, Lahden Teho-Opetus Oy</p>
-                    </li>
-                    <li>
-                        <p>
-                            <a class="link" href="https://physics.info/equations/">
-                                Kaikenlaisia fysiikan yhtälöitä — physics.info
-                            </a>
-                        </p>
-                    </li>
-                </ul>
-            </article>
-            
-        </main>
-
-        <div id="gutter-row-1" class="gutter gutter-vertical"></div>
-
-        <div id="editor" class="shadow"  style="display: flex; flex-direction: column; height: 100%; overflow-y: hidden;">
-            <div class="d-flex" style="flex-direction: row; justify-content: space-between;">
-                <h4 class="logo tex" data-expr="\LaTeX">
-                    <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtext>LaTeX</mtext></mrow><annotation encoding="application/x-tex">\KaTeX</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.8988em; vertical-align: -0.2155em;"></span><span class="mord text"><span class="mord textrm">L</span><span class="mspace" style="margin-right: -0.17em;"></span><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height: 0.6833em;"><span class="" style="top: -2.905em;"><span class="pstrut" style="height: 2.7em;"></span><span class="mord"><span class="mord textrm mtight sizing reset-size6 size3">A</span></span></span></span></span></span><span class="mspace" style="margin-right: -0.15em;"></span><span class="mord text"><span class="mord textrm">T</span><span class="mspace" style="margin-right: -0.1667em;"></span><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height: 0.4678em;"><span class="" style="top: -2.7845em;"><span class="pstrut" style="height: 3em;"></span><span class="mord"><span class="mord textrm">E</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height: 0.2155em;"><span class=""></span></span></span></span><span class="mspace" style="margin-right: -0.125em;"></span><span class="mord textrm">X</span></span></span></span></span></span>
-                    -editori
-                </h4>
-
-                <!-- FIX HOVER GLOW -->
-                <div id="editor-control-buttons" class="d-flex">
-                    </button>
-                    <button id="maximize-editor" class="btn btn-sm hover-glow" aria-label="Suurenna">
-                        <i class="bi bi-chevron-up" style="font-size: 120%;"></i>
-                    </button>
-                    <button id="minimize-editor" class="btn btn-sm hover-glow" aria-label="Pienennä">
-                        <i class="bi bi-chevron-down" style="font-size: 120%;"></i>
-                    </button>
-                    <button id="close-editor" class="btn btn-sm hover-glow" aria-label="Sulje">
-                        <i class="bi bi-x-lg" style="font-size: 120%;"></i>
-                    </button>
-                </div>
             </div>
 
-            <div class="mt-3"></div>
+            <!-- Right column: main content -->
+            <main class="bg-secondary overflow-auto order-0 order-md-1">
+                <div id="content-wrapper" class="h-100">
+                    <aside id="sidebar-1" class="sidebar bg-tertiary">
+                        <section id="explorer" class="" aria-label="Explorer">
+                            <div class="sticky-page-header">
+                                <search-bar id="explorer-search"></search-bar>
+                            </div>
 
-            <div id="rich-text-editor-root" style="flex: 1 1 auto; display: flex; flex-direction: column;"></div>
+                            <div id="explorer-buttons" class="d-flex justify-content-end mt-3 mb-1" role="group">
+                                <button id="explorer-expand"
+                                    class="btn btn-sm ripple ripple-dark ripple-centered hover-glow"
+                                    title="Laajenna välilehdet (alt + 1)" aria-label="Laajenna välilehdet"
+                                    style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: 1rem;">
+
+                                    <i class="bi bi-arrows-expand" style="font-size: 120%;"></i>
+                                </button>
+                                <button id="explorer-collapse"
+                                    class="btn btn-sm ripple ripple-dark ripple-centered hover-glow"
+                                    title="Sulje välilehdet (alt + 2)" aria-label="Sulje välilehdet"
+                                    style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: 1rem;">
+
+                                    <i class="bi bi-arrows-collapse" style="font-size: 120%;"></i>
+                                </button>
+                                <button id="explorer-auto-collapse"
+                                    class="btn btn-sm ripple ripple-dark ripple-centered hover-glow"
+                                    title="Automaattinen sulkeminen (alt + 3)" aria-label="Automaattinen sulkeminen"
+                                    style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: 1rem;">
+
+                                    <i class="bi bi-list-nested" style="font-size: 120%;"></i>
+                                </button>
+                            </div>
+
+                            <nav id="search-container" class="rounded w-100"></nav>
+                            <nav id="explorer-container" class="rounded w-100"></nav>
+                        </section>
+
+                    </aside>
+
+
+                    <div id="gutter-col-1" class="gutter gutter-horizontal"></div>
+
+                    <main id="main-content" class="container-md bg-primary shadow">
+                        <div class="rich-text-editor-toolbar-root"></div>
+
+                        <article id="page-container">
+                            <div class="sticky-page-header">
+                                <div class="d-flex">
+                                    <h1>Etusivu</h1>
+                                </div>
+                                <hr>
+                            </div>
+
+                            <p>Tämä on taulukkokirjan etusivu.</p>
+
+                            <h3>Lähteet</h3>
+                            <ul>
+                                <li>
+                                    <p>MAOL-taulukkokirja</p>
+                                </li>
+                                <li>
+                                    <p>Algebra I — Antti Majaniemi</p>
+                                </li>
+                                <li>
+                                    <p>Matematiikka I (differentiaali- ja integraalilaskentaa insinööriopiskelijoilla) —
+                                        Antti Majaniemi</p>
+                                </li>
+                                <li>
+                                    <p>Geometria (geometriaa, trigonometriaa ja vektorilaskentaa) — Antti Majaniemi</p>
+                                </li>
+                                <li>
+                                    <p>Insinöörin (AMK) fysiikka osa I — Mikko Hautala, Hannu Peltonen, Lahden
+                                        Teho-Opetus Oy</p>
+                                </li>
+                                <li>
+                                    <p>Insinöörin (AMK) fysiikka osa II — Hannu Peltonen, Juha Perkkiö, Kari Vierinen,
+                                        Lahden Teho-Opetus Oy</p>
+                                </li>
+                                <li>
+                                    <p>
+                                        <a class="link" href="https://physics.info/equations/">
+                                            Kaikenlaisia fysiikan yhtälöitä — physics.info
+                                        </a>
+                                    </p>
+                                </li>
+                            </ul>
+                        </article>
+
+                    </main>
+
+                    <div id="gutter-row-1" class="gutter gutter-vertical bg-primary">
+                        <div
+                            class="bg-secondary px-3 py-2"
+                            style="
+                            background-color: var(--color-bg-secondary);
+                            border-top: 1px solid var(--color-lines);
+                            border-top-left-radius: var(--bs-border-radius-xxl);
+                            border-top-right-radius: var(--bs-border-radius-xxl);
+                            ">
+                            
+                            
+                            <div class="d-flex flex-row align-items-center justify-content-between">
+                            <h4 class="logo tex mb-0" data-expr="\LaTeX">
+                                <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtext>LaTeX</mtext></mrow><annotation encoding="application/x-tex">\KaTeX</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.8988em; vertical-align: -0.2155em;"></span><span class="mord text"><span class="mord textrm">L</span><span class="mspace" style="margin-right: -0.17em;"></span><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height: 0.6833em;"><span class="" style="top: -2.905em;"><span class="pstrut" style="height: 2.7em;"></span><span class="mord"><span class="mord textrm mtight sizing reset-size6 size3">A</span></span></span></span></span></span><span class="mspace" style="margin-right: -0.15em;"></span><span class="mord text"><span class="mord textrm">T</span><span class="mspace" style="margin-right: -0.1667em;"></span><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height: 0.4678em;"><span class="" style="top: -2.7845em;"><span class="pstrut" style="height: 3em;"></span><span class="mord"><span class="mord textrm">E</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height: 0.2155em;"><span class=""></span></span></span></span><span class="mspace" style="margin-right: -0.125em;"></span><span class="mord textrm">X</span></span></span></span></span></span>
+                                -editori
+                            </h4>
+                                <div id="editor-control-buttons">
+                                    </button>
+                                    <button id="maximize-editor" class="btn btn-sm hover-glow" aria-label="Suurenna">
+                                        <i class="bi bi-chevron-up" style="font-size: 120%;"></i>
+                                    </button>
+                                    <button id="minimize-editor" class="btn btn-sm hover-glow" aria-label="Pienennä">
+                                        <i class="bi bi-chevron-down" style="font-size: 120%;"></i>
+                                    </button>
+                                    <button id="close-editor" class="btn btn-sm hover-glow" aria-label="Sulje">
+                                        <i class="bi bi-x-lg" style="font-size: 120%;"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    
+                    <div id="editor" class="bg-secondary d-flex flex-column overflow-y-hidden h-100 p-3 pt-0">
+                        <div id="rich-text-editor-root" class="overflow-y-hidden"></div>
+                    </div>
+
+                    <div id="gutter-col-2" class="gutter gutter-horizontal"></div>
+
+                    <aside id="sidebar-2" class="sidebar bg-tertiary">
+                        <div id="sidebar-2-content">
+                            <section id="bookmarks" class="mb-4">
+                                <div class="sticky-page-header">
+                                    <div class="d-flex">
+                                        <h3>Kirjanmerkit</h3>
+                                    </div>
+                                    <hr>
+                                </div>
+                                <nav id="bookmark-container" class=" rounded"></nav>
+                            </section>
+
+                            <section id="recently-viewed" style="margin-bottom: 10rem;">
+                                <div class="sticky-page-header">
+                                    <div class="d-flex">
+                                        <h3>Viimeksi selatut</h3>
+                                    </div>
+                                    <hr>
+                                </div>
+                                <nav id="recently-viewed-container" class=" rounded"></nav>
+                            </section>
+                            <!-- <label for="color-picker">Pick a color:</label> -->
+                            <!-- <input type="color" id="color-picker" value="#ff0000"/> -->
+
+                        </div>
+                    </aside>
+                </div>
+            </main>
         </div>
-
-        <div id="gutter-col-2" class="gutter gutter-horizontal"></div>
-
-        <aside id="sidebar-2" class="sidebar shadow">
-            <div id="sidebar-2-content">
-                <section id="bookmarks" class="mb-4">
-                    <div class="sticky-page-header">
-                        <div class="d-flex">
-                            <h3>Kirjanmerkit</h3>
-                        </div>
-                        <hr>
-                    </div>
-                    <nav id="bookmark-container" class=" rounded"></nav>
-                </section>
-                
-                <section id="recently-viewed" style="margin-bottom: 10rem;">
-                    <div class="sticky-page-header">
-                        <div class="d-flex">
-                            <h3>Viimeksi selatut</h3>
-                        </div>
-                        <hr>
-                    </div>
-                    <nav id="recently-viewed-container" class=" rounded"></nav>
-                </section>
-                <!-- <label for="color-picker">Pick a color:</label> -->
-                <!-- <input type="color" id="color-picker" value="#ff0000"/> -->
-
-            </div>
-        </aside>
     </div>
 </body>
+
 </html>
