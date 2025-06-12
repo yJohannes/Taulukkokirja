@@ -17,7 +17,7 @@ function initSidebar()
 {
     // Sidebar collapse on mobile
     const sidebar = document.getElementById('sidebar-1');
-    const sidebarToggle = document.getElementById('sidebar-1-toggle');
+    const sidebarToggle = document.getElementById('nav-sidebar-toggle');
     
     sidebarToggle.addEventListener('click', () => {
         const show = sidebar.classList.toggle('show');

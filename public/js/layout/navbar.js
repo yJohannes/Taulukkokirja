@@ -3,14 +3,16 @@ import { toggleEditor } from "./editor.js";
 import { updateBookmarks } from "../components/bookmarks/index.js";
 
 export function initNavbar() {
-    const $sidebar1Toggle = document.getElementById('sidebar-1-toggle');
     const $sidebar1 = document.getElementById('sidebar-1');
     const $sidebar2 = document.getElementById('sidebar-2');
-    const $editor = document.getElementById('latex-editor');
-    const $bookmarks = document.getElementById('bookmarks');
-    const $settings = document.getElementById('settings');
+    const $sidebarToggle = document.getElementById('nav-sidebar-toggle');
+    const $editor = document.getElementById('nav-latex-editor');
+    const $history = document.getElementById('nav-history');
+    const $bookmarks = document.getElementById('nav-bookmarks');
+    const $darkMode = document.getElementById('nav-dark-mode');
+    const $settings = document.getElementById('nav-settings');
 
-    $sidebar1Toggle.addEventListener('click', () => {
+    $sidebarToggle.addEventListener('click', () => {
         updateBookmarks();
         
         $sidebar2.classList.remove('show');
@@ -30,18 +32,20 @@ export function initNavbar() {
     })
 
     let navs = [
-        $editor,
+        $history,
         $bookmarks,
+        $editor,
+        $darkMode,
         $settings,
-        $sidebar1Toggle,
+        $sidebarToggle,
     ];
 
     navs.forEach($nav => {
-        addToolTip($nav, 'bottom');
+        addToolTip($nav, 'right');
     });
 
 
-    document.getElementById('dark-mode').addEventListener('toggle-change', (e) => {
+    $darkMode.addEventListener('toggle-change', (e) => {
         const toggled = e.detail.toggled;
         document.documentElement.classList.toggle('light', !toggled);
         document.documentElement.classList.toggle('dark', toggled);

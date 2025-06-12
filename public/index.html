@@ -47,50 +47,68 @@
     <script defer type="module" src="./js/main.js"></script>
 </head>
 <body>
-    <!-- Header -->
-    <header class="navbar navbar-expand navbar-dark shadow-sm sticky-top">
-        <div class="container-fluid">
-            <b>
-                <a class="navbar-brand" href="">Taulukkokirja</a>
-            </b>
+    <div class="container-fluid vh-100 p-0">
+        <div class="d-flex flex-column flex-md-row h-100">
+            <div id="nav-rail" class="bg-secondary d-flex flex-md-column justify-content-between flex-shrink-0 p-2 border-end order-1 order-md-0">
 
-            <nav class="ms-auto">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item ms-2">
-                        <button is="toggle-button" id="dark-mode" class="btn nav-link rounded-circle text-white ripple ripple-centered hover-glow" title="Dark mode" aria-label="Dark mode">
+                <!-- Wrapper for nav items -->
+                <nav class="d-flex flex-md-column gap-3">
+                    <a class="navbar-brand d-flex justify-content-center p-1 link-body-emphasis text-decoration-none" href="/">
+                        <img src="./img/icon/book-rounded.png" alt="Brand"
+                            style="width: 32px; height: 32px; object-fit: contain;">
+                    </a>
+                    <!-- Top icons -->
+                    <ul class="nav d-flex flex-row flex-md-column gap-2 m-0 p-0 justify-content-center justify-content-md-start">
+                        <li class="nav-item d-flex justify-content-center">
+                            <button id="nav-history"
+                                class="btn nav-link rounded-circle ripple ripple-centered hover-glow d-flex justify-content-center align-items-center"
+                                title="Historia" aria-label="Historia">
+                                <i class="bi bi-clock-history"></i>
+                            </button>
+                        </li>
+                        <li class="nav-item d-flex justify-content-center">
+                            <button id="nav-bookmarks"
+                                class="btn nav-link rounded-circle ripple ripple-centered hover-glow d-flex justify-content-center align-items-center"
+                                title="Kirjanmerkit" aria-label="Kirjanmerkit">
+                                <i class="bi bi-bookmarks"></i>
+                            </button>
+                        </li>
+                        <li class="nav-item d-flex justify-content-center">
+                            <button id="nav-latex-editor"
+                                class="btn nav-link rounded-circle ripple ripple-centered hover-glow d-flex justify-content-center align-items-center"
+                                title="LaTeX-editori" aria-label="LaTeX-editori">
+                                <i class="bi bi-pen"></i>
+                            </button>
+                        </li>
+                    </ul>
+                </nav>
+
+                <!-- Bottom icons -->
+                <ul
+                    class="nav d-flex flex-row flex-md-column gap-2 m-0 p-0 justify-content-center justify-content-md-start">
+                    <li class="nav-item d-flex justify-content-center">
+                        <button is="toggle-button" id="nav-dark-mode"
+                            class="btn nav-link rounded-circle ripple ripple-centered hover-glow d-flex justify-content-center align-items-center"
+                            title="Dark mode" aria-label="Dark mode">
                             <i slot="on" class="bi bi-sun"></i>
                             <i slot="off" class="bi bi-moon"></i>
                         </button>
-                        <!-- <button id="color-mode" class="btn nav-link rounded-circle text-white ripple ripple-centered hover-glow" title="Toggle color mode" aria-label="LaTeX-editori"> -->
-                            <!-- <i class="bi bi-moon"></i> -->
-                            <!-- <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-moon" viewBox="0 0 16 16"> -->
-                                <!-- <path d="M6 .278a.77.77 0 0 1 .08.858 7.2 7.2 0 0 0-.878 3.46c0 4.021 3.278 7.277 7.318 7.277q.792-.001 1.533-.16a.79.79 0 0 1 .81.316.73.73 0 0 1-.031.893A8.35 8.35 0 0 1 8.344 16C3.734 16 0 12.286 0 7.71 0 4.266 2.114 1.312 5.124.06A.75.75 0 0 1 6 .278M4.858 1.311A7.27 7.27 0 0 0 1.025 7.71c0 4.02 3.279 7.276 7.319 7.276a7.32 7.32 0 0 0 5.205-2.162q-.506.063-1.029.063c-4.61 0-8.343-3.714-8.343-8.29 0-1.167.242-2.278.681-3.286"/> -->
-                            <!-- </svg> -->
-                        <!-- </button> -->
                     </li>
-
-                    <li class="nav-item ms-2">
-                        <button id="latex-editor" class="btn nav-link rounded-circle text-white ripple ripple-centered hover-glow" title="LaTeX-editori" aria-label="LaTeX-editori">
-                            <i class="bi bi-pen"></i>
-                        </button>
-                    </li>
-
-                    <li class="nav-item ms-2">
-                        <button id="bookmarks" class="btn nav-link rounded-circle text-white ripple ripple-centered hover-glow" title="Kirjanmerkit" aria-label="Kirjanmerkit">
-                            <i class="bi bi-bookmarks"></i>
-                        </button>
-                    </li>
-
-                    <li class="nav-item ms-2">
-                        <a id="settings" class="nav-link rounded-circle text-white ripple ripple-centered hover-glow" href="#/Asetukset" title="Asetukset" aria-label="Asetukset">
+                    <li class="nav-item d-flex justify-content-center">
+                        <a id="nav-settings"
+                            class="btn nav-link rounded-circle ripple ripple-centered hover-glow d-flex justify-content-center align-items-center"
+                            href="#/Asetukset" title="Asetukset" aria-label="Asetukset"
+                            >
                             <i class="bi bi-gear"></i>
                         </a>
-                    </li>
-
-                    <li class="nav-item ms-2">
-                        <button id="sidebar-1-toggle" class="btn nav-link rounded-circle text-white ripple ripple-centered hover-glow" title="Avaa/sulje sivupalkki" aria-label="Avaa/sulje sivupalkki">
+                    <li class="nav-item">
+                        <button id="nav-sidebar-toggle"
+                            class="btn nav-link rounded-circle ripple ripple-centered hover-glow d-flex justify-content-center align-items-center"
+                            title="Avaa/sulje sivupalkki" aria-label="Avaa/sulje sivupalkki"
+                            >
                             <i class="bi bi-list" style="transform: scale(1.4);"></i>
                         </button>
+                    </li>
                     </li>
                 </ul>
             </nav>
