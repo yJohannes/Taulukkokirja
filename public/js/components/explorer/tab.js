@@ -3,9 +3,7 @@ import { createArrow } from '../common/arrow.js';
 import { formatPathToHash } from '../../pages/index.js';
 import { updateBookmarks } from '../bookmarks/index.js';
 
-import * as defs from './defs.js'
 import * as storage from '../storage/index.js';
-
 
 export function isDropdownTab($tab) {
     return ($tab.parentElement.querySelector('ul') !== null);
@@ -21,11 +19,11 @@ export function getTabParentDropdown($tab) {
 }
 
 export function setTabActivity($tab, isActive) {
-    const $activeTabs = $parentElement.querySelectorAll(`.${defs.ACTIVE}`);
+    const $activeTabs = $parentElement.querySelectorAll(`.${'active'}`);
 
     if (isActive) {
         $activeTabs.forEach($t => {
-            $t.classList.remove(defs.ACTIVE);
+            $t.classList.remove('active');
 
             if (getTabDropdown($tab) == null) // Not a dropdown tab
                 storage.removeFromStorageList('show-states', t.getAttribute('data-path'));
@@ -39,24 +37,24 @@ export function setTabActivityPath(path, isActive) {
 
 function handleTabClick($tab, isDropdown, $parentElement)
 {
-    const $activeTabs = $parentElement.querySelectorAll(`.${defs.ACTIVE}`);
+    const $activeTabs = $parentElement.querySelectorAll(`.${'active'}`);
 
     // Handle basic tabs
     if (!isDropdown) {
         // Clicked the current tab
-        if ($tab.classList.contains(defs.ACTIVE)) {
+        if ($tab.classList.contains('active')) {
             return;
         }
         
         $activeTabs.forEach($t => {
-            $t.classList.remove(defs.ACTIVE);
+            $t.classList.remove('active');
             if (!isDropdown) {
                 storage.removeFromStorageList('active-states', $t.getAttribute('data-path'));
             }
         });
 
         storage.addToStorageList('active-states', $tab.getAttribute('data-path'));
-        $tab.classList.add(defs.ACTIVE);
+        $tab.classList.add('active');
 
         // If tab is clicked on small screen hide sidebar
         showSidebar(false);
@@ -65,11 +63,11 @@ function handleTabClick($tab, isDropdown, $parentElement)
 
     // Handle collapsible tabs
     const $nestedDropdown = getTabDropdown($tab);
-    $activeTabs.forEach($t => $t.classList.remove(defs.ACTIVE));
+    $activeTabs.forEach($t => $t.classList.remove('active'));
 
     // If closing a dropdown, shift focus up a level
-    if ($nestedDropdown.classList.contains(defs.SHOW)) {
-        $nestedDropdown.classList.remove(defs.SHOW);
+    if ($nestedDropdown.classList.contains('show')) {
+        $nestedDropdown.classList.remove('show');
         storage.removeFromStorageList('show-states', $tab.getAttribute('data-path'));
 
         const $parentDropdown = $tab.parentElement.parentElement;
@@ -77,32 +75,32 @@ function handleTabClick($tab, isDropdown, $parentElement)
 
         // Dismiss highest level dropdown
         if (!($parentDropdown.parentElement.id === 'explorer-nav-container')) {
-            $parentTab.classList.add(defs.ACTIVE);
+            $parentTab.classList.add('active');
             
             storage.addToStorageList('show-states', $parentTab.getAttribute('data-path'));
         }
 
     } else {
         const $autoCollapse = document.getElementById('explorer-auto-collapse')
-        const autoCollapseOn = $autoCollapse.classList.contains(defs.ACTIVE);
+        const autoCollapseOn = $autoCollapse.classList.contains('active');
         
         if (autoCollapseOn) {
             const $parentDropdown = $tab.parentElement.parentElement;
-            const $openDropdown = $parentDropdown.querySelectorAll(`.${defs.SHOW}`);
+            const $openDropdown = $parentDropdown.querySelectorAll(`.${'show'}`);
 
             $openDropdown.forEach($dropdown => {
                 const $tab = $dropdown.parentElement.querySelector('button');
                 const $arrow = $tab.querySelector('svg');
                 
-                $arrow.classList.remove(defs.ARROW_FLIPPED);
-                $dropdown.classList.remove(defs.SHOW);
+                $arrow.classList.remove('flipped');
+                $dropdown.classList.remove('show');
                 storage.removeFromStorageList('show-states', $tab.getAttribute('data-path'))
             });
         }
 
-        // Set tab as defs.ACTIVE and show contents
-        $tab.classList.add(defs.ACTIVE);
-        $nestedDropdown.classList.add(defs.SHOW);
+        // Set tab as 'active' and show contents
+        $tab.classList.add('active');
+        $nestedDropdown.classList.add('show');
 
         storage.addToStorageList('show-states', $tab.getAttribute('data-path'));
     }
@@ -135,7 +133,7 @@ function createTab(textOrHTML, level, isDropdown, path, tagName='')
         const $arrow = createArrow();
         $tab.appendChild($arrow);
         $tab.addEventListener('click', () => {
-            $arrow.classList.toggle(defs.ARROW_FLIPPED);
+            $arrow.classList.toggle('flipped');
         });
     }
 

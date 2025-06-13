@@ -1,52 +1,46 @@
-import * as defs from "./defs.js"
 import { expandExplorer, collapseExplorer } from "./index.js";
 import { addToolTip } from "../common/tooltip.js";
 import * as storage from '../storage/index.js';
 
 export function initExplorerButtons()
 {
-    const $expand = document.getElementById('explorer-expand')
-    const $collapse = document.getElementById('explorer-collapse')
-    const $autoCollapse = document.getElementById('explorer-auto-collapse')
+    const expand = document.getElementById('explorer-expand')
+    const collapse = document.getElementById('explorer-collapse')
+    const autoCollapse = document.getElementById('explorer-auto-collapse')
 
-    for (let $button of [$expand, $collapse, $autoCollapse]) {
-        addToolTip($button, 'top');
+    for (let button of [expand, collapse, autoCollapse]) {
+        addToolTip(button, 'top');
     }
     
     if (storage.getFromStorageList('active-states').includes('explorer-auto-collapse')) {
-        $autoCollapse.classList.add(defs.ACTIVE);
+        autoCollapse.classList.add('active');
     }
 
-    $autoCollapse.addEventListener('click', () => {
-        if ($autoCollapse.classList.toggle(defs.ACTIVE)) {
+    autoCollapse.addEventListener('click', () => {
+        if (autoCollapse.classList.toggle('active')) {
             storage.addToStorageList('active-states', 'explorer-auto-collapse');
         } else {
             storage.removeFromStorageList('active-states', 'explorer-auto-collapse');
         }
     });
 
-    $expand.addEventListener('click', () => {
-        expandExplorer();
-    });
-
-    $collapse.addEventListener('click', () => {
-        collapseExplorer();
-    });
+    expand.addEventListener('click', expandExplorer);
+    collapse.addEventListener('click', collapseExplorer);
 
     document.addEventListener("keydown", function(event) {
         if (event.altKey && event.key === "1") {
             event.preventDefault();
-            $expand.click();
+            expand.click();
         }
 
         if (event.altKey && event.key === "2") {
             event.preventDefault();
-            $collapse.click();
+            collapse.click();
         }
 
         if (event.altKey && event.key === "3") {
             event.preventDefault();
-            $autoCollapse.click();
+            autoCollapse.click();
         }
     });
 }

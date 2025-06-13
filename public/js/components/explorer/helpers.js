@@ -1,5 +1,4 @@
 import { getTabDropdown } from './index.js';
-import * as defs from './defs.js';
 import * as storage from '../storage/index.js';
 
 export function showExplorer(bool)
@@ -21,7 +20,7 @@ export function expandExplorer()
     
     // Expand all dropdowns and flip arrows
     $uls.forEach($ul => {
-        $ul.classList.add(defs.SHOW);
+        $ul.classList.add('show');
         
         const $lis = $ul.querySelectorAll('li');
         $lis.forEach(($li) => {
@@ -31,7 +30,7 @@ export function expandExplorer()
 
                 const $arrowSvg = $tab.querySelector(`svg`);
                 if ($arrowSvg) {
-                    $arrowSvg.classList.add(defs.ARROW_FLIPPED);
+                    $arrowSvg.classList.add('flipped');
                 }
             });
         });
@@ -45,19 +44,19 @@ export function collapseExplorer()
     
     // Collapse all dropdowns and unflip arrows
     $uls.forEach($ul => {
-        $ul.classList.remove(defs.SHOW);
+        $ul.classList.remove('show');
         
         
         const $lis = $ul.querySelectorAll('li');
         $lis.forEach(($li) => {
             const $tabs = $li.querySelectorAll('.tab');
             $tabs.forEach(($tab) => {
-                $tab.classList.remove(defs.ACTIVE);
+                $tab.classList.remove('active');
                 storage.removeFromStorageList('show-states', $tab.getAttribute('data-path'));
                 
                 const $arrowSvg = $tab.querySelector(`svg`);
                 if ($arrowSvg) {
-                    $arrowSvg.classList.remove(defs.ARROW_FLIPPED);
+                    $arrowSvg.classList.remove('flipped');
                 }
             });
         });

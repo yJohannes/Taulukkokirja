@@ -2,33 +2,30 @@ import { initSearchToInput } from './search.js';
 import { generateTabs, isDropdownTab } from './tab.js';
 import { initExplorerButtons } from './buttons.js';
 
-import * as defs from './defs.js';
 import * as storage from '../storage/index.js';
 
 export function loadExplorerSave() {
-    const $explorer = document.querySelector('#explorer-nav-container');
-    const $uls = $explorer.querySelectorAll('.explorer-ul');
+    const explorer = document.querySelector('#explorer-nav-container');
+    const uls = explorer.querySelectorAll('.explorer-ul');
     
     // Collapse all dropdowns and unflip arrows
-    $uls.forEach($ul => {
-        const $lis = $ul.querySelectorAll('li');
-        $lis.forEach(($li) => {
-            const $tabs = $li.querySelectorAll('.tab');
-            $tabs.forEach(($tab) => {
-                const path = $tab.getAttribute('data-path');
-                if (isDropdownTab($tab)) {
+    uls.forEach(ul => {
+        const lis = ul.querySelectorAll('li');
+        lis.forEach((li) => {
+            const tabs = li.querySelectorAll('.tab');
+            tabs.forEach((tab) => {
+                const path = tab.getAttribute('data-path');
+                if (isDropdownTab(tab)) {
                     if (storage.getFromStorageList('show-states').includes(path)) {
-                        const $dropdown = $li.querySelector('.explorer-ul');
-                        $dropdown?.classList.add(defs.SHOW);
+                        const dropdown = li.querySelector('.explorer-ul');
+                        dropdown?.classList.add('show');
                         
-                        const $arrowSvg = $tab.querySelector(`svg`);
-                        if ($arrowSvg) {
-                            $arrowSvg.classList.add(defs.ARROW_FLIPPED);
-                        }
+                        const arrowSvg = tab.querySelector(`svg`);
+                        if (arrowSvg)
+                            arrowSvg.classList.add('flipped');
                     }
+                } else {
 
-                } else if (storage.getFromStorageList('active-states').includes(path)) {
-                    $tab.classList.add('active');
                 }                    
             });
         });
@@ -43,18 +40,18 @@ export async function loadExplorerStructure() {
     }
     
     const structure = await response.json();
-    console.log(structure)
+    // console.log(structure)
     return structure;
 }
 
-export async function loadExplorerToElement($parentElement)
+export async function loadExplorerToElement(parentElement)
 {    
-    const $search = document.getElementById('explorer-search');
-    initSearchToInput($search)
+    const search = document.getElementById('explorer-search');
+    initSearchToInput(search)
     
     const structure = await loadExplorerStructure();
-    const $tabs = generateTabs(structure, $parentElement);
-    $parentElement.appendChild($tabs);
+    const tabs = generateTabs(structure, parentElement);
+    parentElement.appendChild(tabs);
 
     initExplorerButtons();
 }

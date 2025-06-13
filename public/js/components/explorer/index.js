@@ -1,5 +1,4 @@
 export * from './buttons.js'
-export * from './defs.js'
 export * from './load.js'
 export * from './search.js'
 export * from './tab.js'
