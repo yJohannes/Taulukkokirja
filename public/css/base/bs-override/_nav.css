@@ -16,6 +16,8 @@
     box-shadow: 0 0 0 .25rem var(--color-primary);
 }
 
-.nav-link .bi {
-    font-size: 120%;
+@media (min-width: 768px) {
+    .nav-link .bi {
+        font-size: 120%;
+    }
 }
