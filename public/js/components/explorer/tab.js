@@ -2,7 +2,6 @@ import { showSidebar }  from '../../layout/sidebar.js';
 import { createArrow } from '../common/arrow.js';
 import { formatPathToHash } from '../../pages/index.js';
 import { updateBookmarks } from '../bookmarks/index.js';
-
 import * as storage from '../storage/index.js';
 
 export function isDropdownTab(tab) { return (tab.parentElement.querySelector('ul') !== null); }
@@ -13,39 +12,35 @@ export function setTabActivity(tab, isActive) {
     const activeTabs = parentElement.querySelectorAll(`.${'active'}`);
 
     if (isActive) {
-        $activeTabs.forEach($t => {
-            $t.classList.remove('active');
+        activeTabs.forEach(t => {
+            t.classList.remove('active');
 
-            if (getTabDropdown($tab) == null) // Not a dropdown tab
+            if (getTabDropdown(tab) == null) // Not a dropdown tab
                 storage.removeFromStorageList('show-states', t.getAttribute('data-path'));
         });
     }
 }
 
-export function setTabActivityPath(path, isActive) {
-    setTabActivity($tab, isActive);
-}
-
-function handleTabClick($tab, isDropdown, $parentElement)
+function handleTabClick(tab, isDropdown, parentElement)
 {
-    const $activeTabs = $parentElement.querySelectorAll(`.${'active'}`);
+    const activeTabs = parentElement.querySelectorAll(`.${'active'}`);
 
     // Handle basic tabs
     if (!isDropdown) {
         // Clicked the current tab
-        if ($tab.classList.contains('active')) {
+        if (tab.classList.contains('active')) {
             return;
         }
         
-        $activeTabs.forEach($t => {
-            $t.classList.remove('active');
+        activeTabs.forEach(t => {
+            t.classList.remove('active');
             if (!isDropdown) {
-                storage.removeFromStorageList('active-states', $t.getAttribute('data-path'));
+                storage.removeFromStorageList('active-states', t.getAttribute('data-path'));
             }
         });
 
-        storage.addToStorageList('active-states', $tab.getAttribute('data-path'));
-        $tab.classList.add('active');
+        storage.addToStorageList('active-states', tab.getAttribute('data-path'));
+        tab.classList.add('active');
 
         // If tab is clicked on small screen hide sidebar
         showSidebar(false);
@@ -53,88 +48,88 @@ function handleTabClick($tab, isDropdown, $parentElement)
     }
 
     // Handle collapsible tabs
-    const $nestedDropdown = getTabDropdown($tab);
-    $activeTabs.forEach($t => $t.classList.remove('active'));
+    const nestedDropdown = getTabDropdown(tab);
+    activeTabs.forEach(t => t.classList.remove('active'));
 
     // If closing a dropdown, shift focus up a level
-    if ($nestedDropdown.classList.contains('show')) {
-        $nestedDropdown.classList.remove('show');
-        storage.removeFromStorageList('show-states', $tab.getAttribute('data-path'));
+    if (nestedDropdown.classList.contains('show')) {
+        nestedDropdown.classList.remove('show');
+        storage.removeFromStorageList('show-states', tab.getAttribute('data-path'));
 
-        const $parentDropdown = $tab.parentElement.parentElement;
-        const $parentTab = $parentDropdown.parentElement.querySelector('button');
+        const parentDropdown = tab.parentElement.parentElement;
+        const parentTab = parentDropdown.parentElement.querySelector('button');
 
         // Dismiss highest level dropdown
-        if (!($parentDropdown.parentElement.id === 'explorer-nav-container')) {
-            $parentTab.classList.add('active');
+        if (!(parentDropdown.parentElement.id === 'explorer-nav-container')) {
+            parentTab.classList.add('active');
             
-            storage.addToStorageList('show-states', $parentTab.getAttribute('data-path'));
+            storage.addToStorageList('show-states', parentTab.getAttribute('data-path'));
         }
 
     } else {
-        const $autoCollapse = document.getElementById('explorer-auto-collapse')
-        const autoCollapseOn = $autoCollapse.classList.contains('active');
+        const autoCollapse = document.getElementById('explorer-auto-collapse')
+        const autoCollapseOn = autoCollapse.classList.contains('active');
         
         if (autoCollapseOn) {
-            const $parentDropdown = $tab.parentElement.parentElement;
-            const $openDropdown = $parentDropdown.querySelectorAll(`.${'show'}`);
+            const parentDropdown = tab.parentElement.parentElement;
+            const openDropdown = parentDropdown.querySelectorAll(`.${'show'}`);
 
-            $openDropdown.forEach($dropdown => {
-                const $tab = $dropdown.parentElement.querySelector('button');
-                const $arrow = $tab.querySelector('svg');
+            openDropdown.forEach(dropdown => {
+                const tab = dropdown.parentElement.querySelector('button');
+                const arrow = tab.querySelector('svg');
                 
-                $arrow.classList.remove('flipped');
-                $dropdown.classList.remove('show');
-                storage.removeFromStorageList('show-states', $tab.getAttribute('data-path'))
+                arrow.classList.remove('flipped');
+                dropdown.classList.remove('show');
+                storage.removeFromStorageList('show-states', tab.getAttribute('data-path'))
             });
         }
 
         // Set tab as 'active' and show contents
-        $tab.classList.add('active');
-        $nestedDropdown.classList.add('show');
+        tab.classList.add('active');
+        nestedDropdown.classList.add('show');
 
-        storage.addToStorageList('show-states', $tab.getAttribute('data-path'));
+        storage.addToStorageList('show-states', tab.getAttribute('data-path'));
     }
 }
 
 function createTab(textOrHTML, level, isDropdown, path, tagName='')
 {
-    let $tab;
+    let tab;
     if (tagName) {
-        $tab = document.createElement(tagName);
+        tab = document.createElement(tagName);
     } else if (isDropdown) {
-        $tab = document.createElement('button');
+        tab = document.createElement('button');
     } else {
-        $tab = document.createElement('a');
+        tab = document.createElement('a');
     }
     
-    $tab.setAttribute('data-path', path)
-    $tab.setAttribute('href', formatPathToHash(path));
+    tab.setAttribute('data-path', path)
+    tab.setAttribute('href', formatPathToHash(path));
 
-    $tab.classList.add('tab', 'ripple');
-    $tab.style.setProperty('--level', level);
+    tab.classList.add('tab', 'ripple');
+    tab.style.setProperty('--level', level);
 
-    const $span = document.createElement('span');
-    $span.classList.add('tab-content');
-    $span.innerHTML = textOrHTML;
-    $tab.appendChild($span);
+    const span = document.createElement('span');
+    span.classList.add('tab-content');
+    span.innerHTML = textOrHTML;
+    tab.appendChild(span);
     
     // Add arrow to dropdowns
     if (isDropdown) {        
-        const $arrow = createArrow();
-        $tab.appendChild($arrow);
-        $tab.addEventListener('click', () => {
-            $arrow.classList.toggle('flipped');
+        const arrow = createArrow();
+        tab.appendChild(arrow);
+        tab.addEventListener('click', () => {
+            arrow.classList.toggle('flipped');
         });
     }
 
-    return $tab;
+    return tab;
 }
 
 // Recursive function to generate the tab list with collapsibility
-function generateTabs(data, $parentElement, rootPath='pages') {
-    const $ul = document.createElement('ul');
-    $ul.classList.add('explorer-ul');
+function generateTabs(data, parentElement, rootPath='pages') {
+    const ul = document.createElement('ul');
+    ul.classList.add('explorer-ul');
 
     data = data.pages || data; // Support both top-level and nested calls
 
@@ -143,35 +138,35 @@ function generateTabs(data, $parentElement, rootPath='pages') {
         const pageName = key.replace('.html', '');
         const currentPath = rootPath ? rootPath + '/' + key : key;
         const level = currentPath.split('/').length - 1 - 1; // sub 1 again because of pages as root 
-        const $li = document.createElement('li');
+        const li = document.createElement('li');
 
-        let $tab; 
+        let tab; 
         if (typeof data[key] === 'object' && data[key] !== null) {
-            $tab = createTab(pageName, level, true, currentPath);    // Dropdown tab
-            $tab.addEventListener('click', () => handleTabClick($tab, true, $parentElement));
-            if (level === 0) $tab.style.fontWeight = 'bold';
+            tab = createTab(pageName, level, true, currentPath);    // Dropdown tab
+            tab.addEventListener('click', () => handleTabClick(tab, true, parentElement));
+            if (level === 0) tab.style.fontWeight = 'bold';
 
         } else {
-            $tab = createTab(pageName, level, false, currentPath);   // Normal tab
-            $tab.addEventListener('click', () => handleTabClick($tab, false, $parentElement));
+            tab = createTab(pageName, level, false, currentPath);   // Normal tab
+            tab.addEventListener('click', () => handleTabClick(tab, false, parentElement));
         }
         
-        $tab.addEventListener('click', () => updateBookmarks());
+        tab.addEventListener('click', () => updateBookmarks());
 
-        $li.appendChild($tab);
+        li.appendChild(tab);
 
         // If the value is an object (i.e., nested dropdown), recursively create a nested dropdown
         if (typeof data[key] === 'object' && data[key] !== null) {
-            const $nestedDropdown = generateTabs(data[key], $parentElement, currentPath);
-            $nestedDropdown.classList.add('explorer-dropdown');
+            const nestedDropdown = generateTabs(data[key], parentElement, currentPath);
+            nestedDropdown.classList.add('explorer-dropdown');
 
-            $li.appendChild($nestedDropdown);
+            li.appendChild(nestedDropdown);
         }
 
-        $ul.appendChild($li);
+        ul.appendChild(li);
     }
 
-    return $ul;
+    return ul;
 }
 
 export {
