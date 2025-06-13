@@ -1,4 +1,4 @@
-import { initLatex } from '../latex/latex.js';
+import { renderElementLatex } from '../latex/latex.js';
 import { updateBookmarks } from '../components/bookmarks/index.js';
 import { highlightTerms } from '../effects/highlight-terms.js';
 import * as storage from '../components/storage/index.js';
@@ -104,14 +104,13 @@ export async function loadPageToElement(path, $element, bookMarkable=true)
     }
 
     setPageTitleFromPath(path);
-    initLatex();
+    renderElementLatex(document.getElementById('page-container'));
     injectPageScripts($element);
-    // initTableHighlights();
     updateHistory(path);
 }
 
 async function loadHashUrl() {
-    let url = pages.formatLocationHashForFetch(window.location.hash);
+    let url = pages.formatHashToPath(window.location.hash);
 
     if (!url || url === '/') {
         fetch('index.html');

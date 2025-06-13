@@ -4,15 +4,19 @@ const toolTipOptions = {
     trigger: 'hover'  // No persisting tooltips
 };
 
-export function addToolTip($element, placement, tip=null) {
-    $element.setAttribute('data-bs-toggle', 'tooltip');
-    $element.setAttribute('data-bs-placement', placement);
+/**
+ * Add tooltip to an element
+ * @param {*} element 
+ * @param {*} placement 
+ * @param {*} tip overrides element's title attribute
+ */
+export function addToolTip(element, placement, tip=null) {
+    element.setAttribute('data-bs-toggle', 'tooltip');
+    element.setAttribute('data-bs-placement', placement);
     
     if (tip) {
-        $element.setAttribute('title', tip);
+        element.setAttribute('title', tip);
     }
 
-    new bootstrap.Tooltip($element, toolTipOptions);
-
-    // $($element).tooltip();
+    new bootstrap.Tooltip(element, toolTipOptions);
 }

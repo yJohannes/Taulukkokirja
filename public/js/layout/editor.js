@@ -33,6 +33,7 @@ export function hideEditor() {
     saveGridState();
 }
 
+// 300 and 44 were some max min sizes that don't exist anymore idk
 export function maximizeEditor() {
     const gridHeight = parseFloat(getComputedStyle(grid).height);
     const row0Ratio = 300 / gridHeight;
@@ -48,19 +49,10 @@ export function minimizeEditor() {
     grid.style.gridTemplateRows = `${row0Ratio}fr auto ${row2Ratio}fr`;
 }
 
+const maximizeBtn = document.getElementById('maximize-editor');
+const minimizeBtn = document.getElementById('minimize-editor');
+const closeBtn = document.getElementById('close-editor');
 
-const $maximizeBtn = document.getElementById('maximize-editor');
-const $minimizeBtn = document.getElementById('minimize-editor');
-const $closeBtn = document.getElementById('close-editor');
-
-$minimizeBtn.addEventListener('click', () => {
-    minimizeEditor();
-})
-
-$maximizeBtn.addEventListener('click', () => {
-    maximizeEditor();
-})
-
-$closeBtn.addEventListener('click', () => {
-    hideEditor();
-})
+minimizeBtn.addEventListener('click', minimizeEditor)
+maximizeBtn.addEventListener('click', maximizeEditor)
+closeBtn.addEventListener('click', hideEditor)

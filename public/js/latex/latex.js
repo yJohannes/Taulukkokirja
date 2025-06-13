@@ -22,34 +22,33 @@ function addClickListener($element, latex) {
     });
 }
 
-function initLatex()
+/**
+ * Renders LaTeX content in all `latex-container`'s in a given element. 
+ */
+export function renderElementLatex($element)
 {
-    const elements = Array.from(document.getElementsByClassName('latex-container'));
-    const filtered = elements.filter(element => !element.querySelector('span.katex'));
-    const prerendered = elements.filter(element => element.querySelector('span.katex'));
+    const elements = Array.from($element.getElementsByClassName('latex-container'));
+    const filtered = elements.filter($el => !$el.querySelector('span.katex'));
+    const prerendered = elements.filter($el => $el.querySelector('span.katex'));
 
-    filtered.forEach($element => {
-        const latex = $element.innerText;
-        const displayMode = $element.classList.contains('full');
+    filtered.forEach($el => {
+        const latex = $el.innerText;
+        const displayMode = $el.classList.contains('full');
         
-        katex.render(latex, $element, {
+        katex.render(latex, $el, {
             displayMode: displayMode,
             throwOnError: false
         });
         
-        addToolTip($element, 'right', latex);
-        addClickListener($element, latex);
+        addToolTip($el, 'right', latex);
+        addClickListener($el, latex);
 
     });
 
-    prerendered.forEach($element => {
-        const latex = getLatex($element);
+    prerendered.forEach($el => {
+        const latex = getElementLatex($el);
 
-        addToolTip($element, 'right', latex);
-        addClickListener($element, latex);
+        addToolTip($el, 'right', latex);
+        addClickListener($el, latex);
     });
 }
-
-export {
-    initLatex,
-};
