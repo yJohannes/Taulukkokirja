@@ -64,18 +64,6 @@
 }
 
 #rich-text-editor-root {
-    height: 100%;
-    overflow-y: auto;
-}
-
-.rich-text-editor *::selection,
-.rich-text-editor::selection {
-    background: #3367d1;
-    color: white !important;
-}
-
-.rich-text-editor *::-moz-selection,
-.rich-text-editor::-moz-selection {
-    background: #3367d1;
-    color: white !important;
+  height: 100%;
+  overflow-y: auto;
 }
