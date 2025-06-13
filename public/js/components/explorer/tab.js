@@ -5,21 +5,12 @@ import { updateBookmarks } from '../bookmarks/index.js';
 
 import * as storage from '../storage/index.js';
 
-export function isDropdownTab($tab) {
-    return ($tab.parentElement.querySelector('ul') !== null);
-}
+export function isDropdownTab(tab) { return (tab.parentElement.querySelector('ul') !== null); }
+export function getTabDropdown(tab) { return tab.parentElement.querySelector('ul') || null; }
+export function getTabParentDropdown(tab) { return tab.parentElement.parentElement || null; }
 
-export function getTabDropdown($tab) {
-    return $tab.parentElement.querySelector('ul') || null;
-}
-
-export function getTabParentDropdown($tab) {
-    return $tab.parentElement.parentElement || null;
-
-}
-
-export function setTabActivity($tab, isActive) {
-    const $activeTabs = $parentElement.querySelectorAll(`.${'active'}`);
+export function setTabActivity(tab, isActive) {
+    const activeTabs = parentElement.querySelectorAll(`.${'active'}`);
 
     if (isActive) {
         $activeTabs.forEach($t => {
