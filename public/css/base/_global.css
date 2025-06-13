@@ -258,7 +258,9 @@ mark {
     }
 }
 
-
+.hidden {
+    display: none !important;
+}
 
 .icon-button {
     display: flex !important;
