@@ -63,12 +63,6 @@ export function collapseExplorer()
     });
 }
 
-export function getTabByPath(path) {
-    const $explorer = document.querySelector('#explorer-nav-container');
-    const tabClass = `.tab[data-path="${path}"]`;
-    return $explorer.querySelector(tabClass);
-}
-
 export function openPath(path) {
     const $explorer = document.querySelector('#explorer-nav-container');
     const parts = path.split('/'); // Split the path into parts for navigation
@@ -90,5 +84,41 @@ export function openPath(path) {
         } else if ($dropdown && !$dropdown.classList.contains('show')) {
             $tab.click();
         }
+    }
+}
+
+export function getTabByPath(path) {
+    const $explorer = document.querySelector('#explorer-nav-container');
+    const tabClass = `.tab[data-path="${path}"]`;
+    return $explorer.querySelector(tabClass);
+}
+
+export function formatPathLabel(tabPath, withHTML=true, separator=', ') {
+    tabPath = decodeURIComponent(tabPath);
+    const split = tabPath.split('/')
+    const last = split.length - 1;
+    const baseName = tabPath.endsWith('.html') ? split[last].replace('.html', '') : split[last];
+    const parentName = last > 0 ? split[last - 1] : '';
+
+    if (!withHTML) {
+        let plainTextName = baseName;
+        if (parentName) {
+            plainTextName += ` ${separator} ${parentName}`;
+        }
+        return plainTextName;
+    }
+
+    if (tabPath.endsWith('.html')) {
+        let formatted = `<b>${baseName}</b>`;
+        if (parentName) {
+            formatted = `${formatted}${separator}<small><i>${parentName}</i></small>`
+        }
+        return formatted;
+    } else {
+        let formatted = baseName;
+        if (parentName) {
+            formatted = `${formatted}${separator}<small>${parentName}</small>`
+        }
+        return `<i>${formatted}</i>`;
     }
 }
