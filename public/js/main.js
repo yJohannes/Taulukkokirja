@@ -9,9 +9,9 @@ import * as bookmarks from './components/bookmarks/index.js';
 import * as search from './components/search/index.js';
 
 import '../components/search_bar/search-bar.js';
-import '../components/ripple/ripple.js';
 import '../components/toggle_button/toggle-button.js';
-import '../components/table_highlighting/table-highlighting.js';
+import '../components/ripple/index.js';
+import '../components/table_highlighting/index.js';
 
 function setRealVH() {
     const vh = window.innerHeight * 0.01;
@@ -34,6 +34,5 @@ document.addEventListener('DOMContentLoaded', async () => {
     loadSettings();
 
     editor.init();
-
     await search.initSearch();
 });
