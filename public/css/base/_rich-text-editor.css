@@ -4,7 +4,8 @@
 
 .rich-text-editor {
   box-sizing: border-box;
-  border: 1px solid #aaa;
+  border: 1px solid transparent;
+  /* border: 1px solid var(--color-lines); */
   border-radius: 0.5rem;
   padding: 0.5rem;
   font: 17px 'Times New Roman', serif;
