@@ -33,6 +33,7 @@
     --color-bg-primary: #FAF9F5;
     --color-bg-secondary: #f8f9fa;
     --color-bg-tertiary: #FFFFFF;
+    --color-bg-pattern: rgba(0, 0, 0, 0.02);
     --color-bg-primary-rgb: 250, 249, 245;
     --color-bg-secondary-rgb: 248, 249, 250;
     --color-bg-tertiary-rgb: 255, 255, 255;
@@ -68,6 +69,7 @@
     --color-bg-primary: #161616;
     --color-bg-secondary: #121212;
     --color-bg-tertiary: #1e1e1e;
+    --color-bg-pattern: rgba(255, 255, 255, 0.03);
     --color-bg-primary-rgb: 22, 22, 22;
     --color-bg-secondary-rgb: 18, 18, 18;
     --color-bg-tertiary-rgb: 31, 31, 31;
@@ -144,8 +146,15 @@ html {
 
 body {
     color: var(--color-text) !important;
-    overflow: hidden;
+    /* overflow: hidden; */
+
+    background-color: var(--color-bg-secondary);
+    background-image:
+        repeating-linear-gradient( 45deg, var(--color-bg-pattern) 0 1px, transparent 1px 10px),
+        repeating-linear-gradient(-45deg, var(--color-bg-pattern) 0 1px, transparent 1px 10px);
 }
+
+
 
 h1, h2, h3, h4, h5, h6 {
     color: var(--color-heading);
