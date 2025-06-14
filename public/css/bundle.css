@@ -35,6 +35,7 @@
 --color-bg-secondary-rgb: 248, 249, 250;
 --color-bg-tertiary-rgb: 255, 255, 255;
 --color-text: var(--color-black);
+--color-text-invert: var(--color-white);
 --color-heading: var(--color-valio-blue);
 --color-button: transparent;
 --color-button-hover: #0000000d;
@@ -69,13 +70,13 @@
 --color-bg-secondary-rgb: 18, 18, 18;
 --color-bg-tertiary-rgb: 31, 31, 31;
 --color-text: var(--color-white);
+--color-text-invert: var(--color-black);
 --color-heading: var(--color-white);
 --color-button: transparent;
 --color-button-hover: #45455a;
 --color-input: #353535;
 --color-nav-link: #bbb;
 --color-nav-link-hover: #fff;
-/* --color-table-heading: #232323; */
 --color-table-heading: #594d66;
 --color-table-stripe-color: rgba(156, 151, 207, 0.048);
 --color-lines: rgba(255, 255, 255, 0.1);
@@ -94,9 +95,7 @@ body,
 .bg-transition {
 transition: color 0.3s ease, background-color 0.3s ease, border-color 0.3s ease, fill 0.3s ease, stroke 0.3s ease;
 }
-/* Scrollbar */
 html {
-scrollbar-color: var(--color-scrollbar) transparent;
 font-size: 1rem;
 }
 @media (max-width: 768px) {
@@ -108,6 +107,10 @@ font-size: 0.9rem;
 html {
 font-size: 0.8rem;
 }
+}
+/* Scrollbar */
+html {
+scrollbar-color: var(--color-scrollbar) transparent;
 }
 ::-webkit-scrollbar-thumb {
 background: transparent;
@@ -136,11 +139,6 @@ background-color: var(--color-bg-tertiary) !important;
 }
 body {
 color: var(--color-text) !important;
-/* overflow: hidden; */
-background-color: var(--color-bg-secondary);
-background-image:
-repeating-linear-gradient( 45deg, var(--color-bg-pattern) 0 1px, transparent 1px 10px),
-repeating-linear-gradient(-45deg, var(--color-bg-pattern) 0 1px, transparent 1px 10px);
 }
 h1, h2, h3, h4, h5, h6 {
 color: var(--color-heading);
@@ -235,6 +233,12 @@ fill: white;
 }
 .hidden {
 display: none !important;
+}
+.cross-background {
+background-color: var(--color-bg-secondary);
+background-image:
+repeating-linear-gradient( 45deg, var(--color-bg-pattern) 0 1px, transparent 1px 10px),
+repeating-linear-gradient(-45deg, var(--color-bg-pattern) 0 1px, transparent 1px 10px);
 }
 .icon-button {
 display: flex !important;
@@ -512,8 +516,8 @@ outline: 1px solid #359bb7;
 z-index: 2;
 }
 .rich-text-editor img.equation {
-min-height: 20px;
-min-width: 20px;
+min-height: 2.5rem;
+min-width: 2.5rem;
 box-shadow: none;
 background-color: #edf9ff;
 border-radius: 4px;
@@ -528,6 +532,24 @@ border-radius: 3px;
 #rich-text-editor-root {
 height: 100%;
 overflow-y: auto;
+}
+.badge {
+--bs-badge-padding-x: 0.65em;
+--bs-badge-padding-y: 0.35em;
+--bs-badge-font-size: 0.75em;
+--bs-badge-font-weight: 700;
+--bs-badge-color: var(--color-text-invert);
+--bs-badge-border-radius: var(--bs-border-radius);
+display: inline-block;
+padding: var(--bs-badge-padding-y) var(--bs-badge-padding-x);
+font-size: var(--bs-badge-font-size);
+font-weight: var(--bs-badge-font-weight);
+line-height: 1;
+color: var(--bs-badge-color);
+text-align: center;
+white-space: nowrap;
+vertical-align: baseline;
+border-radius: var(--bs-badge-border-radius);
 }
 .btn {
 --bs-btn-padding-x: 0.75rem;
