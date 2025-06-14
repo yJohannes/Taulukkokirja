@@ -44,6 +44,7 @@
 --color-table-stripe-color: rgba(0, 0, 0, 0.05);
 --color-nav-link: #555;
 --color-nav-link-hover: #000;
+--color-badge: var(--color-black);
 --color-lines: #dee2e6;
 --color-lines-secondary: #232323;
 --color-arrow: rgb(120, 120, 120);
@@ -77,6 +78,7 @@
 --color-input: #353535;
 --color-nav-link: #bbb;
 --color-nav-link-hover: #fff;
+--color-badge: var(--color-white);
 --color-table-heading: #594d66;
 --color-table-stripe-color: rgba(156, 151, 207, 0.048);
 --color-lines: rgba(255, 255, 255, 0.1);
@@ -546,6 +548,7 @@ font-size: var(--bs-badge-font-size);
 font-weight: var(--bs-badge-font-weight);
 line-height: 1;
 color: var(--bs-badge-color);
+background-color: var(--color-badge);
 text-align: center;
 white-space: nowrap;
 vertical-align: baseline;
