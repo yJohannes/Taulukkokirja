@@ -13,18 +13,23 @@ import '../components/toggle_button/toggle-button.js';
 import '../components/ripple/index.js';
 import '../components/table_highlighting/index.js';
 
-// function setRealVH() {
-    // const vh = window.innerHeight * 0.01;
-    // document.documentElement.style.setProperty('--vh', `${vh}px`);
-// }
+function setRealVH() {
+    document.documentElement.style.setProperty('--real-vh', `${window.innerHeight * 0.01}px`);
+}
 
-// window.addEventListener('resize', setRealVH);
-// window.addEventListener('load', setRealVH);
+function setRealVHMobile() {
+    document.documentElement.style.setProperty('--real-vh', `${window.visualViewport.height * 0.01}px`);
+}
 
-window.visualViewport?.addEventListener('resize', () => {
-  document.documentElement.style.setProperty('--real-vh', `${window.visualViewport.height}px`);
-});
-
+if (window.visualViewport) {
+    window.visualViewport.addEventListener('resize', setRealVHMobile);
+    window.visualViewport.addEventListener('load', setRealVHMobile);
+    setRealVHMobile();
+} else {
+    window.addEventListener('resize', setRealVH);
+    window.addEventListener('load', setRealVH);
+    setRealVH();
+}
 
 document.addEventListener('DOMContentLoaded', async () => {
     initSplitGrid();
