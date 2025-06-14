@@ -107,6 +107,20 @@ body,
 /* Scrollbar */
 html {
     scrollbar-color: var(--color-scrollbar) transparent;
+    font-size: 1rem;
+}
+
+
+@media (max-width: 768px) {
+    html {
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 576px) {
+    html {
+        font-size: 0.8rem;
+    }
 }
 
 ::-webkit-scrollbar-thumb {

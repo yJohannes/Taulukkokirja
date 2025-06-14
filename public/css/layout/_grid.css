@@ -35,6 +35,10 @@
         grid-area: unset !important;
     }
     
+    #main-content {
+        width: 100% !important;
+    }
+
     .sidebar {
         display: none; 
         position: fixed !important; /* Detach from grid */
