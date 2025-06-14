@@ -7,6 +7,7 @@
     position: relative;
     background-color: var(--color-lines);
     transition: background-color ease-in-out 0.3s;
+    cursor: grab;
 }
 
 .gutter::before {
@@ -20,14 +21,6 @@
 /*****************/
 /** Directional **/
 /*****************/
-.gutter-vertical {
-    cursor: row-resize;
-}
-
-.gutter-horizontal {
-    cursor: col-resize;
-}
-
 .gutter-vertical::after {
     content: '';
     position: absolute;
