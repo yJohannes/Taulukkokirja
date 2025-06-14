@@ -154,8 +154,7 @@
 
 
                     <div id="gutter-col-1" class="gutter gutter-horizontal"></div>
-
-                    <main id="main-content" class="container-md bg-primary overflow-y-auto p-3 shadow">
+                    <main id="main-content" class="container bg-primary overflow-y-auto p-3 shadow" style="width: auto; max-width: 100%;">
                         <article id="page-container" style="margin-bottom: 10rem;">
                             <div class="sticky-header">
                                 <div class="d-flex">
@@ -200,7 +199,10 @@
                         </article>
                     </main>
 
-                    <div id="gutter-row-1" class="gutter gutter-vertical bg-primary">
+                    <div id="gutter-row-1" class="gutter gutter-vertical bg-secondary">
+                        <div class="rounded-pill position-absolute start-50 translate-middle"
+                            style="top: 1rem; width: 10%; min-width: 3rem; height: 0.35rem; background-color: var(--color-lines); cursor: grab;">
+                        </div>
                         <div class="bg-secondary border-top px-3 py-2 rounded-top-xxl">                           
                             <div class="d-flex flex-row align-items-center justify-content-between">
                             <h4 class="logo tex mb-0" data-expr="\LaTeX">
@@ -250,7 +252,7 @@
                         <!-- <input type="color" id="color-picker" value="#ff0000"/> -->
                     </aside>
                 </div>
-            </main>
+            </div>
         </div>
     </div>
 </body>
