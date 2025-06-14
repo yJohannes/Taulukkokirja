@@ -160,12 +160,6 @@ html {
 
 body {
     color: var(--color-text) !important;
-    /* overflow: hidden; */
-
-    background-color: var(--color-bg-secondary);
-    background-image:
-        repeating-linear-gradient( 45deg, var(--color-bg-pattern) 0 1px, transparent 1px 10px),
-        repeating-linear-gradient(-45deg, var(--color-bg-pattern) 0 1px, transparent 1px 10px);
 }
 
 
@@ -290,6 +284,13 @@ mark {
 
 .hidden {
     display: none !important;
+}
+
+.cross-background {
+    background-color: var(--color-bg-secondary);
+    background-image:
+        repeating-linear-gradient( 45deg, var(--color-bg-pattern) 0 1px, transparent 1px 10px),
+        repeating-linear-gradient(-45deg, var(--color-bg-pattern) 0 1px, transparent 1px 10px);
 }
 
 .icon-button {
