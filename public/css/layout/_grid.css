@@ -7,6 +7,7 @@
 #sidebar-2        { grid-area: sidebar-2;}
 
 #content-wrapper {
+    position: relative;
     display: grid;
     grid-template-columns: 1fr 1px 4fr 1px 0.75fr;
     grid-template-rows: 2fr auto 1fr;
@@ -41,9 +42,8 @@
 
     .sidebar {
         display: none; 
-        position: fixed !important; /* Detach from grid */
+        position: absolute !important; /* Detach from grid */
         top: 0;
-        height: 90vh !important;
         left: 0;
         z-index: 5000 !important;
         pointer-events: none !important; /* without this you can't drag the editor for whatever reason on mobile */
