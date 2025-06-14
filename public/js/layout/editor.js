@@ -48,11 +48,3 @@ export function minimizeEditor() {
 
     grid.style.gridTemplateRows = `${row0Ratio}fr auto ${row2Ratio}fr`;
 }
-
-const maximizeBtn = document.getElementById('maximize-editor');
-const minimizeBtn = document.getElementById('minimize-editor');
-const closeBtn = document.getElementById('close-editor');
-
-minimizeBtn.addEventListener('click', minimizeEditor)
-maximizeBtn.addEventListener('click', maximizeEditor)
-closeBtn.addEventListener('click', hideEditor)
