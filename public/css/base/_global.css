@@ -39,6 +39,7 @@
     --color-bg-tertiary-rgb: 255, 255, 255;
 
     --color-text: var(--color-black);
+    --color-text-invert: var(--color-white);
     --color-heading: var(--color-valio-blue);
     --color-button: transparent;
     --color-button-hover: #0000000d;
@@ -47,6 +48,7 @@
     --color-table-stripe-color: rgba(0, 0, 0, 0.05);
     --color-nav-link: #555;
     --color-nav-link-hover: #000;
+    --color-badge: var(--color-black);
     --color-lines: #dee2e6;
     --color-lines-secondary: #232323;
     --color-arrow: rgb(120, 120, 120);
@@ -75,6 +77,7 @@
     --color-bg-tertiary-rgb: 31, 31, 31;
 
     --color-text: var(--color-white);
+    --color-text-invert: var(--color-black);
     --color-heading: var(--color-white);
     --color-button: transparent;
     --color-button-hover: #45455a;
@@ -82,7 +85,7 @@
 
     --color-nav-link: #bbb;
     --color-nav-link-hover: #fff;
-    /* --color-table-heading: #232323; */
+    --color-badge: var(--color-white);
     --color-table-heading: #594d66;
     --color-table-stripe-color: rgba(156, 151, 207, 0.048);
 
