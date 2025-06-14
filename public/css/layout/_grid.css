@@ -2,7 +2,7 @@
 #gutter-col-1     { grid-area: gutter-col-1; }
 #main-content     { grid-area: main-content; }
 #editor           { grid-area: editor; }
-#gutter-row-1     { grid-area: gutter-row-1; }
+#editor-gutter     { grid-area: editor-gutter; }
 #gutter-col-2     { grid-area: gutter-col-2; }
 #sidebar-2        { grid-area: sidebar-2;}
 
@@ -13,7 +13,7 @@
     grid-template-rows: 2fr auto 1fr;
     grid-template-areas:
         "sidebar-1 gutter-col-1 main-content gutter-col-2 sidebar-2"
-        "sidebar-1 gutter-col-1 gutter-row-1 gutter-col-2 sidebar-2"
+        "sidebar-1 gutter-col-1 editor-gutter gutter-col-2 sidebar-2"
         "sidebar-1 gutter-col-1 editor       gutter-col-2 sidebar-2";
 
     overflow-y: hidden;
@@ -24,7 +24,7 @@
         grid-template-columns: 1fr !important;
         grid-template-areas:
             "main-content"
-            "gutter-row-1"
+            "editor-gutter"
             "editor      " !important;
     }
     

@@ -14,7 +14,7 @@ export function initSplitGrid() {
 
         rowGutters: [{
             track: 1,
-            element: document.querySelector('#gutter-row-1'),
+            element: document.querySelector('#editor-gutter'),
         }],
 
         snapOffset: 10,

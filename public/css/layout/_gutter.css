@@ -71,8 +71,8 @@
     background-color: var(--color-accent);
 }
 
-#gutter-row-1::before,
-#gutter-row-1::after {
+#editor-gutter::before,
+#editor-gutter::after {
     content: none;
     display: none;
 }
