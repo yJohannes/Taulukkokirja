@@ -210,6 +210,10 @@ h6 {
     }
 }
 
+p {
+    max-width: 1000px;
+}
+
 figcaption {
     font-size: 0.875rem;
 }
