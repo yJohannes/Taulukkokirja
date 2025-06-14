@@ -46,8 +46,8 @@
 }
 
 .rich-text-editor img.equation {
-  min-height: 20px;
-  min-width: 20px;
+  min-height: 2.5rem;
+  min-width: 2.5rem;
   box-shadow: none;
 
   background-color: #edf9ff;
