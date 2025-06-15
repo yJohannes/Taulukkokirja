@@ -143,8 +143,17 @@ async function initSearchToInput($element)
             explorer.showExplorer(false);
             showResults(true);
             
-            const results = search.search(query);
-            generateResultView(results, document.getElementById('search-container'))
+            const matches = search.search(query);
+            generateResultView(resultContainer, matches)
+
+            //  Highlight titles in search
+            if (matches) {
+                const titleMatches = search.search(query, { boost: { title: 2, content: 0 } })
+    
+                // Merge all matched terms to avoid redundant highlighting
+                const uniqueTerms = [...new Set(titleMatches.flatMap(m => m.terms))];
+                highlightTerms(resultContainer, uniqueTerms);
+            }
         }
     });
     const $search = document.getElementById("explorer-search");
