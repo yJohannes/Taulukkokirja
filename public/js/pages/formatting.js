@@ -1,3 +1,9 @@
+export const formatting = {
+    formatPathToHash,
+    formatHashToPath,
+    formatPathToTitle,
+}
+
 function formatPathToHash(path) {
     return path ? '#/' + path.replaceAll(' ', '_').replace('.html', '') : '';
 }
@@ -21,8 +27,4 @@ function formatPathToTitle(path) {
     return [page, folder, 'Taulukkokirja'].filter(Boolean).join(' | ');
 }
 
-export const formatting = {
-    formatPathToHash,
-    formatHashToPath,
-    formatPathToTitle
 }
