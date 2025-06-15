@@ -3,7 +3,7 @@
 
 :root {
     --color-valio-blue: #002f6d;
-    --color-valio-blue-80: #000916;
+    --color-valio-blue-50: #001837;
     --color-valio-blue-30: #00214c;
     --color-valio-blue-20: #002657;
     --color-valio-blue-rgb: 0, 47, 109;
@@ -44,7 +44,7 @@
     --color-button: transparent;
     --color-button-hover: #0000000d;
     --color-input: var(--color-white);
-    --color-table-heading: var(--color-m3-dark-purple);
+    --color-table-heading: var(--color-valio-blue-50);
     --color-table-stripe-color: rgba(0, 0, 0, 0.05);
     --color-nav-link: #555;
     --color-nav-link-hover: #000;
@@ -93,8 +93,8 @@
     --color-lines-secondary: #232323;
     --color-arrow: rgb(150, 150, 150);
     --color-arrow-flipped: var(--color-white);
-    --color-mark-transparent: rgb(255 230 100 / 78%);
-    --color-mark: rgb(255 230 100);
+    --color-mark-transparent: rgb(255 140 81 / 52%);
+    --color-mark: rgb(255 140 81);
     --color-scrollbar: #888;
     --color-selection: rgb(161 74 255 / 25%);
 }
