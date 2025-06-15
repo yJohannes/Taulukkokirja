@@ -1,6 +1,6 @@
 import { showSidebar }  from '../../layout/sidebar.js';
 import { createArrow } from '../common/arrow.js';
-import { formatPathToHash } from '../../pages/index.js';
+import { formatting } from '../../pages/formatting.js'
 import { updateBookmarks } from '../bookmarks/index.js';
 import * as storage from '../storage/index.js';
 
@@ -104,7 +104,7 @@ function createTab(textOrHTML, level, isDropdown, path, tagName='')
     }
     
     tab.setAttribute('data-path', path)
-    tab.setAttribute('href', formatPathToHash(path));
+    tab.setAttribute('href', formatting.formatPathToHash(path));
 
     tab.classList.add('tab', 'ripple');
     tab.style.setProperty('--level', level);

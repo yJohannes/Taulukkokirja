@@ -26,7 +26,6 @@ function createTabsFromList(pathsList, $container, deleteTargetListName=null) {
 
             const $x = document.createElement('i');
             $x.classList.add('bi', 'bi-trash3');
-            $x.style.fontSize = '110%'
 
             $delete.appendChild($x);
             $tab.appendChild($delete);
@@ -57,3 +56,49 @@ export function updateBookmarks() {
     createTabsFromList(recents, $recentsContainer);
 }
 
+export function addBookmarkToHeader(header, {justify = 'space-between', align = 'center'} = {}) {
+    const wrapper = document.createElement('div');
+    wrapper.style.display = 'flex';
+    wrapper.style.justifyContent = justify;
+    wrapper.style.alignItems = align;
+    header.parentNode.insertBefore(wrapper, header);
+    wrapper.appendChild(header);
+
+    const button = createBookmarkButton();
+    wrapper.appendChild(button);
+    return wrapper;
+}
+
+export function createBookmarkButton(pagePath) {
+    const $button = document.createElement('button');
+    $button.classList.add('btn', 'icon-button', 'rounded-circle', 'ripple', 'ripple-dark', 'ripple-centered', 'hover-glow');
+    
+    const $headerWrapper = document.createElement('h1');
+    $headerWrapper.style.margin = '0';
+    $headerWrapper.style.color = 'inherit';
+
+    const $icon = document.createElement('i');
+    $headerWrapper.appendChild($icon);
+    $button.appendChild($headerWrapper);
+    $button.addEventListener('click', () => {
+        if ($icon.classList.toggle('bi-bookmark')) {
+            storage.removeFromStorageList('bookmarks', pagePath)
+        }
+        
+        if ($icon.classList.toggle('bi-bookmark-fill')) {
+            storage.addToStorageList('bookmarks', pagePath, true)
+        }
+
+        updateBookmarks();
+    });
+
+    const bookmarks = storage.getFromStorageList('bookmarks');
+    
+    if (bookmarks.includes(pagePath)) {
+        $icon.classList.add('bi', 'bi-bookmark-fill');
+    } else {
+        $icon.classList.add('bi', 'bi-bookmark');
+    }
+
+    return $button;
+}

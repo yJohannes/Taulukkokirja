@@ -3,45 +3,35 @@ import { updateBookmarks } from '../bookmarks/index.js';
 import * as explorer from './index.js';
 import * as search from '../search/index.js';
 import * as pages from '../../pages/index.js';
+import { highlightTerms } from '../../effects/highlight-terms.js';
 
 function clearSearch() {
     document.querySelector("#explorer-search").value = '';
 }
 
 function showResults(bool) {
-    const $searchContainer = document.getElementById('search-container');
+    const searchContainer = document.getElementById('explorer-search-result-container');
 
     if (bool) {
-        $searchContainer.style.display = 'inline-block';
+        searchContainer.style.display = 'inline-block';
     } else {
-        $searchContainer.style.display = 'none';
+        searchContainer.style.display = 'none';
     }
 }
 
-function generateResultView(matches, $container) {
-    $container.innerHTML = '';
-    $container.innerHTML += `
+export function generateResultView(container, matches) {
+    container.innerHTML = '';
+    container.innerHTML += `
         <div style="display: flex; justify-content: space-between; align-items: center; padding: 1rem; padding-left: 0.75rem; padding-right: 0;">
             <p style="margin: 0"><b>Haun tulokset</b></p>
-            <div
-                style="
-                    display: inline-block;
-                    white-space: nowrap;
-                    background-color: var(--color-primary);
-                    color: var(--color-secondary);
-                    padding: 0.4rem 0.6rem;
-                    border-radius: 4px;
-                    border-top-left-radius: 4px;
-                    border-bottom-left-radius: 4px;
-                "
-            >
+            <h4><span class="badge">            
                 ${matches.length} osumaa
-            </div>
+            </span></h4>
         </div>
-    `
+        `
 
     if (matches.length === 0) {
-        $container.innerHTML += '<p style="padding-left: 1rem;">Ei tuloksia</p>'
+        container.innerHTML += '<p style="padding-left: 1rem;">Ei tuloksia</p>'
         return;
     }
 
@@ -52,24 +42,24 @@ function generateResultView(matches, $container) {
         const score = match.score.toFixed(1); Math.round(match.score);
         const heatColor = getHeatColor(match.score, maxScore, normalization.log);
 
-        let $tab;
+        let tab;
         if (path.endsWith('.html')) {
             const name = explorer.formatPathLabel(path);
 
-            $tab = explorer.createTab(name, 0, false, path);
+            tab = explorer.createTab(name, 0, false, path);
             
-            const tabHref = $tab.getAttribute('href');
-            $tab.setAttribute('href', tabHref + `?highlight=${pages.encodeSearchParams(match.terms)}`)
+            const tabHref = tab.getAttribute('href');
+            tab.setAttribute('href', tabHref + `?highlight=${pages.encodeSearchParams(match.terms)}`)
 
-            $tab.addEventListener('click', (e) => {
+            tab.addEventListener('click', (e) => {
                 updateBookmarks();
             });
 
             // Right click
-            $tab.addEventListener('contextmenu', (e) => {
+            tab.addEventListener('contextmenu', (e) => {
                 e.preventDefault();
 
-                $container.innerHTML = '';
+                container.innerHTML = '';
                 explorer.showExplorer(true);
                 showResults(false);
 
@@ -86,9 +76,9 @@ function generateResultView(matches, $container) {
         } else {
             const name = explorer.formatPathLabel(path);
 
-            $tab = explorer.createTab(name, 0, false, path);
-            $tab.addEventListener('click', () => {
-                $container.innerHTML = '';
+            tab = explorer.createTab(name, 0, false, path);
+            tab.addEventListener('click', () => {
+                container.innerHTML = '';
                 explorer.showExplorer(true);
                 showResults(false);
 
@@ -102,13 +92,13 @@ function generateResultView(matches, $container) {
             });
         }
 
-        $tab.style.setProperty('padding', '0.75rem', 'important');
-        $tab.style.setProperty('padding-right', '3rem', 'important');
+        tab.style.setProperty('padding', '0.75rem', 'important');
+        tab.style.setProperty('padding-right', '3rem', 'important');
 
-        const $scoreBadge = document.createElement('div');
-        $scoreBadge.innerText = score;
+        const scoreBadge = document.createElement('div');
+        scoreBadge.innerText = score;
 
-        Object.assign($scoreBadge.style, {
+        Object.assign(scoreBadge.style, {
             position: 'absolute',
             right: '0',
             top: '50%',
@@ -126,14 +116,16 @@ function generateResultView(matches, $container) {
             backgroundColor: heatColor,
         });
 
-        $tab.appendChild($scoreBadge);
-        $container.appendChild($tab);
+        tab.appendChild(scoreBadge);
+        container.appendChild(tab);
     }
 }
 
-async function initSearchToInput($element)
-{
-    $element.addEventListener('input', (e) => {
+export async function initSearchToInput(element) {
+    const searchBar = document.getElementById("explorer-search");
+    const resultContainer = document.getElementById('explorer-search-result-container');
+
+    element.addEventListener('input', (e) => {
         const query = e.target.value;
         
         if (query.length <= 0) {
@@ -156,20 +148,13 @@ async function initSearchToInput($element)
             }
         }
     });
-    const $search = document.getElementById("explorer-search");
 
     document.addEventListener("keydown", function(event) {
         if (event.altKey && event.key === "s") {
             event.preventDefault();
-            if ($search) {
-                $search.focus();
+            if (searchBar) {
+                searchBar.focus();
             }
         }
     });
-}
-
-
-export {
-    initSearchToInput,
-    search
 }
