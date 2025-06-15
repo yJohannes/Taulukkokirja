@@ -291,10 +291,14 @@ mark {
 }
 
 .cross-background {
-    background-color: var(--color-bg-secondary);
     background-image:
         repeating-linear-gradient( 45deg, var(--color-bg-pattern) 0 1px, transparent 1px 10px),
         repeating-linear-gradient(-45deg, var(--color-bg-pattern) 0 1px, transparent 1px 10px);
+}
+
+.dot-background {
+    background-image: radial-gradient(rgba(0,0,0,0.02) 1px, transparent 1px);
+    background-size: 0.2rem 0.2rem;
 }
 
 .icon-button {
