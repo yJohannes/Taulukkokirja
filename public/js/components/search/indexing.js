@@ -1,4 +1,4 @@
-import { formatPathLabel } from "../explorer/index.js";
+import { formatting } from "../../pages/formatting.js";
 import { loadExplorerStructure } from "../explorer/index.js";
 
 export function extractStructurePaths(obj, basePath = '') {
@@ -34,7 +34,7 @@ export async function indexPages(miniSearch) {
             const content = tempDiv.textContent || tempDiv.innerText || '';
             
             // Add to index
-            miniSearch.add({ id: path, title: formatPathLabel(path, false), content: content });
+            miniSearch.add({ id: path, title: formatting.formatPathToLabel(path, false), content: content });
         } catch (err) {
             console.error(`Failed to fetch ${path}`, err);
         }

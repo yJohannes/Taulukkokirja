@@ -2,6 +2,7 @@ export const formatting = {
     formatPathToHash,
     formatHashToPath,
     formatPathToTitle,
+    formatPathToLabel,
 }
 
 function formatPathToHash(path) {
@@ -27,4 +28,39 @@ function formatPathToTitle(path) {
     return [page, folder, 'Taulukkokirja'].filter(Boolean).join(' | ');
 }
 
+/**
+ * 
+ * @param {*} path 
+ * @param {*bool} styled apply HTML tags to style label 
+ * @param {*} separator 
+ * @returns 
+ */
+function formatPathToLabel(path, styled=true, separator=', ') {
+    path = decodeURIComponent(path);
+    const split = path.split('/')
+    const last = split.length - 1;
+    const baseName = path.endsWith('.html') ? split[last].replace('.html', '') : split[last];
+    const parentName = last > 0 ? split[last - 1] : '';
+
+    if (!styled) {
+        let plainTextName = baseName;
+        if (parentName) {
+            plainTextName += ` ${separator} ${parentName}`;
+        }
+        return plainTextName;
+    }
+
+    if (path.endsWith('.html')) {
+        let formatted = `<b>${baseName}</b>`;
+        if (parentName) {
+            formatted = `${formatted}${separator}<small><i>${parentName}</i></small>`
+        }
+        return formatted;
+    } else {
+        let formatted = baseName;
+        if (parentName) {
+            formatted = `${formatted}${separator}<small>${parentName}</small>`
+        }
+        return `<i>${formatted}</i>`;
+    }
 }

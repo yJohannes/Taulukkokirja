@@ -5,7 +5,7 @@ function createTabsFromList(pathsList, $container, deleteTargetListName=null) {
     $container.innerHTML = '';
 
     pathsList.forEach(path => {
-        const name = explorer.formatPathLabel(path);
+        const name = formatting.formatPathToLabel(path);
 
         const $tab = explorer.createTab(name, 0, false, path);
         $tab.style.setProperty('padding', '0.5rem', 'important');

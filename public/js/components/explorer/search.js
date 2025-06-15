@@ -44,7 +44,7 @@ export function generateResultView(container, matches) {
 
         let tab;
         if (path.endsWith('.html')) {
-            const name = explorer.formatPathLabel(path);
+            const name = pages.formatting.formatPathToLabel(path);
 
             tab = explorer.createTab(name, 0, false, path);
             
@@ -74,7 +74,7 @@ export function generateResultView(container, matches) {
                 clearSearch();
             });
         } else {
-            const name = explorer.formatPathLabel(path);
+            const name = pages.formatting.formatPathToLabel(path);
 
             tab = explorer.createTab(name, 0, false, path);
             tab.addEventListener('click', () => {
