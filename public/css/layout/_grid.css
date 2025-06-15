@@ -15,8 +15,6 @@
         "sidebar-1 gutter-col-1 main-content gutter-col-2 sidebar-2"
         "sidebar-1 gutter-col-1 editor-gutter gutter-col-2 sidebar-2"
         "sidebar-1 gutter-col-1 editor       gutter-col-2 sidebar-2";
-
-    overflow-y: hidden;
 }
 
 @media (max-width: 768px) {
