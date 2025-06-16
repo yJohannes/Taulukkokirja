@@ -1,7 +1,7 @@
 import { getHeatColor, normalization } from '../../common/colors.js';
 import { updateBookmarks } from '../bookmarks/index.js';
 import * as explorer from './index.js';
-import * as search from '../search/index.js';
+import { Search } from '../search/index.js';
 import * as pages from '../../pages/index.js';
 import { highlightTerms } from '../../effects/highlight-terms.js';
 import { Tab } from '../../../components/tab/tab.js';
@@ -12,8 +12,7 @@ function clearSearch() {
 }
 
 export function generateResultView(container, matches) {
-    container.innerHTML = '';
-    container.innerHTML += `
+    container.innerHTML = `
         <div class="d-flex justify-content-between align-center py-2 ps-1 pe-0">
             <p style="margin: 0"><b>Haun tulokset</b></p>
             <h4><span class="badge">            
@@ -30,56 +29,34 @@ export function generateResultView(container, matches) {
     const maxScore = Math.max(...matches.map(r => r.score));
 
     for (const match of matches) {
-        const path = match.id;
         const score = match.score.toFixed(1); Math.round(match.score);
         const heatColor = getHeatColor(match.score, maxScore, normalization.log);
+        
+        const path = match.id;
+        const name = pages.formatting.formatPathToLabel(path);
+        const tab = Tab.createTab(name, path);
+        
+        const tabHref = tab.getAttribute('href');
+        tab.setAttribute('href', tabHref + `?highlight=${pages.encodeSearchParams(match.terms)}`)
+        tab.addEventListener('click', updateBookmarks);
 
-        let tab;
-        if (path.endsWith('.html')) {
-            const name = pages.formatting.formatPathToLabel(path);
+        // Right click
+        tab.addEventListener('contextmenu', (e) => {
+            e.preventDefault();
 
-            tab = Tab.createTab(name, path);
-            
-            const tabHref = tab.getAttribute('href');
-            tab.setAttribute('href', tabHref + `?highlight=${pages.encodeSearchParams(match.terms)}`)
-            tab.addEventListener('click', updateBookmarks);
+            utils.showElement(true, document.getElementById('explorer-nav-container'));
+            utils.showElement(false, document.getElementById('explorer-search-result-container'));
 
-            // Right click
-            tab.addEventListener('contextmenu', (e) => {
-                e.preventDefault();
+            const parentPath = path.substring(0, path.lastIndexOf('/'));
 
-                container.innerHTML = '';
-                utils.showElement(true, document.getElementById('explorer-nav-container'));
-                utils.showElement(false, document.getElementById('explorer-search-result-container'));
-
-                const parentPath = path.substring(0, path.lastIndexOf('/'));
-
-                explorer.openPath(parentPath);
-                explorer.getTabByPath(parentPath).scrollIntoView({
-                    behavior: 'auto',     // smooth scrolling animation
-                    block: 'center',        // align element to center of the viewport
-                });
-
-                clearSearch();
+            explorer.openPath(parentPath);
+            explorer.getTabByPath(parentPath).scrollIntoView({
+                behavior: 'auto',     // smooth scrolling animation
+                block: 'center',        // align element to center of the viewport
             });
-        } else {
-            const name = pages.formatting.formatPathToLabel(path);
 
-            tab = tab.createTab(name, path);
-            tab.addEventListener('click', () => {
-                container.innerHTML = '';
-                utils.showElement(true, document.getElementById('explorer-nav-container'));
-                utils.showElement(false, document.getElementById('explorer-search-result-container'));
-
-                explorer.openPath(path);
-                explorer.getTabByPath(path).scrollIntoView({
-                    behavior: 'auto',     // smooth scrolling animation
-                    block: 'center',        // align element to center of the viewport
-                });
-
-                clearSearch();
-            });
-        }
+            clearSearch();
+        });
 
         tab.classList.add('p-2', 'pe-5');
 
@@ -116,12 +93,12 @@ export async function initSearchToInput(element) {
             utils.showElement(false, document.getElementById('explorer-nav-container'));
             utils.showElement(true, document.getElementById('explorer-search-result-container'));
             
-            const matches = search.search(query);
+            const matches = Search.search(query);
             generateResultView(resultContainer, matches)
 
             //  Highlight titles in search
             if (matches.length > 0) {
-                const titleMatches = search.search(query, { boost: { title: 2, content: 0 } })
+                const titleMatches = Search.search(query, { boost: { title: 2, content: 0 } })
 
                 // Merge all matched terms to avoid redundant highlighting
                 const uniqueTerms = [...new Set(titleMatches.flatMap(m => m.terms))];
