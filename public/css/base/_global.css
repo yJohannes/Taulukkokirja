@@ -63,7 +63,7 @@
 .dark {
     --color-primary: #553f5d;
     --color-secondary: #ffffff;
-    --color-accent: #ba68b7;
+    --color-accent: #9787ff;
     --color-focus: var(--color-valio-blue-light);
     --color-enabled: #2c2c35;
     --color-enabled-text: var(--color-white);
@@ -96,7 +96,7 @@
     --color-mark-transparent: rgb(255 140 81 / 52%);
     --color-mark: rgb(255 140 81);
     --color-scrollbar: #888;
-    --color-selection: rgb(161 74 255 / 25%);
+    --color-selection: rgb(185 125 251 / 25%);
 }
 
 body, 
