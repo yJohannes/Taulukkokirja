@@ -1,31 +1,28 @@
 import { Tab } from '../../../components/tab/tab.js';
 
 export function openPath(path) {
-    const explorer = document.querySelector('#explorer-nav-container');
     const parts = path.split('/'); // Split the path into parts for navigation
     let joinPath = '';
 
     for (const part of parts) {
         joinPath = joinPath ? joinPath + '/' + part : part;
 
-        // Don't try to get the pages tab which doesn't exist
+        // Skip the pages part since it doesn't exist as a tab
         if (joinPath === 'pages') continue;
 
-        const tabClass = `.tab[data-path="${joinPath}"]`;
-
-        const tab = explorer.querySelector(tabClass);
+        const tab = getTabByPath(joinPath);
         const dropdown = Tab.getTabDropdown(tab);
 
-        if (!dropdown) {
+        const isLinkTab = !dropdown;
+        const isClosedDropdown = dropdown && !dropdown.classList.contains('show');
+        
+        if (isLinkTab || isClosedDropdown)
             tab.click();
-        } else if (dropdown && !dropdown.classList.contains('show')) {
-            tab.click();
-        }
     }
 }
 
 export function getTabByPath(path) {
+    const selector = `.tab[data-path="${path}"]`;
     const explorer = document.querySelector('#explorer-nav-container');
-    const tabClass = `.tab[data-path="${path}"]`;
-    return explorer.querySelector(tabClass);
+    return explorer.querySelector(selector);
 }
