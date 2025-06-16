@@ -32,7 +32,7 @@ function setArrowFlip(isFlipped, arrow) {
 }
 
 function injectArrowStyles() {
-    if (document.getElementById(FLIP_ARROW_STYLE_ID)) return; // Already injected
+    if (document.getElementById(FLIP_ARROW_STYLE_ID)) return;
 
     const style = document.createElement('style');
     style.id = FLIP_ARROW_STYLE_ID;
