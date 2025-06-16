@@ -1,7 +1,6 @@
 import { indexPages } from "./indexing.js";
 
 let miniSearch;
-
 const searchConfig = {
     fields: ['title', 'content'],
     storeFields: ['id', 'title'], // what we want to get back in results
@@ -15,7 +14,14 @@ const searchConfig = {
     }
 };
 
-export async function initSearch() {
+export const Search = {
+    miniSearch,
+    searchConfig,
+    initSearch,
+    search,
+}
+
+async function initSearch() {
     const savedIndex = localStorage.getItem('search-index');
     if (savedIndex)
         miniSearch = MiniSearch.loadJSON(savedIndex, searchConfig);
@@ -24,14 +30,14 @@ export async function initSearch() {
     await indexPages(updatedSearch);
 
     miniSearch = updatedSearch;
+    
     const serializedIndex = JSON.stringify(miniSearch.toJSON());
     localStorage.setItem('search-index', serializedIndex);
 }
 
-export function search(query) {
-    if (localStorage.getItem('search-index')) {
+function search(query) {
+    if (localStorage.getItem('search-index'))
         return miniSearch.search(query);
-    } else {
+    else
         console.error('Search index not initialized.');
-    }
 }
