@@ -38,7 +38,7 @@
 }
 
 @media (max-width: 768px) {
-    .tooltip.show {
-        display: none;
+    .tooltip {
+        display: none !important;
     }
 }
