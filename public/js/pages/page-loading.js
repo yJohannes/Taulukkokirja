@@ -1,6 +1,6 @@
 import { renderElementLatex } from '../latex/latex.js';
 import { highlightTerms } from '../effects/highlight-terms.js';
-import * as bookmarks from '../components/bookmarks/index.js';
+import * as bookmarks from '../components/bookmarks/bookmarks.js';
 import * as storage from '../components/storage/index.js';
 import * as pages from './index.js';
 
@@ -55,7 +55,7 @@ export async function loadPageToElement(path, element, bookMarkable=true) {
     }
     
     if (bookMarkable) {
-        bookmarks.addBookmarkToHeader(element.querySelector('h1'));
+        bookmarks.addBookmarkToHeader(element.querySelector('h1'), path);
     }
 
     document.title = pages.formatting.formatPathToTitle(path);

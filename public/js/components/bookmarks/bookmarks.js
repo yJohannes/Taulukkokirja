@@ -8,16 +8,12 @@ function createTabsFromList(pathsList, container, deleteTargetListName=null) {
 
     pathsList.forEach(path => {
         const name = formatting.formatPathToLabel(path);
-
         const tab = Tab.createTab(name, path);
-        tab.style.setProperty('padding', '0.5rem', 'important');
-        tab.style.setProperty('padding-left', '0.75rem', 'important');
+        tab.classList.add('p-2');
 
        if (deleteTargetListName) {
             const deleteBtn = document.createElement('button');
-            deleteBtn.classList.add('btn', 'rounded-circle', 'ripple', 'ripple-dark', 'ripple-centered', 'hover-glow')
-            deleteBtn.classList.add('icon-button');
-            deleteBtn.style.fontSize = '1rem';
+            deleteBtn.className = 'btn icon-button rounded-circle ripple  ripple-dark ripple-centered hover-glow';
 
             deleteBtn.addEventListener('click', (e) => {
                 e.stopPropagation(); // Prevents event from reaching <a>
@@ -27,7 +23,7 @@ function createTabsFromList(pathsList, container, deleteTargetListName=null) {
             });
 
             const x = document.createElement('i');
-            x.classList.add('bi', 'bi-trash3');
+            x.className = 'bi bi-trash3';
 
             deleteBtn.appendChild(x);
             tab.appendChild(deleteBtn);
@@ -58,7 +54,7 @@ export function updateBookmarks() {
     createTabsFromList(recents, recentsContainer);
 }
 
-export function addBookmarkToHeader(header, {justify = 'space-between', align = 'center'} = {}) {
+export function addBookmarkToHeader(header, path, {justify = 'space-between', align = 'center'} = {}) {
     const wrapper = document.createElement('div');
     wrapper.style.display = 'flex';
     wrapper.style.justifyContent = justify;
@@ -66,12 +62,12 @@ export function addBookmarkToHeader(header, {justify = 'space-between', align = 
     header.parentNode.insertBefore(wrapper, header);
     wrapper.appendChild(header);
 
-    const button = createBookmarkButton();
+    const button = createBookmarkButton(path);
     wrapper.appendChild(button);
     return wrapper;
 }
 
-export function createBookmarkButton(pagePath) {
+export function createBookmarkButton(path) {
     const button = document.createElement('button');
     button.classList.add('btn', 'icon-button', 'rounded-circle', 'ripple', 'ripple-dark', 'ripple-centered', 'hover-glow');
     
@@ -84,11 +80,11 @@ export function createBookmarkButton(pagePath) {
     button.appendChild(headerWrapper);
     button.addEventListener('click', () => {
         if (icon.classList.toggle('bi-bookmark')) {
-            storage.removeFromStorageList('bookmarks', pagePath)
+            storage.removeFromStorageList('bookmarks', path)
         }
         
         if (icon.classList.toggle('bi-bookmark-fill')) {
-            storage.addToStorageList('bookmarks', pagePath, true)
+            storage.addToStorageList('bookmarks', path, true)
         }
 
         updateBookmarks();
@@ -96,7 +92,7 @@ export function createBookmarkButton(pagePath) {
 
     const bookmarks = storage.getFromStorageList('bookmarks');
     
-    if (bookmarks.includes(pagePath)) {
+    if (bookmarks.includes(path)) {
         icon.classList.add('bi', 'bi-bookmark-fill');
     } else {
         icon.classList.add('bi', 'bi-bookmark');
