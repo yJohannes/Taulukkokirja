@@ -5,7 +5,7 @@ import { initNavbar } from './layout/navbar.js';
 import * as explorer from './components/explorer/index.js'
 import { editor } from './rich-text-editor/index.js'
 import * as bookmarks from './components/bookmarks/index.js';
-import * as search from './components/search/index.js';
+import { Search } from './components/search/seach.js';
 
 import '../components/search_bar/search-bar.js';
 import '../components/toggle_button/toggle-button.js';
@@ -42,5 +42,5 @@ document.addEventListener('DOMContentLoaded', async () => {
     explorer.loadExplorerSave();
 
     editor.init();
-    await search.initSearch();
+    await Search.initSearch();
 });
