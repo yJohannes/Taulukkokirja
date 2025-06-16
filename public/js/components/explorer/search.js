@@ -5,19 +5,10 @@ import * as search from '../search/index.js';
 import * as pages from '../../pages/index.js';
 import { highlightTerms } from '../../effects/highlight-terms.js';
 import { Tab } from '../../../components/tab/tab.js';
+import { utils } from '../../common/utils.js';
 
 function clearSearch() {
     document.querySelector("#explorer-search").value = '';
-}
-
-function showResults(bool) {
-    const searchContainer = document.getElementById('explorer-search-result-container');
-
-    if (bool) {
-        searchContainer.style.display = 'inline-block';
-    } else {
-        searchContainer.style.display = 'none';
-    }
 }
 
 export function generateResultView(container, matches) {
@@ -61,8 +52,8 @@ export function generateResultView(container, matches) {
                 e.preventDefault();
 
                 container.innerHTML = '';
-                explorer.showExplorer(true);
-                showResults(false);
+                utils.showElement(true, document.getElementById('explorer-nav-container'));
+                utils.showElement(false, document.getElementById('explorer-search-result-container'));
 
                 const parentPath = path.substring(0, path.lastIndexOf('/'));
 
@@ -80,8 +71,8 @@ export function generateResultView(container, matches) {
             tab = tab.createTab(name, path);
             tab.addEventListener('click', () => {
                 container.innerHTML = '';
-                explorer.showExplorer(true);
-                showResults(false);
+                utils.showElement(true, document.getElementById('explorer-nav-container'));
+                utils.showElement(false, document.getElementById('explorer-search-result-container'));
 
                 explorer.openPath(path);
                 explorer.getTabByPath(path).scrollIntoView({
@@ -130,11 +121,11 @@ export async function initSearchToInput(element) {
         const query = e.target.value;
         
         if (query.length <= 0) {
-            explorer.showExplorer(true);
-            showResults(false);
+            utils.showElement(true, document.getElementById('explorer-nav-container'));
+            utils.showElement(false, document.getElementById('explorer-search-result-container'));
         } else {
-            explorer.showExplorer(false);
-            showResults(true);
+            utils.showElement(false, document.getElementById('explorer-nav-container'));
+            utils.showElement(true, document.getElementById('explorer-search-result-container'));
             
             const matches = search.search(query);
             generateResultView(resultContainer, matches)

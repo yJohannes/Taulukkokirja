@@ -1,15 +1,5 @@
 import { Tab } from '../../../components/tab/tab.js';
 
-export function showExplorer(bool) {
-    const explorerContainer = document.getElementById('explorer-nav-container');
-
-    if (bool) {
-        explorerContainer.style.display = 'inline-block';
-    } else {
-        explorerContainer.style.display = 'none';
-    }
-}
-
 export function openPath(path) {
     const explorer = document.querySelector('#explorer-nav-container');
     const parts = path.split('/'); // Split the path into parts for navigation
