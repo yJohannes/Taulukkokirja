@@ -4,6 +4,7 @@ import * as explorer from './index.js';
 import * as search from '../search/index.js';
 import * as pages from '../../pages/index.js';
 import { highlightTerms } from '../../effects/highlight-terms.js';
+import { Tab } from '../../../components/tab/tab.js';
 
 function clearSearch() {
     document.querySelector("#explorer-search").value = '';
@@ -46,7 +47,7 @@ export function generateResultView(container, matches) {
         if (path.endsWith('.html')) {
             const name = pages.formatting.formatPathToLabel(path);
 
-            tab = explorer.createTab(name, 0, false, path);
+            tab = Tab.createTab(name, path);
             
             const tabHref = tab.getAttribute('href');
             tab.setAttribute('href', tabHref + `?highlight=${pages.encodeSearchParams(match.terms)}`)
@@ -76,7 +77,7 @@ export function generateResultView(container, matches) {
         } else {
             const name = pages.formatting.formatPathToLabel(path);
 
-            tab = explorer.createTab(name, 0, false, path);
+            tab = tab.createTab(name, path);
             tab.addEventListener('click', () => {
                 container.innerHTML = '';
                 explorer.showExplorer(true);

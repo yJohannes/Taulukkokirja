@@ -1,7 +1,7 @@
 import * as storage from '../storage/index.js';
 import * as explorer from '../explorer/index.js';
 import { formatting } from '../../pages/formatting.js';
-
+import { Tab } from '../../../components/tab/tab.js';
 
 function createTabsFromList(pathsList, container, deleteTargetListName=null) {
     container.innerHTML = '';
@@ -9,7 +9,7 @@ function createTabsFromList(pathsList, container, deleteTargetListName=null) {
     pathsList.forEach(path => {
         const name = formatting.formatPathToLabel(path);
 
-        const tab = explorer.createTab(name, 0, false, path);
+        const tab = Tab.createTab(name, path);
         tab.style.setProperty('padding', '0.5rem', 'important');
         tab.style.setProperty('padding-left', '0.75rem', 'important');
 

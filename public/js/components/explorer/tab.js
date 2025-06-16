@@ -1,28 +1,11 @@
 import { showSidebar }  from '../../layout/sidebar.js';
-import { createArrow } from '../common/arrow.js';
-import { formatting } from '../../pages/formatting.js'
 import { updateBookmarks } from '../bookmarks/index.js';
+// import { collapseExplorer, openPath } from './helpers.js';
 import * as storage from '../storage/index.js';
 
-export function isDropdownTab(tab) { return (tab.parentElement.querySelector('ul') !== null); }
-export function getTabDropdown(tab) { return tab.parentElement.querySelector('ul') || null; }
-export function getTabParentDropdown(tab) { return tab.parentElement.parentElement || null; }
+import { Tab } from '../../../components/tab/tab.js';
 
-export function setTabActivity(tab, isActive) {
-    const activeTabs = parentElement.querySelectorAll(`.${'active'}`);
-
-    if (isActive) {
-        activeTabs.forEach(t => {
-            t.classList.remove('active');
-
-            if (getTabDropdown(tab) == null) // Not a dropdown tab
-                storage.removeFromStorageList('show-states', t.getAttribute('data-path'));
-        });
-    }
-}
-
-function handleTabClick(tab, isDropdown, parentElement)
-{
+export function handleTabClick(tab, isDropdown, parentElement) {
     const activeTabs = parentElement.querySelectorAll(`.${'active'}`);
 
     // Handle basic tabs
@@ -48,7 +31,7 @@ function handleTabClick(tab, isDropdown, parentElement)
     }
 
     // Handle collapsible tabs
-    const nestedDropdown = getTabDropdown(tab);
+    const nestedDropdown = Tab.getTabDropdown(tab);
     activeTabs.forEach(t => t.classList.remove('active'));
 
     // If closing a dropdown, shift focus up a level
@@ -71,6 +54,8 @@ function handleTabClick(tab, isDropdown, parentElement)
         const autoCollapseOn = autoCollapse.classList.contains('active');
         
         if (autoCollapseOn) {
+            // collapseExplorer();
+            // openPath(tab.getAttribute('data-path'));
             const parentDropdown = tab.parentElement.parentElement;
             const openDropdown = parentDropdown.querySelectorAll(`.${'show'}`);
 
@@ -92,84 +77,41 @@ function handleTabClick(tab, isDropdown, parentElement)
     }
 }
 
-function createTab(textOrHTML, level, isDropdown, path, tagName='')
-{
-    let tab;
-    if (tagName) {
-        tab = document.createElement(tagName);
-    } else if (isDropdown) {
-        tab = document.createElement('button');
-    } else {
-        tab = document.createElement('a');
-    }
-    
-    tab.setAttribute('data-path', path)
-    tab.setAttribute('href', formatting.formatPathToHash(path));
-
-    tab.classList.add('tab', 'ripple');
-    tab.style.setProperty('--level', level);
-
-    const span = document.createElement('span');
-    span.classList.add('tab-content');
-    span.innerHTML = textOrHTML;
-    tab.appendChild(span);
-    
-    // Add arrow to dropdowns
-    if (isDropdown) {        
-        const arrow = createArrow();
-        tab.appendChild(arrow);
-        tab.addEventListener('click', () => {
-            arrow.classList.toggle('flipped');
-        });
-    }
-
-    return tab;
-}
-
 // Recursive function to generate the tab list with collapsibility
-function generateTabs(data, parentElement, rootPath='pages') {
-    const ul = document.createElement('ul');
-    ul.classList.add('explorer-ul');
+export function generateTabs(data, parentElement, rootPath='pages', isRootCollapsible=false) {
+    const list = Tab.createTabList(isRootCollapsible);
 
     data = data.pages || data; // Support both top-level and nested calls
-
-
     for (let key in data) {
         const pageName = key.replace('.html', '');
         const currentPath = rootPath ? rootPath + '/' + key : key;
         const level = currentPath.split('/').length - 1 - 1; // sub 1 again because of pages as root 
-        const li = document.createElement('li');
+
+        const item = Tab.createTabListItem();
 
         let tab; 
         if (typeof data[key] === 'object' && data[key] !== null) {
-            tab = createTab(pageName, level, true, currentPath);    // Dropdown tab
+            tab = Tab.createTab(pageName, currentPath, true, level);    // Dropdown tab
             tab.addEventListener('click', () => handleTabClick(tab, true, parentElement));
-            if (level === 0) tab.style.fontWeight = 'bold';
-
+            
+            if (level === 0)
+                tab.style.fontWeight = 'bold';
         } else {
-            tab = createTab(pageName, level, false, currentPath);   // Normal tab
+            tab = Tab.createTab(pageName, currentPath, false, level);   // Normal tab
             tab.addEventListener('click', () => handleTabClick(tab, false, parentElement));
         }
         
         tab.addEventListener('click', () => updateBookmarks());
-
-        li.appendChild(tab);
+        item.appendChild(tab);
 
         // If the value is an object (i.e., nested dropdown), recursively create a nested dropdown
         if (typeof data[key] === 'object' && data[key] !== null) {
-            const nestedDropdown = generateTabs(data[key], parentElement, currentPath);
-            nestedDropdown.classList.add('explorer-dropdown');
-
-            li.appendChild(nestedDropdown);
+            const nestedDropdown = generateTabs(data[key], parentElement, currentPath, true);
+            item.appendChild(nestedDropdown);
         }
 
-        ul.appendChild(li);
+        list.appendChild(item);
     }
 
-    return ul;
+    return list;
 }
-
-export {
-    createTab,
-    generateTabs,
-};

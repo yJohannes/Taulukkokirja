@@ -1,66 +1,13 @@
-import { getTabDropdown } from './index.js';
-import * as storage from '../storage/index.js';
+import { Tab } from '../../../components/tab/tab.js';
 
-export function showExplorer(bool)
-{
+export function showExplorer(bool) {
     const explorerContainer = document.getElementById('explorer-nav-container');
 
     if (bool) {
         explorerContainer.style.display = 'inline-block';
     } else {
         explorerContainer.style.display = 'none';
-
     }
-}
-
-export function expandExplorer()
-{
-    const explorer = document.querySelector('#explorer-nav-container');
-    const uls = explorer.querySelectorAll('.explorer-ul');
-    
-    // Expand all dropdowns and flip arrows
-    uls.forEach(ul => {
-        ul.classList.add('show');
-        
-        const lis = ul.querySelectorAll('li');
-        lis.forEach((li) => {
-            const tabs = li.querySelectorAll('.tab');
-            tabs.forEach((tab) => {
-                storage.addToStorageList('show-states', tab.getAttribute('data-path'));
-
-                const arrowSvg = tab.querySelector(`svg`);
-                if (arrowSvg) {
-                    arrowSvg.classList.add('flipped');
-                }
-            });
-        });
-    });
-}
-
-export function collapseExplorer()
-{
-    const explorer = document.querySelector('#explorer-nav-container');
-    const uls = explorer.querySelectorAll('.explorer-ul');
-    
-    // Collapse all dropdowns and unflip arrows
-    uls.forEach(ul => {
-        ul.classList.remove('show');
-        
-        
-        const lis = ul.querySelectorAll('li');
-        lis.forEach((li) => {
-            const tabs = li.querySelectorAll('.tab');
-            tabs.forEach((tab) => {
-                tab.classList.remove('active');
-                storage.removeFromStorageList('show-states', tab.getAttribute('data-path'));
-                
-                const arrowSvg = tab.querySelector(`svg`);
-                if (arrowSvg) {
-                    arrowSvg.classList.remove('flipped');
-                }
-            });
-        });
-    });
 }
 
 export function openPath(path) {
@@ -77,7 +24,7 @@ export function openPath(path) {
         const tabClass = `.tab[data-path="${joinPath}"]`;
 
         const tab = explorer.querySelector(tabClass);
-        const dropdown = getTabDropdown(tab);
+        const dropdown = Tab.getTabDropdown(tab);
 
         if (!dropdown) {
             tab.click();

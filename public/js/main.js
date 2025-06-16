@@ -2,9 +2,8 @@ import { initSplitGrid } from './components/split-grid.js';
 import { initPageLoading } from './pages/index.js';
 import { initSidebar } from './layout/sidebar.js';
 import { initNavbar } from './layout/navbar.js';
-import { loadSettings } from './components/settings.js';
 import * as explorer from './components/explorer/index.js'
-import * as editor from './rich-text-editor/index.js'
+import { editor } from './rich-text-editor/index.js'
 import * as bookmarks from './components/bookmarks/index.js';
 import * as search from './components/search/index.js';
 
@@ -41,7 +40,6 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     await explorer.loadExplorerToElement(document.getElementById('explorer-nav-container'));
     explorer.loadExplorerSave();
-    loadSettings();
 
     editor.init();
     await search.initSearch();

@@ -1,12 +1,13 @@
 import { initSearchToInput } from './search.js';
-import { generateTabs, isDropdownTab } from './tab.js';
-import { initExplorerButtons } from './buttons.js';
+import { generateTabs } from './tab.js';
+import { Tab } from '../../../components/tab/tab.js';
+import { buttons } from './buttons.js';
 
 import * as storage from '../storage/index.js';
 
 export function loadExplorerSave() {
     const explorer = document.querySelector('#explorer-nav-container');
-    const uls = explorer.querySelectorAll('.explorer-ul');
+    const uls = explorer.querySelectorAll('.tab-list');
     
     // Collapse all dropdowns and unflip arrows
     uls.forEach(ul => {
@@ -15,9 +16,9 @@ export function loadExplorerSave() {
             const tabs = li.querySelectorAll('.tab');
             tabs.forEach((tab) => {
                 const path = tab.getAttribute('data-path');
-                if (isDropdownTab(tab)) {
+                if (Tab.isDropdownTab(tab)) {
                     if (storage.getFromStorageList('show-states').includes(path)) {
-                        const dropdown = li.querySelector('.explorer-ul');
+                        const dropdown = li.querySelector('.tab-list');
                         dropdown?.classList.add('show');
                         
                         const arrowSvg = tab.querySelector(`svg`);
@@ -51,9 +52,10 @@ export async function loadExplorerToElement(parentElement)
     
     const structure = await loadExplorerStructure();
     const tabs = generateTabs(structure, parentElement);
+    tabs.id = 'explorer-tabs-root';
     parentElement.appendChild(tabs);
 
-    initExplorerButtons();
+    buttons.init();
 }
 
 const defaultStructure = {

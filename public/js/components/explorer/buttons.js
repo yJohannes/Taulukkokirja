@@ -1,9 +1,16 @@
-import { expandExplorer, collapseExplorer } from "./index.js";
 import { addToolTip } from "../common/tooltip.js";
+import { Tab } from "../../../components/tab/tab.js";
 import * as storage from '../storage/index.js';
 
-export function initExplorerButtons()
-{
+export const buttons = {
+    init,
+};
+
+function init() {
+    // const expand = document.createElement('button');
+    // const collapse = document.createElement('button');
+    // const autoCollapse = document.createElement('button');
+
     const expand = document.getElementById('explorer-expand')
     const collapse = document.getElementById('explorer-collapse')
     const autoCollapse = document.getElementById('explorer-auto-collapse')
@@ -24,8 +31,8 @@ export function initExplorerButtons()
         }
     });
 
-    expand.addEventListener('click', expandExplorer);
-    collapse.addEventListener('click', collapseExplorer);
+    expand.addEventListener('click', () => Tab.expandTabListTree(document.getElementById('explorer-tabs-root')));
+    collapse.addEventListener('click', () => Tab.collapseTabListTree(document.getElementById('explorer-tabs-root')));
 
     document.addEventListener("keydown", function(event) {
         if (event.altKey && event.key === "1") {
