@@ -4,6 +4,7 @@ import { updateBookmarks } from '../bookmarks/index.js';
 import * as storage from '../storage/index.js';
 
 import { Tab } from '../../../components/tab/tab.js';
+import { FlipArrow } from '../../../components/flip_arrow/flip-arrow.js';
 
 export function handleTabClick(tab, isDropdown, parentElement) {
     const activeTabs = parentElement.querySelectorAll(`.${'active'}`);
@@ -63,7 +64,7 @@ export function handleTabClick(tab, isDropdown, parentElement) {
                 const tab = dropdown.parentElement.querySelector('button');
                 const arrow = tab.querySelector('svg');
                 
-                arrow.classList.remove('flipped');
+                FlipArrow.setArrowFlip(false, arrow);
                 dropdown.classList.remove('show');
                 storage.removeFromStorageList('show-states', tab.getAttribute('data-path'))
             });

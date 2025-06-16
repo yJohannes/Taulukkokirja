@@ -1,6 +1,7 @@
 import { formatting } from '../../js/pages/formatting.js';
-import { createArrow } from '../../js/components/common/arrow.js';
 import * as storage from '../../js/components/storage/index.js';
+
+import { FlipArrow } from '../flip_arrow/flip-arrow.js';
 
 export const Tab = {
     createTab,
@@ -39,10 +40,10 @@ function createTab(innerHTML, href, isDropdown=false, nestLevel=0, tagName='') {
     // Add arrow to dropdowns
     if (isDropdown) {
         
-        const arrow = createArrow();
+        const arrow = FlipArrow.createArrow();
         t.appendChild(arrow);
         t.addEventListener('click', () => {
-            arrow.classList.toggle('flipped');
+            FlipArrow.toggleArrow(arrow);
         });
     }
 
@@ -65,14 +66,14 @@ function createTabListItem() {
 }
 
 function setDropdownState(t, isOpen) {
-    const arrowSvg = t.querySelector(`svg`);
+    const arrow = t.querySelector(`svg`);
     const path = t.getAttribute('data-path');
     
     if (isOpen) {
-        arrowSvg?.classList.add('flipped');
+        FlipArrow.setArrowFlip(true, arrow);
         storage.addToStorageList('show-states', path);
     } else {
-        arrowSvg?.classList.remove('flipped');
+        FlipArrow.setArrowFlip(false, arrow);
         storage.removeFromStorageList('show-states', path);
     }
 }
@@ -190,7 +191,7 @@ function handleTabClick(tab, isDropdown, parentElement) {
                 const tab = dropdown.parentElement.querySelector('button');
                 const arrow = tab.querySelector('svg');
                 
-                arrow.classList.remove('flipped');
+                FlipArrow.setArrowFlip(false, arrow)
                 dropdown.classList.remove('show');
                 storage.removeFromStorageList('show-states', tab.getAttribute('data-path'))
             });
