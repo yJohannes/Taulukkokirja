@@ -815,18 +815,6 @@ ol {
 margin: 0;
 }
 }
-.flip-arrow {
-width: 24px;
-min-width: 24px;
-height: 24px;
-fill: var(--color-arrow);
-transition: transform 0.3s ease;
-transform: rotate(180deg);
-}
-.flip-arrow.flipped {
-fill: var(--color-arrow-flipped);
-transform: rotate(360deg);
-}
 .popup {
 color: white;
 padding: 0.625rem 1.25rem;
@@ -898,8 +886,8 @@ justify-content: space-between;
 align-items: center;
 width: 100%;
 border: 1px solid transparent;
-padding-left: calc(12px + var(--level, 0) * 20px) !important; /* Adjust text indentation */
-padding-right: 12px !important;
+padding-left: calc(12px + var(--level, 0) * 20px);
+padding-right: 12px;
 border-radius: 1rem;
 padding-top: calc(
 max(3.75px, 14px / (1 + var(--level, 0)))
