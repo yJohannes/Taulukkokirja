@@ -33,3 +33,7 @@
     background-color: var(--bs-btn-bg);
     transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
 }
+
+.btn:focus-visible {
+    outline: 5px auto -webkit-focus-ring-color;
+}
