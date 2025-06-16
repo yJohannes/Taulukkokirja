@@ -60,7 +60,9 @@
 }
 
 .gutter-vertical:hover::before,
-.gutter-horizontal:hover::before {
+.gutter-horizontal:hover::before,
+.gutter-vertical:active::before,
+.gutter-horizontal:active::before {
     background-color: var(--color-accent);
 }
 
