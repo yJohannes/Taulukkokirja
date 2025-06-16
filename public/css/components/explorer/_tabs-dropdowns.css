@@ -1,7 +1,11 @@
-.explorer-ul {
-    list-style-type: none; /* Removes bullet points */
-    padding-left: 0; /* No padding on the <ul> */
+.tab-list {
+    list-style-type: none;
+    padding-left: 0;
     margin-bottom: 0;
+}
+
+.tab-list-item {
+    
 }
 
 .tab {
@@ -49,7 +53,7 @@
     text-decoration: none;
 }
 
-.explorer-dropdown {
+.tab-dropdown {
     overflow: hidden;
     max-height: 0;
     opacity: 0;
@@ -60,7 +64,7 @@
         visibility 0.25s ease-out;
 }
 
-.explorer-dropdown.show {
+.tab-dropdown.show {
     height: auto;
     max-height: 10000px;
     opacity: 1;
@@ -68,6 +72,6 @@
 }
 
 /* Fully hidden, layout-skipped state (used only during resize) */
-.explorer-dropdown:not(.show).hard-hide {
+.tab-dropdown:not(.show).hard-hide {
     display: none !important;
 }
