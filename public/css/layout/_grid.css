@@ -8,9 +8,10 @@
 
 #content-wrapper {
     position: relative;
+    overflow: hidden;
     display: grid;
-    grid-template-columns: 1fr 1px 4fr 1px 0.75fr;
-    grid-template-rows: 2fr auto 1fr;
+    grid-template-columns: 300px 1px 1fr 1px 275px;
+    grid-template-rows: 1fr auto 300px;
     grid-template-areas:
         "sidebar-1 gutter-col-1 main-content gutter-col-2 sidebar-2"
         "sidebar-1 gutter-col-1 editor-gutter gutter-col-2 sidebar-2"
