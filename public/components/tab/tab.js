@@ -62,6 +62,7 @@ function createTabList(isDropdown) {
 
 function createTabListItem() {
     const i = document.createElement('li');
+    i.className = 'tab-list-item';
     return i;
 }
 
@@ -78,14 +79,14 @@ function setDropdownState(t, isOpen) {
     }
 }
 function expandTabListTree(tabList) {
-    const uls = tabList.querySelectorAll('.tab-list');
+    const lists = tabList.querySelectorAll('.tab-list');
     
-    uls.forEach(ul => {
-        ul.classList.add('show');
+    lists.forEach(list => {
+        list.classList.add('show');
         
-        const lis = ul.querySelectorAll('li');
-        lis.forEach((li) => {
-            const tabs = li.querySelectorAll('.tab');
+        const items = list.querySelectorAll('.tab-list-item');
+        items.forEach(item => {
+            const tabs = item.querySelectorAll('.tab');
             tabs.forEach((tab) => {
                 Tab.setDropdownState(tab, true);
             });
@@ -95,15 +96,15 @@ function expandTabListTree(tabList) {
 
 
 function collapseTabListTree(tabList) {
-    const uls = tabList.querySelectorAll('.tab-list');
+    const lists = tabList.querySelectorAll('.tab-list');
     
-    uls.forEach(ul => {
-        ul.classList.remove('show');
+    lists.forEach(list => {
+        list.classList.remove('show');
         
-        const lis = ul.querySelectorAll('li');
-        lis.forEach((li) => {
-            const tabs = li.querySelectorAll('.tab');
-            tabs.forEach((tab) => {
+        const items = list.querySelectorAll('.tab-list-item');
+        items.forEach(item => {
+            const tabs = item.querySelectorAll('.tab');
+            tabs.forEach(tab => {
                 tab.classList.remove('active');
                 Tab.setDropdownState(tab, false);
             });
@@ -131,8 +132,8 @@ export function setTabState(t, isActive, clearOthersFromParent=false, parentElem
     else t.classList.remove('active');
 }
 
-export function isDropdownTab(t) { return (t.parentElement.querySelector('ul') !== null); }
-export function getTabDropdown(t) { return t.parentElement.querySelector('ul') || null; }
+export function isDropdownTab(t) { return (t.parentElement.querySelector('.tab-list') !== null); }
+export function getTabDropdown(t) { return t.parentElement.querySelector('.tab-list') || null; }
 export function getTabParentDropdown(t) { return t.parentElement.parentElement || null; }
 
 function handleTabClick(tab, isDropdown, parentElement) {

@@ -1,5 +1,5 @@
 import { showSidebar }  from '../../layout/sidebar.js';
-import { updateBookmarks } from '../bookmarks/index.js';
+import { updateBookmarks } from '../bookmarks/bookmarks.js';
 // import { collapseExplorer, openPath } from './helpers.js';
 import * as storage from '../storage/index.js';
 

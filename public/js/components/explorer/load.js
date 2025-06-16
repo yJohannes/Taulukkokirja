@@ -1,33 +1,30 @@
 import { initSearchToInput } from './search.js';
 import { generateTabs } from './tab.js';
-import { Tab } from '../../../components/tab/tab.js';
 import { buttons } from './buttons.js';
+import { Tab } from '../../../components/tab/tab.js';
+import { FlipArrow } from '../../../components/flip_arrow/flip-arrow.js';
 
 import * as storage from '../storage/index.js';
 
 export function loadExplorerSave() {
     const explorer = document.querySelector('#explorer-nav-container');
-    const uls = explorer.querySelectorAll('.tab-list');
+    const lists = explorer.querySelectorAll('.tab-list');
     
     // Collapse all dropdowns and unflip arrows
-    uls.forEach(ul => {
-        const lis = ul.querySelectorAll('li');
-        lis.forEach((li) => {
-            const tabs = li.querySelectorAll('.tab');
+    lists.forEach(list => {
+        const items = list.querySelectorAll('.tab-list-item');
+        items.forEach(item => {
+            const tabs = item.querySelectorAll('.tab');
             tabs.forEach((tab) => {
                 const path = tab.getAttribute('data-path');
                 if (Tab.isDropdownTab(tab)) {
                     if (storage.getFromStorageList('show-states').includes(path)) {
-                        const dropdown = li.querySelector('.tab-list');
+                        const dropdown = item.querySelector('.tab-list');
                         dropdown?.classList.add('show');
                         
-                        const arrowSvg = tab.querySelector(`svg`);
-                        if (arrowSvg)
-                            arrowSvg.classList.add('flipped');
+                        FlipArrow.setArrowFlip(true, tab.querySelector(`svg`));
                     }
-                } else {
-
-                }                    
+                }
             });
         });
     });

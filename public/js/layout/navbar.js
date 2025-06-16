@@ -1,6 +1,6 @@
 import { addToolTip } from "../components/common/tooltip.js";
 import { toggleEditor } from "./editor.js";
-import { updateBookmarks } from "../components/bookmarks/index.js";
+import { updateBookmarks } from "../components/bookmarks/bookmarks.js";
 
 export function initNavbar() {
     const sidebar1 = document.getElementById('sidebar-1');

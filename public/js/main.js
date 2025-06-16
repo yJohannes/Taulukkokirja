@@ -4,7 +4,7 @@ import { initSidebar } from './layout/sidebar.js';
 import { initNavbar } from './layout/navbar.js';
 import * as explorer from './components/explorer/index.js'
 import { editor } from './rich-text-editor/index.js'
-import * as bookmarks from './components/bookmarks/index.js';
+import * as bookmarks from './components/bookmarks/bookmarks.js';
 import { Search } from './components/search/seach.js';
 
 import '../components/search_bar/search-bar.js';
