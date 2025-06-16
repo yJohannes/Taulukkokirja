@@ -21,8 +21,13 @@ export function initSplitGrid() {
 
         // These match min-widths described in stylesheets
         columnMinSizes: {
-            0: 250, // Sidebar
-            4: 250, // Sidebar 2
+            0: 150, // Sidebar
+            4: 150, // Sidebar 2
+        },
+
+        columnMaxSizes: {
+            0: 450,
+            4: 450,
         },
 
         rowMinSizes: {

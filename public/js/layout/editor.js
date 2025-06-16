@@ -15,7 +15,7 @@ export function toggleEditor() {
 
 export function showEditor() {
     if (cachedEditorHeight === '0px')
-        grid.style.gridTemplateRows = `2fr auto 1fr`;
+        grid.style.gridTemplateRows = `1fr auto 300px`;
     else
         grid.style.gridTemplateRows = `${cachedPageHeight} auto ${cachedEditorHeight}`;
 
