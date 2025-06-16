@@ -14,7 +14,7 @@ function clearSearch() {
 export function generateResultView(container, matches) {
     container.innerHTML = '';
     container.innerHTML += `
-        <div style="display: flex; justify-content: space-between; align-items: center; padding: 1rem; padding-left: 0.75rem; padding-right: 0;">
+        <div class="d-flex justify-content-between align-center py-2 ps-1 pe-0">
             <p style="margin: 0"><b>Haun tulokset</b></p>
             <h4><span class="badge">            
                 ${matches.length} osumaa
@@ -23,7 +23,7 @@ export function generateResultView(container, matches) {
         `
 
     if (matches.length === 0) {
-        container.innerHTML += '<p style="padding-left: 1rem;">Ei tuloksia</p>'
+        container.innerHTML += '<pre class="ps-1">Ei tuloksia</pre>'
         return;
     }
 
@@ -42,10 +42,7 @@ export function generateResultView(container, matches) {
             
             const tabHref = tab.getAttribute('href');
             tab.setAttribute('href', tabHref + `?highlight=${pages.encodeSearchParams(match.terms)}`)
-
-            tab.addEventListener('click', (e) => {
-                updateBookmarks();
-            });
+            tab.addEventListener('click', updateBookmarks);
 
             // Right click
             tab.addEventListener('contextmenu', (e) => {
@@ -84,29 +81,21 @@ export function generateResultView(container, matches) {
             });
         }
 
-        tab.style.setProperty('padding', '0.75rem', 'important');
-        tab.style.setProperty('padding-right', '3rem', 'important');
+        tab.classList.add('p-2', 'pe-5');
 
         const scoreBadge = document.createElement('div');
         scoreBadge.innerText = score;
-
-        Object.assign(scoreBadge.style, {
-            position: 'absolute',
-            right: '0',
-            top: '50%',
-            transform: 'translateY(-50%)',
-            color: 'black',
-
-            borderRadius: '4px',
-            borderTopLeftRadius: '4px',
-            borderBottomLeftRadius: '4px',
-            paddingTop: '0.1rem',
-            paddingBottom: '0.1rem',
-            paddingLeft: '0.25rem',
-            paddingRight: '0.25rem',
-
-            backgroundColor: heatColor,
-        });
+        scoreBadge.className = `
+            position-absolute
+            top-50
+            end-0
+            translate-middle-y
+            text-black
+            rounded-start
+            px-1
+            py-1
+        `
+        scoreBadge.style.backgroundColor = heatColor;
 
         tab.appendChild(scoreBadge);
         container.appendChild(tab);
@@ -131,9 +120,9 @@ export async function initSearchToInput(element) {
             generateResultView(resultContainer, matches)
 
             //  Highlight titles in search
-            if (matches) {
+            if (matches.length > 0) {
                 const titleMatches = search.search(query, { boost: { title: 2, content: 0 } })
-    
+
                 // Merge all matched terms to avoid redundant highlighting
                 const uniqueTerms = [...new Set(titleMatches.flatMap(m => m.terms))];
                 highlightTerms(resultContainer, uniqueTerms);
