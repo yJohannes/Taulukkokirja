@@ -63,7 +63,7 @@
 .dark {
     --color-primary: #553f5d;
     --color-secondary: #ffffff;
-    --color-accent: #9787ff;
+    --color-accent: #ddd8ff;
     --color-focus: var(--color-valio-blue-light);
     --color-enabled: #2c2c35;
     --color-enabled-text: var(--color-white);
@@ -240,9 +240,9 @@ button:focus-visible {
 
 }
 
-input {
-    padding-left: 0.5rem;
-    padding-right: 0.5rem;
+input:not([type="color"]) {
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
     border-radius: 999rem !important;
     color: var(--color-text) !important;
     border-color: var(--color-lines) !important;
