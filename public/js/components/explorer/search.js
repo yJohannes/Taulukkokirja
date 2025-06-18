@@ -1,7 +1,7 @@
 import { getHeatColor, normalization } from '../../common/colors.js';
 import { updateBookmarks } from '../bookmarks/bookmarks.js';
 import * as explorer from './index.js';
-import { Search } from '../search/seach.js';
+import { Search } from '../search/search.js';
 import * as pages from '../../pages/index.js';
 import { highlightTerms } from '../../effects/highlight-terms.js';
 import { Tab } from '../../../components/tab/tab.js';
