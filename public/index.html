@@ -43,7 +43,8 @@
     <link rel="stylesheet" href="./css/bundle.css">
     <script defer type="module" src="./js/main.js"></script>
 </head>
-<body class="cross-background bg-secondary">
+<!-- cross-background bg-secondary -->
+<body class="bg-primary">
     <div class="container-fluid p-0" style="height: 100dvh; height: calc(var(--real-vh, 1dvh) * 100);">
         <div class="d-flex flex-column flex-md-row h-100">
             <header id="nav-rail" class="bg-secondary d-flex flex-md-column justify-content-between flex-shrink-0 p-2 border-top border-end order-1 order-md-0">
@@ -149,7 +150,8 @@
 
                     <div id="gutter-col-1" class="gutter gutter-horizontal"></div>
 
-                    <main id="main-content" class="container bg-primary overflow-y-auto border-start border-end p-3" style="width: auto; max-width: 100%;">
+                    <!-- border-start border-end -->
+                    <main id="main-content" class="container bg-primary overflow-y-auto  p-3" style="width: auto; max-width: 100%;">
                         <article id="page-container" style="margin-bottom: 10rem;">
                             <div class="sticky-header">
                                 <h1>Etusivu</h1>
@@ -192,7 +194,7 @@
                         </article>
                     </main>
 
-                    <div id="editor-gutter" class="gutter gutter-vertical bg-secondary bg-transition">
+                    <div id="editor-gutter" class="gutter gutter-vertical bg-primary bg-transition">
                         <div class="rounded-pill position-absolute start-50 translate-middle bg-transition"
                             style="top: 0.7rem; width: 10%; min-width: 3rem; height: 0.20rem; background-color: var(--color-lines);">
                         </div>
@@ -204,8 +206,8 @@
                             </h4>
                         </div>
                     </div>
-                    
-                    <div id="editor" class="bg-secondary bg-transition d-flex flex-column overflow-y-hidden h-100 px-2">
+                    <!-- d-flex flex-column overflow-y-hidden -->
+                    <div id="editor" class="bg-secondary bg-transition h-100"> 
                         <div id="rich-text-editor-root" class="overflow-y-hidden"></div>
                         <div class="mt-2"></div>
                     </div>
