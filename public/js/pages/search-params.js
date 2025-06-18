@@ -3,7 +3,7 @@ export function encodeSearchParams(terms) {
 }
 
 export function getDecodedSearchParams(keyword) {
-    const params = new URLSearchParams(location.hash.split('?')[1]);
+    const params = new URLSearchParams(location.hash.split('?')[1] || '');
     const raw = params.get(keyword);
     return raw ? raw.split(',').map(decodeURIComponent) : [];
 }
