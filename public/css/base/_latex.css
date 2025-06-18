@@ -8,7 +8,7 @@
 .latex-container {
     display: inline-flex; /* Fills only the area required by content */
     position: relative;
-    overflow: visible;
+    overflow: hidden;
 
     margin-top: 2.5px;
     margin-bottom: 2.5px;
