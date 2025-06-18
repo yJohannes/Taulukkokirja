@@ -30,18 +30,6 @@ export function loadExplorerSave() {
     });
 }
 
-export async function loadExplorerStructure() {
-    const response = await fetch('/api/pages-structure');
-    if (!response.ok) {
-        console.error('Failed to fetch the page structure, using fallback.');
-        return defaultStructure;
-    }
-    
-    const structure = await response.json();
-    // console.log(structure)
-    return structure;
-}
-
 export async function loadExplorerToElement(parentElement)
 {    
     const search = document.getElementById('explorer-search');

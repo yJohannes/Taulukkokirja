@@ -36,7 +36,35 @@ export async function loadPageHTML(path) {
     return await response.text();
 }
 
+export async function fetchPageStructure() {
+    const response = await fetch('/api/pages-structure');
+    if (!response.ok) {
+        console.error('Failed to fetch the page structure, using fallback.');
+        return defaultStructure;
+    }
+    
+    const structure = await response.json();
+    // console.log(structure)
+    return structure;
+}
 
+export function extractPageStructurePaths(obj, basePath = '') {
+    const paths = [];
+    
+    for (const [key, value] of Object.entries(obj)) {
+        const currentPath = basePath ? `${basePath}/${key}` : key;
+        
+        if (value === null) {
+            // It's a file
+            paths.push(currentPath);
+        } else if (typeof value === 'object') {
+            // It's a folder
+            paths.push(...extractPageStructurePaths(value, currentPath));
+        }
+    }
+    
+    return paths;
+}
 
 export async function loadPageToElement(path, element, bookMarkable=true) {
     try {
