@@ -4,6 +4,7 @@ import { buttons } from './buttons.js';
 import { SearchBar } from '../../../components/search_bar/search-bar.js';
 import { Tab } from '../../../components/tab/tab.js';
 import { FlipArrow } from '../../../components/flip_arrow/flip-arrow.js';
+import { fetchPageStructure } from '../../pages/page-loading.js';
 
 import * as storage from '../storage/index.js';
 
@@ -38,7 +39,7 @@ export async function loadExplorerToElement(parentElement)
 
     initSearchToInput(search)
     
-    const structure = await loadExplorerStructure();
+    const structure = await fetchPageStructure();
     const tabs = generateTabs(structure, parentElement);
     tabs.id = 'explorer-tabs-root';
     parentElement.appendChild(tabs);
