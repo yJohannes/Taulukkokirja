@@ -1,6 +1,7 @@
 import { initSearchToInput } from './search.js';
 import { generateTabs } from './tab.js';
 import { buttons } from './buttons.js';
+import { SearchBar } from '../../../components/search_bar/search-bar.js';
 import { Tab } from '../../../components/tab/tab.js';
 import { FlipArrow } from '../../../components/flip_arrow/flip-arrow.js';
 
@@ -33,6 +34,8 @@ export function loadExplorerSave() {
 export async function loadExplorerToElement(parentElement)
 {    
     const search = document.getElementById('explorer-search');
+    SearchBar.makeSearchBar(search);
+
     initSearchToInput(search)
     
     const structure = await loadExplorerStructure();
