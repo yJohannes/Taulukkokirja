@@ -1,4 +1,5 @@
-import { indexPages } from "./indexing.js";
+import { formatting } from "../../pages/formatting.js";
+import { fetchPageStructure, extractPageStructurePaths } from "../../pages/page-loading.js";
 
 let miniSearch;
 const searchConfig = {
@@ -17,11 +18,11 @@ const searchConfig = {
 export const Search = {
     miniSearch,
     searchConfig,
-    initSearch,
+    init,
     search,
 }
 
-async function initSearch() {
+async function init() {
     const savedIndex = localStorage.getItem('search-index');
     if (savedIndex)
         miniSearch = MiniSearch.loadJSON(savedIndex, searchConfig);
@@ -40,4 +41,25 @@ function search(query) {
         return miniSearch.search(query);
     else
         console.error('Search index not initialized.');
+}
+
+async function indexPages(miniSearch) {
+    const structure = await fetchPageStructure();
+    const paths = extractPageStructurePaths(structure);
+
+    for (let path of paths) {
+        try {
+            const response = await fetch(encodeURI(path));
+            const html = await response.text();
+            
+            // Strip HTML to plain text
+            const tempDiv = document.createElement('div');
+            tempDiv.innerHTML = html;
+            const content = tempDiv.textContent || tempDiv.innerText || '';
+            
+            miniSearch.add({ id: path, title: formatting.formatPathToLabel(path, false), content: content });
+        } catch (err) {
+            console.error(`Failed to fetch ${path}`, err);
+        }
+    }
 }
