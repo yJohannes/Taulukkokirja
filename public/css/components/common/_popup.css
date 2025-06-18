@@ -26,3 +26,9 @@
     margin-right: 0.3125rem;
     margin-bottom: 0.1875rem;
 }
+
+@media (max-width: 768px) {
+    .popup {
+        display: none !important;
+    }
+}
