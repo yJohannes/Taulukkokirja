@@ -1,4 +1,4 @@
-import { saveGridState } from "../components/split-grid.js";
+import { saveGridState } from "./split-grid.js";
 
 const grid = document.getElementById('content-wrapper');
 
