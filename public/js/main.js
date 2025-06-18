@@ -1,4 +1,4 @@
-import { initSplitGrid } from './components/split-grid.js';
+import { initSplitGrid } from './layout/split-grid.js';
 import { initPageLoading } from './pages/index.js';
 import { initSidebar } from './layout/sidebar.js';
 import { initNavbar } from './layout/navbar.js';

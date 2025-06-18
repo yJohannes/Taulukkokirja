@@ -1,3 +1,5 @@
+
+
 export function initSplitGrid() {
     document.getElementById('content-wrapper').style.gridTemplateColumns = localStorage.getItem('grid-template-columns');
     document.getElementById('content-wrapper').style.gridTemplateRows    = localStorage.getItem('grid-template-rows');
