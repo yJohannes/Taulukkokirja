@@ -2,3 +2,4 @@
 - 2 grids not 1
 - header pattern?
 - Fix recreating recents and bookmarks every tab click
+- Wrap page contents in container-fluid ms-0
