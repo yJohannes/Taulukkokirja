@@ -8,8 +8,12 @@ export const SplitGrid = {
 
 function init() {
     SplitGrid.ref = document.getElementById('content-grid');
-    SplitGrid.ref.style.gridTemplateColumns = localStorage.getItem('grid-template-columns');
-    SplitGrid.ref.style.gridTemplateRows    = localStorage.getItem('grid-template-rows');
+    
+    const data = JSON.parse(localStorage.getItem('grid-data'));
+    if (data) {
+        SplitGrid.ref.style.gridTemplateColumns = data.columns;
+        SplitGrid.ref.style.gridTemplateRows = data.rows;
+    }    
 
     Split({
         columnGutters: [{
@@ -43,6 +47,7 @@ function init() {
             2: 0, // Editor 
         },
 
+        // hard-hide provides an optimization during resizing.
         onDragStart: () => {
             const hidden = document.querySelectorAll('.tab-dropdown:not(.show)');
             hidden.forEach(element => {
@@ -66,6 +71,8 @@ function init() {
 }
 
 function saveGridState() {
-    localStorage.setItem('grid-template-columns', SplitGrid.ref.style.gridTemplateColumns);
-    localStorage.setItem('grid-template-rows',    SplitGrid.ref.style.gridTemplateRows);
+    localStorage.setItem('grid-data', JSON.stringify({
+        columns: SplitGrid.ref.style.gridTemplateColumns,
+        rows: SplitGrid.ref.style.gridTemplateRows
+    }));
 }
