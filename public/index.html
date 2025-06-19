@@ -44,7 +44,7 @@
     <script defer type="module" src="./js/main.js"></script>
 </head>
 <!-- cross-background bg-secondary -->
-<body class="bg-primary">
+<body class="cross-background bg-secondary">
     <div class="container-fluid p-0" style="height: 100dvh; height: calc(var(--real-vh, 1dvh) * 100);">
         <div class="d-flex flex-column flex-md-row h-100">
             <header id="nav-rail" class="bg-secondary d-flex flex-md-column justify-content-between flex-shrink-0 p-2 border-top border-end order-1 order-md-0">
@@ -75,6 +75,13 @@
                                 class="btn nav-link rounded-circle ripple ripple-centered hover-glow d-flex justify-content-center align-items-center"
                                 title="LaTeX-editori" aria-label="LaTeX-editori">
                                 <i class="bi bi-pen"></i>
+                            </button>
+                        </li>
+                        <li class="nav-item d-flex justify-content-center">
+                            <button id="nav-geogebra"
+                                class="btn nav-link rounded-circle ripple ripple-centered hover-glow d-flex justify-content-center align-items-center"
+                                title="GeoGebra" aria-label="GeoGebra">
+                                <i class="bi bi-calculator"></i>
                             </button>
                         </li>
                     </ul>
@@ -113,11 +120,10 @@
             <!-- Right column: main content -->
             <div class="flex-grow-1 overflow-auto order-0 order-md-1">
                 <div id="content-wrapper" class="h-100">
-                    <aside id="sidebar-1" class="sidebar bg-tertiary p-3">
+                    <aside id="sidebar-1" class="sidebar bg-tertiary px-2 py-3">
                         <section id="explorer" aria-label="Explorer">
                             <div class="sticky-header mb-1">
                                 <input id="explorer-search" class="form-control" placeholder="Hae..." autocomplete="off"></input>
-                                <!-- <search-bar id="explorer-search"></search-bar> -->
 
                                 <div id="explorer-buttons" class="d-flex justify-content-end mt-2" role="group">
                                     <button id="explorer-expand"
@@ -147,12 +153,13 @@
                             <nav id="explorer-nav-container" class="rounded w-100"></nav>
                         </section>
                     </aside>
-
+                    
                     <div id="gutter-col-1" class="gutter gutter-horizontal"></div>
 
-                    <!-- border-start border-end -->
-                    <main id="main-content" class="container bg-primary overflow-y-auto  p-3" style="width: auto; max-width: 100%;">
-                        <article id="page-container" style="margin-bottom: 10rem;">
+                    <main id="main-content" class="bg-primary cross-background overflow-y-auto" style="width: 100%;">
+                        <article id="page-container" class="p-3"
+                            style="height: 100%; padding-bottom: 10rem !important;"
+                        >
                             <div class="sticky-header">
                                 <h1>Etusivu</h1>
                                 <hr>
@@ -194,27 +201,30 @@
                         </article>
                     </main>
 
-                    <div id="editor-gutter" class="gutter gutter-vertical bg-primary bg-transition">
-                        <div class="rounded-pill position-absolute start-50 translate-middle bg-transition"
-                            style="top: 0.7rem; width: 10%; min-width: 3rem; height: 0.20rem; background-color: var(--color-lines);">
-                        </div>
-                        <!-- style="box-shadow: 0px 88px 4px 90px var(--color-bg-secondary);" -->
-                        <div class="bg-secondary bg-transition border-top px-4 py-2 rounded-top-xxl">
-                            <h4 class="logo tex mb-0" data-expr="\LaTeX">
-                                <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtext>LaTeX</mtext></mrow><annotation encoding="application/x-tex">\KaTeX</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.8988em; vertical-align: -0.2155em;"></span><span class="mord text"><span class="mord textrm">L</span><span class="mspace" style="margin-right: -0.17em;"></span><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height: 0.6833em;"><span class="" style="top: -2.905em;"><span class="pstrut" style="height: 2.7em;"></span><span class="mord"><span class="mord textrm mtight sizing reset-size6 size3">A</span></span></span></span></span></span><span class="mspace" style="margin-right: -0.15em;"></span><span class="mord text"><span class="mord textrm">T</span><span class="mspace" style="margin-right: -0.1667em;"></span><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height: 0.4678em;"><span class="" style="top: -2.7845em;"><span class="pstrut" style="height: 3em;"></span><span class="mord"><span class="mord textrm">E</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height: 0.2155em;"><span class=""></span></span></span></span><span class="mspace" style="margin-right: -0.125em;"></span><span class="mord textrm">X</span></span></span></span></span></span>
-                                -editori
-                            </h4>
+                    <div id="main-workspace-splitter" class="gutter gutter-vertical bg-primary bg-transition">
+                        <div class="handle rounded-pill position-absolute start-50 translate-middle bg-transition"></div>
+                        <div class="bg-secondary bg-transition border-top px-4 py-2">
+                            <!-- <h4 class="logo tex mb-0" data-expr="\LaTeX"> -->
+                                <!-- <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtext>LaTeX</mtext></mrow><annotation encoding="application/x-tex">\KaTeX</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.8988em; vertical-align: -0.2155em;"></span><span class="mord text"><span class="mord textrm">L</span><span class="mspace" style="margin-right: -0.17em;"></span><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height: 0.6833em;"><span class="" style="top: -2.905em;"><span class="pstrut" style="height: 2.7em;"></span><span class="mord"><span class="mord textrm mtight sizing reset-size6 size3">A</span></span></span></span></span></span><span class="mspace" style="margin-right: -0.15em;"></span><span class="mord text"><span class="mord textrm">T</span><span class="mspace" style="margin-right: -0.1667em;"></span><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height: 0.4678em;"><span class="" style="top: -2.7845em;"><span class="pstrut" style="height: 3em;"></span><span class="mord"><span class="mord textrm">E</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height: 0.2155em;"><span class=""></span></span></span></span><span class="mspace" style="margin-right: -0.125em;"></span><span class="mord textrm">X</span></span></span></span></span></span> -->
+                                <!-- -editori -->
+                            <!-- </h4> -->
                         </div>
                     </div>
                     <!-- d-flex flex-column overflow-y-hidden -->
-                    <div id="editor" class="bg-secondary bg-transition h-100"> 
-                        <div id="rich-text-editor-root" class="overflow-y-hidden"></div>
-                        <div class="mt-2"></div>
+                    <div id="workspace" class="overflow-x-auto bg-secondary bg-transition border-top h-100"> 
+                        <div id="geogebra-iframe-root" style="width: 100%; height: calc(100% + 50px); overflow: hidden; position: relative;">
+                            <iframe src="https://www.geogebra.org/calculator"
+                                    width="100%" height="100%"
+                                    style="border: 0; position: relative; top: -50px;" 
+                                    allowfullscreen>
+                            </iframe>
+                        </div>
+                        <div id="rich-text-editor-root" class="overflow-y-hidden" style="overflow-wrap: break-word;"></div>
                     </div>
 
                     <div id="gutter-col-2" class="gutter gutter-horizontal"></div>
 
-                    <aside id="sidebar-2" class="sidebar bg-tertiary p-3">
+                    <aside id="sidebar-2" class="sidebar bg-tertiary px-2 py-3">
                         <section id="bookmarks" class="mb-4">
                             <div class="sticky-header">
                                 <h3>Kirjanmerkit</h3>
