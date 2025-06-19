@@ -30,13 +30,20 @@
     --color-enabled: var(--color-valio-blue);
     --color-enabled-text: var(--color-white);
     --color-highlight: #a3afff2b;
+    --color-normal: var(--color-white);
+    --color-inverse: var(--color-black);
     --color-bg-primary: #FAF9F5;
-    --color-bg-secondary: #f8f9fa;
-    --color-bg-tertiary: #FFFFFF;
-    --color-bg-pattern: rgba(0, 0, 0, 0.02);
+    --color-bg-secondary: white;
+    --color-bg-tertiary: #f8f9fa;
+    /* --color-bg-secondary: #f8f9fa; */
+    /* --color-bg-tertiary: #FFFFFF; */
     --color-bg-primary-rgb: 250, 249, 245;
-    --color-bg-secondary-rgb: 248, 249, 250;
-    --color-bg-tertiary-rgb: 255, 255, 255;
+    --color-bg-secondary-rgb: 255, 255, 255;
+    --color-bg-tertiary-rgb: 248, 249, 250;
+    /* --color-bg-secondary-rgb: 248, 249, 250; */
+    /* --color-bg-tertiary-rgb: 255, 255, 255; */
+
+    --color-bg-pattern: rgba(0, 0, 0, 0);
 
     --color-text: var(--color-black);
     --color-text-invert: var(--color-white);
@@ -49,6 +56,7 @@
     --color-nav-link: #555;
     --color-nav-link-hover: #000;
     --color-badge: var(--color-black);
+    --color-shadow: rgba(0, 0, 0, 0.15);
     --color-lines: #dee2e6;
     --color-lines-secondary: #232323;
     --color-arrow: rgb(120, 120, 120);
@@ -63,18 +71,23 @@
 .dark {
     --color-primary: #553f5d;
     --color-secondary: #ffffff;
+    --color-primary-rgb: 85, 63, 93;
+
     --color-accent: #ddd8ff;
     --color-focus: var(--color-valio-blue-light);
     --color-enabled: #2c2c35;
     --color-enabled-text: var(--color-white);
     --color-highlight: #553f5d52;
+    --color-normal: var(--color-black);
+    --color-inverse: var(--color-white);
+
     --color-bg-primary: #161616;
     --color-bg-secondary: #121212;
     --color-bg-tertiary: #1e1e1e;
-    --color-bg-pattern: rgba(255, 255, 255, 0.03);
     --color-bg-primary-rgb: 22, 22, 22;
     --color-bg-secondary-rgb: 18, 18, 18;
     --color-bg-tertiary-rgb: 31, 31, 31;
+    --color-bg-pattern: rgba(255, 255, 255, 0.01);
 
     --color-text: var(--color-white);
     --color-text-invert: var(--color-black);
@@ -82,17 +95,19 @@
     --color-button: transparent;
     --color-button-hover: #45455a;
     --color-input: #353535;
+    --color-table-heading: #594d66;
+    --color-table-stripe-color: rgba(156, 151, 207, 0.048);
 
     --color-nav-link: #bbb;
     --color-nav-link-hover: #fff;
     --color-badge: var(--color-white);
-    --color-table-heading: #594d66;
-    --color-table-stripe-color: rgba(156, 151, 207, 0.048);
+    --color-shadow: rgba(255, 255, 255, 0.35);
 
     --color-lines: rgba(255, 255, 255, 0.1);
     --color-lines-secondary: #232323;
     --color-arrow: rgb(150, 150, 150);
-    --color-arrow-flipped: var(--color-white);
+    /* --color-arrow-flipped: var(--color-white); */
+    --color-arrow-flipped: var(--color-accent);
     --color-mark-transparent: rgb(255 140 81 / 52%);
     --color-mark: rgb(255 140 81);
     --color-scrollbar: #888;
