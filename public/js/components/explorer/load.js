@@ -32,8 +32,7 @@ export function loadExplorerSave() {
     });
 }
 
-export async function loadExplorerToElement(parentElement)
-{    
+export async function loadExplorerToElement(parentElement) {    
     const search = document.getElementById('explorer-search');
     SearchBar.makeSearchBar(search);
 
