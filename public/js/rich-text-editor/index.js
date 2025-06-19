@@ -16,5 +16,14 @@ function init() {
         // onValueChange: console.log
     };
     
-    window.makeRichText(baseOpts)
+    window.makeRichText(baseOpts);
+
+    // const editor = document.querySelector('.rich-text-editor');
+    // console.log(editor)
+    // editor.addEventListener('keydown', e => {
+    //     if (e.key === 'Escape') {
+    //         editor.blur();
+    //         console.log("EDSCAPED")
+    //     }
+    // });
 }
