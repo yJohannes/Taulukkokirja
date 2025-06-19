@@ -1,0 +1,93 @@
+<style>
+    #content {
+        font-size: 1rem;
+        /* default */
+    }
+
+    .font-size-display {
+        min-width: 4rem;
+        text-align: center;
+        font-weight: bold;
+    }
+</style>
+
+<div class="sticky-page-header">
+    <h1>Asetukset</h1>
+    <hr>
+</div>
+
+<div class="container-fluid ms-0 mb-4" style="max-width: 400px;">
+    <div class="row align-items-center">
+        <div class="col">
+            <h5 class="m-0">Zoomaustaso:</h5>
+        </div>
+        <div class="col">
+            <div class="d-flex align-items-center">
+                <div class="btn-group border" role="group" aria-label="Font size control">
+                    <button type="button" class="btn btn-sm ripple ripple-dark ripple-centered hover-glow"
+                        id="decrease">−</button>
+                    <div class="btn btn-sm ripple ripple-dark ripple-centered hover-glow" id="fontSizeDisplay">1rem
+                    </div>
+                    <button type="button" class="btn btn-sm ripple ripple-dark ripple-centered hover-glow"
+                        id="increase">+</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid ms-0">
+    <div class="row">
+        <div class="col">
+            <p style="max-width: unset;">
+                Lorem ipsum dolor sit amet.
+                Eos dolorum vero non facilis perspiciatis ad minima velit id accusantium ratione et dolorem pariatur.
+                Aut repellendus harum qui maxime alias quo fugiat fugit et laborum beatae ut minus itaque nam animi perferendis? Eum
+                impedit optio ut quia quia qui quia dignissimos non velit iure a numquam totam.
+                Sed provident earum vel officiis quisquam ut beatae accusamus ut incidunt maiores aut recusandae accusamus!
+            </p>
+            <p>
+                Sed expedita vitae est odio doloribus id porro velit vel facilis sint et enim quidem et commodi internos aut sunt
+                rerum.
+                Est quia veritatis et iure natus non reiciendis tempora.
+                Ad veritatis quae 33 incidunt blanditiis aut aspernatur animi et sapiente consequatur vel repellendus quasi rem
+                accusamus expedita et iure sunt.
+                Aut quod repellat est reiciendis odit est ipsa beatae.
+            </p>
+        </div>
+    </div>
+</div>
+
+
+<!-- <label for="color-picker">Pick a color:</label>
+<input type="color" id="color-picker" value="#ff0000"/> -->
+
+
+
+<script>
+    const display = document.getElementById("fontSizeDisplay");
+    const step = 0.1;
+    const minSize = 0.5;
+    const maxSize = 2;
+
+    let fontSize = 1.0;
+
+    function updateFontSize() {
+        fontSize = Math.max(minSize, Math.min(maxSize, fontSize));
+        document.documentElement.style.fontSize = fontSize + "rem";
+        display.textContent = Math.round(fontSize.toFixed(1) * 100) + " %";
+    }
+
+    document.getElementById("increase").addEventListener("click", () => {
+        fontSize += step;
+        updateFontSize();
+    });
+
+    document.getElementById("decrease").addEventListener("click", () => {
+        fontSize -= step;
+        updateFontSize();
+    });
+
+    // Initial display
+    updateFontSize();
+</script>
