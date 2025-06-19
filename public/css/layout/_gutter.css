@@ -66,8 +66,21 @@
     background-color: var(--color-accent);
 }
 
-#editor-gutter::before,
-#editor-gutter::after {
+#main-workspace-splitter::before,
+#main-workspace-splitter::after {
     content: none;
     display: none;
+}
+
+.handle {
+    top: 0.4rem;
+    width: 9%;
+    min-width: 3rem;
+    max-width: 7rem;
+    height: 0.15rem;
+    background-color: var(--color-lines);
+}
+
+#main-workspace-splitter:active .handle {
+    background-color: var(--color-accent);
 }
