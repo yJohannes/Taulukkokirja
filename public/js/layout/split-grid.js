@@ -1,8 +1,15 @@
+let ref;
 
+export const SplitGrid = {
+    ref,
+    init,
+    saveGridState,
+}
 
-export function initSplitGrid() {
-    document.getElementById('content-wrapper').style.gridTemplateColumns = localStorage.getItem('grid-template-columns');
-    document.getElementById('content-wrapper').style.gridTemplateRows    = localStorage.getItem('grid-template-rows');
+function init() {
+    SplitGrid.ref = document.getElementById('content-wrapper');
+    SplitGrid.ref.style.gridTemplateColumns = localStorage.getItem('grid-template-columns');
+    SplitGrid.ref.style.gridTemplateRows    = localStorage.getItem('grid-template-rows');
 
     Split({
         columnGutters: [{
@@ -16,7 +23,7 @@ export function initSplitGrid() {
 
         rowGutters: [{
             track: 1,
-            element: document.querySelector('#editor-gutter'),
+            element: document.querySelector('#main-workspace-splitter'),
         }],
 
         snapOffset: 10,
@@ -58,7 +65,7 @@ export function initSplitGrid() {
     });
 }
 
-export function saveGridState() {
-    localStorage.setItem('grid-template-columns', document.getElementById('content-wrapper').style.gridTemplateColumns);
-    localStorage.setItem('grid-template-rows',    document.getElementById('content-wrapper').style.gridTemplateRows);
+function saveGridState() {
+    localStorage.setItem('grid-template-columns', SplitGrid.ref.style.gridTemplateColumns);
+    localStorage.setItem('grid-template-rows',    SplitGrid.ref.style.gridTemplateRows);
 }
