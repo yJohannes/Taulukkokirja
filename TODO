@@ -3,3 +3,4 @@
 - header pattern?
 - Fix recreating recents and bookmarks every tab click
 - Wrap page contents in container-fluid ms-0
+- Make ESC blur() in the editor 
