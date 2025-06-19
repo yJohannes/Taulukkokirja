@@ -174,7 +174,7 @@ font-size: 1.125rem;
 h6 {
 font-size: 1rem;
 }
-@media (max-width: 768px) {
+/* @media (max-width: 768px) {
 h1 {
 font-size: 1.5rem;
 }
@@ -193,7 +193,7 @@ font-size: 0.75rem;
 h6 {
 font-size: 1rem;
 }
-}
+} */
 p {
 max-width: 1000px;
 }
