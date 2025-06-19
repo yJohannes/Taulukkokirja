@@ -1,6 +1,11 @@
 export const utils = {
     showElement,
+    toggleVisibility,
     isElementVisible,
+}
+
+function toggleVisibility(element) {
+    element.classList.toggle('hidden');
 }
 
 function showElement(isVisible, element) {
@@ -11,5 +16,5 @@ function showElement(isVisible, element) {
 }
 
 function isElementVisible(element) {
-    return !element.classList.contains('hidden');
+  return getComputedStyle(element).display !== 'none';
 }
