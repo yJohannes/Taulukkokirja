@@ -20,9 +20,9 @@
 
 .light {
     --color-primary: var(--color-valio-blue);
-    --color-primry-80: var(--color-valio-blue-80);
-    --color-primry-30: var(--color-valio-blue-30);
-    --color-primry-20: var(--color-valio-blue-20);
+    --color-primary-80: var(--color-valio-blue-80);
+    --color-primary-30: var(--color-valio-blue-30);
+    --color-primary-20: var(--color-valio-blue-20);
     --color-primary-rgb: var(--color-valio-blue-rgb);;
     --color-secondary: #6442d6;
     --color-accent: var(--color-valio-blue);
