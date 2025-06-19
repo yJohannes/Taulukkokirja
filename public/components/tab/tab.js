@@ -1,6 +1,4 @@
 import { formatting } from '../../js/pages/formatting.js';
-import * as storage from '../../js/components/storage/index.js';
-
 import { FlipArrow } from '../flip_arrow/flip-arrow.js';
 
 export const Tab = {
@@ -157,7 +155,7 @@ function handleTabClick(tab, isDropdown, parentElement) {
         tab.classList.add('active');
 
         // If tab is clicked on small screen hide sidebar
-        showSidebar(false);
+        Sidebar.showSidebar(false, 'sidebar-1');
         return;
     }
 

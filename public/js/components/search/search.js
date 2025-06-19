@@ -1,5 +1,4 @@
-import { formatting } from "../../pages/formatting.js";
-import { fetchPageStructure, extractPageStructurePaths } from "../../pages/page-loading.js";
+import { Pages } from "../../pages/index.js";
 
 let miniSearch;
 const searchConfig = {
@@ -44,8 +43,8 @@ function search(query) {
 }
 
 async function indexPages(miniSearch) {
-    const structure = await fetchPageStructure();
-    const paths = extractPageStructurePaths(structure);
+    const structure = await Pages.loading.fetchPageStructure();
+    const paths = Pages.loading.extractPageStructurePaths(structure);
 
     for (let path of paths) {
         try {
@@ -57,7 +56,7 @@ async function indexPages(miniSearch) {
             tempDiv.innerHTML = html;
             const content = tempDiv.textContent || tempDiv.innerText || '';
             
-            miniSearch.add({ id: path, title: formatting.formatPathToLabel(path, false), content: content });
+            miniSearch.add({ id: path, title: Pages.formatting.formatPathToLabel(path, false), content: content });
         } catch (err) {
             console.error(`Failed to fetch ${path}`, err);
         }

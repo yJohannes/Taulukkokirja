@@ -6,7 +6,7 @@
 #gutter-col-2     { grid-area: gutter-col-2; }
 #sidebar-2        { grid-area: sidebar-2;}
 
-#content-wrapper {
+#content-grid {
     position: relative;
     overflow: hidden;
     display: grid;
@@ -19,7 +19,7 @@
 }
 
 @media (max-width: 768px) {
-    #content-wrapper {
+    #content-grid {
         grid-template-columns: 1fr !important;
         grid-template-areas:
             "main-content"

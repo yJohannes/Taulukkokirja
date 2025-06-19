@@ -1,18 +1,26 @@
+import { StorageHelper } from '../components/storage/index.js';
 import { renderElementLatex } from '../latex/latex.js';
 import { highlightTerms } from '../effects/highlight-terms.js';
-import * as bookmarks from '../components/bookmarks/bookmarks.js';
-import * as storage from '../components/storage/index.js';
-import * as pages from './index.js';
+import { Bookmarks } from '../components/bookmarks/bookmarks.js';
+import { Pages } from './index.js';
 
 const PAGE_LOAD_ERROR_MESSAGE = 'Error loading page';
 
-export function initPageLoading() {
+export const loading = {
+    init,
+    fetchPageStructure,
+    extractPageStructurePaths,
+    loadPageHTML,
+    loadPageToElement,
+}
+
+function init() {
     window.addEventListener('load', loadHashUrl);
     window.addEventListener('hashchange', loadHashUrl);
 }
 
 async function loadHashUrl() {
-    let url = pages.formatting.formatHashToPath(window.location.hash);
+    let url = Pages.formatting.formatHashToPath(window.location.hash);
 
     if (!url || url === '/') {
         fetch('index.html');
@@ -20,23 +28,15 @@ async function loadHashUrl() {
     }
 
     await loadPageToElement(url, document.getElementById('page-container'));
-    document.title = pages.formatting.formatPathToTitle(url);
+    document.title = Pages.formatting.formatPathToTitle(url);
 
-    const terms = pages.getDecodedSearchParams('highlight');
+    const terms = Pages.formatting.getDecodedSearchParams('highlight', location.hash);
     if (terms.length > 0) {
         highlightTerms(document.getElementById('page-container'), terms);
     }
 }
 
-export async function loadPageHTML(path) {
-    const response = await fetch(path);
-    if (!response.ok) {
-        throw new Error(`${PAGE_LOAD_ERROR_MESSAGE} (HTTP ${response.status})`);
-    }
-    return await response.text();
-}
-
-export async function fetchPageStructure() {
+async function fetchPageStructure() {
     const response = await fetch('/api/pages-structure');
     if (!response.ok) {
         console.error('Failed to fetch the page structure, using fallback.');
@@ -48,7 +48,7 @@ export async function fetchPageStructure() {
     return structure;
 }
 
-export function extractPageStructurePaths(obj, basePath = '') {
+function extractPageStructurePaths(obj, basePath = '') {
     const paths = [];
     
     for (const [key, value] of Object.entries(obj)) {
@@ -66,7 +66,17 @@ export function extractPageStructurePaths(obj, basePath = '') {
     return paths;
 }
 
-export async function loadPageToElement(path, element, bookMarkable=true) {
+async function loadPageHTML(path) {
+    const response = await fetch(path);
+    if (!response.ok) {
+        throw new Error(`${PAGE_LOAD_ERROR_MESSAGE} (HTTP ${response.status})`);
+    }
+    return await response.text();
+}
+
+
+
+async function loadPageToElement(path, element, bookMarkable=true) {
     try {
         const html = await loadPageHTML(path);
         element.innerHTML = html;
@@ -82,11 +92,12 @@ export async function loadPageToElement(path, element, bookMarkable=true) {
         return;
     }
     
+    document.title = Pages.formatting.formatPathToTitle(path);
+
     if (bookMarkable) {
-        bookmarks.addBookmarkToHeader(element.querySelector('h1'), path);
+        Bookmarks.addBookmarkToHeader(element.querySelector('h1'), path);
     }
 
-    document.title = pages.formatting.formatPathToTitle(path);
     renderElementLatex(document.getElementById('page-container'));
     injectPageScripts(element);
     updateHistory(path);
@@ -121,7 +132,7 @@ function injectPageScripts(container) {
 }
 
 function updateHistory(path) {
-    const recents = storage.getFromStorageList('recently-viewed');
+    const recents = StorageHelper.getFromStorageList('recently-viewed');
     let idx = recents.indexOf(path);
     
     // If the path already exists, remove it
@@ -132,9 +143,5 @@ function updateHistory(path) {
     if (recents.length > 20)
         recents.pop();
 
-    storage.setStorageItem('recently-viewed', recents);
+    StorageHelper.setStorageItem('recently-viewed', recents);
 }
-
-
-
-

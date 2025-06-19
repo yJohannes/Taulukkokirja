@@ -1,3 +1,7 @@
-export * from './page-loading.js';
-export * from './formatting.js';
-export * from './search-params.js';
+import { loading } from './page-loading.js';
+import { formatting } from './formatting.js';
+
+export const Pages = {
+    loading,
+    formatting,
+}

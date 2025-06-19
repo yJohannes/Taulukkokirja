@@ -1,10 +1,10 @@
 import { SplitGrid } from './layout/split-grid.js';
-import { initPageLoading } from './pages/index.js';
-import { initSidebar } from './layout/sidebar.js';
+import { Pages } from './pages/index.js';
+import { Sidebar } from './layout/sidebar.js';
 import { Navbar } from './layout/navbar.js';
 import * as explorer from './components/explorer/index.js'
 import { Editor } from './rich-text-editor/index.js'
-import * as bookmarks from './components/bookmarks/bookmarks.js';
+import { Bookmarks } from './components/bookmarks/bookmarks.js';
 import { Search } from './components/search/search.js';
 
 import '../components/search_bar/search-bar.js';
@@ -33,10 +33,10 @@ if (window.visualViewport) {
 document.addEventListener('DOMContentLoaded', async () => {
     SplitGrid.init();
     Navbar.init();
-    initSidebar();
-    initPageLoading();
+    Sidebar.init();
+    Pages.loading.init();
     explorer.initSearchToInput(document.getElementById('explorer-search'))
-    bookmarks.updateBookmarks();
+    Bookmarks.updateBookmarks();
 
     await explorer.loadExplorerToElement(document.getElementById('explorer-nav-container'));
     explorer.loadExplorerSave();

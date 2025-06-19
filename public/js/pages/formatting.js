@@ -3,6 +3,8 @@ export const formatting = {
     formatHashToPath,
     formatPathToTitle,
     formatPathToLabel,
+    encodeSearchParams,
+    getDecodedSearchParams,
 }
 
 function formatPathToHash(path) {
@@ -63,4 +65,14 @@ function formatPathToLabel(path, styled=true, separator=', ') {
         }
         return `<i>${formatted}</i>`;
     }
+}
+
+function encodeSearchParams(terms) {
+    return terms.map(encodeURIComponent).join(','); 
+}
+
+function getDecodedSearchParams(keyword, locationHash) {
+    const params = new URLSearchParams(locationHash.split('?')[1] || '');
+    const raw = params.get(keyword);
+    return raw ? raw.split(',').map(decodeURIComponent) : [];
 }

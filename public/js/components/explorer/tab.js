@@ -1,8 +1,6 @@
-import { showSidebar }  from '../../layout/sidebar.js';
+import { StorageHelper } from '../storage/index.js';
+import { Sidebar }  from '../../layout/sidebar.js';
 import { updateBookmarks } from '../bookmarks/bookmarks.js';
-// import { collapseExplorer, openPath } from './helpers.js';
-import * as storage from '../storage/index.js';
-
 import { Tab } from '../../../components/tab/tab.js';
 import { FlipArrow } from '../../../components/flip_arrow/flip-arrow.js';
 
@@ -19,15 +17,15 @@ export function handleTabClick(tab, isDropdown, parentElement) {
         activeTabs.forEach(t => {
             t.classList.remove('active');
             if (!isDropdown) {
-                storage.removeFromStorageList('active-states', t.getAttribute('data-path'));
+                StorageHelper.removeFromStorageList('active-states', t.getAttribute('data-path'));
             }
         });
 
-        storage.addToStorageList('active-states', tab.getAttribute('data-path'));
+        StorageHelper.addToStorageList('active-states', tab.getAttribute('data-path'));
         tab.classList.add('active');
 
         // If tab is clicked on small screen hide sidebar
-        showSidebar(false);
+        Sidebar.showSidebar(false, 'sidebar-1');
         return;
     }
 
@@ -38,7 +36,7 @@ export function handleTabClick(tab, isDropdown, parentElement) {
     // If closing a dropdown, shift focus up a level
     if (nestedDropdown.classList.contains('show')) {
         nestedDropdown.classList.remove('show');
-        storage.removeFromStorageList('show-states', tab.getAttribute('data-path'));
+        StorageHelper.removeFromStorageList('show-states', tab.getAttribute('data-path'));
 
         const parentDropdown = tab.parentElement.parentElement;
         const parentTab = parentDropdown.parentElement.querySelector('button');
@@ -47,7 +45,7 @@ export function handleTabClick(tab, isDropdown, parentElement) {
         if (!(parentDropdown.parentElement.id === 'explorer-nav-container')) {
             parentTab.classList.add('active');
             
-            storage.addToStorageList('show-states', parentTab.getAttribute('data-path'));
+            StorageHelper.addToStorageList('show-states', parentTab.getAttribute('data-path'));
         }
 
     } else {
@@ -66,7 +64,7 @@ export function handleTabClick(tab, isDropdown, parentElement) {
                 
                 FlipArrow.setArrowFlip(false, arrow);
                 dropdown.classList.remove('show');
-                storage.removeFromStorageList('show-states', tab.getAttribute('data-path'))
+                StorageHelper.removeFromStorageList('show-states', tab.getAttribute('data-path'))
             });
         }
 
@@ -74,7 +72,7 @@ export function handleTabClick(tab, isDropdown, parentElement) {
         tab.classList.add('active');
         nestedDropdown.classList.add('show');
 
-        storage.addToStorageList('show-states', tab.getAttribute('data-path'));
+        StorageHelper.addToStorageList('show-states', tab.getAttribute('data-path'));
     }
 }
 

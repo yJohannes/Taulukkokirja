@@ -2,7 +2,7 @@ import { getHeatColor, normalization } from '../../common/colors.js';
 import { updateBookmarks } from '../bookmarks/bookmarks.js';
 import * as explorer from './index.js';
 import { Search } from '../search/search.js';
-import * as pages from '../../pages/index.js';
+import { Pages } from '../../pages/index.js';
 import { highlightTerms } from '../../effects/highlight-terms.js';
 import { Tab } from '../../../components/tab/tab.js';
 import { utils } from '../../common/utils.js';
@@ -33,11 +33,11 @@ export function generateResultView(container, matches) {
         const heatColor = getHeatColor(match.score, maxScore, normalization.log);
         
         const path = match.id;
-        const name = pages.formatting.formatPathToLabel(path);
+        const name = Pages.formatting.formatPathToLabel(path);
         const tab = Tab.createTab(name, path);
         
         const tabHref = tab.getAttribute('href');
-        tab.setAttribute('href', tabHref + `?highlight=${pages.encodeSearchParams(match.terms)}`)
+        tab.setAttribute('href', tabHref + `?highlight=${Pages.formatting.encodeSearchParams(match.terms)}`)
         tab.addEventListener('click', updateBookmarks);
 
         // Right click

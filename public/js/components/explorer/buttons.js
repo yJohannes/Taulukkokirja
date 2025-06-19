@@ -1,6 +1,6 @@
 import { addToolTip } from "../common/tooltip.js";
 import { Tab } from "../../../components/tab/tab.js";
-import * as storage from '../storage/index.js';
+import { StorageHelper } from "../storage/index.js";
 
 export const buttons = {
     init,
@@ -19,15 +19,15 @@ function init() {
         addToolTip(button, 'top');
     }
     
-    if (storage.getFromStorageList('active-states').includes('explorer-auto-collapse')) {
+    if (StorageHelper.getFromStorageList('active-states').includes('explorer-auto-collapse')) {
         autoCollapse.classList.add('active');
     }
 
     autoCollapse.addEventListener('click', () => {
         if (autoCollapse.classList.toggle('active')) {
-            storage.addToStorageList('active-states', 'explorer-auto-collapse');
+            StorageHelper.addToStorageList('active-states', 'explorer-auto-collapse');
         } else {
-            storage.removeFromStorageList('active-states', 'explorer-auto-collapse');
+            StorageHelper.removeFromStorageList('active-states', 'explorer-auto-collapse');
         }
     });
 

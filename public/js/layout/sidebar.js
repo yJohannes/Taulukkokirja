@@ -1,20 +1,23 @@
-import * as storage from '../components/storage/index.js';
+import { StorageHelper } from "../components/storage/index.js";
 
-function showSidebar(boolShow)
-{
-    const sidebar = document.getElementById('sidebar-1');
+export const Sidebar = {
+    init,
+    showSidebar,
+}
 
-    if (boolShow) {
+function showSidebar(isVisible, sidebarId) {
+    const sidebar = document.getElementById(sidebarId);
+
+    if (isVisible) {
         sidebar.classList.add('show');
-        storage.addToStorageList('show', 'sidebar-1');
+        StorageHelper.addToStorageList('show', sidebarId);
     } else {
         sidebar.classList.remove('show');
-        storage.removeFromStorageList('show', 'sidebar-1');
+        StorageHelper.removeFromStorageList('show', sidebarId);
     }
 }
 
-function initSidebar()
-{
+function initSidebar() {
     // Sidebar collapse on mobile
     const sidebar = document.getElementById('sidebar-1');
     const sidebarToggle = document.getElementById('nav-sidebar-toggle');
@@ -22,19 +25,14 @@ function initSidebar()
     sidebarToggle.addEventListener('click', () => {
         const show = sidebar.classList.toggle('show');
         if (show) {
-            storage.addToStorageList('show-states', 'sidebar-1');
+            StorageHelper.addToStorageList('show-states', 'sidebar-1');
         } else {
-            storage.removeFromStorageList('show-states', 'sidebar-1');
+            StorageHelper.removeFromStorageList('show-states', 'sidebar-1');
 
         }
     });
     
-    if (storage.getFromStorageList('show-states').includes('sidebar-1')) {
+    if (StorageHelper.getFromStorageList('show-states').includes('sidebar-1')) {
         sidebar.classList.add('show');
     }
 }
-
-export {
-    showSidebar,
-    initSidebar
-};

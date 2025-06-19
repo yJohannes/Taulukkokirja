@@ -1008,7 +1008,7 @@ transition: box-shadow 0.15s ease-in-out;
 #main-workspace-splitter     { grid-area: main-workspace-splitter; }
 #gutter-col-2     { grid-area: gutter-col-2; }
 #sidebar-2        { grid-area: sidebar-2;}
-#content-wrapper {
+#content-grid {
 position: relative;
 overflow: hidden;
 display: grid;
@@ -1020,7 +1020,7 @@ grid-template-areas:
 "sidebar-1 gutter-col-1 workspace               gutter-col-2 sidebar-2";
 }
 @media (max-width: 768px) {
-#content-wrapper {
+#content-grid {
 grid-template-columns: 1fr !important;
 grid-template-areas:
 "main-content"

@@ -1,7 +1,13 @@
-import * as storage from '../storage/index.js';
+import { StorageHelper } from '../storage/index.js';
 import * as explorer from '../explorer/index.js';
 import { formatting } from '../../pages/formatting.js';
 import { Tab } from '../../../components/tab/tab.js';
+
+export const Bookmarks = {
+    createBookmarkButton,
+    addBookmarkToHeader,
+    updateBookmarks
+}
 
 function createTabsFromList(pathsList, container, deleteTargetListName=null) {
     container.innerHTML = '';
@@ -18,7 +24,7 @@ function createTabsFromList(pathsList, container, deleteTargetListName=null) {
             deleteBtn.addEventListener('click', (e) => {
                 e.stopPropagation(); // Prevents event from reaching <a>
                 e.preventDefault();
-                storage.removeFromStorageList(deleteTargetListName, path);
+                StorageHelper.removeFromStorageList(deleteTargetListName, path);
                 updateBookmarks();
             });
 
@@ -44,14 +50,14 @@ export function updateBookmarks() {
     const bookmarksContainer = document.getElementById('bookmark-container');
     const recentsContainer = document.getElementById('recently-viewed-container');
 
-    const bookmarks = storage.getFromStorageList('bookmarks');
-    const recents = storage.getFromStorageList('recently-viewed');
+    const bookmarks = StorageHelper.getFromStorageList('bookmarks');
+    const recents = StorageHelper.getFromStorageList('recently-viewed');
     
     createTabsFromList(bookmarks, bookmarksContainer, 'bookmarks');
     createTabsFromList(recents, recentsContainer);
 }
 
-export function addBookmarkToHeader(header, path, {justify = 'space-between', align = 'center'} = {}) {
+export function addBookmarkToHeader(header, path, { justify = 'space-between', align = 'center' } = {}) {
     const wrapper = document.createElement('div');
     wrapper.style.display = 'flex';
     wrapper.style.justifyContent = justify;
@@ -77,17 +83,17 @@ export function createBookmarkButton(path) {
     button.appendChild(headerWrapper);
     button.addEventListener('click', () => {
         if (icon.classList.toggle('bi-bookmark')) {
-            storage.removeFromStorageList('bookmarks', path)
+            StorageHelper.removeFromStorageList('bookmarks', path)
         }
         
         if (icon.classList.toggle('bi-bookmark-fill')) {
-            storage.addToStorageList('bookmarks', path, true)
+            StorageHelper.addToStorageList('bookmarks', path, true)
         }
 
         updateBookmarks();
     });
 
-    const bookmarks = storage.getFromStorageList('bookmarks');
+    const bookmarks = StorageHelper.getFromStorageList('bookmarks');
     
     if (bookmarks.includes(path)) {
         icon.classList.add('bi', 'bi-bookmark-fill');

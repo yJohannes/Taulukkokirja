@@ -7,7 +7,7 @@ export const SplitGrid = {
 }
 
 function init() {
-    SplitGrid.ref = document.getElementById('content-wrapper');
+    SplitGrid.ref = document.getElementById('content-grid');
     SplitGrid.ref.style.gridTemplateColumns = localStorage.getItem('grid-template-columns');
     SplitGrid.ref.style.gridTemplateRows    = localStorage.getItem('grid-template-rows');
 
@@ -30,8 +30,8 @@ function init() {
 
         // These match min-widths described in stylesheets
         columnMinSizes: {
-            0: 150, // Sidebar
-            4: 150, // Sidebar 2
+            0: 250, // Sidebar
+            4: 250, // Sidebar 2
         },
 
         columnMaxSizes: {

@@ -1,12 +1,12 @@
+import { StorageHelper } from '../storage/index.js';
 import { initSearchToInput } from './search.js';
 import { generateTabs } from './tab.js';
 import { buttons } from './buttons.js';
 import { SearchBar } from '../../../components/search_bar/search-bar.js';
 import { Tab } from '../../../components/tab/tab.js';
 import { FlipArrow } from '../../../components/flip_arrow/flip-arrow.js';
-import { fetchPageStructure } from '../../pages/page-loading.js';
+import { Pages } from '../../pages/index.js';
 
-import * as storage from '../storage/index.js';
 
 export function loadExplorerSave() {
     const explorer = document.querySelector('#explorer-nav-container');
@@ -20,7 +20,7 @@ export function loadExplorerSave() {
             tabs.forEach((tab) => {
                 const path = tab.getAttribute('data-path');
                 if (Tab.isDropdownTab(tab)) {
-                    if (storage.getFromStorageList('show-states').includes(path)) {
+                    if (StorageHelper.getFromStorageList('show-states').includes(path)) {
                         const dropdown = item.querySelector('.tab-list');
                         dropdown?.classList.add('show');
                         
@@ -39,7 +39,7 @@ export async function loadExplorerToElement(parentElement)
 
     initSearchToInput(search)
     
-    const structure = await fetchPageStructure();
+    const structure = await Pages.loading.fetchPageStructure();
     const tabs = generateTabs(structure, parentElement);
     tabs.id = 'explorer-tabs-root';
     parentElement.appendChild(tabs);

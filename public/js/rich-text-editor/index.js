@@ -1,6 +1,6 @@
-export const editor = {
+export const Editor = {
     init,
-}
+};
 
 function init() {
     const baseOpts = {
@@ -14,7 +14,7 @@ function init() {
             lang: 'fi-FI',
         },
         // onValueChange: console.log
-    }
+    };
     
     window.makeRichText(baseOpts)
 }
