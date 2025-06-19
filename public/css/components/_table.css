@@ -11,6 +11,8 @@ table {
     /* border-radius: var(--table-border-radius); */
     overflow: hidden;
     /* clip inside cells */
+
+    background-color: var(--color-bg-primary);
 }
 
 th,
