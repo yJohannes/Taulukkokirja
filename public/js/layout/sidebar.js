@@ -17,7 +17,7 @@ function showSidebar(isVisible, sidebarId) {
     }
 }
 
-function initSidebar() {
+function init() {
     // Sidebar collapse on mobile
     const sidebar = document.getElementById('sidebar-1');
     const sidebarToggle = document.getElementById('nav-sidebar-toggle');
