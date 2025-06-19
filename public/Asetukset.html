@@ -16,51 +16,60 @@
     <hr>
 </div>
 
-<div class="container-fluid ms-0 mb-4" style="max-width: 400px;">
-    <div class="row align-items-center">
-        <div class="col">
-            <h5 class="m-0">Zoomaustaso:</h5>
-        </div>
-        <div class="col">
-            <div class="d-flex align-items-center">
-                <div class="btn-group border" role="group" aria-label="Font size control">
-                    <button type="button" class="btn btn-sm ripple ripple-dark ripple-centered hover-glow"
+<section>
+    <div class="container-fluid ms-0 mb-4" style="max-width: 400px;">
+        <div class="row align-items-center">
+            <div class="col">
+                <h5 class="m-0">Zoomaustaso:</h5>
+            </div>
+            <div class="col">
+                <div class="d-flex align-items-center">
+                    <div class="btn-group border" role="group" aria-label="Font size control">
+                        <button type="button" class="btn btn-sm ripple ripple-dark ripple-centered hover-glow"
                         id="decrease">−</button>
-                    <div class="btn btn-sm ripple ripple-dark ripple-centered hover-glow" id="fontSizeDisplay">1rem
-                    </div>
-                    <button type="button" class="btn btn-sm ripple ripple-dark ripple-centered hover-glow"
+                        <div class="btn btn-sm ripple ripple-dark ripple-centered hover-glow" id="fontSizeDisplay">1rem
+                        </div>
+                        <button type="button" class="btn btn-sm ripple ripple-dark ripple-centered hover-glow"
                         id="increase">+</button>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
-
-<div class="container-fluid ms-0">
-    <div class="row">
-        <div class="col">
-            <p style="max-width: unset;">
-                Lorem ipsum dolor sit amet.
-                Eos dolorum vero non facilis perspiciatis ad minima velit id accusantium ratione et dolorem pariatur.
-                Aut repellendus harum qui maxime alias quo fugiat fugit et laborum beatae ut minus itaque nam animi perferendis? Eum
-                impedit optio ut quia quia qui quia dignissimos non velit iure a numquam totam.
-                Sed provident earum vel officiis quisquam ut beatae accusamus ut incidunt maiores aut recusandae accusamus!
-            </p>
-            <p>
-                Sed expedita vitae est odio doloribus id porro velit vel facilis sint et enim quidem et commodi internos aut sunt
-                rerum.
-                Est quia veritatis et iure natus non reiciendis tempora.
-                Ad veritatis quae 33 incidunt blanditiis aut aspernatur animi et sapiente consequatur vel repellendus quasi rem
-                accusamus expedita et iure sunt.
-                Aut quod repellat est reiciendis odit est ipsa beatae.
-            </p>
+    
+    <div class="container-fluid ms-0">
+        <div class="row">
+            <div class="col">
+                <p style="max-width: unset;">
+                    Lorem ipsum dolor sit amet.
+                    Eos dolorum vero non facilis perspiciatis ad minima velit id accusantium ratione et dolorem pariatur.
+                    Aut repellendus harum qui maxime alias quo fugiat fugit et laborum beatae ut minus itaque nam animi perferendis? Eum
+                    impedit optio ut quia quia qui quia dignissimos non velit iure a numquam totam.
+                    Sed provident earum vel officiis quisquam ut beatae accusamus ut incidunt maiores aut recusandae accusamus!
+                </p>
+                <p>
+                    Sed expedita vitae est odio doloribus id porro velit vel facilis sint et enim quidem et commodi internos aut sunt
+                    rerum.
+                    Est quia veritatis et iure natus non reiciendis tempora.
+                    Ad veritatis quae 33 incidunt blanditiis aut aspernatur animi et sapiente consequatur vel repellendus quasi rem
+                    accusamus expedita et iure sunt.
+                    Aut quod repellat est reiciendis odit est ipsa beatae.
+                </p>
+            </div>
         </div>
     </div>
-</div>
+</section>
 
-<button class="btn ripple ripple-dark hover-glow" onclick="localStorage.clear(); location.reload();">
-  Clear Storage
-</button>
+<section>
+    <h5>Muistin hallinta</h5>
+    <button class="btn ripple ripple-dark hover-glow" onclick="localStorage.removeItem('grid-template-rows'); localStorage.removeItem('grid-template-columns'); location.reload();">
+        Tyhjennä vanhentuneet tiedot
+    </button>
+    
+    <button class="btn btn-danger ripple ripple-dark hover-glow" onclick="localStorage.clear(); location.reload();">
+        Tyhjennä muisti
+    </button>
+</section>
 
 <!-- <label for="color-picker">Pick a color:</label>
 <input type="color" id="color-picker" value="#ff0000"/> -->
