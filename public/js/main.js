@@ -19,7 +19,6 @@ document.addEventListener('DOMContentLoaded', async () => {
     Navbar.init();
     Sidebar.init();
     Pages.loading.init();
-    explorer.initSearchToInput(document.getElementById('explorer-search'))
     Bookmarks.updateBookmarks();
 
     await explorer.loadExplorerToElement(document.getElementById('explorer-nav-container'));
