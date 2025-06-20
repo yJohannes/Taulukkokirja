@@ -1,7 +1,7 @@
 import { StorageHelper } from '../storage/index.js';
 import { formatting } from '../../pages/formatting.js';
 import { Tab } from '../../../components/tab/tab.js';
-import { FileExplorerUtils } from '../explorer/index.js';
+import { FileExplorerUtils } from '../explorer/utils.js';
 
 export const Bookmarks = {
     createBookmarkButton,
