@@ -1,5 +1,6 @@
 import { formatting } from '../../js/pages/formatting.js';
 import { FlipArrow } from '../flip_arrow/flip-arrow.js';
+import { StorageHelper } from '../../js/components/storage/index.js';
 
 export const Tab = {
     createTab,
@@ -70,10 +71,10 @@ function setDropdownState(t, isOpen) {
     
     if (isOpen) {
         FlipArrow.setArrowFlip(true, arrow);
-        storage.addToStorageList('show-states', path);
+        StorageHelper.addToStorageList('show-states', path);
     } else {
         FlipArrow.setArrowFlip(false, arrow);
-        storage.removeFromStorageList('show-states', path);
+        StorageHelper.removeFromStorageList('show-states', path);
     }
 }
 function expandTabListTree(tabList) {
@@ -119,7 +120,7 @@ export function setTabState(t, isActive, clearOthersFromParent=false, parentElem
                 t.classList.remove('active');
     
                 // if (getTabDropdown(tab) == null) // Not a dropdown tab
-                    // storage.removeFromStorageList('show-states', t.getAttribute('data-path'));
+                    // StorageHelper.removeFromStorageList('show-states', t.getAttribute('data-path'));
             });
         }
 
@@ -147,11 +148,11 @@ function handleTabClick(tab, isDropdown, parentElement) {
         activeTabs.forEach(t => {
             t.classList.remove('active');
             if (!isDropdown) {
-                storage.removeFromStorageList('active-states', t.getAttribute('data-path'));
+                StorageHelper.removeFromStorageList('active-states', t.getAttribute('data-path'));
             }
         });
 
-        storage.addToStorageList('active-states', tab.getAttribute('data-path'));
+        StorageHelper.addToStorageList('active-states', tab.getAttribute('data-path'));
         tab.classList.add('active');
 
         // If tab is clicked on small screen hide sidebar
@@ -166,7 +167,7 @@ function handleTabClick(tab, isDropdown, parentElement) {
     // If closing a dropdown, shift focus up a level
     if (nestedDropdown.classList.contains('show')) {
         nestedDropdown.classList.remove('show');
-        storage.removeFromStorageList('show-states', tab.getAttribute('data-path'));
+        StorageHelper.removeFromStorageList('show-states', tab.getAttribute('data-path'));
 
         const parentDropdown = tab.parentElement.parentElement;
         const parentTab = parentDropdown.parentElement.querySelector('button');
@@ -175,7 +176,7 @@ function handleTabClick(tab, isDropdown, parentElement) {
         if (!(parentDropdown.parentElement.id === 'explorer-nav-container')) {
             parentTab.classList.add('active');
             
-            storage.addToStorageList('show-states', parentTab.getAttribute('data-path'));
+            StorageHelper.addToStorageList('show-states', parentTab.getAttribute('data-path'));
         }
 
     } else {
@@ -192,7 +193,7 @@ function handleTabClick(tab, isDropdown, parentElement) {
                 
                 FlipArrow.setArrowFlip(false, arrow)
                 dropdown.classList.remove('show');
-                storage.removeFromStorageList('show-states', tab.getAttribute('data-path'))
+                StorageHelper.removeFromStorageList('show-states', tab.getAttribute('data-path'))
             });
         }
 
@@ -200,6 +201,6 @@ function handleTabClick(tab, isDropdown, parentElement) {
         tab.classList.add('active');
         nestedDropdown.classList.add('show');
 
-        storage.addToStorageList('show-states', tab.getAttribute('data-path'));
+        StorageHelper.addToStorageList('show-states', tab.getAttribute('data-path'));
     }
 }
