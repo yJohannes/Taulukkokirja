@@ -2,10 +2,7 @@ import { addToolTip } from "../components/common/tooltip.js";
 import { showWorkspace, hideWorkspace, isWorkspaceOpen } from "./workspace.js";
 import { updateBookmarks } from "../components/bookmarks/bookmarks.js";
 import { elementUtils } from "../utils/element-utils.js";
-import { Editor } from "../rich-text-editor/index.js";
 
-import { SplitGrid } from "./split-grid.js";
-import { toggleGridColumn } from "./workspace.js";
 
 export const Navbar = {
     init,
@@ -34,7 +31,7 @@ function init() {
     const historyRoot = document.getElementById('recently-viewed');
 
     function updateSidebarVisibility() {
-        if (utils.isElementVisible(historyRoot) ||elementUtils.isElementVisible(bookmarkRoot)) {
+        if (elementUtils.isElementVisible(historyRoot) ||elementUtils.isElementVisible(bookmarkRoot)) {
             sidebar2.classList.add('show');
             sidebar1.classList.remove('show');
         } else {
@@ -55,7 +52,7 @@ function init() {
     });
     
     // rightSidebar.addEventListener('click', () => {
-    //     toggleGridColumn(SplitGrid.ref, 4, !utils.isElementVisible(sidebar2));
+    //     toggleGridColumn(SplitGrid.ref, 4, !elementUtils.isElementVisible(sidebar2));
     // });
 
     const geogebraRoot = document.getElementById('geogebra-iframe-root');
@@ -64,11 +61,11 @@ function init() {
     editor.addEventListener('click', () => {
         if (!isWorkspaceOpen()) {
             showWorkspace();
-        } else if (utils.isElementVisible(editorRoot))
+        } else if (elementUtils.isElementVisible(editorRoot))
             return hideWorkspace();
 
         
-        if (utils.isElementVisible(geogebraRoot)) {
+        if (elementUtils.isElementVisible(geogebraRoot)) {
            elementUtils.showElement(false, geogebraRoot)
            elementUtils.showElement(true, editorRoot);
         }
@@ -77,10 +74,10 @@ function init() {
     geogebra.addEventListener('click', () => {
         if (!isWorkspaceOpen()) {
             showWorkspace();
-        } else if (utils.isElementVisible(geogebraRoot))
+        } else if (elementUtils.isElementVisible(geogebraRoot))
             return hideWorkspace();
 
-        if (utils.isElementVisible(editorRoot)) {
+        if (elementUtils.isElementVisible(editorRoot)) {
            elementUtils.showElement(false, editorRoot)
            elementUtils.showElement(true, geogebraRoot);
         }
