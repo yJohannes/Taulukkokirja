@@ -1,7 +1,7 @@
 import { StorageHelper } from '../storage/index.js';
-import * as explorer from '../explorer/index.js';
 import { formatting } from '../../pages/formatting.js';
 import { Tab } from '../../../components/tab/tab.js';
+import { FileExplorerUtils } from '../explorer/index.js';
 
 export const Bookmarks = {
     createBookmarkButton,
@@ -36,7 +36,7 @@ function createTabsFromList(pathsList, container, deleteTargetListName=null) {
         }
 
         tab.addEventListener('click', (e) => {
-            explorer.openPath(path);
+            FileExplorerUtils.openPath(path);
             tab.scrollIntoView({ behavior: 'auto', block: 'center' });
 
             updateBookmarks();
