@@ -1,6 +1,6 @@
 import { StorageHelper } from "../components/storage/index.js";
 import { Pages } from "../pages/index.js";
-import { FileExplorer } from "../components/explorer/file-explorer.js";
+import { FileExplorer } from "../components/file_explorer/file-explorer.js";
 import { addToolTip } from "../components/common/tooltip.js";
 
 export const Sidebar = {
