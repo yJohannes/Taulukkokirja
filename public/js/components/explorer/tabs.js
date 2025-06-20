@@ -3,6 +3,8 @@ import { Sidebar }  from '../../layout/sidebar.js';
 import { updateBookmarks } from '../bookmarks/bookmarks.js';
 import { Tab } from '../../../components/tab/tab.js';
 import { FlipArrow } from '../../../components/flip_arrow/flip-arrow.js';
+import { FileExplorerUtils } from './utils.js';
+
 
 export function handleTabClick(tab, isDropdown, parentElement) {
     const activeTabs = parentElement.querySelectorAll(`.${'active'}`);
