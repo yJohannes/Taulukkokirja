@@ -76,41 +76,88 @@ export function handleTabClick(fileExplorer, tab, isDropdown, parentElement) {
     }
 }
 
-// Recursive function to generate the tab list with collapsibility
-export function generateTabs(data, parentElement, rootPath='pages', isRootCollapsible=false) {
-    const list = Tab.createTabList(isRootCollapsible);
+export function createTreeView(parent, treeData, rootPath = '') {
+    const rootList = Tab.createTabList(false);
 
-    data = data.pages || data; // Support both top-level and nested calls
-    for (let key in data) {
-        const pageName = key.replace('.html', '');
-        const currentPath = rootPath ? rootPath + '/' + key : key;
-        const level = currentPath.split('/').length - 1 - 1; // sub 1 again because of pages as root 
-
-        const item = Tab.createTabListItem();
-
-        let tab; 
-        if (typeof data[key] === 'object' && data[key] !== null) {
-            tab = Tab.createTab(pageName, currentPath, true, level);    // Dropdown tab
-            tab.addEventListener('click', () => handleTabClick(tab, true, parentElement));
-            
-            if (level === 0)
-                tab.style.fontWeight = 'bold';
-        } else {
-            tab = Tab.createTab(pageName, currentPath, false, level);   // Normal tab
-            tab.addEventListener('click', () => handleTabClick(tab, false, parentElement));
+    const stack = [
+        {
+            data: treeData,
+            path: rootPath,
+            parentList: rootList
         }
-        
-        tab.addEventListener('click', () => updateBookmarks());
-        item.appendChild(tab);
+    ];
 
-        // If the value is an object (i.e., nested dropdown), recursively create a nested dropdown
-        if (typeof data[key] === 'object' && data[key] !== null) {
-            const nestedDropdown = generateTabs(data[key], parentElement, currentPath, true);
-            item.appendChild(nestedDropdown);
+    const rootDepth = rootPath.split('/').filter(Boolean).length;
+
+    while (stack.length > 0) {
+        const { data, path, parentList } = stack.pop();
+
+        for (const [entryName, entryValue] of Object.entries(data)) {
+            const currentPath = path ? `${path}/${entryName}` : entryName;
+            const pageName = entryName.replace('.html', '');
+            const level = currentPath.split('/').filter(Boolean).length - rootDepth - 1;
+            const isFolder = typeof entryValue === 'object' && entryValue !== null;
+
+            const item = Tab.createTabListItem();
+            const tab = Tab.createTab(pageName, currentPath, isFolder, level);
+
+            tab.addEventListener('click', () => {
+                handleTabClick(tab, isFolder, parent);
+                updateBookmarks();
+            });
+
+            if (isFolder && level === 0) tab.style.fontWeight = 'bold';
+
+            item.appendChild(tab);
+            parentList.appendChild(item);
+
+            if (isFolder) {
+                const childList = Tab.createTabList(true);
+                item.appendChild(childList);
+
+                // Push next level onto the stack
+                stack.push({
+                    data: entryValue,
+                    path: currentPath,
+                    parentList: childList
+                });
+            }
         }
-
-        list.appendChild(item);
     }
 
-    return list;
+    return rootList;
 }
+
+
+// Recursive function to generate the tab list with collapsibility
+// export function createTreeView(parent, treeData, rootPath='', isRootCollapsible=false, _recurseRootPath='') {
+//     if (!_recurseRootPath) _recurseRootPath = rootPath;
+
+//     const list = Tab.createTabList(isRootCollapsible);
+
+//     for (const [entryName, entryValue] of Object.entries(treeData)) {
+//         const currentPath = _recurseRootPath ? `${_recurseRootPath}/${entryName}`: entryName;
+//         const pageName = entryName.replace('.html', '');
+//         const level = currentPath.split('/').length - rootPath.split('/').length - 1; 
+
+//         const item = Tab.createTabListItem();
+//         const isFolder = typeof entryValue === 'object' && entryValue !== null;
+        
+//         const tab = Tab.createTab(pageName, currentPath, isFolder, level);
+//         tab.addEventListener('click', () => {
+//             handleTabClick(tab, isFolder, parent);
+//             updateBookmarks();
+//         });
+
+//         if (isFolder && level === 0) tab.style.fontWeight = 'bold';
+
+//         item.appendChild(tab);
+
+//         if (isFolder)
+//             item.appendChild(createTreeView(parent, entryValue, rootPath, true, currentPath));
+
+//         list.appendChild(item);
+//     }
+
+//     return list;
+// }
