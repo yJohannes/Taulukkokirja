@@ -1,3 +1,4 @@
+import { initRealVH } from './utils/viewport.js';
 import { SplitGrid } from './layout/split-grid.js';
 import { Pages } from './pages/index.js';
 import { Sidebar } from './layout/sidebar.js';
@@ -12,25 +13,8 @@ import '../components/toggle_button/toggle-button.js';
 import '../components/ripple/index.js';
 import '../components/table_highlighting/index.js';
 
-function setRealVH() {
-    document.documentElement.style.setProperty('--real-vh', `${window.innerHeight * 0.01}px`);
-}
-
-function setRealVHMobile() {
-    document.documentElement.style.setProperty('--real-vh', `${window.visualViewport.height * 0.01}px`);
-}
-
-if (window.visualViewport) {
-    window.visualViewport.addEventListener('resize', setRealVHMobile);
-    window.visualViewport.addEventListener('load', setRealVHMobile);
-    setRealVHMobile();
-} else {
-    window.addEventListener('resize', setRealVH);
-    window.addEventListener('load', setRealVH);
-    setRealVH();
-}
-
 document.addEventListener('DOMContentLoaded', async () => {
+    initRealVH();
     SplitGrid.init();
     Navbar.init();
     Sidebar.init();
