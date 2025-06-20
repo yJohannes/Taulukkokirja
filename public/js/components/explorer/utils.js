@@ -1,6 +1,6 @@
 import { Tab } from '../../../components/tab/tab.js';
 
-export function openPath(path) {
+function openPath(rootElement, path) {
     const parts = path.split('/'); // Split the path into parts for navigation
     let joinPath = '';
 
@@ -10,7 +10,7 @@ export function openPath(path) {
         // Skip the pages part since it doesn't exist as a tab
         if (joinPath === 'pages') continue;
 
-        const tab = getTabByPath(joinPath);
+        const tab = getTabByPath(rootElement, joinPath);
         const dropdown = Tab.getTabDropdown(tab);
 
         const isLinkTab = !dropdown;
@@ -21,8 +21,12 @@ export function openPath(path) {
     }
 }
 
-export function getTabByPath(path) {
+function getTabByPath(rootElement, path) {
     const selector = `.tab[data-path="${path}"]`;
-    const explorer = document.querySelector('#explorer-nav-container');
-    return explorer.querySelector(selector);
+    return rootElement.querySelector(selector);
+}
+
+export const FileExplorerUtils = {
+    openPath,
+    getTabByPath,
 }
