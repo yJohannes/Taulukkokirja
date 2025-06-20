@@ -3,7 +3,6 @@ import { SplitGrid } from './layout/split-grid.js';
 import { Pages } from './pages/index.js';
 import { Sidebar } from './layout/sidebar.js';
 import { Navbar } from './layout/navbar.js';
-import * as explorer from './components/explorer/index.js'
 import { Editor } from './rich-text-editor/index.js'
 import { Bookmarks } from './components/bookmarks/bookmarks.js';
 import { Search } from './components/search/search.js';
@@ -19,10 +18,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     Navbar.init();
     Sidebar.init();
     Pages.loading.init();
-    Bookmarks.updateBookmarks();
-
-    await explorer.loadExplorerToElement(document.getElementById('explorer-nav-container'));
-    explorer.loadExplorerSave();
+    Bookmarks.updateBookmarks();    
 
     Editor.init();
     await Search.init();
