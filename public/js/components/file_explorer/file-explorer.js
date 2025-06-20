@@ -2,7 +2,7 @@ import { SearchBar } from '../../../components/search_bar/search-bar.js';
 import { Tab } from "../../../components/tab/tab.js";
 import { FlipArrow } from '../../../components/flip_arrow/flip-arrow.js';
 import { StorageHelper } from "../storage/index.js";
-import { generateTabs } from './tabs.js';
+import { createTreeView } from './tabs.js';
 
 import { getHeatColor, normalization } from '../../utils/colors.js';
 import { updateBookmarks } from '../bookmarks/bookmarks.js';
@@ -123,7 +123,7 @@ export class FileExplorer {
     }
     
     _initTree() {
-        const tabs = generateTabs(this.fileStructure, this.treeContainer);
+        const tabs = createTreeView(this.treeContainer, this.fileStructure.pages, 'pages');
         tabs.classList.add('file-explorer__tree-root');
         this.treeContainer.appendChild(tabs);
     }
