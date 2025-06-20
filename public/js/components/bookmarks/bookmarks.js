@@ -36,7 +36,7 @@ function createTabsFromList(pathsList, container, deleteTargetListName=null) {
         }
 
         tab.addEventListener('click', (e) => {
-            FileExplorerUtils.openPath(path);
+            FileExplorerUtils.openPath(document, path);
             tab.scrollIntoView({ behavior: 'auto', block: 'center' });
 
             updateBookmarks();
