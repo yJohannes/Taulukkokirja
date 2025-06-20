@@ -1,7 +1,7 @@
 import { addToolTip } from "../components/common/tooltip.js";
 import { showWorkspace, hideWorkspace, isWorkspaceOpen } from "./workspace.js";
 import { updateBookmarks } from "../components/bookmarks/bookmarks.js";
-import { utils } from "../common/utils.js";
+import { elementUtils } from "../utils/element-utils.js";
 import { Editor } from "../rich-text-editor/index.js";
 
 import { SplitGrid } from "./split-grid.js";
@@ -34,7 +34,7 @@ function init() {
     const historyRoot = document.getElementById('recently-viewed');
 
     function updateSidebarVisibility() {
-        if (utils.isElementVisible(historyRoot) || utils.isElementVisible(bookmarkRoot)) {
+        if (utils.isElementVisible(historyRoot) ||elementUtils.isElementVisible(bookmarkRoot)) {
             sidebar2.classList.add('show');
             sidebar1.classList.remove('show');
         } else {
@@ -43,13 +43,13 @@ function init() {
     }
 
     history.addEventListener('click', () => {
-        utils.toggleVisibility(historyRoot);
+       elementUtils.toggleVisibility(historyRoot);
         updateSidebarVisibility();
         updateBookmarks();
     });
 
     bookmarks.addEventListener('click', () => {
-        utils.toggleVisibility(bookmarkRoot);
+       elementUtils.toggleVisibility(bookmarkRoot);
         updateSidebarVisibility();
         updateBookmarks();
     });
@@ -69,8 +69,8 @@ function init() {
 
         
         if (utils.isElementVisible(geogebraRoot)) {
-            utils.showElement(false, geogebraRoot)
-            utils.showElement(true, editorRoot);
+           elementUtils.showElement(false, geogebraRoot)
+           elementUtils.showElement(true, editorRoot);
         }
     });
 
@@ -81,8 +81,8 @@ function init() {
             return hideWorkspace();
 
         if (utils.isElementVisible(editorRoot)) {
-            utils.showElement(false, editorRoot)
-            utils.showElement(true, geogebraRoot);
+           elementUtils.showElement(false, editorRoot)
+           elementUtils.showElement(true, geogebraRoot);
         }
     });
 
