@@ -1,6 +1,4 @@
 import { StorageHelper } from '../storage/index.js';
-import { Sidebar }  from '../../layout/sidebar.js';
-import { updateBookmarks } from '../bookmarks/bookmarks.js';
 import { Tab } from '../../../components/tab/tab.js';
 import { FlipArrow } from '../../../components/flip_arrow/flip-arrow.js';
 
@@ -23,9 +21,6 @@ export function handleTabClick(fileExplorer, tab, isDropdown, parentElement) {
 
         StorageHelper.addToStorageList('active-states', tab.getAttribute('data-path'));
         tab.classList.add('active');
-
-        // If tab is clicked on small screen hide sidebar
-        Sidebar.showSidebar(false, 'sidebar-1');
         return;
     }
 
@@ -100,11 +95,7 @@ export function createTreeView(parent, treeData, rootPath = '') {
 
             const item = Tab.createTabListItem();
             const tab = Tab.createTab(pageName, currentPath, isFolder, level);
-
-            tab.addEventListener('click', () => {
-                handleTabClick(tab, isFolder, parent);
-                updateBookmarks();
-            });
+            tab.addEventListener('click', () => handleTabClick(parent, tab, isFolder));
 
             if (isFolder && level === 0) tab.style.fontWeight = 'bold';
 
