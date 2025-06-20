@@ -2,8 +2,8 @@ import { StorageHelper } from '../storage/index.js';
 import { Tab } from '../../../components/tab/tab.js';
 import { FlipArrow } from '../../../components/flip_arrow/flip-arrow.js';
 
-export function handleTabClick(fileExplorer, tab, isDropdown, parentElement) {
-    const activeTabs = parentElement.querySelectorAll(`.${'active'}`);
+export function handleTabClick(parent, tab, isDropdown) {
+    const activeTabs = parent.querySelectorAll(`.${'active'}`);
 
     // Handle basic tabs
     if (!isDropdown) {
@@ -37,31 +37,31 @@ export function handleTabClick(fileExplorer, tab, isDropdown, parentElement) {
         const parentTab = parentDropdown.parentElement.querySelector('button');
 
         // Dismiss highest level dropdown
-        if (!(parentDropdown.parentElement.id === 'explorer-nav-container')) {
+        if (!(parentDropdown.classList.contains('file-explorer__tree-root') )) {
             parentTab.classList.add('active');
             
             StorageHelper.addToStorageList('show-states', parentTab.getAttribute('data-path'));
         }
 
     } else {
-        const autoCollapse = document.getElementById('explorer-auto-collapse')
-        const autoCollapseOn = autoCollapse.classList.contains('active');
+        // const autoCollapse = document.getElementById('explorer-auto-collapse')
+        // const autoCollapseOn = autoCollapse.classList.contains('active');
         
-        if (autoCollapseOn) {
-            // collapseExplorer();
-            // openPath(document, tab.getAttribute('data-path'));
-            const parentDropdown = tab.parentElement.parentElement;
-            const openDropdown = parentDropdown.querySelectorAll(`.${'show'}`);
+        // if (autoCollapseOn) {
+        //     // collapseExplorer();
+        //     // openPath(document, tab.getAttribute('data-path'));
+        //     const parentDropdown = tab.parentElement.parentElement;
+        //     const openDropdown = parentDropdown.querySelectorAll(`.${'show'}`);
 
-            openDropdown.forEach(dropdown => {
-                const tab = dropdown.parentElement.querySelector('button');
-                const arrow = tab.querySelector('svg');
+        //     openDropdown.forEach(dropdown => {
+        //         const tab = dropdown.parentElement.querySelector('button');
+        //         const arrow = tab.querySelector('svg');
                 
-                FlipArrow.setArrowFlip(false, arrow);
-                dropdown.classList.remove('show');
-                StorageHelper.removeFromStorageList('show-states', tab.getAttribute('data-path'))
-            });
-        }
+        //         FlipArrow.setArrowFlip(false, arrow);
+        //         dropdown.classList.remove('show');
+        //         StorageHelper.removeFromStorageList('show-states', tab.getAttribute('data-path'))
+        //     });
+        // }
 
         // Set tab as 'active' and show contents
         tab.classList.add('active');
