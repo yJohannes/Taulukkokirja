@@ -8,7 +8,6 @@
 
 #content-grid {
     position: relative;
-    overflow: hidden;
     display: grid;
     grid-template-columns: 300px 1px 1fr 1px 275px;
     grid-template-rows: 1fr auto 300px;
