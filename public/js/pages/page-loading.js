@@ -1,6 +1,7 @@
 import { StorageHelper } from '../components/storage/index.js';
 import { renderElementLatex } from '../latex/latex.js';
 import { highlightTerms } from '../effects/highlight-terms.js';
+import { Sidebar } from '../layout/sidebar.js';
 import { Bookmarks } from '../components/bookmarks/bookmarks.js';
 import { Pages } from './index.js';
 
@@ -100,7 +101,11 @@ async function loadPageToElement(path, element, bookMarkable=true) {
 
     renderElementLatex(document.getElementById('page-container'));
     injectPageScripts(element);
+    Bookmarks.updateBookmarks();
     updateHistory(path);
+
+    // If tab is clicked on small screen hide sidebar
+    Sidebar.showSidebar(false, 'sidebar-1');
 }
 
 
