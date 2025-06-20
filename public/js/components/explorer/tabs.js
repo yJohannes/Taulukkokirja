@@ -4,7 +4,7 @@ import { updateBookmarks } from '../bookmarks/bookmarks.js';
 import { Tab } from '../../../components/tab/tab.js';
 import { FlipArrow } from '../../../components/flip_arrow/flip-arrow.js';
 
-export function handleTabClick(tab, isDropdown, parentElement) {
+export function handleTabClick(fileExplorer, tab, isDropdown, parentElement) {
     const activeTabs = parentElement.querySelectorAll(`.${'active'}`);
 
     // Handle basic tabs
@@ -54,7 +54,7 @@ export function handleTabClick(tab, isDropdown, parentElement) {
         
         if (autoCollapseOn) {
             // collapseExplorer();
-            // openPath(tab.getAttribute('data-path'));
+            // openPath(document, tab.getAttribute('data-path'));
             const parentDropdown = tab.parentElement.parentElement;
             const openDropdown = parentDropdown.querySelectorAll(`.${'show'}`);
 
