@@ -1,5 +1,6 @@
 export const SearchBar = {
     makeSearchBar,
+    clearSearchBar,
 };
 
 function makeSearchBar(input) {
@@ -93,6 +94,10 @@ function makeSearchBar(input) {
         searchIcon,
         wrapper,
     };
+}
+
+function clearSearchBar(input) {
+    input.value = '';
 }
 
 // export class SearchBar extends HTMLElement {
