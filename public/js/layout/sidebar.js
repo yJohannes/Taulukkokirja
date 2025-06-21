@@ -34,7 +34,7 @@ async function init() {
     });
 
     for (let button of [fe.btnExpand, fe.btnCollapse, fe.btnAutoCollapse]) {
-        addToolTip(button, 'top');
+        addToolTip(button, 'bottom');
     }
 
     document.addEventListener("keydown", function(event) {
