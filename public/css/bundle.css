@@ -228,10 +228,10 @@ color: inherit;
 padding-left: 1px;
 padding-right: 1px;
 }
-.link {
+a {
 color: var(--color-accent);
 }
-.link:hover {
+a:hover {
 color: var(--color-accent);
 }
 .active {
@@ -800,74 +800,6 @@ overflow-x: auto;
 padding-top: 0.1875rem;
 padding-left: 0.1875rem;
 }
-.sticky-header {
-position: sticky;
-top: 0;
-z-index: 50;
-transition: none;
-h1, h2, h3, h4, h5, h6, p {
-margin-bottom: 0;
-}
-hr {
-margin-top: 0.5rem;
-}
-}
-.sticky-header::before {
-content: "";
-position: absolute;
-top: -1.25rem; /* match page container padding */
-bottom: 0;
-left: 0;
-right: 0;
-background: rgba(var(--color-bg-primary-rgb), 0.75);
-backdrop-filter: blur(1.4px) grayscale(.3);
-z-index: -1;
-}
-.sidebar .sticky-header::before {
-background: rgba(var(--color-bg-tertiary-rgb), 0.75);
-}
-table tbody tr:nth-of-type(odd) {
-/* background-color: rgba(255, 255, 255, 0.05) !important; */
-background-color: var(--color-table-stripe-color);
-/* #161616 */
-}
-table {
-border-collapse: collapse;
-border-spacing: 0;
-/* border: 1px solid var(--color-lines); */
-/* border-radius: var(--table-border-radius); */
-overflow: hidden;
-/* clip inside cells */
-background-color: var(--color-bg-primary);
-}
-th,
-td {
-padding: 0.5rem !important;
-}
-th {
-border: solid 1px var(--color-lines-secondary);
-background-color: var(--color-table-heading);
-color: var(--color-white);
-font-weight: normal !important;
-white-space: nowrap;
-mark {
-background-color: var(--color-mark);
-color: black;
-}
-p,
-ul,
-ol {
-margin: 0;
-}
-}
-td {
-border: 1px solid var(--color-lines) !important;
-p,
-ul,
-ol {
-margin: 0;
-}
-}
 .popup {
 color: white;
 padding: 0.625rem 1.25rem;
@@ -896,40 +828,31 @@ margin-bottom: 0.1875rem;
 display: none !important;
 }
 }
-/* Reduced motion blocks the bootstrap animation */
-.tooltip {
-pointer-events: none;
+.sticky-header {
+position: sticky;
+top: 0;
+z-index: 50;
+transition: none;
+h1, h2, h3, h4, h5, h6, p {
+margin-bottom: 0;
 }
-.tooltip.fade .tooltip-inner
-{
-transform: scale(0.8);
-transition: transform 0.15s ease;
+hr {
+margin-top: 0.5rem;
 }
-.tooltip.fade {
-opacity: 0;
-transition: opacity 0.15s ease;
 }
-.tooltip.fade.show,
-.tooltip.fade.show .tooltip-inner {
-opacity: 1;
-transform: scale(1);
+.sticky-header::before {
+content: "";
+position: absolute;
+top: -1.25rem; /* match page container padding */
+bottom: 0;
+left: 0;
+right: 0;
+background: rgba(var(--color-bg-primary-rgb), 0.75);
+backdrop-filter: blur(1.4px) grayscale(.3);
+z-index: -1;
 }
-.tooltip[data-popper-placement='top'] .tooltip-inner {
-transform-origin: bottom;
-}
-.tooltip[data-popper-placement='bottom'] .tooltip-inner {
-transform-origin: top;
-}
-.tooltip[data-popper-placement='left'] .tooltip-inner {
-transform-origin: right;
-}
-.tooltip[data-popper-placement='right'] .tooltip-inner {
-transform-origin: left;
-}
-@media (max-width: 768px) {
-.tooltip {
-display: none !important;
-}
+.sidebar .sticky-header::before {
+background: rgba(var(--color-bg-tertiary-rgb), 0.75);
 }
 .tab-list {
 list-style-type: none;
@@ -996,6 +919,83 @@ visibility: visible;
 .tab-dropdown:not(.show).hard-hide {
 display: none !important;
 }
+table tbody tr:nth-of-type(odd) {
+/* background-color: rgba(255, 255, 255, 0.05) !important; */
+background-color: var(--color-table-stripe-color);
+/* #161616 */
+}
+table {
+border-collapse: collapse;
+border-spacing: 0;
+/* border: 1px solid var(--color-lines); */
+/* border-radius: var(--table-border-radius); */
+overflow: hidden;
+/* clip inside cells */
+background-color: var(--color-bg-primary);
+}
+th,
+td {
+padding: 0.5rem !important;
+}
+th {
+border: solid 1px var(--color-lines-secondary);
+background-color: var(--color-table-heading);
+color: var(--color-white);
+font-weight: normal !important;
+white-space: nowrap;
+mark {
+background-color: var(--color-mark);
+color: black;
+}
+p,
+ul,
+ol {
+margin: 0;
+}
+}
+td {
+border: 1px solid var(--color-lines) !important;
+p,
+ul,
+ol {
+margin: 0;
+}
+}
+/* Reduced motion blocks the bootstrap animation */
+.tooltip {
+pointer-events: none;
+}
+.tooltip.fade .tooltip-inner
+{
+transform: scale(0.8);
+transition: transform 0.15s ease;
+}
+.tooltip.fade {
+opacity: 0;
+transition: opacity 0.15s ease;
+}
+.tooltip.fade.show,
+.tooltip.fade.show .tooltip-inner {
+opacity: 1;
+transform: scale(1);
+}
+.tooltip[data-popper-placement='top'] .tooltip-inner {
+transform-origin: bottom;
+}
+.tooltip[data-popper-placement='bottom'] .tooltip-inner {
+transform-origin: top;
+}
+.tooltip[data-popper-placement='left'] .tooltip-inner {
+transform-origin: right;
+}
+.tooltip[data-popper-placement='right'] .tooltip-inner {
+transform-origin: left;
+}
+@media (max-width: 768px) {
+.tooltip {
+display: none !important;
+}
+}
 .highlight,
 .highlight-2,
 .highlight-3,
@@ -1004,23 +1004,22 @@ display: none !important;
 box-shadow: inset 0 0 0 1000px var(--color-highlight);
 transition: box-shadow 0.15s ease-in-out;
 }
-#sidebar-1        { grid-area: sidebar-1; }
+#sidebar-left        { grid-area: sidebar-left; }
 #gutter-col-1     { grid-area: gutter-col-1; }
 #main-content     { grid-area: main-content; }
 #workspace           { grid-area: workspace; }
 #main-workspace-splitter     { grid-area: main-workspace-splitter; }
 #gutter-col-2     { grid-area: gutter-col-2; }
-#sidebar-2        { grid-area: sidebar-2;}
+#sidebar-right        { grid-area: sidebar-right;}
 #content-grid {
 position: relative;
-overflow: hidden;
 display: grid;
 grid-template-columns: 300px 1px 1fr 1px 275px;
 grid-template-rows: 1fr auto 300px;
 grid-template-areas:
-"sidebar-1 gutter-col-1 main-content            gutter-col-2 sidebar-2"
-"sidebar-1 gutter-col-1 main-workspace-splitter gutter-col-2 sidebar-2"
-"sidebar-1 gutter-col-1 workspace               gutter-col-2 sidebar-2";
+"sidebar-left gutter-col-1 main-content            gutter-col-2 sidebar-right"
+"sidebar-left gutter-col-1 main-workspace-splitter gutter-col-2 sidebar-right"
+"sidebar-left gutter-col-1 workspace               gutter-col-2 sidebar-right";
 }
 @media (max-width: 768px) {
 #content-grid {
@@ -1030,10 +1029,10 @@ grid-template-areas:
 "main-workspace-splitter"
 "workspace" !important;
 }
-#sidebar-1,
+#sidebar-left,
 #gutter-col-1,
 #gutter-col-2,
-#sidebar-2 {
+#sidebar-right {
 display: none;
 grid-area: unset !important;
 }
