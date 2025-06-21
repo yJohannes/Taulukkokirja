@@ -2,7 +2,6 @@ import { SearchBar } from '../../../components/search_bar/search-bar.js';
 import { Tab } from "../../../components/tab/tab.js";
 import { FlipArrow } from '../../../components/flip_arrow/flip-arrow.js';
 import { StorageHelper } from "../storage/index.js";
-import { createTreeView } from './tabs.js';
 
 import { getHeatColor, normalization } from '../../utils/colors.js';
 import { updateBookmarks } from '../bookmarks/bookmarks.js';
@@ -12,11 +11,16 @@ import { highlightTerms } from '../../effects/highlight-terms.js';
 import { elementUtils } from '../../utils/element-utils.js';
 import { FileExplorerUtils } from './utils.js';
 
-// import { addToolTip } from "../common/tooltip.js";
 export class FileExplorer {
-    constructor(fileStructure, parent) {
+    constructor(fileStructure, parent, storageID) {
         this.fileStructure = fileStructure;
         this.parent = parent;
+        this.storageID = storageID;
+        this.data = {
+            autoCollapse: false,
+            openedFolderPaths: [],
+        }
+
         this.init();
     }
     
@@ -56,22 +60,26 @@ export class FileExplorer {
             <nav class="file-explorer__search-result-container rounded w-100"></nav>
         `;
     
+        this.searchBar = this.root.querySelector('.file-explorer__search-bar');
         this.buttonGroup = this.root.querySelector('.file-explorer__buttons');
         this.btnExpand = this.root.querySelector('.file_explorer__button-expand');
         this.btnCollapse = this.root.querySelector('.file_explorer__button-collapse');
         this.btnAutoCollapse = this.root.querySelector('.file_explorer__button-auto-collapse');
-
-        this.searchBar = this.root.querySelector('.file-explorer__search-bar');
-
         this.treeContainer = this.root.querySelector('.file-explorer__tree-container');
         this.searchResultContainer = this.root.querySelector('.file-explorer__search-result-container');
     
+        this.data = JSON.parse(localStorage.getItem(this.storageID)) || this.data;
+
         this._initSearch();
         this._initButtons();
         this._initTree();
         this._loadSave();
 
         this.parent.appendChild(this.root);
+    }
+
+    saveData() {
+        localStorage.setItem(this.storageID, JSON.stringify(this.data));
     }
 
     _initSearch() {
@@ -91,7 +99,7 @@ export class FileExplorer {
                 elementUtils.showElement(true, this.searchResultContainer);
                 
                 const matches = Search.search(query);
-                this._generateResultView(matches);
+                this.createResultView(matches);
 
                 //  Highlight titles in search
                 if (matches.length > 0) {
@@ -109,28 +117,29 @@ export class FileExplorer {
         this.btnExpand.addEventListener('click', () => Tab.expandTabListTree(this.root.querySelector('.file-explorer__tree-root')));
         this.btnCollapse.addEventListener('click', () => Tab.collapseTabListTree(this.root.querySelector('.file-explorer__tree-root')));
 
-        if (StorageHelper.getFromStorageList('active-states').includes('explorer-auto-collapse')) {
+        if (this.data.autoCollapse) {
             this.btnAutoCollapse.classList.add('active');
         }
 
         this.btnAutoCollapse.addEventListener('click', () => {
             if (this.btnAutoCollapse.classList.toggle('active')) {
-                StorageHelper.addToStorageList('active-states', 'explorer-auto-collapse');
+                this.data.autoCollapse = true;
+                this.saveData();
+                // StorageHelper.addToStorageList('active-states', 'explorer-auto-collapse');
             } else {
-                StorageHelper.removeFromStorageList('active-states', 'explorer-auto-collapse');
+                this.data.autoCollapse = false;
+                this.saveData();
+                // StorageHelper.removeFromStorageList('active-states', 'explorer-auto-collapse');
             }
         });
     }
     
     _initTree() {
-        const tabs = createTreeView(this.treeContainer, this.fileStructure.pages, 'pages');
+        const tabs = this.createTreeView(this.treeContainer, this.fileStructure.pages, 'pages');
         tabs.classList.add('file-explorer__tree-root');
         this.treeContainer.appendChild(tabs);
     }
 
-    /**
-     * Can and will clash if other explorers with same saved paths exist
-     */
     _loadSave() {
         const lists = this.root.querySelectorAll('.tab-list');
         
@@ -142,7 +151,8 @@ export class FileExplorer {
                 tabs.forEach((tab) => {
                     const path = tab.getAttribute('data-path');
                     if (Tab.isDropdownTab(tab)) {
-                        if (StorageHelper.getFromStorageList('show-states').includes(path)) {
+                        // if (StorageHelper.getFromStorageList('show-states').includes(path)) {
+                        if (this.data.openedFolderPaths.includes(path)) {
                             const dropdown = item.querySelector('.tab-list');
                             dropdown?.classList.add('show');
                             
@@ -154,8 +164,122 @@ export class FileExplorer {
         });
     }
 
-    // make static eventually 
-    _generateResultView(matches) {
+    onTabClick(parent, tab, isDropdown) {
+        console.log("DAOIWJAD")
+        const activeTabs = parent.querySelectorAll(`.${'active'}`);
+        activeTabs.forEach(t => t.classList.remove('active'));
+
+        // Handle basic tabs
+        if (!isDropdown) {
+            // StorageHelper.addToStorageList('active-states', tab.getAttribute('data-path'));
+            tab.classList.add('active');
+            return;
+        }
+        
+        // Handle collapsible tabs
+        const nestedDropdown = Tab.getTabDropdown(tab);
+
+        // If closing a dropdown, shift focus up a level
+        if (nestedDropdown.classList.contains('show')) {
+            nestedDropdown.classList.remove('show');
+
+            this.data.openedFolderPaths = this.data.openedFolderPaths.filter(item => item !== tab.getAttribute('data-path'));
+            this.saveData();
+
+            const parentDropdown = tab.parentElement.parentElement;
+            const parentTab = parentDropdown.parentElement.querySelector('button');
+
+            // Dismiss highest level dropdown
+            if (!(parentDropdown.classList.contains('file-explorer__tree-root') )) {
+                parentTab.classList.add('active');
+                
+                this.data.openedFolderPaths.push(parentTab.getAttribute('data-path'));
+                this.saveData();
+            }
+
+        } else {
+            const autoCollapseOn = this.btnAutoCollapse.classList.contains('active');
+            
+            if (autoCollapseOn) {
+                // collapseExplorer();
+                // openPath(document, tab.getAttribute('data-path'));
+                const parentDropdown = tab.parentElement.parentElement;
+                const openDropdown = parentDropdown.querySelectorAll(`.${'show'}`);
+
+                openDropdown.forEach(dropdown => {
+                    const tab = dropdown.parentElement.querySelector('button');
+                    const arrow = tab.querySelector('svg');
+                    
+                    FlipArrow.setArrowFlip(false, arrow);
+                    dropdown.classList.remove('show');
+                        
+                this.data.openedFolderPaths = this.data.openedFolderPaths.filter(item => item !== tab.getAttribute('data-path'));
+                this.saveData();
+                });
+            }
+
+            // Set tab as 'active' and show contents
+            tab.classList.add('active');
+            nestedDropdown.classList.add('show');
+
+            this.data.openedFolderPaths.push(tab.getAttribute('data-path'));
+            this.saveData();
+        }
+    }
+
+    // TODO: make static eventually 
+    createTreeView(parent, treeData, rootPath = '') {
+        const rootList = Tab.createTabList(false);
+
+        const stack = [
+            {
+                data: treeData,
+                path: rootPath,
+                parentList: rootList
+            }
+        ];
+
+        const rootDepth = rootPath.split('/').filter(Boolean).length;
+
+        while (stack.length > 0) {
+            const { data, path, parentList } = stack.pop();
+
+            for (const [entryName, entryValue] of Object.entries(data)) {
+                const currentPath = path ? `${path}/${entryName}` : entryName;
+                const pageName = entryName.replace('.html', '');
+                const level = currentPath.split('/').filter(Boolean).length - rootDepth - 1;
+                const isFolder = typeof entryValue === 'object' && entryValue !== null;
+
+                const item = Tab.createTabListItem();
+
+                const tab = Tab.createTab(pageName, currentPath, isFolder, level);
+                tab.addEventListener('click', () => this.onTabClick(parent, tab, isFolder));
+
+                if (isFolder && level === 0) tab.style.fontWeight = 'bold';
+
+                item.appendChild(tab);
+                parentList.appendChild(item);
+
+                if (isFolder) {
+                    const childList = Tab.createTabList(true);
+                    item.appendChild(childList);
+
+                    // Push next level onto the stack
+                    stack.push({
+                        data: entryValue,
+                        path: currentPath,
+                        parentList: childList
+                    });
+                }
+            }
+        }
+
+        return rootList;
+    }
+
+
+    // TODO: make static eventually 
+    createResultView(matches) {
         this.searchResultContainer.innerHTML = `
             <div class="d-flex flex-row justify-content-between align-items-center py-2 ps-1 pe-0 mt-3">
                 <h5 class="m-0">
