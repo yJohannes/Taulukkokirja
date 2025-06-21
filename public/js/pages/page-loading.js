@@ -105,7 +105,7 @@ async function loadPageToElement(path, element, bookMarkable=true) {
     updateHistory(path);
 
     // If tab is clicked on small screen hide sidebar
-    Sidebar.showSidebar(false, 'sidebar-1');
+    Sidebar.showSidebar(false, 'sidebar-left');
 }
 
 

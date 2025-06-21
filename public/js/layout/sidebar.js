@@ -60,14 +60,14 @@ async function init() {
     sidebarToggle.addEventListener('click', () => {
         const show = sidebar.classList.toggle('show');
         if (show) {
-            StorageHelper.addToStorageList('show-states', 'sidebar-1');
+            StorageHelper.addToStorageList('show-states', 'sidebar-left');
         } else {
-            StorageHelper.removeFromStorageList('show-states', 'sidebar-1');
+            StorageHelper.removeFromStorageList('show-states', 'sidebar-left');
 
         }
     });
     
-    if (StorageHelper.getFromStorageList('show-states').includes('sidebar-1')) {
-        sidebar.classList.add('show');
+    if (StorageHelper.getFromStorageList('show-states').includes('sidebar-left')) {
+        leftSidebar.classList.add('show');
     }
 }

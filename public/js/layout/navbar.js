@@ -9,8 +9,8 @@ export const Navbar = {
 }
 
 function init() {
-    const sidebar1 = document.getElementById('sidebar-1');
-    const sidebar2 = document.getElementById('sidebar-2');
+    const sidebar1 = document.getElementById('sidebar-left');
+    const sidebar2 = document.getElementById('sidebar-right');
     
     const sidebarToggle = document.getElementById('nav-sidebar-toggle');
     const history = document.getElementById('nav-history');
