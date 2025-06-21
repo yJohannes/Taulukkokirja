@@ -21,10 +21,10 @@ function showSidebar(isVisible, sidebarId) {
 }
 
 async function init() {
-    const sidebar = document.getElementById('sidebar-1');
+    const leftSidebar = document.getElementById('sidebar-left');
     
     // await explorer.loadExplorerToElement(document.getElementById('explorer-nav-container'));
-    const fe = new FileExplorer((await Pages.loading.fetchPageStructure()), sidebar);
+    const fe = new FileExplorer((await Pages.loading.fetchPageStructure()), leftSidebar, 'file-explorer-pages');
     
     document.addEventListener("keydown", (event) => {
         if (event.altKey && event.key === "s") {
@@ -58,7 +58,7 @@ async function init() {
     const sidebarToggle = document.getElementById('nav-sidebar-toggle');
     
     sidebarToggle.addEventListener('click', () => {
-        const show = sidebar.classList.toggle('show');
+        const show = leftSidebar.classList.toggle('show');
         if (show) {
             StorageHelper.addToStorageList('show-states', 'sidebar-left');
         } else {
