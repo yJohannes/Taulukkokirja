@@ -37,7 +37,7 @@ function formatPathToTitle(path) {
  * @param {*} separator 
  * @returns 
  */
-function formatPathToLabel(path, styled=true, separator=', ') {
+function formatPathToLabel(path, styled=true, separator='<br>') { // ・
     path = decodeURIComponent(path);
     const split = path.split('/')
     const last = split.length - 1;
@@ -55,13 +55,13 @@ function formatPathToLabel(path, styled=true, separator=', ') {
     if (path.endsWith('.html')) {
         let formatted = `<b>${baseName}</b>`;
         if (parentName) {
-            formatted = `${formatted}${separator}<small><i>${parentName}</i></small>`
+            formatted = `${formatted}<small>${separator}<i>${parentName}</i></small>`
         }
         return formatted;
     } else {
         let formatted = baseName;
         if (parentName) {
-            formatted = `${formatted}${separator}<small>${parentName}</small>`
+            formatted = `${formatted}<small>${separator}${parentName}</small>`
         }
         return `<i>${formatted}</i>`;
     }
