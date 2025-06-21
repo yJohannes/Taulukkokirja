@@ -278,11 +278,11 @@ mark {
     padding-right: 1px;
 }
 
-.link {
+a {
     color: var(--color-accent);
 }
 
-.link:hover {
+a:hover {
     color: var(--color-accent);
 }
 
