@@ -1,6 +1,4 @@
-- Don't use the search-bar component, make a function that enables functionality an existing input
 - 2 grids not 1
-- header pattern?
 - Fix recreating recents and bookmarks every tab click
 - Wrap page contents in container-fluid ms-0
 - Make ESC blur() in the editor
