@@ -1,8 +1,14 @@
 export const StorageHelper = {
+    getFromStorageJSON,
     getFromStorageList,
     addToStorageList,
     removeFromStorageList,
     setStorageItem,
+}
+
+function getFromStorageJSON(key) {
+    const raw = localStorage.getItem(key) || '{}';
+    return JSON.parse(raw);
 }
 
 function getFromStorageList(listName) {
