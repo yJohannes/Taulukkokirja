@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="fi" class="light">
+<html lang="fi">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -39,7 +39,19 @@
         }
     </style>
 
-    <!-- <link rel="stylesheet" href="./css/main.css"> -->
+    <script>
+    (() => {
+        try {
+            const theme = localStorage.getItem('theme');
+            if (theme) {
+                document.documentElement.classList.add(theme);
+            }
+        } catch (e) {
+        // Fallback if localStorage is not available
+        }
+    })();
+    </script>
+
     <link rel="stylesheet" href="./css/bundle.css">
     <script defer type="module" src="./js/main.js"></script>
 </head>

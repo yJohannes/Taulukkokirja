@@ -94,10 +94,18 @@ function init() {
         sidebarToggle,
     ].forEach(el => addToolTip(el, 'right'));
 
+    const theme = localStorage.getItem('theme');
+    if (theme === 'dark') {
+        darkMode.toggled = true;
+    }
+
     // Handle dark mode toggle
     darkMode.addEventListener('toggle-change', (e) => {
         const { toggled } = e.detail;
         document.documentElement.classList.toggle('light', !toggled);
         document.documentElement.classList.toggle('dark', toggled);
+
+        const theme = toggled ? 'dark' : 'light';
+        localStorage.setItem('theme', theme)
     });
 }
