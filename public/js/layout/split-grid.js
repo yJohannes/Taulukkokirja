@@ -18,11 +18,11 @@ function init() {
     Split({
         columnGutters: [{
             track: 1,
-            element: document.querySelector('#gutter-col-1'),
+            element: document.querySelector('#left-splitter'),
         },
         {
             track: 3,
-            element: document.querySelector('#gutter-col-2'),
+            element: document.querySelector('#right-splitter'),
         }],
 
         rowGutters: [{
