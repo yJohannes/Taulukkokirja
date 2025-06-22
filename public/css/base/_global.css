@@ -43,7 +43,7 @@
     /* --color-bg-secondary-rgb: 248, 249, 250; */
     /* --color-bg-tertiary-rgb: 255, 255, 255; */
 
-    --color-bg-pattern: rgba(0, 0, 0, 0);
+    --color-bg-pattern: rgba(0, 0, 0, 0.02);
 
     --color-text: var(--color-black);
     --color-text-invert: var(--color-white);
@@ -310,13 +310,14 @@ footer {
 }
 
 .cross-background {
+    background-attachment: fixed;
     background-image:
         repeating-linear-gradient( 45deg, var(--color-bg-pattern) 0 1px, transparent 1px 10px),
         repeating-linear-gradient(-45deg, var(--color-bg-pattern) 0 1px, transparent 1px 10px);
 }
 
 .dot-background {
-    background-image: radial-gradient(rgba(0,0,0,0.02) 1px, transparent 1px);
+    background-image: radial-gradient(var(--color-bg-pattern) 1px, transparent 1px);
     background-size: 0.2rem 0.2rem;
 }
 
