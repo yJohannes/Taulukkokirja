@@ -150,64 +150,81 @@
                             </div>
                 <div id="left-splitter" class="gutter gutter-horizontal"></div>
 
-                            <p>Tämä on taulukkokirjan etusivu.</p>
-                        </article>
-                        <footer class="py-3 mt-auto border-top" style="background-color: var(--color-normal);">
-                            <div class="d-flex flex-row align-items-center gap-2">
-                                <a class="navbar-brand d-flex justify-content-center p-1 link-body-emphasis text-decoration-none" href="./">
-                                    <img src="./img/icon/book-rounded.png" alt="Brand"
-                                        style="width: 32px; height: 32px; object-fit: contain;">
-                                </a>
-                                <p class="mb-0">
-                                    Taulukkokirja
-                                </p>
-                            </div>
-                            <div class="container d-flex flex-column flex-md-row justify-content-between align-items-center">
-                            </div>
-                            
-                            <div class="container gap-2">
-                                <div class="row justify-content-center">
-                                    <div class="col">
-                                        <a href="#/Lähteet">Lähteet</a>
-                                    </div>
-                                    <div class="col d-flex flex-row align-items-center gap-2">
-                                        <a href="https://github.com/yJohannes/Taulukkokirja" target="_blank">
-                                            GitHub
-                                        </a>
-                                        <a href="https://github.com/yJohannes/Taulukkokirja" target="_blank" class="nav-link">
-                                            <i class="bi bi-github fs-4"></i>
-                                        </a>           
-                                    </div>
-                                </div>
-                            </div>
-                        </footer>
+                <div id="main-content" class="d-flex flex-column bg-primary cross-background overflow-y-auto">
+                    <main id="page-container" class="p-3 mb-5">
+                        <div class="sticky-header">
+                            <h1>Etusivu</h1>
+                            <hr>
+                        </div>
+
+                        <p>Tämä on taulukkokirjan etusivu.</p>
                     </main>
 
-                    <div id="main-workspace-splitter" class="gutter gutter-vertical bg-primary bg-transition">
-                        <div class="handle rounded-pill position-absolute start-50 translate-middle bg-transition"></div>
-                        <div class="bg-secondary bg-transition border-top px-4 py-2"></div>
-                    </div>
-                    <!-- d-flex flex-column overflow-y-hidden -->
-                    <div id="workspace" class="overflow-x-auto bg-secondary bg-transition border-top h-100"> 
-                        <div id="geogebra-iframe-root" style="width: 100%; height: calc(100% + 50px); overflow: hidden; position: relative;">
-                            <iframe src="https://www.geogebra.org/calculator"
-                                    width="100%" height="100%"
-                                    style="border: 0; position: relative; top: -50px;" 
-                                    allowfullscreen>
-                            </iframe>
-                        </div>
-                        <div id="rich-text-editor-root" class="overflow-y-hidden" style="overflow-wrap: break-word;"></div>
-                    </div>
+                    <footer class="bg-secondary shadow px-3 py-5 mt-auto">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-lg-3 mb-3">
+                                    <h4>
+                                        Taulukkokirja
+                                    </h4>
+                                </div>
+                                <div class="col-6 col-lg-3 mb-3">
+                                    <h5 class="d-flex align-items-center gap-2">
+                                        Linkit
+                                        <i class="bi bi-link fs-4"></i>
+                                    </h5>
+                                    <ul class="list-unstyled">
+                                        <li class="mb-2"><a href="#/Hyödyllisiä_linkkejä">Hyödyllisiä linkkejä</a></li>
+                                        <li class="mb-2"><a href="#/Lähteet">Lähteet</a></li>
+                                    </ul>
+                                </div>
+                                <div class="col-6 col-lg-3 mb-3">
+                                    <h5 class="d-flex align-items-center gap-2">
+                                        Laskimet
+                                        <i class="bi bi-plus-slash-minus"></i>
+                                    </h5>
 
+                                    <ul class="list-unstyled">
+                                        <li class="mb-2">
+                                            <a href="https://www.wolframalpha.com" target="_blank" rel="noopener">
+                                                Wolfram Alpha
+                                            </a>
+                                        </li>
+                                        <li class="mb-2">
+                                            <a href="https://www.geogebra.org/calculator" target="_blank" rel="noopener">
+                                            GeoGebra
+                                            </a>
+                                        </li>
+                                        <li class="mb-2">
+                                            <a href="https://www.desmos.com/calculator" target="_blank" rel="noopener">
+                                            Desmos
+                                            </a>
+                                        </li>
+                                        <li class="mb-2">
+                                            <a href="https://www.desmos.com/3d" target="_blank" rel="noopener">
+                                            Desmos 3D
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
 
-                    <aside id="sidebar-right" class="sidebar bg-tertiary px-2 py-3">
-                        <section id="bookmarks" class="mb-4">
-                            <div class="sticky-header">
-                                <h3>Kirjanmerkit</h3>
-                                <hr>
+                                <div class="col-6 col-lg-3 mb-3">
+                                    <h5 class="d-flex align-items-center gap-2">
+                                        GitHub
+                                        <i class="bi bi-github fs-4"></i>
+                                    </h5>
+                                    <ul class="list-unstyled">
+                                        <li class="mb-2">
+                                            <a href="https://github.com/yJohannes/Taulukkokirja" target="_blank" rel="noopener" class="d-flex align-items-center gap-2">
+                                                Taulukkokirja
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
                             </div>
-                            <nav id="bookmark-container" class=" rounded"></nav>
-                        </section>
+                        </div>
+                    </footer>
+                </div>
 
                 <div id="main-workspace-splitter" class="gutter gutter-vertical bg-primary bg-transition">
                     <div class="handle rounded-pill position-absolute start-50 translate-middle bg-transition"></div>
