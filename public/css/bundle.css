@@ -10,6 +10,7 @@
 --color-m3-dark-purple: #271430;
 --color-m3-lavender: #e2e0f9;
 --color-m3-snow: #f2ecee;
+--color-gun-powder: #45455a;
 --color-dark-navy: #041123;
 --color-black: #000;
 --color-white: #fff;
@@ -39,7 +40,7 @@
 --color-bg-tertiary-rgb: 248, 249, 250;
 /* --color-bg-secondary-rgb: 248, 249, 250; */
 /* --color-bg-tertiary-rgb: 255, 255, 255; */
---color-bg-pattern: rgba(0, 0, 0, 0.02);
+--color-bg-pattern: rgba(0, 0, 0, 0);
 --color-text: var(--color-black);
 --color-text-invert: var(--color-white);
 --color-heading: var(--color-valio-blue);
@@ -70,7 +71,7 @@
 --color-focus: var(--color-valio-blue-light);
 --color-enabled: #2c2c35;
 --color-enabled-text: var(--color-white);
---color-highlight: #553f5d52;
+--color-highlight: #6463782e;
 --color-normal: var(--color-black);
 --color-inverse: var(--color-white);
 --color-bg-primary: #161616;
@@ -84,9 +85,9 @@
 --color-text-invert: var(--color-black);
 --color-heading: var(--color-white);
 --color-button: transparent;
---color-button-hover: #45455a;
+--color-button-hover: var(--color-gun-powder);
 --color-input: #353535;
---color-table-heading: #594d66;
+--color-table-heading: var(--color-gun-powder);
 --color-table-stripe-color: rgba(156, 151, 207, 0.048);
 --color-nav-link: #bbb;
 --color-nav-link-hover: #fff;
@@ -253,7 +254,6 @@ color: var(--color-text);
 display: none !important;
 }
 .cross-background {
-background-attachment: fixed;
 background-image:
 repeating-linear-gradient( 45deg, var(--color-bg-pattern) 0 1px, transparent 1px 10px),
 repeating-linear-gradient(-45deg, var(--color-bg-pattern) 0 1px, transparent 1px 10px);
