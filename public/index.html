@@ -40,23 +40,23 @@
     </style>
 
     <script>
-    (() => {
-        try {
-            const theme = localStorage.getItem('theme');
-            if (theme) {
-                document.documentElement.classList.add(theme);
+        (() => {
+            try {
+                const theme = localStorage.getItem('theme');
+                if (theme) {
+                    document.documentElement.classList.add(theme);
+                }
+            } catch (e) {
+            // Fallback if localStorage is not available
             }
-        } catch (e) {
-        // Fallback if localStorage is not available
-        }
-    })();
+        })();
     </script>
 
     <link rel="stylesheet" href="./css/bundle.css">
     <script defer type="module" src="./js/main.js"></script>
 </head>
 <!-- cross-background bg-secondary -->
-<body class="cross-background bg-secondary">
+<body class="bg-secondary">
     <div class="container-fluid p-0" style="height: 100dvh; height: calc(var(--real-vh, 1dvh) * 100);">
         <div class="d-flex flex-column flex-md-row h-100">
             <header id="nav-rail" class="bg-secondary d-flex flex-md-column justify-content-between flex-shrink-0 p-2 border-top border-end order-1 order-md-0">
