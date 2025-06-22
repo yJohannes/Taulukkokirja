@@ -81,7 +81,7 @@
 --color-bg-secondary-rgb: 18, 18, 18;
 --color-bg-tertiary-rgb: 31, 31, 31;
 --color-bg-pattern: rgba(255, 255, 255, 0.01);
---color-text: var(--color-white);
+--color-text: #e5e7eb;
 --color-text-invert: var(--color-black);
 --color-heading: var(--color-white);
 --color-button: transparent;
