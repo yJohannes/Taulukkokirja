@@ -209,14 +209,20 @@
                             <nav id="bookmark-container" class=" rounded"></nav>
                         </section>
 
-                        <section id="recently-viewed" style="margin-bottom: 10rem;">
-                            <div class="sticky-header">
-                                <h3>Viimeksi selatut</h3>
-                                <hr>
-                            </div>
-                            <nav id="recently-viewed-container" class=" rounded"></nav>
-                        </section>
-                    </aside>
+                <div id="main-workspace-splitter" class="gutter gutter-vertical bg-primary bg-transition">
+                    <div class="handle rounded-pill position-absolute start-50 translate-middle bg-transition"></div>
+                    <div class="bg-secondary bg-transition border-top px-4 py-2"></div>
+                </div>
+                <div id="workspace" class="overflow-x-auto bg-secondary bg-transition h-100"> 
+                    <div id="geogebra-iframe-root"
+                        style="width: 100%; height: 100%; overflow: hidden; position: relative;">
+                        
+                        <iframe src="https://www.geogebra.org/calculator"
+                                allowfullscreen
+                                style="position: absolute; top: -50px; left: 0; width: 100%; height: calc(100% + 50px); border: 0;">
+                        </iframe>
+                    </div>
+                    <div id="rich-text-editor-root" class="overflow-y-hidden" style="overflow-wrap: break-word;"></div>
                 </div>
 
                 <div id="right-splitter" class="gutter gutter-horizontal"></div>
