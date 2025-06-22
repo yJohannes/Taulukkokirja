@@ -43,7 +43,7 @@
     /* --color-bg-secondary-rgb: 248, 249, 250; */
     /* --color-bg-tertiary-rgb: 255, 255, 255; */
 
-    --color-bg-pattern: rgba(0, 0, 0, 0.02);
+    --color-bg-pattern: rgba(0, 0, 0, 0);
 
     --color-text: var(--color-black);
     --color-text-invert: var(--color-white);
