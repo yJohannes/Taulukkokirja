@@ -281,7 +281,7 @@ export class FileExplorer {
     // TODO: make static eventually 
     createResultView(matches) {
         this.searchResultContainer.innerHTML = `
-            <div class="d-flex flex-row justify-content-between align-items-center py-2 ps-1 pe-0 mt-3">
+            <div class="d-flex flex-row justify-content-between align-items-center gap-1 py-2 px-1 mt-3">
                 <h5 class="m-0">
                     <b>Haun tulokset</b>
                 </h5>
@@ -293,7 +293,7 @@ export class FileExplorer {
             `
 
         if (matches.length === 0) {
-            this.searchResultContainer.innerHTML += '<pre class="ps-1">Ei tuloksia</pre>'
+            this.searchResultContainer.innerHTML += '<pre class="ps-2">Ei tuloksia</pre>'
             return;
         }
 
