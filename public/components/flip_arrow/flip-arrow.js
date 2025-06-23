@@ -38,9 +38,9 @@ function injectArrowStyles() {
     style.id = FLIP_ARROW_STYLE_ID;
     style.textContent = `
         .flip-arrow {
-            width: 24px;
-            min-width: 24px;
-            height: 24px;
+            width: 1.5rem;
+            min-width: 1.5rem;
+            height: 1.5rem;
             fill: var(--color-arrow);
             transition: transform 0.3s ease;
             transform: rotate(180deg);
