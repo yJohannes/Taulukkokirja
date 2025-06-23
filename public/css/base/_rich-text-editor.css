@@ -69,6 +69,17 @@
     border-color: HighlightText;
   }
 
+  .mq-math-mode .mq-overline,
+  .mq-math-mode .mq-overarrow {
+    border-top: 1px solid var(--color-text);
+    margin-top: 1px;
+  }
+  .mq-math-mode .mq-underline,
+  .mq-math-mode .mq-underarrow {
+    border-bottom: 1px solid var(--color-text);
+    margin-bottom: 1px;
+  }
+
   img {
     box-sizing: border-box;
     padding: 5px;
