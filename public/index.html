@@ -52,7 +52,7 @@
         })();
     </script>
 
-    <link rel="stylesheet" href="./css/bundle.css">
+    <link rel="stylesheet" type="text/css" href="./css/bundle.css">
     <script defer type="module" src="./js/main.js"></script>
 </head>
 <!-- cross-background bg-secondary -->
@@ -222,10 +222,11 @@
 
                 <div id="main-workspace-splitter" style="grid-column: 3 / 4; grid-row: 2 / 3;" class="gutter gutter-vertical bg-primary bg-transition">
                     <div class="handle rounded-pill position-absolute start-50 translate-middle bg-transition"></div>
-                    <div class="bg-secondary bg-transition border-top px-4 py-2"></div>
+                    <div class="bg-secondary bg-transition border-top px-4 py-3"></div>
                 </div>
+                <!-- Tools are initially hidden and revealed during loading -->
                 <div id="workspace" style="grid-column: 3 / 4; grid-row: 3 / 4;" class="overflow-x-auto bg-secondary bg-transition h-100"> 
-                    <div id="geogebra-iframe-root"
+                    <div id="geogebra-iframe-root" class="hidden"
                         style="width: 100%; height: 100%; overflow: hidden; position: relative;">
                         
                         <iframe src="https://www.geogebra.org/calculator"
@@ -233,7 +234,7 @@
                                 style="position: absolute; top: -50px; left: 0; width: 100%; height: calc(100% + 50px); border: 0;">
                         </iframe>
                     </div>
-                    <div id="rich-text-editor-root" class="overflow-y-hidden" style="overflow-wrap: break-word;"></div>
+                    <div id="rich-text-editor-root" class="hidden overflow-y-hidden" style="overflow-wrap: break-word;"></div>
                 </div>
 
                 <div id="right-splitter" style="grid-column: 4 / 5; grid-row: 1 / 4;" class="gutter gutter-horizontal"></div>
