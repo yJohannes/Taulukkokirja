@@ -89,7 +89,7 @@
     --color-bg-primary-rgb: 22, 22, 22;
     --color-bg-secondary-rgb: 18, 18, 18;
     --color-bg-tertiary-rgb: 31, 31, 31;
-    --color-bg-pattern: rgba(255, 255, 255, 0.01);
+    --color-bg-pattern: rgba(255, 255, 255, 0.035);
 
     --color-text: #e5e7eb;
     --color-text-invert: var(--color-black);
