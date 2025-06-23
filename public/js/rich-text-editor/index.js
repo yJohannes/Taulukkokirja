@@ -5,7 +5,7 @@ export const Editor = {
 function init() {
     const baseOpts = {
         baseUrl: 'http://localhost:5500',
-        initialValue: '',
+            initialValue: JSON.parse(localStorage.getItem('editor-content')),
             // 'testi. <br>kaava: <img src="http://localhost:5500/math.svg?latex=%5Csqrt%7B123%7D" alt="\\sqrt{123}"><br> <br>',
         textAreaProps: {
             ariaLabelledBy: 'question-label',
@@ -13,7 +13,7 @@ function init() {
             editorStyle: {},
             lang: 'fi-FI',
         },
-        // onValueChange: console.log
+        onValueChange: (data) => localStorage.setItem('editor-content', JSON.stringify(data.answerHtml)) 
     };
     
     window.makeRichText(baseOpts);
