@@ -3,12 +3,16 @@ import { showWorkspace, hideWorkspace, isWorkspaceOpen } from "./workspace.js";
 import { updateBookmarks } from "../components/bookmarks/bookmarks.js";
 import { elementUtils } from "../utils/element-utils.js";
 
+import { GridManager } from "./grid-manager.js";
 
 export const Navbar = {
     init,
 }
 
 function init() {
+    const gm = new GridManager(document.getElementById('content-grid'), 'content-grid');
+    
+
     const sidebar1 = document.getElementById('sidebar-left');
     const sidebar2 = document.getElementById('sidebar-right');
     
@@ -16,7 +20,7 @@ function init() {
     const history = document.getElementById('nav-history');
     const bookmarks = document.getElementById('nav-bookmarks');
     const editor = document.getElementById('nav-latex-editor');
-    // const rightSidebar = document.getElementById('nav-toggle-right-sidebar');
+    const rightSidebar = document.getElementById('nav-toggle-right-sidebar');
     const geogebra = document.getElementById('nav-geogebra');
     const darkMode = document.getElementById('nav-dark-mode');
     const settings = document.getElementById('nav-settings');
@@ -61,14 +65,16 @@ function init() {
     editor.addEventListener('click', () => {
         if (!isWorkspaceOpen()) {
             showWorkspace();
-        } else if (elementUtils.isElementVisible(editorRoot))
+        } else if (elementUtils.isElementVisible(editorRoot)) {
             return hideWorkspace();
-
+        }
         
         if (elementUtils.isElementVisible(geogebraRoot)) {
-           elementUtils.showElement(false, geogebraRoot)
-           elementUtils.showElement(true, editorRoot);
+            elementUtils.showElement(false, geogebraRoot)
+            elementUtils.showElement(true, editorRoot);
         }
+
+        localStorage.setItem('workspace-tool', 'editor');
     });
 
     geogebra.addEventListener('click', () => {
@@ -81,7 +87,15 @@ function init() {
            elementUtils.showElement(false, editorRoot)
            elementUtils.showElement(true, geogebraRoot);
         }
+
+        localStorage.setItem('workspace-tool', 'geogebra');
     });
+
+    const tool = localStorage.getItem('workspace-tool');
+    const toolIsEditor = tool === 'editor';
+
+    elementUtils.showElement(toolIsEditor, editorRoot);
+    elementUtils.showElement(!toolIsEditor, geogebraRoot);
 
     // Apply tooltips
     [
