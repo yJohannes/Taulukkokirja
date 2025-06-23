@@ -16,6 +16,7 @@ with open(output_file, 'w') as outfile:
             for line in infile:
                 stripped = line.strip()
                 if stripped:  # Only write non-empty, non-whitespace lines
-                    outfile.write(stripped + '\n')
+                        outfile.write(stripped)
+                    # outfile.write(stripped + '\n')
 
 print(f"CSS files bundled into {output_file}")
