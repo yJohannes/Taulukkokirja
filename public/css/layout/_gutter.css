@@ -5,7 +5,8 @@
 /*************/
 .gutter {
     position: relative;
-    background-color: var(--color-lines);
+    background-color: transparent;
+    /* background-color: var(--color-lines); */
     transition: background-color ease-in-out 0.3s;
     cursor: grab;
 }
@@ -74,9 +75,10 @@
 
 .handle {
     top: 0.4rem;
-    width: 9%;
-    min-width: 3rem;
-    max-width: 7rem;
+    width: 2rem;
+    /* width: 9%; */
+    /* min-width: 3rem; */
+    /* max-width: 7rem; */
     height: 0.15rem;
     background-color: var(--color-lines);
 }

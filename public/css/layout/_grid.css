@@ -9,21 +9,21 @@
 #content-grid {
     position: relative;
     display: grid;
-    grid-template-columns: 300px 1px 1fr 1px 275px;
+    grid-template-columns: 300px 0px 1fr 0px 275px;
     grid-template-rows: 1fr auto 300px;
-    grid-template-areas:
+    /* grid-template-areas:
         "sidebar-left left-splitter main-content            right-splitter sidebar-right"
         "sidebar-left left-splitter main-workspace-splitter right-splitter sidebar-right"
-        "sidebar-left left-splitter workspace               right-splitter sidebar-right";
+        "sidebar-left left-splitter workspace               right-splitter sidebar-right"; */
 }
 
 @media (max-width: 768px) {
     #content-grid {
         grid-template-columns: 1fr !important;
-        grid-template-areas:
+        /* grid-template-areas:
             "main-content"
             "main-workspace-splitter"
-            "workspace" !important;
+            "workspace" !important; */
     }
     
     #sidebar-left,
@@ -31,7 +31,9 @@
     #right-splitter,
     #sidebar-right {
         display: none;
-        grid-area: unset !important;
+        grid-row: unset;
+        grid-column: unset;
+        /* grid-area: unset !important; */
     }
     
     .sidebar {
