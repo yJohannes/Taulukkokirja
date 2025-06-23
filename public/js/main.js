@@ -13,6 +13,11 @@ import '../components/ripple/index.js';
 import '../components/table_highlighting/index.js';
 
 document.addEventListener('DOMContentLoaded', async () => {
+    const root = document.documentElement;
+    const fontSize = window.getComputedStyle(root).getPropertyValue('--font-size').trim();
+    const scale = localStorage.getItem('font-scale');
+    document.documentElement.style.fontSize = `calc(${scale} * (${fontSize}))`;
+    
     initRealVH();
     SplitGrid.init();
     Navbar.init();

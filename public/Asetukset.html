@@ -1,39 +1,20 @@
-<style>
-    #content {
-        font-size: 1rem;
-        /* default */
-    }
-
-    .font-size-display {
-        min-width: 4rem;
-        text-align: center;
-        font-weight: bold;
-    }
-</style>
-
-<div class="sticky-page-header">
+<div class="sticky-header">
     <h1>Asetukset</h1>
     <hr>
 </div>
 
 <section>
-    <div class="container-fluid ms-0 mb-4" style="max-width: 400px;">
-        <div class="row align-items-center">
-            <div class="col">
-                <h5 class="m-0">Zoomaustaso:</h5>
-            </div>
-            <div class="col">
-                <div class="d-flex align-items-center">
-                    <div class="btn-group border" role="group" aria-label="Font size control">
-                        <button type="button" class="btn btn-sm ripple ripple-dark ripple-centered hover-glow"
-                        id="decrease">−</button>
-                        <div class="btn btn-sm ripple ripple-dark ripple-centered hover-glow" id="fontSizeDisplay">1rem
-                        </div>
-                        <button type="button" class="btn btn-sm ripple ripple-dark ripple-centered hover-glow"
-                        id="increase">+</button>
-                    </div>
+    <div class="d-flex align-items-center justify-content-start gap-5 mb-4">
+        <h5 class="m-0">Zoomaustaso:</h5>
+        <div class="d-flex align-items-center">
+            <div class="btn-group border" role="group" aria-label="Font size control">
+                <button type="button" class="btn btn-sm ripple ripple-dark ripple-centered hover-glow"
+                id="decrease">−</button>
+                <div class="btn btn-sm" id="fontSizeDisplay" style="white-space: nowrap;">
                 </div>
-            </div>
+                <button type="button" class="btn btn-sm ripple ripple-dark ripple-centered hover-glow"
+                id="increase">+</button>
+                </div>
         </div>
     </div>
     
@@ -62,6 +43,10 @@
 
 <section>
     <h5>Muistin hallinta</h5>
+    <button class="btn ripple ripple-dark hover-glow" onclick="localStorage.removeItem('grid-data'); location.reload();">
+        Nollaa jakajat
+    </button>
+
     <button class="btn ripple ripple-dark hover-glow" onclick="localStorage.removeItem('grid-template-rows'); localStorage.removeItem('grid-template-columns'); location.reload();">
         Tyhjennä vanhentuneet tiedot
     </button>
@@ -77,29 +62,36 @@
 
 
 <script>
-    const display = document.getElementById("fontSizeDisplay");
-    const step = 0.1;
-    const minSize = 0.5;
-    const maxSize = 2;
+    // Scoping is very important
+    {
+        const root = document.documentElement;
+        const fontSize = window.getComputedStyle(root).getPropertyValue('--font-size').trim();
 
-    let fontSize = 1.0;
+        const display = document.getElementById("fontSizeDisplay");
+        const step = 0.1;
+        let scale = localStorage.getItem('font-scale') || 1;
+        const minscale = 0.5;
+        const maxscale = 2.5;
 
-    function updateFontSize() {
-        fontSize = Math.max(minSize, Math.min(maxSize, fontSize));
-        document.documentElement.style.fontSize = fontSize + "rem";
-        display.textContent = Math.round(fontSize.toFixed(1) * 100) + " %";
+        function updateFontSize() {
+            scale = Math.max(minscale, Math.min(maxscale, scale));
+            localStorage.setItem('font-scale', scale);
+
+            document.documentElement.style.fontSize = `calc(${scale} * (${fontSize}))`;
+            display.textContent = Math.round(scale * 100) + " %";
+        }
+
+        document.getElementById("increase").addEventListener("click", () => {
+            scale += step;
+            updateFontSize();
+        });
+
+        document.getElementById("decrease").addEventListener("click", () => {
+            scale -= step;
+            updateFontSize();
+        });
+
+        // Initial display
+        updateFontSize();
     }
-
-    document.getElementById("increase").addEventListener("click", () => {
-        fontSize += step;
-        updateFontSize();
-    });
-
-    document.getElementById("decrease").addEventListener("click", () => {
-        fontSize -= step;
-        updateFontSize();
-    });
-
-    // Initial display
-    updateFontSize();
 </script>
