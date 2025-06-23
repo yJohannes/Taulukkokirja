@@ -66,6 +66,7 @@
     --color-mark-transparent: rgba(255, 255, 0, 0.4);
     --color-mark: #FF0;
     --color-scrollbar: #949494;
+    --color-scrollbar-bg: transparent;
     --color-selection: rgb(88 155 255 / 30%);
 }
 
@@ -113,6 +114,8 @@
     --color-mark-transparent: rgb(255 140 81 / 52%);
     --color-mark: rgb(255 140 81);
     --color-scrollbar: #888;
+    --color-scrollbar-bg: var(--color-bg-tertiary);
+
     --color-selection: rgb(185 125 251 / 25%);
 }
 
@@ -129,12 +132,12 @@ html {
 
 /* Scrollbar */
 html {
-    scrollbar-color: var(--color-scrollbar) transparent;
+    scrollbar-color: var(--color-scrollbar) var(--color-scrollbar-bg);
 }
 
 
 ::-webkit-scrollbar-thumb {
-    background: transparent;
+    background: var(--color-scrollbar-bg);
 }
 
 *::-webkit-scrollbar {
