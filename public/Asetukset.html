@@ -1,187 +1,92 @@
-<div class="sticky-page-header">
-	<div class="d-flex">
-		<h1>Asetukset</h1>
-	</div>
-	<hr>
+<div class="sticky-header">
+    <h1>Asetukset</h1>
+    <hr>
 </div>
 
-<h3>Korostusväri</h3>
-
-<div class="fit-container">
-    <table class="table-striped" style="max-width: 1100px;">
-        <thead>
-            <tr>
-                <th>Otsikko 1</th>
-                <th>Otsikko 2</th>
-                <th>Otsikko 3</th>
-                <th>Otsikko 4</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>The functional equation satisfied by the Riemann zeta function, which connects its values at 
-                    <span class="latex-container display">s</span>
-                    and 
-                    <span class="latex-container display simulated-copy simulated-hover" >1-s</span>
-                    </td>
-                    <td><span class="latex-container display">\zeta(s) = 2^s \pi^{s-1} \sin\left( \frac{\pi s}{2} \right) \Gamma(1 - s) \zeta(1 - s)                </span></td>
-                    <td class="simulated-highlight-col">
-                        It’s deeply tied to analytic number theory and the distribution of primes.
-                    </td>
-                    <td></td>
-            </tr>
-            <tr>
-                <td>Rivi 2</td>
-                <td></td>
-                <td class="simulated-highlight-col"></td>
-                <td></td>
-            </tr>
-            <tr class="simulated-highlight-row">
-                <td>Rivi 3</td>
-                <td></td>
-                <td class="simulated-highlight-col"></td>
-                <td></td>
-            </tr>
-            <tr>
-                <td>algebraic topology — <span class="__________simulated-selection">the Euler characteristic</span> expressed via Betti numbers
-                </td>
-                <td>
-                    <span class="latex-container display simulated-hover">
-                        \chi = \sum_{k=0}^n (-1)^k b_k
-                    </span>
-                </td>
-                <td class="simulated-highlight-col"></td>
-                <td></td>
-            </tr>
-            <tr>
-                <td>Rivi 5</td>
-                <td>
-                    <span class="latex-container display simulated-copy">
-                        \left(A+B\right)\left(A-B\right)=A^2-AB+BA-B^2
-                    </span>
-                </td>
-                <td class="simulated-highlight-col">
-                    <span class="latex-container display">A</span>
-                    ja
-                    <span class="latex-container display">B</span>
-                    ovat samaa tyyppiä ja neliömatriiseja
-                </td>
-                <td></td>
-            </tr>
-        </tbody>
-    </table>
-</div>
-
-<div class="container-fluid mt-4" style="max-width: 1100px; margin-left: 0; margin-right: auto;">
-    <div class="row justify-content-start">
-        <div class="col-auto mb-4 me-2">
-            <div class="color-box rounded" style="background-color: #a83258;" onclick="setColor('#a83258')"></div>
-        </div>
-        <div class="col-auto mb-4 me-2">
-            <div class="color-box rounded" style="background-color: rgb(163, 24, 24);" onclick="setColor('rgb(163, 24, 24)')"></div>
-        </div>
-        <div class="col-auto mb-4 me-2">
-            <div class="color-box rounded" style="background-color: #a84a32;" onclick="setColor('#a84a32')"></div>
-        </div>
-        <div class="col-auto mb-4 me-2">
-            <div class="color-box rounded" style="background-color: rgb(204, 120, 92);" onclick="setColor('rgb(204, 120, 92)')"></div>
-        </div>
-        <div class="col-auto mb-4 me-2">
-            <div class="color-box rounded" style="background-color: #a87132;" onclick="setColor('#a87132')"></div>
-        </div>
-        <div class="col-auto mb-4 me-2">
-            <div class="color-box rounded" style="background-color: #60a832;" onclick="setColor('#60a832')"></div>
-        </div>
-        <div class="col-auto mb-4 me-2">
-            <div class="color-box rounded" style="background-color: #2E6F40;" onclick="setColor('#2E6F40')"></div>
-        </div>
-        <div class="col-auto mb-4 me-2">
-            <div class="color-box rounded" style="background-color: #3291a8;" onclick="setColor('#3291a8')"></div>
-        </div>
-        
-        <div class="col-auto mb-4 me-2">
-            <div class="color-box rounded" style="background-color: #3467eb;" onclick="setColor('#3467eb')"></div>
-        </div>
-
-        <div class="col-auto mb-4 me-2">
-            <div class="color-box rounded" style="background-color: #021CA4;" onclick="setColor('#021CA4')"></div>
-        </div>
-        <div class="col-auto mb-4 me-2">
-            <div class="color-box rounded" style="background-color: #4432a8;" onclick="setColor('#4432a8')"></div>
-        </div>
-        <div class="col-auto mb-4 me-2">
-            <div class="color-box rounded" style="background-color: #4b5180;" onclick="setColor('#4b5180')"></div>
-        </div>
-        <div class="col-auto mb-4 me-2">
-            <div class="color-box rounded" style="background-color: #5a6275;" onclick="setColor('#5a6275')"></div>
-        </div>
-        <div class="col-auto mb-4 me-2">
-            <div class="color-box rounded" style="background-color: #878787;" onclick="setColor('#878787')"></div>
-        </div>
-        <div class="col-auto mb-4 me-2">
-            <div class="color-box rounded" style="background-color: #000000;" onclick="setColor('#000000')"></div>
-        </div>
-
-        <div class="col-auto mb-4 me-2">
-            
+<section>
+    <div class="d-flex align-items-center justify-content-start gap-5 mb-4">
+        <h5 class="m-0">Zoomaustaso:</h5>
+        <div class="d-flex align-items-center">
+            <div class="btn-group border" role="group" aria-label="Font size control">
+                <button type="button" class="btn btn-sm ripple ripple-dark ripple-centered hover-glow"
+                id="decrease">−</button>
+                <div class="btn btn-sm" id="fontSizeDisplay" style="white-space: nowrap;">
+                </div>
+                <button type="button" class="btn btn-sm ripple ripple-dark ripple-centered hover-glow"
+                id="increase">+</button>
+                </div>
         </div>
     </div>
-</div>
+    
+    <div class="container-fluid ms-0">
+        <div class="row">
+            <div class="col">
+                <p style="max-width: unset;">
+                    Lorem ipsum dolor sit amet.
+                    Eos dolorum vero non facilis perspiciatis ad minima velit id accusantium ratione et dolorem pariatur.
+                    Aut repellendus harum qui maxime alias quo fugiat fugit et laborum beatae ut minus itaque nam animi perferendis? Eum
+                    impedit optio ut quia quia qui quia dignissimos non velit iure a numquam totam.
+                    Sed provident earum vel officiis quisquam ut beatae accusamus ut incidunt maiores aut recusandae accusamus!
+                </p>
+                <p>
+                    Sed expedita vitae est odio doloribus id porro velit vel facilis sint et enim quidem et commodi internos aut sunt
+                    rerum.
+                    Est quia veritatis et iure natus non reiciendis tempora.
+                    Ad veritatis quae 33 incidunt blanditiis aut aspernatur animi et sapiente consequatur vel repellendus quasi rem
+                    accusamus expedita et iure sunt.
+                    Aut quod repellat est reiciendis odit est ipsa beatae.
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
 
-<br>
+<section>
+    <h5>Muistin hallinta</h5>
+    <button class="btn ripple ripple-dark hover-glow" onclick="localStorage.removeItem('grid-data'); localStorage.removeItem('content-grid'); location.reload();">
+        Nollaa jakajat
+    </button>
 
-<style>
-    .simulated-selection {
-        background-color: var(--color-primary);
-        color: white;
-    }
-    .simulated-hover .katex {
-        color: var(--color-accent);
-    }   
+    <button class="btn ripple ripple-dark hover-glow" onclick="localStorage.removeItem('grid-template-rows'); localStorage.removeItem('grid-template-columns'); location.reload();">
+        Tyhjennä vanhentuneet tiedot
+    </button>
+    
+    <button class="btn btn-danger bg-danger text-white ripple ripple-dark hover-glow" onclick="if(confirm('Tyhjennä muisti?')) { localStorage.clear(); location.reload(); }">
+        Tyhjennä muisti
+    </button>
+</section>
 
-    .simulated-hover .katex::before {
-        content: "";
-        position: absolute;
-        top:    -6px;
-        left:   -6px;
-        right:  -6px;
-        bottom: -6px;
-
-        border: 1px dashed #7777773f;
-        border-radius: 4px;
-
-        pointer-events: none;   /* Let mouse interactions pass through */
-    }
-
-    .simulated-copy .katex {
-        box-shadow: inset 0 0 0 1000px var(--color-focus);
-    }
-
-    .simulated-highlight-row,
-    .simulated-highlight-col {
-        box-shadow: inset 0 0 0 1000px var(--color-focus);
-        transition: box-shadow 0.15s ease-in-out;
-    }
-
-    .color-box {
-        width: 5rem; height: 5rem;
-        cursor: pointer;
-    }
-</style>
+<!-- <label for="color-picker">Pick a color:</label>
+<input type="color" id="color-picker" value="#ff0000"/> -->
 
 <script>
-    function setColor(color) {
-        let colorFocus;
-        if (color.startsWith('rgb')) {
-            colorFocus = color.replace('rgb', 'rgba').replace(')', ', 0.2)');
-        } else {
-            colorFocus = color + "20" // Append 20 (hex alpha) for 0.3 opacity
-        }
+    const root = document.documentElement;
+    const fontSize = window.getComputedStyle(root).getPropertyValue('--font-size').trim();
 
-        document.documentElement.style.setProperty('--color-accent', color);
-        document.documentElement.style.setProperty('--color-focus', colorFocus);
+    const display = document.getElementById("fontSizeDisplay");
+    const step = 0.1;
+    let scale = localStorage.getItem('font-scale') || 1;
+    const minscale = 0.5;
+    const maxscale = 2.5;
 
-        localStorage.setItem('--color-accent', color);
-        localStorage.setItem('--color-focus', colorFocus);
+    function updateFontSize() {
+        scale = Math.max(minscale, Math.min(maxscale, scale));
+        localStorage.setItem('font-scale', scale);
+
+        document.documentElement.style.fontSize = `calc(${scale} * (${fontSize}))`;
+        display.textContent = Math.round(scale * 100) + " %";
     }
+
+    document.getElementById("increase").addEventListener("click", () => {
+        scale += step;
+        updateFontSize();
+    });
+
+    document.getElementById("decrease").addEventListener("click", () => {
+        scale -= step;
+        updateFontSize();
+    });
+
+    // Initial display
+    updateFontSize();
 </script>

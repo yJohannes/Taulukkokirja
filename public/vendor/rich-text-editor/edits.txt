@@ -1,6 +1,0 @@
-toolbar/index.tsx:
-    min-height: 58px;
-    align-items: end;
-
-text-area/index.tsx:
-    max-height: 400px !important;

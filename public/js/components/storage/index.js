@@ -1,12 +1,25 @@
-export function getFromStorageList(listName) {
+export const StorageHelper = {
+    getFromStorageJSON,
+    getFromStorageList,
+    addToStorageList,
+    removeFromStorageList,
+    setStorageItem,
+}
+
+function getFromStorageJSON(key) {
+    const raw = localStorage.getItem(key) || '{}';
+    return JSON.parse(raw);
+}
+
+function getFromStorageList(listName) {
     const raw = localStorage.getItem(listName) || '[]';
     return JSON.parse(raw);
 }
 
-export function addToStorageList(listName, item, prepend=false) {
+function addToStorageList(listName, item, prepend=false) {
     let list = getFromStorageList(listName);
 
-
+    
     if (!list.includes(item)) {
         if (prepend) {
             list.unshift(item);
@@ -17,7 +30,7 @@ export function addToStorageList(listName, item, prepend=false) {
     }
 }
 
-export function removeFromStorageList(listName, item) {
+function removeFromStorageList(listName, item) {
     let list = getFromStorageList(listName);
 
     const index = list.indexOf(item);
@@ -27,6 +40,6 @@ export function removeFromStorageList(listName, item) {
     }
 }
 
-export function setStorageItem(itemName, item) {
+function setStorageItem(itemName, item) {
     localStorage.setItem(itemName, JSON.stringify(item));
 }

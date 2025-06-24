@@ -1,0 +1,112 @@
+<div class="sticky-header">
+    <h1>Fourierin II laki</h1>
+    <hr>
+</div>
+
+<div class="derivation">
+    <p>
+        Tarkastellaan yksiulotteista, 
+        <span class="latex-container">x</span>
+        -akselin suuntaista lämmön siirtymistä suorakaiteen muotoisessa laatikossa.
+        Päädyt ovat kohdissa
+        <span class="latex-container full">x</span>
+        ja
+        <span class="latex-container full">x+\Delta x</span>
+        . Laatikkoon lisätty energia on laatikkoon tulleen ja poistuneen energian erotus.
+        Laatikkoon tuleva lämpövirta 
+        <span class="latex-container full">\Phi=\Delta qA</span>
+        . Toisaalta 
+        <span class="latex-container full">\Phi=\frac{\Delta Q}{\Delta t}</span>
+        .
+        
+    </p>
+    <p>
+        Ilmaistaan tuleva lämpö kappaleen lämpötilan muutoksena
+        <span class="latex-container full">\Delta qA=\frac{\Delta Q}{\Delta t}=\frac{cm\Delta T}{\Delta t}</span>
+        <br>
+        <span class="latex-container full">\Delta qA\Delta t=\Delta Q=cm\Delta T=c\rho V\Delta T=c\rho A\Delta x\Delta T</span>
+        <br>
+        <span class="latex-container full">\Delta qA=c\rho A\Delta x\frac{\Delta T}{\Delta t}</span>
+        <br>
+        <span class="latex-container full">\Delta q=c\rho\Delta x\frac{\Delta T}{\Delta t}</span>
+        <br>
+        
+        Ts. <span class="latex-container full">q\left(x+\Delta x{,}\ t\right)-q\left(x{,}\ t\right)=-c\rho\Delta x\frac{\Delta T}{\Delta t}</span>
+        .
+    </p>
+    <p>
+        Käytetään derivaatan määritelmää:
+        <span class="latex-container full">\frac{q\left(x+\Delta x{,}\ t\right)-q\left(x{,}\ t\right)}{\Delta x}=-c\rho\frac{\Delta T}{\Delta t}</span>
+        <span class="latex-container full">\Rightarrow</span>
+        <span class="latex-container full">\frac{\partial q\left(x{,}\ t\right)}{\partial x}=-c\rho\frac{\partial T\left(x{,}\ t\right)}{\partial t}</span>
+        .
+    </p>
+    <p>
+        Tämä yhtälö kertoo, että energia säilyy. Yhtälön vasemmalla puolella on energiavirrantiheyden muutos matkalla
+        <span class="latex-container full">\partial x</span>
+        pisteestä
+        <span class="latex-container full">x</span>
+        ja oikealla puolella samassa pisteessä energiamäärän muutos tilavuusyksikköä kohti aikana
+        <span class="latex-container full">\partial t</span>
+    </p>
+    <p>
+        Kun tähän lauseeseen sijoitetaan
+        <b>Fourierin I lain</b>
+        mukainen
+        <span class="latex-container full">q</span>
+        :n lauseke ensin derivoimalla puolittain: 
+        <br>
+        <span class="latex-container full">q\left(x{,}\ t\right)=-\lambda \frac{\partial T\left(x{,}\ t\right)}{\partial x}</span>
+        <span class="latex-container full">\Rightarrow</span>
+        <span class="latex-container full">\frac{\partial q\left(x{,}\ t\right)}{\partial x}=-\lambda \frac{\partial ^2T\left(x{,}\ t\right)}{\partial ^2x}</span>
+        <br>
+        ja sitten sijoittamalla
+        <span class="latex-container full">-\lambda \frac{\partial ^2T\left(x{,}\ t\right)}{\partial ^2x}=-c\rho \frac{\partial T\left(x{,}\ t\right)}{\partial t}</span>
+        ,
+        <br>
+        saadaan
+        <b>Fourierin II laki</b>
+        , joka kertoo, miten lämpötila muuttuu ajassa ja paikassa:
+    </p>
+    
+    <span class="latex-container full display theorem">\frac{\partial ^2T\left(x{,}\ t\right)}{\partial ^2x}=\frac{c\rho }{\lambda }\frac{\partial T\left(x{,}\ t\right)}{\partial t}</span>
+    
+    <p>
+        Lämmön diffuusiokerroin/lämpötilan tasoittumiskerroin
+        <span class="latex-container full">\alpha = \frac{\lambda}{c\rho}</span>
+        .
+    </p>
+</div>
+    
+<p>
+    Kun ratkaistaan Fourierin II lain mukainen yhtälö yksinkertaisessa tapauksessa, nähdään, että ajassa   
+    <span class="latex-container full">t</span>
+    lämmön siirtymismatkan
+    <span class="latex-container full">x</span>
+    suuruusluokka saadaan yhtälöstä
+    <span class="latex-container full">x^2 = \alpha t</span>
+    , eli kaksinkertaisen matkan siirtyminen vaatii nelinkertaisen ajan.
+    Tämä on diffuusiolle ominainen tapa levitä ympäristöön.
+    <span class="latex-container full">\alpha</span>
+    kertoo diffuusion tehokkuuden.
+</p>
+
+<p>
+    Kaasuille
+    <span class="latex-container full">\alpha \approx 10^{-5}\ \mathrm{\frac{m^2}{s}}</span>
+    , nesteille
+    <span class="latex-container full">10^{-7}\ \mathrm{\frac{m^2}{s}}</span>
+    ja kiinteille aineille
+    <span class="latex-container full">10^{-4} \ldots 10^{-7}\ \mathrm{\frac{m^2}{s}}</span>
+    . Nesteillä
+    <span class="latex-container full">\alpha</span>
+    on pienempi kuin kaasuille, koska vaikka lämmönjohtavuus on suurempi, niin tiheys ja ominaislämpökapasiteetti ovat suurempia.
+    Nesteissä täytyy siirtä enemmän lämpöä kuin kjaasuissa. Kiinteässä aineessa lisää vaihtelua auheutuu metallien lämpöä kuljettavista elektroneista,
+    millä ei ole mitään tekemistä atomien diffuusion kanssa. Metalleilla
+    <span class="latex-container full">\alpha</span>
+    on suuri.
+</p>
+
+<p>
+    Suuri tiheys ja ominaislämpökapasiteetti pienentävät diffuusion tehokkuutta, kun taas suuri lämmönjohtavuus parantaa sitä. 
+</p>

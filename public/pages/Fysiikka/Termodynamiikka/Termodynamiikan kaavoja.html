@@ -1,7 +1,5 @@
-<div class="sticky-page-header">
-	<div class="d-flex">
-		<h1>Termodynamiikan kaavoja</h1>
-	</div>
+<div class="sticky-header">
+	<h1>Termodynamiikan kaavoja</h1>
 	<hr>
 </div>
 
@@ -22,171 +20,488 @@
         <thead>
             <tr>
                 <th>Suure</th>
-                <th>Kaava</th>
+                <th>Kaava/Tunnus</th>
                 <th>Yksikkö</th>
+                <th>Selite</th>
             </tr>
         </thead>
         <tbody>
+            <tr><td colspan="4"><b>Lämpötila-asteikot</b></td></tr>
             <tr>
-                <td>lämpötila-asteikot</td>
-                <td><span class="latex-container display">\frac{T}{\text{K}}=\dfrac{t}{° \text{C}}+273{,}15</span></td>
-                <td><span class="latex-container display">\text{K}</span></td>
+                <td>Kelvin</td>
+                <td><span class="latex-container full">\frac{T}{\text{K}}=\dfrac{t}{° \text{C}}+273{,}15</span></td>
+                <td><span class="latex-container full">\text{K}</span></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Celsius</td>
+                <td><span class="latex-container full">\frac{t}{° \text{C}}=\dfrac{T}{\text{K}}-273{,}15</span></td>
+                <td><span class="latex-container full">°\text{C}</span></td>
+                <td></td>
             </tr>
             <tr>
                 <td></td>
-                <td><span class="latex-container display">\frac{t}{° \text{C}}=\dfrac{T}{\text{K}}-273{,}15</span></td>
-                <td><span class="latex-container display">°\text{C}</span></td>
-            </tr>
-            <tr>
+                <td><span class="latex-container full">\frac{t}{° \text{C}}=\dfrac{5}{9}\left( \dfrac{t}{° \text{F}}-32 \right)</span></td>
+                <td><span class="latex-container full">°\text{C}</span></td>
                 <td></td>
-                <td><span class="latex-container display">\frac{t}{° \text{C}}=\dfrac{5}{9}\left( \dfrac{t}{° \text{F}}-32 \right)</span></td>
-                <td><span class="latex-container display">°\text{C}</span></td>
             </tr>
             <tr>
+                <td>Fahrenheit</td>
+                <td><span class="latex-container full">\frac{t}{° \text{F}}=\dfrac{9}{5}\dfrac{t}{° \text{C}}+32</span></td>
+                <td><span class="latex-container full">°\text{F}</span></td>
                 <td></td>
-                <td><span class="latex-container display">\frac{t}{° \text{F}}=\dfrac{9}{5}\dfrac{t}{° \text{C}}+32</span></td>
-                <td><span class="latex-container display">°\text{F}</span></td>
+            </tr>
+            <tr><td colspan="4"><b>Kaasu</b></td></tr>
+            <tr>
+                <td>työ isobaarisessa prosessissa</td>
+                <td><span class="latex-container full">W=p\Delta V</span></td>
+                <td></td>
+                <td></td>
             </tr>
             <tr>
-                <td>Daltonin osapainelaki</td>
-                <td><span class="latex-container display">p=\Sigma {{p}_{i}}</span></td>
+                <td>työ isotermisessä prosessissa</td>
+                <td><span class="latex-container full">W=nRT \ln \frac{V_2}{V_1}</span></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>työ adiabaattisessa prosessissa</td>
+                <td><span class="latex-container full">W=\frac{p_1V_1}{\gamma -1}\left[1-\left(\frac{V_1}{V_2}\right)^{\gamma -1}\right]</span></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>termodynamiikan 1. pääsääntö</td>
+                <td><span class="latex-container full">\Delta U=Q+W</span></td>
+                <td></td>
                 <td></td>
             </tr>
             <tr>
                 <td>ideaalikaasun tilanyhtälö</td>
-                <td><span class="latex-container display">pV=nRT</span></td>
+                <td><span class="latex-container full">pV=nRT</span></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>yleinen kaasulaki</td>
+                <td><span class="latex-container full">\frac{pV}{T}=\text{vakio}</span></td>
+                <td></td>
                 <td></td>
             </tr>
             <tr>
                 <td>Poissonin laki/adiabaattinen muutos</td>
                 <td>
-                    <span class="latex-container display">p{{V}^{\kappa }}=\text{vakio}</span>
+                    <span class="latex-container full">p{{V}^{\kappa }}=\text{vakio}</span>
                 </td>
                 <td></td>
+                <td>
+                    <span class="latex-container full">\kappa</span>
+                    on adiabaattivakio
+                </td>
             </tr>
             <tr>
                 <td>adiabaattivakio</td>
                 <td>
-                    <span class="latex-container display">\kappa =\dfrac{{{c}_{p}}}{{{c}_{V}}} = \frac{C_p}{C_V}</span>
+                    <span class="latex-container full">\gamma = \kappa = \dfrac{{{c}_{p}}}{{{c}_{V}}} = \frac{C_p}{C_V}</span>
                 </td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>puristuvuus</td>
+                <td><span class="latex-container full">V={{V}_{0}}-\kappa \ {{V}_{0}}\Delta p</span></td>
+                <td><span class="latex-container full">\text{1/Pa}</span></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Daltonin osapainelaki</td>
+                <td><span class="latex-container full">p=\Sigma {{p}_{i}}</span></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>1-atomisen ideaalikaasun sisäenergia</td>
+                <td><span class="latex-container full">U=\dfrac{3}{2}nRT</span></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr><td colspan="4"><b>Lämpö ja lämpökapasiteetti</b></td></tr>
+            <tr>
+                <td>ominaislämpökapasiteetti</td>
+                <td><span class="latex-container full">c = \frac{Q}{m\Delta T}</span></td>
+                <td><span class="latex-container full">\mathrm{\frac{J}{kg\ K}}</span></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>lämpökapasiteetti</td>
+                <td>
+                    <span class="latex-container full">C = \frac{Q}{\Delta T}</span>
+                    <span class="latex-container full">C=cm</span>
+                </td>
+                <td><span class="latex-container full">\mathrm{\frac{J}{K}}</span></td>
+                <td>
+                    Lämpökapasiteetti on lämpöenergian muutos
+                    <span class="latex-container full">Q</span>
+                    , joka tarvitaan tietyn lämpötilan muutoksen 
+                    <span class="latex-container full">\Delta T</span>
+                    aikaansaamiseksi.
+                </td>
+            </tr>
+            <tr>
+                <td>lämpömäärä</td>
+                <td><span class="latex-container full">Q = cm\Delta T</span></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>sulaminen</td>
+                <td><span class="latex-container full">Q=sm=l_s m</span></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>höyrystyminen</td>
+                <td><span class="latex-container full">Q=rm=l_h m</span></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>palamisessa vapautuva lämpömäärä</td>
+                <td><span class="latex-container full">Q=Hm</span></td>
+                <td></td>
                 <td></td>
             </tr>
             <tr>
                 <td>vakion paineen ominaislämpökapasiteetti</td>
                 <td>
-                    <span class="latex-container display">c_p=\left(\frac{\text{d}Q}{\text{d}T}\right)_p</span>
+                    <span class="latex-container full">c_p=\left(\frac{\text{d}Q}{\text{d}T}\right)_p</span>
                 </td>
+                <td></td>
                 <td></td>
             </tr>
             <tr>
                 <td>vakion tilavuuden ominaislämpökapasiteetti</td>
                 <td>
-                    <span class="latex-container display">c_V=\left(\frac{\text{d}Q}{\text{d}T}\right)_V</span>
+                    <span class="latex-container full">c_V=\left(\frac{\text{d}Q}{\text{d}T}\right)_V</span>
                 </td>
+                <td></td>
                 <td></td>
             </tr>
             <tr>
                 <td>vakion paineen molaarinen ominaislämpökapasiteetti</td>
                 <td>
-                    <span class="latex-container display">C_p=Mc_p</span>
+                    <span class="latex-container full">C_p=Mc_p</span>
                 </td>
+                <td></td>
                 <td></td>
             </tr>
             <tr>
                 <td>vakion tilavuuden molaarinen ominaislämpökapasiteetti</td>
                 <td>
-                    <span class="latex-container display">C_V=Mc_V</span>
+                    <span class="latex-container full">C_V=Mc_V</span>
                 </td>
+                <td></td>
                 <td></td>
             </tr>
             <tr>
                 <td>Mayerin yhtälö/moolinen kaasuvakio</td>
                 <td>
-                    <span class="latex-container display">c_p - c_V = R</span>
+                    <span class="latex-container full">c_p - c_V = R</span>
                 </td>
                 <td></td>
-            </tr>
-            <tr>
-                <td>pituuden lämpölaajeneminen</td>
-                <td>
-                    <span class="latex-container display">l={{l}_{0}}+\alpha \ {{l}_{0}}\Delta T</span>
-                </td>
-                <td></td>
-            </tr>
-            <tr>
-                <td>pinta-alan lämpölaajeneminen</td>
-                <td><span class="latex-container display">A={{A}_{0}}+\beta \ {{A}_{0}}\Delta T</span></td>
-                <td></td>
-            </tr>
-            <tr>
-                <td>tilavuuden lämpölaajeneminen</td>
-                <td><span class="latex-container display">V={{V}_{0}}+\gamma \ {{V}_{0}}\Delta T</span></td>
-                <td></td>
-            </tr>
-            <tr>
-                <td>pituuden lämpötilakerroin</td>
-                <td><span class="latex-container display">\alpha</span></td>
-                <td><span class="latex-container display">\frac{1}{\text{K}}</span></td>
-            </tr>
-            <tr>
-                <td>pinta-alan lämpötilakerroin</td>
-                <td><span class="latex-container display">\beta \approx 2\alpha</span></td>
-                <td><span class="latex-container display">\frac{1}{\text{K}}</span></td>
-            </tr>
-            <tr>
-                <td>tilavuuden lämpötilakerroin</td>
-                <td><span class="latex-container display">\gamma \approx 3 \alpha</span></td>
-                <td><span class="latex-container display">\frac{1}{\text{K}}</span></td>
-            </tr>
-            <tr>
-                <td>puristuvuus</td>
-                <td><span class="latex-container display">V={{V}_{0}}-\kappa \ {{V}_{0}}\Delta p</span></td>
-                <td><span class="latex-container display">\text{1/Pa}</span></td>
-            </tr>
-            <tr>
-                <td>työ</td>
-                <td><span class="latex-container display">W=p\Delta V</span></td>
-                <td></td>
-            </tr>
-            <tr>
-                <td>termodynamiikan 1. pääsääntö</td>
-                <td><span class="latex-container display">\Delta U=Q+W</span></td>
-                <td></td>
-            </tr>
-            <tr>
-                <td>1-atomisen ideaalikaasun sisäenergia</td>
-                <td><span class="latex-container display">U=\dfrac{3}{2}nRT</span></td>
-                <td></td>
-            </tr>
-            <tr>
-                <td>lämpökapasiteeti</td>
-                <td><span class="latex-container display">C=cm</span></td>
-                <td><span class="latex-container display">\text{J/K}</span></td>
-            </tr>
-            <tr>
-                <td>lämpömäärä</td>
-                <td><span class="latex-container display">Q = cm\Delta T</span></td>
-                <td></td>
-            </tr>
-            <tr>
-                <td>sulaminen</td>
-                <td><span class="latex-container display">Q=sm</span></td>
-                <td></td>
-            </tr>
-            <tr>
-                <td>höyrystyminen</td>
-                <td><span class="latex-container display">Q=rm</span></td>
-                <td></td>
-            </tr>
-            <tr>
-                <td>palamisessa vapautuva lämpömäärä</td>
-                <td><span class="latex-container display">Q=Hm</span></td>
                 <td></td>
             </tr>
             <tr>
                 <td>entropia</td>
-                <td><span class="latex-container display">\Delta S\ge \dfrac{\Delta Q}{T}</span></td>
-                <td><span class="latex-container display">\text{J/K}</span></td>
+                <td><span class="latex-container full">\Delta S\ge \dfrac{\Delta Q}{T}</span></td>
+                <td><span class="latex-container full">\mathrm{\frac{J}{K}}</span></td>
+                <td></td>
+            </tr>
+            <tr><td colspan="4"><b>Lämmön johtuminen</b></td></tr>
+            <tr>
+                <td>Lämpövirta</td>
+                <td><span class="latex-container full">\Phi = \frac{\Delta Q}{\Delta t}</span></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>lämpövirran tiheys</td>
+                <td><span class="latex-container full">q</span></td>
+                <td><span class="latex-container full">\mathrm{\frac{W}{m^2}}</span></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>lämmönjohtavuus</td>
+                <td><span class="latex-container full">\lambda</span></td>
+                <td><span class="latex-container full">\mathrm{\frac{W}{m K}}</span></td>
+                <td>Materiaalille ominainen vakio.</td>
+            </tr>
+            <tr>
+                <td>Fourierin I laki</td>
+                <td>
+                    <span class="latex-container full">q = -\lambda \frac{\Delta T}{\Delta x}</span>
+                    <br>
+                    <span class="latex-container full">\Phi = -\lambda A \frac{\Delta T}{\Delta x}</span>
+                    <br>
+                    <span class="latex-container full">q = -k \nabla T</span>
+                </td>
+                <td></td>
+                <td>
+                    <p>
+                        Katso 
+                        <a href="#/pages/Fysiikka/Termodynamiikka/Fourierin_I_laki">Termodynamiikka/Fourierin I laki</a>
+                    </p>
+                </td>
+            </tr>
+            <tr>
+                <td>Fourierin II laki</td>
+                <td>
+                    <span class="latex-container full">\frac{\partial T\left(x{,}\ t\right)}{\partial t} = \alpha \frac{\partial ^2T\left(x{,}\ t\right)}{\partial ^2x}</span>
+                    <br>
+                    <span class="latex-container full">\frac{\partial T}{\partial t}=\alpha \nabla ^2T</span>
+                </td>
+                <td></td>
+                <td>
+                    <p>
+                        Katso 
+                        <a href="#/pages/Fysiikka/Termodynamiikka/Fourierin_II_laki">Termodynamiikka/Fourierin II laki</a>
+                    </p>
+                </td>
+            </tr>
+            <tr>
+                <td>lämmön diffuusiokerroin/lämpötilan tasoittumiskerroin</td>
+                <td><span class="latex-container full">\alpha = \frac{\lambda}{c\rho}</span></td>
+                <td><span class="latex-container full">\mathrm{\frac{m^2}{s}}</span></td>
+                <td>
+                    Kaasuille
+                    <span class="latex-container full">\alpha \approx 10^{-5}\ \mathrm{\frac{m^2}{s}}</span>
+                    , nesteille
+                    <span class="latex-container full">10^{-7}\ \mathrm{\frac{m^2}{s}}</span>
+                    ja kiinteille aineille
+                    <span class="latex-container full">10^{-4} \ldots 10^{-7}\ \mathrm{\frac{m^2}{s}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>lämmönvastus (lämpöisolanssi)</td>
+                <td><span class="latex-container full">R=\frac{L}{\lambda}</span></td>
+                <td><span class="latex-container full">\mathrm{\frac{Km^2}{W}}</span></td>
+                <td>
+                    materiaalikerroksen paksuus
+                    <span class="latex-container full">L</span>
+                </td>
+            </tr>
+            <tr>
+                <td>lämpövirrantiheys</td>
+                <td><span class="latex-container full">q = \frac{\Phi}{A}</span></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr><td colspan="4"><b>Lämmön johtuminen monikerrosrakenteessa</b></td></tr>
+            <tr>
+                <td>sarjassa olevien kerrosten kokonaislämmönvastus</td>
+                <td><span class="latex-container full">R = \Sigma R_i = \Sigma \frac{L_i}{\lambda_i}</span></td>
+                <td></td>
+                <td>Lämpötilagradientti ei ole eri materiaaleissa sama, mutta kaikissa vakio. Lämpövirta on sama jokaisen materiaalin poikkileikkauksessa.</td>
+            </tr>
+            <tr><td colspan="4"><b>Lämmön johtuminen rajapinnassa</b></td></tr>
+            <tr>
+                <td>lämmönsiirtymiskerroin rajapinnalla</td>
+                <td><span class="latex-container full">h</span></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>rajapinnan ja ohi virtaavan fluidin lämpövirta</td>
+                <td><span class="latex-container full">\Phi = hA \left(T_f - T_1 \right)</span></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>rajapinnan lämmönvastus</td>
+                <td><span class="latex-container full">R_h = \frac{1}{h}</span></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>kokonaislämmönvastus</td>
+                <td><span class="latex-container full">R=\Sigma \frac{L_i}{\lambda _i}+\Sigma \frac{1}{h_i}=\Sigma R_i</span></td>
+                <td></td>
+                <td>
+                    <span class="latex-container full">h_i</span>
+                    :t edustavat rajapintoja.
+                </td>
+            </tr>
+            <tr>
+                <td>rakenteen lämmönläpäisykerroin</td>
+                <td><span class="latex-container full">U=\frac{1}{R}</span></td>
+                <td><span class="latex-container full">\mathrm{\frac{W}{m^2K}}</span></td>
+                <td>Rakenteen kokonaislämmönvastuksen käänteisluku. Rakennusmääräyskokoelma (C3) määrittelee eri rakennuksien rakenteiden korkeimmat lämmönläpäisykertoimet.</td>
+            </tr>
+            <tr>
+                <td>rakenteen lämpövirta</td>
+                <td><span class="latex-container full">\Phi = UA \left( T_1 - T_2 \right)</span></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>lämpötila lämpöhauteessa</td>
+                <td><span class="latex-container full">T\left(t\right)=T_{lh}-\left(T_{lh}-T_0\right)e^{-\frac{UA}{mc}t}</span></td>
+                <td></td>
+                <td>
+                    <p>
+                        Katso 
+                        <a href="#/pages/Fysiikka/Termodynamiikka/Lämpöhaude">Termodynamiikka/Lämpöhaude</a>
+                    </p>
+                </td>
+            </tr>
+            <tr>
+                <td>lämmitysaika lämpöhauteessa</td>
+                <td><span class="latex-container full">t=\frac{mc}{UA}\ln \left(\frac{T_{lh}-T_0}{T_{lh}-T_l}\right)</span></td>
+                <td></td>
+                <td>
+                    <p>
+                        Katso 
+                        <a href="#/pages/Fysiikka/Termodynamiikka/Lämpöhaude">Termodynamiikka/Lämpöhaude</a>
+                    </p>
+                </td>
+            </tr>
+            <tr><td colspan="4"><b>Rajapinnan vaikutus lämmön siirtymiseen</b></td></tr>
+            <tr>
+                <td>Biot'n luku</td>
+                <td><span class="latex-container full">Bi = \frac{hL}{2\lambda }=\frac{T_k-T_p}{T_p-T_f}=\frac{\Delta T_{\text{aineessa}}}{\Delta T_{\text{rajapinnassa}}}</span></td>
+                <td>dimensioton luku</td>
+                <td>
+                    <p>
+                        Katso 
+                        <a href="#/pages/Fysiikka/Termodynamiikka/Rajapinnan vaikutus lämmön siirtymiseen">Termodynamiikka/Rajapinnan vaikutus lämmön siirtymiseen</a>
+                    </p>
+                </td>
+
+            </tr>
+            
+            <tr><td colspan="4"><b>Lämmön johtuminen putkesta ja pallosta</b></td></tr>
+            <tr>
+                <td>putki (sylinteri)</td>
+                <td><span class="latex-container full">\Phi = 2\pi L \lambda \frac{T_s - T_u}{ln\left(r_u / r_s \right)}</span></td>
+                <td></td>
+                <td>Lämpövirta menee nollaan, kun ulkosäde eli eristekerron paksuus kasvaa rajatta.</td>
+            </tr>
+            <tr>
+                <td>pallo</td>
+                <td><span class="latex-container full">\Phi = 4\pi \lambda \frac{T_s - T_u}{1/r_s - 1/r_u}</span></td>
+                <td></td>
+                <td>Lämpövirta lähestyy jotakin lukua, kun ulkosäde kasvaa rajatta. Voi olla jopa edullisempaa olla eristämättä pientä palloa.</td>
+            </tr>
+            <tr><td colspan="4"><b>Lämmön konvektio, energiatase</b></td></tr>
+            <tr>
+                <td>virtauksen mukana siirtyvä lämpövirta</td>
+                <td>
+                    <span class="latex-container full">\Phi = cTq_m</span>
+                    <span class="latex-container full">\left(\Phi = \frac{Q}{t} = \frac{mcT}{t} = cT \frac{m}{t} \right)</span>
+                </td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>energiatase, kun kappaletta lämmitetään fluidilla</td>
+                <td>
+                    <span class="latex-container full">\frac{\Delta E}{\Delta t} = cq_m \left( T_{in} - T_{out} \right) = m_k c_k \frac{\Delta T}{\Delta t}</span>
+                </td>
+                <td></td>
+                <td>aikayksikössä kappaleeseen tuotu energia</td>
+            </tr>
+            <tr>
+                <td>massatase</td>
+                <td>
+                    <span class="latex-container full">\frac{\Delta m}{\Delta t} = q_{m,\text{in}} - q_{m,\text{out}}</span>
+                </td>
+                <td></td>
+                <td>aikayksikössä tapahtuva massan muutos systeemissä</td>
+            </tr>
+            <tr><td colspan="4"><b>Musta kappale</b></td></tr>
+            <tr>
+                <td>mustan kappaleen säteilyn kokonaislämpövirta pinnalla</td>
+                <td><span class="latex-container full">\Phi = \sigma AT^4</span></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>muiden kappaleiden säteilyn kokonaislämpövirta pinnalla</td>
+                <td><span class="latex-container full">\Phi = \varepsilon \sigma AT^4</span></td>
+                <td></td>
+                <td>
+                    <span class="latex-container full">\varepsilon</span>
+                    on (keskimääräinen) emissiivisyys. 
+                    Täysin mustalle kappaleelle
+                    <span class="latex-container full">\varepsilon = 1</span>
+                    ja muille
+                    <span class="latex-container full">0 < \varepsilon < 1</span>
+                    .
+                </td>
+            </tr>
+            <tr>
+                <td>kappaleiden absorboiman säteilynlämpövirta</td>
+                <td><span class="latex-container full">\Phi = \alpha \sigma AT_0^4</span></td>
+                <td></td>
+                <td>
+                    <span class="latex-container full">\alpha</span>
+                    on keskimääräinen absorbtiosuhde.
+                    Täysin mustalle kappaleelle
+                    <span class="latex-container full">\alpha = 1</span>
+                    .
+                </td>
+            </tr>
+            <tr>
+                <td>kappaleiden nettosäteilylämpövirta</td>
+                <td><span class="latex-container full">\Phi = \varepsilon \sigma A \left(T^4 - T_0^4\right)</span></td>
+                <td></td>
+                <td>
+                    Koska
+                    <span class="latex-container full">\alpha \approx \varepsilon</span>
+                    . 
+                    <span class="latex-container full">T_0</span>
+                    on ympäristön lämpötila.
+                </td>
+            </tr>
+
+            <tr><td colspan="4"><b>Lämpölaajeneminen</b></td></tr>
+            <tr>
+                <td>pituuden lämpölaajeneminen</td>
+                <td>
+                    <span class="latex-container full">l={{l}_{0}}+\alpha \ {{l}_{0}}\Delta T</span>
+                </td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>pinta-alan lämpölaajeneminen</td>
+                <td><span class="latex-container full">A={{A}_{0}}+\beta \ {{A}_{0}}\Delta T</span></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>tilavuuden lämpölaajeneminen</td>
+                <td><span class="latex-container full">V={{V}_{0}}+\gamma \ {{V}_{0}}\Delta T</span></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>pituuden lämpötilakerroin</td>
+                <td><span class="latex-container full">\alpha</span></td>
+                <td><span class="latex-container full">\frac{1}{\text{K}}</span></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>pinta-alan lämpötilakerroin</td>
+                <td><span class="latex-container full">\beta \approx 2\alpha</span></td>
+                <td><span class="latex-container full">\frac{1}{\text{K}}</span></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>tilavuuden lämpötilakerroin</td>
+                <td><span class="latex-container full">\gamma \approx 3 \alpha</span></td>
+                <td><span class="latex-container full">\frac{1}{\text{K}}</span></td>
+                <td></td>
             </tr>
         </tbody>
     </table>

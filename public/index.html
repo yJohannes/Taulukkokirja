@@ -1,233 +1,265 @@
 <!DOCTYPE html>
-<html lang="fi"> <!-- en for auto hyphenation-->
+<html lang="fi">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Kokoelma matematiikan, fysiikan ja kemian tietoa, kuten kaavoja ja aineiden ominaisuuksia.">
+    <meta name="description" content="Kokoelma matematiikan, fysiikan ja kemian kaavoja ja taulukoita.">
 
     <title>Taulukkokirja</title>
     <link rel="icon" href="./img/icon/book-rounded.png">
-    <!-- <link rel="icon" href="./public/img/icon/book-rounded.png"> -->
-    
 
     <!-- Bootstrap -->
-    <link defer rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
-    <link defer rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-    <script defer src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-    <script defer src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
-    <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js" integrity="sha384-+sLIOodYLS7CIrQpBjl+C7nPvqq+FbNUBDunl/OZv93DB7Ln/533i8e/mZXLi/P+" crossorigin="anonymous"></script>
-    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-4Q6Gf2aSP4eDXB8Miphtr37CMZZQ5oXLH2yaXMJ2w8e2ZtHTl7GptT4jmndRuHDT" crossorigin="anonymous">
+    <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO"
+        crossorigin="anonymous"></script>
+
     <!-- Katex -->
-    <!-- <link defer rel="stylesheet" href="vendor/katex/katex-0.16.21.min.css"> -->
-    <!-- <script defer src="vendor/katex/katex-0.16.21.min.js"></script> -->
-    <!-- <script defer src="vendor/katex/katex-0.16.22.min.js"></script> -->
+    <link rel="stylesheet" href="./vendor/katex/katex-0.16.22.min.css"></link>
+    <script defer src="./vendor/katex/katex-0.16.22.min.js"></script>
 
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.css">
-    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.js"></script>
-
-
-    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
-    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script> -->
-
+    <!-- Split grid -->
     <script defer src="./vendor/split-grid/split-grid-1.0.11.min.js"></script>
-    <!-- <script defer src="https://unpkg.com/split-grid@1.0.11/dist/split-grid.min.js"></script> -->
 
+    <!-- Minisearch -->
     <script defer src="./vendor/minisearch/minisearch-7.1.2.min.js"></script>
-    <!-- <script defer src="https://cdn.jsdelivr.net/npm/minisearch@7.1.2/dist/umd/index.min.js"></script> -->
 
-    <!-- Text editor -->
-    <link defer rel="stylesheet" type="text/css" href="./vendor/digabi-mathquill/mathquill-0.10.12.css">
+    <!-- LaTeX editor -->
+    <link rel="stylesheet" type="text/css" href="./vendor/digabi-mathquill/mathquill-0.10.12.css">
     <script defer src="./vendor/mathjax/tex-svg.js"></script>
     <script defer type="module" src="./vendor/rich-text-editor/dist/rich-text-editor-bundle.js"></script>
-    <!-- <link defer rel="stylesheet" type="text/css" href="//unpkg.com/@digabi/mathquill/build/mathquill.css" /> -->
-    <!-- <script defer src="//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" id="MathJax-script"></script> -->
 
     <!-- SPLIT GRID IS NOT WORKING UNLESS THESE ARE HERE FOR WHATEVER REASON -->
-    <style>
-        #content-wrapper {
-            grid-template-columns: 1fr 1px 4fr 1px 0.75fr;
-            grid-template-rows: 2fr 1px 1fr;
+    <!-- <style>
+        #content-grid {
+            grid-template-columns: 300px 1px 1fr 1px 275px;
+            grid-template-rows: 1fr auto 300px;
         }
-    </style>
+    </style> -->
 
-    <link defer rel="stylesheet" href="./css/bundle.css">
+    <script>
+        (() => {
+            const root = document.documentElement;
+            try {
+                const theme = localStorage.getItem('theme');
+                if (theme) root.classList.add(theme);
+                else root.classList.add('light');
+            } catch (e) {
+            // Fallback if localStorage is not available
+            root.classList.add('light');
+
+            }
+        })();
+    </script>
+
+    <link rel="stylesheet" type="text/css" href="./css/bundle.css">
     <script defer type="module" src="./js/main.js"></script>
-
-    <!-- <link defer rel="stylesheet" href="./public/css/bundle.css"> -->
-    <!-- <script defer type="module" src="./public/js/main.js"></script> -->
 </head>
-<body>
-    <!-- Header -->
-    <header class="navbar navbar-expand navbar-dark shadow-sm sticky-top">
-        <div class="container-fluid">
-            <b>
-                <a class="navbar-brand" href="">Taulukkokirja</a>
-            </b>
-
-            <nav class="ml-auto">
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item ml-2">
-                        <button id="latex-editor" class="btn nav-link rounded-circle text-white ripple ripple-centered hover-glow" title="LaTeX-editori" aria-label="LaTeX-editori">
-                            <i class="bi bi-pen-fill"></i>
+<!-- cross-background bg-secondary -->
+<body class="bg-secondary">
+    <div class="d-flex flex-column flex-md-row p-0" style="height: 100dvh; height: calc(var(--real-vh, 1dvh) * 100);">
+        <header id="nav-rail" class="bg-secondary d-flex flex-md-column justify-content-between flex-shrink-0 p-2 border-top border-end order-1 order-md-0">
+            <!-- Wrapper for nav items -->
+            <nav class="d-flex flex-md-column gap-1 gap-md-3">
+                <a class="navbar-brand d-flex justify-content-center p-1 link-body-emphasis text-decoration-none" href="./">
+                    <img src="./img/icon/book-rounded.png" alt="Brand"
+                        style="width: 32px; height: 32px; object-fit: contain;">
+                </a>
+                <!-- Top icons -->
+                <ul class="nav d-flex flex-row flex-md-column gap-1 gap-md-2 m-0 p-0 justify-content-center justify-content-md-start">
+                    <li class="nav-item d-flex justify-content-center">
+                        <button id="nav-history"
+                            class="btn nav-link rounded-circle ripple ripple-centered hover-glow d-flex justify-content-center align-items-center"
+                            title="Historia" aria-label="Historia">
+                            <i class="bi bi-clock-history"></i>
                         </button>
                     </li>
-
-                    <li class="nav-item ml-2">
-                        <button id="bookmarks" class="btn nav-link rounded-circle text-white ripple ripple-centered hover-glow" title="Kirjanmerkit" aria-label="Kirjanmerkit">
-                            <i class="bi bi-bookmarks-fill"></i>
+                    <li class="nav-item d-flex justify-content-center">
+                        <button id="nav-bookmarks"
+                            class="btn nav-link rounded-circle ripple ripple-centered hover-glow d-flex justify-content-center align-items-center"
+                            title="Kirjanmerkit" aria-label="Kirjanmerkit">
+                            <i class="bi bi-bookmarks"></i>
                         </button>
                     </li>
-
-                    <li class="nav-item ml-2">
-                        <a id="settings" class="nav-link rounded-circle text-white ripple ripple-centered hover-glow" href="#/Asetukset" title="Asetukset" aria-label="Asetukset">
-                            <i class="bi bi-gear-fill"></i>
-                        </a>
-                    </li>
-
-                    <li class="nav-item ml-2">
-                        <button id="sidebar-1-toggle" class="btn nav-link rounded-circle text-white ripple ripple-centered hover-glow" title="Avaa/sulje sivupalkki" aria-label="Avaa/sulje sivupalkki">
-                            <i class="bi bi-list" style="transform: scale(1.4);"></i>
+                    <li class="nav-item d-flex justify-content-center">
+                        <button id="nav-latex-editor"
+                            class="btn nav-link rounded-circle ripple ripple-centered hover-glow d-flex justify-content-center align-items-center"
+                            title="LaTeX-editori" aria-label="LaTeX-editori">
+                            <i class="bi bi-pen"></i>
                         </button>
                     </li>
+                    <li class="nav-item d-flex justify-content-center">
+                        <button id="nav-geogebra"
+                            class="btn nav-link rounded-circle ripple ripple-centered hover-glow d-flex justify-content-center align-items-center"
+                            title="GeoGebra" aria-label="GeoGebra">
+                            <i class="bi bi-calculator"></i>
+                        </button>
+                    </li>
+                    <!-- <li class="nav-item d-flex justify-content-center">
+                        <button id="nav-toggle-right-sidebar"
+                            class="btn nav-link rounded-circle ripple ripple-centered hover-glow d-flex justify-content-center align-items-center"
+                            title="Toggle right sidebar" aria-label="Toggle right sidebar">
+                            <i class="bi bi-layout-sidebar-reverse"></i>
+                        </button>
+                    </li> -->
                 </ul>
             </nav>
-        </div>
-    </header>
 
-    <!-- Content area -->
-    <div id="content-wrapper">
-        <aside id="sidebar-1" class="sidebar shadow">
-            
-            <section id="explorer" class="" aria-label="Explorer">
-                <div id="explorer-search-wrapper">
-                    <input id="explorer-search" type="text" autocomplete="off" class="form-control shadow-sm" placeholder="Hae... " aria-label="Search"></input>
-                    <i id="explorer-search-icon" class="bi bi-search"></i>
-                    <button id="explorer-clear-search" class="btn rounded-circle ripple ripple-dark ripple-centered hover-glow" style="display: none;">
-                        <i class="bi bi-x-lg" style="font-size: 120%;"></i>
+            <!-- Bottom icons -->
+            <ul
+                class="nav d-flex flex-row flex-md-column gap-1 gap-md-2 m-0 p-0 justify-content-center justify-content-md-start">
+                <li class="nav-item d-flex justify-content-center">
+                    <button is="toggle-button" id="nav-dark-mode"
+                        class="btn nav-link rounded-circle ripple ripple-centered hover-glow d-flex flex-column justify-content-center align-items-center"
+                        title="Dark mode" aria-label="Dark mode">
+                        <i slot="on" class="bi bi-sun"></i>
+                        <i slot="off" class="bi bi-moon"></i>
                     </button>
-                </div>
-
-                <div class="mt-3"></div>
-
-                <div id="explorer-buttons" role="group" style="display: flex; justify-content: flex-end;">
-                    <button id="explorer-expand" class="btn btn-sm ripple ripple-dark ripple-centered hover-glow" title="Laajenna välilehdet (alt + 1)" aria-label="Laajenna välilehdet">
-                        <i class="bi bi-arrows-expand" style="font-size: 120%;"></i>
+                </li>
+                <li class="nav-item d-flex justify-content-center">
+                    <a id="nav-settings"
+                        class="btn nav-link rounded-circle ripple ripple-centered hover-glow d-flex justify-content-center align-items-center"
+                        href="#/Asetukset" title="Asetukset" aria-label="Asetukset"
+                        >
+                        <i class="bi bi-gear"></i>
+                    </a>
+                <li class="nav-item d-flex justify-content-center">
+                    <button id="nav-sidebar-toggle"
+                        class="btn nav-link rounded-circle ripple ripple-centered hover-glow d-flex justify-content-center align-items-center"
+                        title="Avaa/sulje sivupalkki" aria-label="Avaa/sulje sivupalkki"
+                    >
+                        <i class="bi bi-list" style="transform: scale(1.4);"></i>
                     </button>
-                    <button id="explorer-collapse" class="btn btn-sm ripple ripple-dark ripple-centered hover-glow" title="Sulje välilehdet (alt + 2)" aria-label="Sulje välilehdet">
-                        <i class="bi bi-arrows-collapse" style="font-size: 120%;"></i>
-                    </button>
-                    <button id="explorer-auto-collapse" class="btn btn-sm ripple ripple-dark ripple-centered hover-glow" title="Automaattinen sulkeminen (alt + 3)" aria-label="Automaattinen sulkeminen">
-                        <i class="bi bi-list-nested" style="font-size: 120%;"></i>
-                    </button>
-                </div>
-                
-                <nav id="search-container" class="rounded"></nav>
-                <nav id="explorer-container" class="rounded"></nav>
-            </section>
-            
-        </aside>
+                </li>
+                </li>
+            </ul>
+        </header>
+        
+        <!-- Right column: main content -->
+        <div id="content-grid"
+        style="grid-template-columns: 300px 0px 1fr 0px 275px; grid-template-rows: 1fr auto 300px;"
+        class="flex-grow-1 overflow-auto order-0 order-md-1 h-100">
+            <aside id="sidebar-left" style="grid-column: 1 / 2; grid-row: 1 / 4;" class="sidebar bg-tertiary border-end px-2 py-3"></aside>
+            <div id="left-splitter" style="grid-column: 2 / 3; grid-row: 1 / 4;" class="gutter gutter-horizontal"></div>
 
-
-        <div id="gutter-col-1" class="gutter gutter-horizontal"></div>
-
-        <main id="main-content">
-            <div class="rich-text-editor-toolbar-root"></div>
-
-            <article id="page-container">
-                <div class="sticky-page-header">
-                    <div class="d-flex">
+            <div id="main-content" style="grid-column: 3 / 4; grid-row: 1 / 2;" class="d-flex flex-column bg-primary cross-background overflow-y-auto">
+                <main id="page-container" class="p-3 mb-5">
+                    <div class="sticky-header">
                         <h1>Etusivu</h1>
+                        <hr>
                     </div>
-                    <hr>
-                </div>
 
-                <p>Tämä on taulukkokirjan etusivu.</p>
+                    <p>Tämä on taulukkokirjan etusivu.</p>
+                </main>
 
-                <h3>Lähteet</h3>
-                <ul>
-                    <li>
-                        <p>MAOL-taulukkokirja</p>
-                    </li>
-                    <li>
-                        <p>Algebra I — Antti Majaniemi</p>
-                    </li>
-                    <li>
-                        <p>Matematiikka I (differentiaali- ja integraalilaskentaa insinööriopiskelijoilla) — Antti Majaniemi</p>
-                    </li>
-                    <li>
-                        <p>Geometria (geometriaa, trigonometriaa ja vektorilaskentaa) — Antti Majaniemi</p>
-                    </li>
-                    <li>
-                        <p>Insinöörin (AMK) fysiikka osa I — Mikko Hautala, Hannu Peltonen, Lahden Teho-Opetus Oy</p>
-                    </li>
-                    <li>
-                        <p>Insinöörin (AMK) fysiikka osa II — Hannu Peltonen, Juha Perkkiö, Kari Vierinen, Lahden Teho-Opetus Oy</p>
-                    </li>
-                    <li>
-                        <p>
-                            <a href="https://physics.info/equations/" style="color: var(--color-accent);">
-                                Kaikenlaisia fysiikan yhtälöitä — physics.info
-                            </a>
-                        </p>
-                    </li>
-                </ul>
-            </article>
-            
-        </main>
+                <footer class="bg-secondary shadow px-3 py-5 mt-auto">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-lg-3 mb-3">
+                                <h4>
+                                    Taulukkokirja
+                                </h4>
+                                <p>
+                                    Kaavoja ja taulukoita matematiikasta, fysiikasta ja kemiasta.
+                                </p>
+                            </div>
+                            <div class="col-6 col-lg-3 mb-3">
+                                <h5 class="d-flex align-items-center gap-2">
+                                    Linkit
+                                    <i class="bi bi-link fs-4"></i>
+                                </h5>
+                                <ul class="list-unstyled">
+                                    <li class="mb-2"><a href="#/Lähteet">Lähteet</a></li>
+                                    <li class="mb-2"><a href="#/Hyödyllisiä_linkkejä">Hyödyllisiä linkkejä</a></li>
+                                </ul>
+                            </div>
+                            <div class="col-6 col-lg-3 mb-3">
+                                <h5 class="d-flex align-items-center gap-2">
+                                    Laskimet
+                                    <i class="bi bi-plus-slash-minus fs-4"></i>
+                                </h5>
 
-        <div id="gutter-row-1" class="gutter gutter-vertical"></div>
+                                <ul class="list-unstyled">
+                                    <li class="mb-2">
+                                        <a href="https://www.wolframalpha.com" target="_blank" rel="noopener">
+                                            Wolfram Alpha
+                                        </a>
+                                    </li>
+                                    <li class="mb-2">
+                                        <a href="https://www.geogebra.org/calculator" target="_blank" rel="noopener">
+                                        GeoGebra
+                                        </a>
+                                    </li>
+                                    <li class="mb-2">
+                                        <a href="https://www.desmos.com/calculator" target="_blank" rel="noopener">
+                                        Desmos
+                                        </a>
+                                    </li>
+                                    <li class="mb-2">
+                                        <a href="https://www.desmos.com/3d" target="_blank" rel="noopener">
+                                        Desmos 3D
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
 
-        <div id="editor" class="shadow"  style="display: flex; flex-direction: column; height: 100%; overflow-y: hidden;">
-            <div class="d-flex" style="flex-direction: row; justify-content: space-between;">
-                <h4 class="logo tex" data-expr="\LaTeX">
-                    <span class="katex katex-ignore"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtext>LaTeX</mtext></mrow><annotation encoding="application/x-tex">\KaTeX</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.8988em; vertical-align: -0.2155em;"></span><span class="mord text"><span class="mord textrm">L</span><span class="mspace" style="margin-right: -0.17em;"></span><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height: 0.6833em;"><span class="" style="top: -2.905em;"><span class="pstrut" style="height: 2.7em;"></span><span class="mord"><span class="mord textrm mtight sizing reset-size6 size3">A</span></span></span></span></span></span><span class="mspace" style="margin-right: -0.15em;"></span><span class="mord text"><span class="mord textrm">T</span><span class="mspace" style="margin-right: -0.1667em;"></span><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height: 0.4678em;"><span class="" style="top: -2.7845em;"><span class="pstrut" style="height: 3em;"></span><span class="mord"><span class="mord textrm">E</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height: 0.2155em;"><span class=""></span></span></span></span><span class="mspace" style="margin-right: -0.125em;"></span><span class="mord textrm">X</span></span></span></span></span></span>
-                    -editori
-                </h4>
-
-                <div id="editor-control-buttons" class="d-flex">
-                    </button>
-                    <button id="maximize-editor" class="btn btn-sm ripple ripple-centered hover-glow" aria-label="Suurenna">
-                        <i class="bi bi-chevron-up" style="font-size: 120%;"></i>
-                    </button>
-                    <button id="minimize-editor" class="btn btn-sm ripple ripple-centered hover-glow" aria-label="Pienennä">
-                        <i class="bi bi-chevron-down" style="font-size: 120%;"></i>
-                    </button>
-                    <button id="close-editor" class="btn btn-sm ripple ripple-centered hover-glow" aria-label="Sulje">
-                        <i class="bi bi-x-lg" style="font-size: 120%;"></i>
-                    </button>
-                </div>
+                            <div class="col-6 col-lg-3 mb-3">
+                                <h5 class="d-flex align-items-center gap-2">
+                                    GitHub
+                                    <i class="bi bi-github fs-4"></i>
+                                </h5>
+                                <ul class="list-unstyled">
+                                    <li class="mb-2">
+                                        <a href="https://github.com/yJohannes/Taulukkokirja" target="_blank" rel="noopener" class="d-flex align-items-center gap-2">
+                                            Taulukkokirja
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </footer>
             </div>
 
-            <div class="mt-3"></div>
+            <div id="main-workspace-splitter" style="grid-column: 3 / 4; grid-row: 2 / 3;" class="gutter gutter-vertical bg-primary bg-transition">
+                <div class="handle rounded-pill position-absolute start-50 translate-middle bg-transition"></div>
+                <div class="bg-secondary bg-transition border-top px-4 py-4"></div>
+            </div>
+            <!-- Tools are initially hidden and revealed during loading -->
+            <div id="workspace" style="grid-column: 3 / 4; grid-row: 3 / 4;" class="overflow-x-auto bg-secondary bg-transition h-100"> 
+                <div id="geogebra-iframe-root" class="hidden"
+                    style="width: 100%; height: 100%; overflow: hidden; position: relative;">
+                    
+                    <iframe src="https://www.geogebra.org/calculator"
+                            allowfullscreen
+                            style="position: absolute; top: -50px; left: 0; width: 100%; height: calc(100% + 50px); border: 0;">
+                    </iframe>
+                </div>
+                <div id="rich-text-editor-root" class="hidden overflow-y-hidden" style="overflow-wrap: break-word;"></div>
+            </div>
 
-            <div id="rich-text-editor-root" style="flex: 1 1 auto; display: flex; flex-direction: column;"></div>
-        </div>
-
-        <div id="gutter-col-2" class="gutter gutter-horizontal"></div>
-
-        <aside id="sidebar-2" class="sidebar shadow">
-            <div id="sidebar-2-content">
-                <section id="bookmarks" class="mb-3">
-                    <div class="sticky-page-header">
-                        <div class="d-flex">
-                            <h3>Kirjanmerkit</h3>
-                        </div>
+            <div id="right-splitter" style="grid-column: 4 / 5; grid-row: 1 / 4;" class="gutter gutter-horizontal"></div>
+            <aside id="sidebar-right" style="grid-column: 5 / 6; grid-row: 1 / 4;" class="sidebar bg-tertiary border-start px-3 py-3">
+                <section id="bookmarks" class="mb-4">
+                    <div class="sticky-header">
+                        <h3>Kirjanmerkit</h3>
                         <hr>
                     </div>
                     <nav id="bookmark-container" class=" rounded"></nav>
                 </section>
-                
+
                 <section id="recently-viewed" style="margin-bottom: 10rem;">
-                    <div class="sticky-page-header">
-                        <div class="d-flex">
-                            <h3>Viimeksi selatut</h3>
-                        </div>
+                    <div class="sticky-header">
+                        <h3>Viimeksi selatut</h3>
                         <hr>
                     </div>
                     <nav id="recently-viewed-container" class=" rounded"></nav>
                 </section>
-            </div>
-        </aside>
+            </aside>
+        </div>
     </div>
 </body>
+
 </html>

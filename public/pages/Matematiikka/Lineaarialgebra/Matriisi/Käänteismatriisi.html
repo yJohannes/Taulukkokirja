@@ -1,7 +1,5 @@
-<div class="sticky-page-header">
-	<div class="d-flex">
-		<h1>Käänteismatriisi</h1>
-	</div>
+<div class="sticky-header">
+	<h1>Käänteismatriisi</h1>
 	<hr>
 </div>
 
@@ -11,15 +9,15 @@
     on käänteisluku
     <span class="latex-container">a^{-1}</span>
     , jolla on perusominaisuus
-    <span class="latex-container display">aa^{-1} = a^{-1}a = 1</span>
+    <span class="latex-container full">aa^{-1} = a^{-1}a = 1</span>
     . Vastaavasti jos
     <span class="latex-container">A</span>
     on neliömatriisi ja 
-    <span class="latex-container display">\det A \neq 0</span>
+    <span class="latex-container full">\det A \neq 0</span>
     , niin on olemassa sellainen matriisi
     <span class="latex-container">A^{-1}</span>
     , että
-    <span class="latex-container display">AA^{-1} = A^{-1}A = I</span>
+    <span class="latex-container full">AA^{-1} = A^{-1}A = I</span>
     , jossa
     <span class="latex-container">I</span>
     on ykkösmatriisi. Matriisia
@@ -33,14 +31,14 @@
 
 <p>
   Olkoon säännöllinen matriisi
-  <span class="latex-container display">
+  <span class="latex-container full">
     A=\begin{bmatrix}
     1&2\\
     3&4
     \end{bmatrix}
   </span>
   ,
-  <span class="latex-container display">
+  <span class="latex-container full">
     \det A=\begin{vmatrix}
     1&2\\
     3&4
@@ -51,14 +49,14 @@
   <br>
   <br>
   Muodostetaan ensin matriisi, jonka alkioina ovat 
-  <span class="latex-container display">
+  <span class="latex-container full">
     \det A
   </span>
   :n alkioiden komplementit.
 
   <br>
   <br>
-  <span class="latex-container display">
+  <span class="latex-container full">
     \begin{bmatrix}
     +\begin{vmatrix}
     4
@@ -81,7 +79,7 @@
   <span class="latex-container">A</span>
   :n ns. liittomatriisi eli adjungoitu matriisi
   <br>
-  <span class="latex-container display">
+  <span class="latex-container full">
     \text{adj}\left(A\right)=\begin{bmatrix}
     4&-3\\
     -2&1
@@ -94,7 +92,7 @@
   <br>
   <br>
   Voidaan todistaa, että yleisesti 
-  <span class="latex-container display">
+  <span class="latex-container full">
     \boxed{
     A^{-1}=\frac{1}{\det A}\cdot \text{adj}\ A
     }
@@ -102,7 +100,7 @@
 
   <br>
   <br>
-  <span class="latex-container display">
+  <span class="latex-container full">
     A^{-1}=\frac{1}{-2}\begin{bmatrix}
     4&-2\\
     -3&1
@@ -119,29 +117,29 @@
 
 <ol>
   <li>Muodosta laajennettu matriisi 
-    <span class="latex-container display">[A \mid I]</span>, 
-    missä <span class="latex-container display">A</span> on alkuperäinen 
-    <span class="latex-container display">n \times n</span> -matriisi ja 
-    <span class="latex-container display">I</span> on 
-    <span class="latex-container display">n \times n</span> -yksikkömatriisi.
+    <span class="latex-container full">[A \mid I]</span>, 
+    missä <span class="latex-container full">A</span> on alkuperäinen 
+    <span class="latex-container full">n \times n</span> -matriisi ja 
+    <span class="latex-container full">I</span> on 
+    <span class="latex-container full">n \times n</span> -yksikkömatriisi.
   </li>
   <li>Suorita <strong>rivimuunnoksia</strong> (vaihto, kertominen luvulla, ja rivien yhteenlasku) niin, että vasen puoli muuttuu yksikkömatriisiksi.</li>
   <li>Kun vasen puoli on yksikkömatriisi, oikealla puolella on 
-    <span class="latex-container display">A^{-1}</span>, 
+    <span class="latex-container full">A^{-1}</span>, 
     eli alkuperäisen matriisin käänteismatriisi.
   </li>
 </ol>
 
 <h3>Esimerkki:</h3>
 <p>Olkoon 
-  <span class="latex-container display">
+  <span class="latex-container full">
     A = \begin{bmatrix} 2 & 1 \\ 5 & 3 \end{bmatrix}
   </span>
 </p>
 
 <p>
     Laajennettu matriisi:
-    <span class="latex-container display">
+    <span class="latex-container full">
       \left[ \begin{array}{cc|cc}
       2 & 1 & 1 & 0 \\
       5 & 3 & 0 & 1 \\
@@ -152,7 +150,7 @@
 <p>
     Tee rivimuunnoksia kunnes vasen puoli on yksikkömatriisi:
     <br>
-    <span class="latex-container display">
+    <span class="latex-container full">
         \left[ \begin{array}{cc|cc}
         1 & 0 & 3 & -1 \\
         0 & 1 & -5 & 2 \\

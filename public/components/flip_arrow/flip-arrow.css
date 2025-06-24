@@ -1,0 +1,14 @@
+.flip-arrow {
+    width: 1.5rem;
+    min-width: 1.5rem;
+    height: 1.5rem;
+    fill: var(--color-arrow);
+    
+    transition: transform 0.3s ease;
+    transform: rotate(180deg);
+}
+
+.flip-arrow.flipped {
+    fill: var(--color-arrow-flipped);
+    transform: rotate(360deg);
+}

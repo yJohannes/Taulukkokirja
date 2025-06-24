@@ -1,0 +1,89 @@
+/* override KaTeX's default block display */
+.katex-display {
+    /* display: inline-block !important;  */
+    text-align: left !important;
+    margin: 0 !important;
+}
+
+.latex-container {
+    display: inline-flex; /* Fills only the area required by content */
+    position: relative;
+    overflow: hidden;
+
+    margin-top: 2.5px;
+    margin-bottom: 2.5px;
+    margin-left: 1px;
+    margin-right: 1px;
+    max-width: 100%;
+    border-radius: 4px; /* Rounds the highlight */
+    
+    user-select: none;
+    -webkit-user-select: none;  /* Safari */
+    -moz-user-select: none;     /* Firefox */
+    -ms-user-select: none;      /* IE10+/Edge */
+    cursor: pointer;
+    
+    transition: box-shadow 0.5s ease-in-out;
+}
+
+.latex-container.display {
+    display: block;
+    width: fit-content;
+    margin: 1rem auto;
+}
+
+.latex-container:hover {
+    color: var(--color-accent);
+}
+
+.latex-container.readonly:hover {
+    color: var(--color-text);
+}
+
+
+.latex-container:not(.readonly):not(.theorem):hover::before {
+    content: "";
+    position: absolute;
+    top:    -6px;
+    left:   -6px;
+    right:  -6px;
+    bottom: -6px;
+    
+    border: 1px dashed #7777773f;
+    border-radius: 4px;
+    
+    pointer-events: none;
+}
+
+.latex-container.theorem {
+    padding: 5px;
+    border-radius: 0;
+    border: solid 2px navy;
+    background-color: #ecf2ff;
+    border: solid 2px orange;
+    background-color: rgb(255, 226, 109);
+    color: black;
+    box-shadow: none !important;
+}
+
+.latex-container.theorem:hover {
+    color: rgb(0, 58, 152) !important;
+    color: rgb(152, 83, 0) !important;
+}
+
+
+.derivation {
+    border-left: solid 3px rgb(0, 0, 172);
+    padding-left: 10px;
+}
+
+.insight {
+    box-sizing: border-box;
+    background-color: #ecf2ff;
+    border-left: solid 3px rgb(0, 0, 172);
+    padding-left: 10px;
+    padding-top:    1rem;
+    margin-bottom: 1rem;
+    display: flow-root;
+    color: black;
+}

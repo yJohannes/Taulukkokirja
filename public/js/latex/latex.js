@@ -1,15 +1,14 @@
 import { createPopup } from '../components/common/popup.js';
 import { addToolTip } from '../components/common/tooltip.js';
 
-function getLatex(element) {
-    return element.getAttribute('title') || element.getAttribute('data-original-title');
+function getElementLatex($element) {
+    return $element.getAttribute('title') || $element.getAttribute('data-original-title');
 }
 
-function addClickListener(element, latex) {
-    const katex_span = element.querySelector('.katex');
-    katex_span.addEventListener('click', () => {
-        katex_span.classList.add('highlight');
-        setTimeout(() => katex_span.classList.remove('highlight'), 750);
+function addClickListener($element, latex) {
+    $element.addEventListener('click', () => {
+        $element.classList.add('highlight');
+        setTimeout(() => $element.classList.remove('highlight'), 750);
 
         if (!latex) return;
         
@@ -23,34 +22,33 @@ function addClickListener(element, latex) {
     });
 }
 
-function initLatex()
+/**
+ * Renders LaTeX content in all `latex-container`'s in a given element. 
+ */
+export function renderElementLatex($element)
 {
-    const elements = Array.from(document.getElementsByClassName('latex-container'));
-    const filtered = elements.filter(element => !element.querySelector('span.katex'));
-    const prerendered = elements.filter(element => element.querySelector('span.katex'));
+    const elements = Array.from($element.getElementsByClassName('latex-container'));
+    const filtered = elements.filter($el => !$el.querySelector('span.katex'));
+    const prerendered = elements.filter($el => $el.querySelector('span.katex'));
 
-    filtered.forEach(element => {
-        const latex = element.innerText;
-        const displayMode = element.classList.contains('display');
+    filtered.forEach($el => {
+        const latex = $el.innerText;
+        const displayMode = $el.classList.contains('full');
         
-        katex.render(latex, element, {
+        katex.render(latex, $el, {
             displayMode: displayMode,
             throwOnError: false
         });
         
-        addToolTip(element, 'right', latex);
-        addClickListener(element, latex);
+        addToolTip($el, 'right', latex);
+        addClickListener($el, latex);
 
     });
 
-    prerendered.forEach(element => {
-        const latex = getLatex(element);
+    prerendered.forEach($el => {
+        const latex = getElementLatex($el);
 
-        addToolTip(element, 'right', latex);
-        addClickListener(element, latex);
+        addToolTip($el, 'right', latex);
+        addClickListener($el, latex);
     });
 }
-
-export {
-    initLatex,
-};

@@ -5,8 +5,10 @@
 /*************/
 .gutter {
     position: relative;
-    background-color: rgba(0, 0, 0, 0.1);
+    background-color: transparent;
+    /* background-color: var(--color-lines); */
     transition: background-color ease-in-out 0.3s;
+    cursor: grab;
 }
 
 .gutter::before {
@@ -20,14 +22,6 @@
 /*****************/
 /** Directional **/
 /*****************/
-.gutter-vertical {
-    cursor: row-resize;
-}
-
-.gutter-horizontal {
-    cursor: col-resize;
-}
-
 .gutter-vertical::after {
     content: '';
     position: absolute;
@@ -66,10 +60,29 @@
     z-index: 1000;
 }
 
-.gutter-vertical:hover::before {
+.gutter-vertical:hover::before,
+.gutter-horizontal:hover::before,
+.gutter-vertical:active::before,
+.gutter-horizontal:active::before {
     background-color: var(--color-accent);
 }
 
-.gutter-horizontal:hover::before {
+#main-workspace-splitter::before,
+#main-workspace-splitter::after {
+    content: none;
+    display: none;
+}
+
+.handle {
+    top: 0.6rem;
+    width: 2rem;
+    /* width: 9%; */
+    /* min-width: 3rem; */
+    /* max-width: 7rem; */
+    height: 0.15rem;
+    background-color: var(--color-lines);
+}
+
+#main-workspace-splitter:active .handle {
     background-color: var(--color-accent);
 }

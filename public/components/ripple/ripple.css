@@ -1,0 +1,33 @@
+.ripple {
+    position: relative;
+    overflow: hidden; 
+}
+
+.ripple-effect-light,
+.ripple-effect-dark {
+    position: absolute;
+    border-radius: 50%;
+    transform: scale(0);
+    opacity: 1;
+    animation: grow 0.7s ease-in forwards;
+    pointer-events: none;
+    will-change: transform, opacity;
+}
+.ripple-effect-light {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+.ripple-effect-dark {
+    background: rgba(0, 0, 0, 0.1);
+}
+
+@keyframes grow {
+    to {
+        transform: scale(4);
+    }
+}
+
+.fade-out {
+    transition: opacity 0.2s linear;
+    opacity: 0;
+}

@@ -1,0 +1,46 @@
+<div class="sticky-header">
+    <h1>Rajapinnan vaikutus lämmön siirtymiseen</h1>
+    <hr>
+</div>
+
+<p>
+    Yksikertaistettu yksiulotteinen tapaus. Kiinteän aineen paksuus on
+    <span class="latex-container full">L</span>
+    . Aineen lämpötila keskellä
+    <span class="latex-container full">L/2</span>
+    on 
+    <span class="latex-container full">T_k</span>
+    , rajapinnan lämpötila on
+    <span class="latex-container full">T_p</span>
+    ja ympäröivän fluidin lämpötila rajakerroksen ulkopuolella
+    <span class="latex-container full">T_f</span>
+    . Rajapinnan lämmönsiirtymiskerroin on
+    <span class="latex-container full">h</span>
+    .
+</p>
+
+<p>
+    Rajapinnan läpi siirtyvän lämmön määrä aikayksikössä on
+    <span class="latex-container full">\Phi = \frac{\Delta Q}{\Delta t} = hA \left(T_p - T_f\right)</span>
+    . Tämän verrän energiaa täytyy siirtyä myös aineeseen pinnalta. Tämä vaatimus määrää, mikä on
+    <span class="latex-container full">T_p</span>
+    . Fourierin I lain mukaan
+    <span class="latex-container full">\frac{\Delta Q}{\Delta t} = \lambda A \frac{T_k - T_p}{L/2}</span>
+    . Yhdistetään tulokset: 
+    <span class="latex-container full">\lambda A \frac{T_k - T_p}{L/2} = hA \left(T_p - T_f\right)</span>
+    . Järjestetään dimensiottomat ryhmät yhtälön molemmille puolille, milloin saadaan dimensioton Biot'n luku.
+</p>
+
+<span class="latex-container full display theorem">Bi = \frac{hL}{2\lambda }=\frac{T_k-T_p}{T_p-T_f}=\frac{\Delta T_{\text{aineessa}}}{\Delta T_{\text{rajapinnassa}}}</span>
+
+<p>
+    Kokeet ja laskut osoittavat, että kun
+    <span class="latex-container full">Bi < 0{,}2\ (=1/5)</span>
+    , rajapinta on suurin este lämmön siirtymiselle.
+    Siinä lämpötilan muutos on suuri ja kiinteä kappale on jokseenkin samassa lämpötilassa kaikkialla: 
+    <span class="latex-container full">\Delta T_{\text{rajapinnassa}} > 5 \Delta T_{\text{aineessa}}</span>
+
+    Laskeminen olisi helppoa, jos vain rajapinnan vaikutusta tarvitsisi tarkastella.
+    Usein sekä lämmön johtuminen että rajapinnan vaikutus ovat tärkeita, milloin laskuista tulee hankalia. 
+    Biot'n luku auttaa arvioimaan kumpi estää lämmön siirtymistä enemmän.
+</p>

@@ -1,52 +1,128 @@
-.rich-text-editor:focus {
-    border: 1px solid rgb(58, 155, 183);
-}
+/* font: 1.1rem 'Times New Roman', serif; */
 
-.rich-text-editor {
-  box-sizing: border-box;
-  border: 1px solid #aaa;
-  padding: 5px;
-  font: 17px 'Times New Roman', serif;
-  white-space: pre-wrap;
-
+#rich-text-editor-root {
   height: 100%;
   overflow-y: auto;
 }
 
-.rich-text-editor img {
-  padding: 5px;
-  max-width: 100%;
-  max-height: 1000px;
-  vertical-align: middle;
-}
+.rich-text-editor {
+  box-sizing: border-box;
+  background-color: var(--color-normal);
+  border: 1px solid transparent;
+  padding: 0.6rem;
+  font-size: 1rem;
+  white-space: pre-wrap;
+  
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
+  
+  .math-editor {
+    border-top: 0;
+    border-bottom: 0.3rem solid var(--color-accent);
+    box-shadow: 0px 3px 7px 0px var(--color-shadow);
+  }
 
-.rich-text-editor:focus > img {
-  box-shadow: 0 0 3px 1px rgba(0, 0, 0, 0.2);
-}
+  .mq-editable-field,
+  textarea {
+    border-radius: 0;
+    /* border-radius: 0.1rem; */
+    outline: 1px solid var(--color-lines);
+  }
 
-.rich-text-editor .mq-math-mode .mq-root-block {
-  white-space: nowrap;
-}
+  .math-editor-equation-field,
+  .math-editor-latex-field {
+    background-color: var(--color-bg-tertiary);
+  }
 
+  .mq-math-mode .mq-root-block {
+    white-space: nowrap;
+    color: var(--color-text);
+  }
+  
+  .math-editor-latex-field {
+    color: var(--color-text);
+    field-sizing: content;
+  }
+
+  .mq-editable-field.mq-focused,
+  textarea:focus {
+    height: auto !important;
+    box-shadow: none;
+    outline: 1px solid var(--color-accent);
+    z-index: 2;
+  }
+
+
+  .mq-cursor {
+    border-left-color: var(--color-text);
+  }
+
+  .mq-math-mode .mq-selection,
+  .mq-editable-field .mq-selection,
+  .mq-math-mode .mq-selection .mq-non-leaf,
+  .mq-editable-field .mq-selection .mq-non-leaf,
+  .mq-math-mode .mq-selection .mq-scaled,
+  .mq-editable-field .mq-selection .mq-scaled {
+    background: var(--color-selection) !important;
+    color: var(--color-text) !important;
+    border-color: HighlightText;
+  }
+
+  .mq-math-mode .mq-overline,
+  .mq-math-mode .mq-overarrow {
+    border-top: 1px solid var(--color-text);
+    margin-top: 1px;
+  }
+  .mq-math-mode .mq-underline,
+  .mq-math-mode .mq-underarrow {
+    border-bottom: 1px solid var(--color-text);
+    margin-bottom: 1px;
+  }
+
+  img {
+    box-sizing: border-box;
+    padding: 5px;
+    max-width: 100%;
+    max-height: 1000px;
+    vertical-align: middle;
+    background-color: inherit;
+  }
+
+  img.equation {
+    min-height: 1.77rem;
+    margin-left: 0.2rem;
+    margin-right: 0.2rem;
+    margin-bottom: 0.2rem;
+    border-radius: 0.1rem;
+    background-color: transparent;
+    box-shadow: none;
+  }
+  
+  img.equation.active {}
+  
+} 
+
+
+.dark .rich-text-editor {
+  img.equation {
+    filter: brightness(0) invert(1);
+  }
+}
+  
 .rich-text-editor:focus,
-.rich-text-editor .mq-editable-field.mq-focused,
-.rich-text-editor textarea:focus {
-  box-shadow: none;
-  outline: 1px solid #359bb7;
-  z-index: 2;
+.rich-text-editor:focus-within {
+  img {
+    box-shadow: 0 0 3px 1px var(--color-shadow);
+  }
+  
+  img.equation {
+    box-shadow: none;
+    outline: 1px dashed var(--color-lines);
+  }
 }
 
-.rich-text-editor img.equation {
-  min-height: 20px;
-  min-width: 20px;
-  box-shadow: none;
-}
-
-.rich-text-editor:focus img.equation {
-  background-color: #edf9ff;
-}
-
-.rich-text-editor img.equation.active {
-  border: 2px solid #caedff;
-  border-radius: 3px;
+.rich-text-editor:focus-visible {
+  outline: none;
 }

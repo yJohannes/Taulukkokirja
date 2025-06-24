@@ -30,6 +30,8 @@ mjAPI.config({
   MathJax: {
     SVG: {
       font: 'Latin-Modern',
+      blacker: 15,
+      scale: 150,
     },
   },
 })

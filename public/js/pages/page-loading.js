@@ -1,171 +1,464 @@
-import { initTableHighlights } from '../components/tables.js';
-import { initLatex } from '../latex/latex.js';
-import { addRippleToElement } from  '../effects/ripple.js';
-import { updateBookmarks } from '../components/bookmarks/index.js';
+import { StorageHelper } from '../components/storage/index.js';
+import { renderElementLatex } from '../latex/latex.js';
 import { highlightTerms } from '../effects/highlight-terms.js';
-import * as storage from '../components/storage/index.js';
-import * as pages from './index.js';
+import { Sidebar } from '../layout/sidebar.js';
+import { Bookmarks } from '../components/bookmarks/bookmarks.js';
+import { Pages } from './index.js';
 
-// Execute any inline scripts within injected HTML
-// Scripts will get the class 'injected' 
-function injectScripts() {
-    document.querySelectorAll('script.injected').forEach(script => {
-        script.remove();
-    });
+const PAGE_LOAD_ERROR_MESSAGE = 'Error loading page';
 
-    const scripts = document.querySelectorAll('#page-container script');
-    scripts.forEach(script => {
+export const loading = {
+    init,
+    fetchPageStructure,
+    extractPageStructurePaths,
+    loadPageHTML,
+    loadPageToElement,
+}
+
+function init() {
+    window.addEventListener('load', loadHashUrl);
+    window.addEventListener('hashchange', loadHashUrl);
+}
+
+async function loadHashUrl() {
+    let url = Pages.formatting.formatHashToPath(window.location.hash);
+
+    if (!url || url === '/') {
+        fetch('index.html');
+        return;
+    }
+
+    await loadPageToElement(url, document.getElementById('page-container'));
+    document.title = Pages.formatting.formatPathToTitle(url);
+
+    const terms = Pages.formatting.getDecodedSearchParams('highlight', location.hash);
+    if (terms.length > 0) {
+        highlightTerms(document.getElementById('page-container'), terms);
+    }
+}
+
+async function fetchPageStructure() {
+    const response = await fetch('/api/pages-structure');
+    if (!response.ok) {
+        console.error('Failed to fetch the page structure, using fallback.');
+        return defaultStructure;
+    }
+    
+    const structure = await response.json();
+    // console.log(structure)
+    return structure;
+}
+
+function extractPageStructurePaths(obj, basePath = '') {
+    const paths = [];
+    
+    for (const [key, value] of Object.entries(obj)) {
+        const currentPath = basePath ? `${basePath}/${key}` : key;
+        
+        if (value === null) {
+            // It's a file
+            paths.push(currentPath);
+        } else if (typeof value === 'object') {
+            // It's a folder
+            paths.push(...extractPageStructurePaths(value, currentPath));
+        }
+    }
+    
+    return paths;
+}
+
+async function loadPageHTML(path) {
+    const response = await fetch(path);
+    if (!response.ok) {
+        throw new Error(`${PAGE_LOAD_ERROR_MESSAGE} (HTTP ${response.status})`);
+    }
+    return await response.text();
+}
+
+
+
+async function loadPageToElement(path, element, bookMarkable=true) {
+    try {
+        const html = await loadPageHTML(path);
+        element.innerHTML = html;
+    } catch (error) {
+        console.error(error);
+        element.innerHTML = `
+            <div class="error">
+                <h1>Page Load Failed</h1>
+                <hr>
+                <pre>${error.message || 'Unknown error occurred.'}</pre>
+            </div>
+        `;
+        return;
+    }
+    
+    document.title = Pages.formatting.formatPathToTitle(path);
+
+    if (bookMarkable) {
+        Bookmarks.addBookmarkToHeader(element.querySelector('h1'), path);
+    }
+
+    renderElementLatex(document.getElementById('page-container'));
+    injectPageScripts(element);
+    Bookmarks.updateBookmarks();
+    updateHistory(path);
+
+    // If tab is clicked on small screen hide sidebar
+    Sidebar.showSidebar(false, 'sidebar-left');
+}
+
+/**
+ * Execute any inline scripts within injected HTML.
+ * Scripts will get the class 'injected'.
+ * @param {HTMLElement} container 
+ */
+function injectPageScripts(container) {
+    clearInjectedScripts()
+
+    container.querySelectorAll('script').forEach(script => {
         const newScript = document.createElement('script');
         newScript.classList.add('injected');
-        newScript.textContent = script.textContent;
+
+        if (script.src) {
+            // External script: no scope wrapping
+            newScript.src = script.src;
+        } else {
+            // Wrap inline script in an IIFE (Immediately Invoked Function Expression)
+            // to create a new scope
+            newScript.textContent = `(function() {\n${script.textContent}\n})();`;
+        }
         document.body.appendChild(newScript);
     });
 }
 
-export function setPageTitleFromPath(path) {
-    const splitPath = path.split('/');
-    let pageName = splitPath.pop().replace('.html', '');
-    let folderName = splitPath.pop();
-    
-    pageName = decodeURIComponent(pageName);
-    
-    if (folderName) {
-        folderName = decodeURIComponent(folderName);
-        pageName ? document.title = pageName + ' | ' + folderName + ' | Taulukkokirja' : document.title = 'Taulukkokirja';
-    } else {
-        pageName ? document.title = pageName + ' | Taulukkokirja' : document.title = 'Taulukkokirja';
-    }
-
+function clearInjectedScripts() {
+    document.querySelectorAll('script.injected').forEach(script => script.remove());
 }
 
-export async function loadPageHTML(path) {
-    try {
-        const response = await fetch(path);
-
-        if (!response.ok) {
-            return "Error loading page";
-        }
-        const html = await response.text();
-
-        return html;
-    } catch (error) {
-        console.error('Error loading page:', error);
-        return 'Error loading page';
-    }
-}
-
-export async function loadPageToElement(path, elementId, bookMarkable=true)
-{
-    console.log('Loading page to element')
-
-    if (!path.endsWith('.html')) {
-        explorer.openPath(path);
-    }
-
-    const html = await loadPageHTML(path);
-    if (!html || html === 'Error loading page') {
-        const $element = document.getElementById(elementId);
-        $element.innerHTML = html;
-        return
-    };
-
-    const $element = document.getElementById(elementId);
-    $element.innerHTML = html;
-    
-    const $headerContainer = $element.querySelector('.sticky-page-header');
-    const $wrapper = $headerContainer.querySelector('.d-flex');
-    $wrapper.style.flexDirection = 'row';
-    $wrapper.style.justifyContent = 'space-between';
-    $wrapper.style.alignItems = 'center';
-    
-    if (bookMarkable) {
-        const $button = document.createElement('button');
-        $button.classList.add('btn', 'button-with-icon', 'rounded-circle', 'ripple', 'ripple-dark', 'ripple-centered', 'hover-glow');
-        addRippleToElement($button);
-        
-        const $headerWrapper = document.createElement('h1');
-        $headerWrapper.style.margin = '0';
-        const $icon = document.createElement('i');
-        $headerWrapper.appendChild($icon);
-        $button.appendChild($headerWrapper);
-
-        $button.addEventListener('click', () => {
-            if ($icon.classList.toggle('bi-bookmark')) {
-                storage.removeFromStorageList('bookmarks', path)
-            }
-            
-            if ($icon.classList.toggle('bi-bookmark-fill')) {
-                storage.addToStorageList('bookmarks', path, true)
-            }
-
-            updateBookmarks();
-        });
-
-        const bookmarks = storage.getFromStorageList('bookmarks');
-        
-        if (bookmarks.includes(path)) {
-            $icon.classList.add('bi', 'bi-bookmark-fill');
-        } else {
-            $icon.classList.add('bi', 'bi-bookmark');
-        }
-
-        $wrapper.appendChild($button);
-    }
-
-    const recents = storage.getFromStorageList('recently-viewed');
+function updateHistory(path) {
+    const recents = StorageHelper.getFromStorageList('recently-viewed');
     let idx = recents.indexOf(path);
     
     // If the path already exists, remove it
     if (idx !== -1)
         recents.splice(idx, 1);
 
-    recents.unshift(path); // Add the new path to the front of the array (index 0)
-    
-    // If there are more than 20 items, remove the oldest item (last item in array)
-    if (recents.length + 1 > 10)
+    recents.unshift(path);
+    if (recents.length > 20)
         recents.pop();
 
-    storage.setStorageItem('recently-viewed', recents);
-    
-    setPageTitleFromPath(path);
-    initLatex();
-    initTableHighlights();
-    injectScripts();
+    StorageHelper.setStorageItem('recently-viewed', recents);
 }
 
-export function initPageLoading()
-{
-    const loadUrl = async () => {
-        let url = pages.formatLocationHashForFetch(window.location.hash);
 
-        if (!url || url === '/') {
-            fetch('index.html');
-            return;
-        }
+const defaultStructure = {
+    "pages": {
+        "Matematiikka": {
+            "Analyyttinen geometria": {
+                "Ellipsi.html": null,
+                "Hyperbeli.html": null,
+                "Jana.html": null,
+                "Suora avaruudessa.html": null,
+                "Suora.html": null,
+                "Taso avaruudessa.html": null,
+                "Ympyrä.html": null
+            },
+            "Aritmetiikka ja algebra": {
+                "Korkeamman asteen yhtälö.html": null,
+                "Logaritmi.html": null,
+                "Lukujonoja ja summia.html": null,
+                "Raja-arvoja.html": null,
+                "Reaalilukujen aksioomat.html": null,
+                "Toisen asteen yhtälö.html": null
+            },
+            "Differentiaalilaskenta": {
+                "Derivaatan määritelmä.html": null,
+                "Derivaatan sovelluksia.html": null,
+                "Derivoimiskaavoja.html": null,
+                "Derivoimissääntöjä.html": null,
+                "Differentiaalin määritelmä.html": null,
+                "Logaritminen derivointi.html": null
+            },
+            "Funktionaalianalyysi": {
+                "Hilbertin avaruus.html": null
+            },
+            "Funktiot ja yhtälöt": {
+                "Sarjakehitelmiä.html": null
+            },
+            "Geometria": {
+                "Avaruusgeometria": {
+                    "Avaruuskulma.html": null,
+                    "Ortogonaaliprojektio.html": null,
+                    "Termejä.html": null
+                },
+                "Yleinen yhteneväisyys ja yhdenmuotoisuus": {
+                    "Homotetia ja yhdenmuotoisuus.html": null,
+                    "Tasokuvioiden perusliikkeet ja yhtenevyys.html": null
+                },
+                "Ympyrä": {
+                    "Pisteen potenssi ja sekanttilause.html": null
+                }
+            },
+            "Integraalilaskenta": {
+                "Integraaliin liittyviä sääntöjä.html": null,
+                "Integroimiskaavoja.html": null,
+                "Käyrän kaaren pituus.html": null,
+                "Osittaisintegrointi.html": null,
+                "Pinta-alaintegraaleja.html": null,
+                "Tilavuusintegraaleja.html": null
+            },
+            "Kompleksiluvut": {
+                "Kompleksiluvun juuri ja logaritmi.html": null,
+                "Määritelmä ja laskutoimitukset.html": null,
+                "Polaarinen esitys.html": null
+            },
+            "Lineaarialgebra": {
+                "Määritelmiä ja termejä.html": null,
+                "Determinantti": {
+                    "Lineaariset yhtälöryhmät.html": null,
+                    "Määritelmiä ja merkintöjä.html": null,
+                    "Ominaisarvo ja -ominaisvektori.html": null
+                },
+                "Matriisi": {
+                    "Käänteismatriisi.html": null,
+                    "Laskutoimitukset.html": null,
+                    "Määritelmiä.html": null,
+                    "Yhtälöparin muuntaminen matriisimuotoon.html": null
+                },
+                "Tensori": {
+                    "Tensorityyppien nimiä.html": null
+                },
+                "Vektori": {
+                    "Laskutoimitukset.html": null,
+                    "Määritelmiä.html": null,
+                    "Pistetulo ja ristitulo.html": null,
+                    "Projisiot.html": null,
+                    "Suuntakulmat ja -kosinit.html": null
+                }
+            },
+            "Logiikka": {
+                "Konnektiivit.html": null,
+                "Kvanttorit.html": null,
+                "Totuusarvotaulukko.html": null
+            },
+            "Lukuteoria": {
+                "Alkuluvut.html": null,
+                "Diofantoksen yhtälö.html": null,
+                "Jaollisuus.html": null,
+                "Kongruenssi.html": null,
+                "Lukujen 1–999 alkutekijät.html": null
+            },
+            "Merkintöjä ja symboleja": {
+                "Analyysi.html": null,
+                "Aritmetiikka.html": null,
+                "Geometria.html": null,
+                "Kreikkalaiset aakkoset.html": null,
+                "Logiikka ja joukko-oppi.html": null,
+                "Todennäköisyyslaskenta.html": null,
+                "Vektorit.html": null
+            },
+            "Numeerisia menetelmiä": {
+                "Numeerinen derivointi.html": null,
+                "Numeerinen integrointi.html": null,
+                "Yhtälön ratkaisu.html": null
+            },
+            "Talousmatematiikka": {
+                "Talousmatematiikan kaavoja.html": null
+            },
+            "Todennäköisyyslaskenta ja tilastotiede": {
+                "Diskreetti todennäköisyysjakauma.html": null,
+                "Jatkuva todennäköisyysjakauma.html": null,
+                "Kahden diskreetin muuttujan tilastollinen jakauma.html": null,
+                "Normaalijakauman kertymäfunktio.html": null,
+                "Normaalijakauman tiheysfunktio.html": null,
+                "Tilastollisten jakaumien tunnuslukuja.html": null,
+                "Kombinatoriikka": {
+                    "Binomikertoimet (Pascalin kolmio).html": null,
+                    "Kombinatoriikka.html": null,
+                    "Newtonin binomikaava.html": null
+                }
+            },
+            "Trigonometria": {
+                "Absoluuttinen kulmayksikkö radiaani.html": null,
+                "Muistikolmiot.html": null,
+                "Muunnoskaavoja.html": null,
+                "Trigonometristen funktioiden tarkkoja arvoja.html": null
+            }
+        },
 
-        // const newUrl = pages.formatPathToHash(url);
-        // history.pushState(null, '', newUrl);
-        await loadPageToElement(url, 'page-container');
-        setPageTitleFromPath(url);
-
-        const terms = pages.getDecodedSearchParams('highlight');
-        if (terms.length > 0) {
-            highlightTerms(document.getElementById('page-container'), terms);
+        "Fysiikka": {
+            "Aaltoliike- ja valo-oppi": {
+                "Dopplerin ilmiö.html": null,
+                "Kaavoja.html": null,
+                "Taulukoita": {
+                    "Aineiden taitekertoimia.html": null,
+                    "Ilman taitekerroin eri aallonpituuksille.html": null,
+                    "Näkyvän valon spektri ilmassa.html": null,
+                    "Ultraviolettivalon luokittelu.html": null,
+                    "Äänen intensiteettitasoja.html": null,
+                    "Äänen nopeus väliaineessa.html": null,
+                    "Äänen turvallisuusrajat.html": null
+                }
+            },
+            "Atomi-, säteily- ja ydinfysiikka": {
+                "Alkuaineiden isotooppeja.html": null,
+                "Irrotustöitä.html": null,
+                "Kaavoja.html": null,
+                "Nukleonit.html": null,
+                "Radioaktiivinen hajominen.html": null,
+                "Standardimallin alkeishiukkaset.html": null,
+                "Säteilyn laatukertoimia.html": null
+            },
+            "Kvanttifysiikka": {
+                "Kaavoja.html": null,
+                "Kvanttiluvut.html": null,
+                "Schrödingerin yhtälö.html": null
+            },
+            "Lujuusoppi": {
+                "Lujuusopin kaavoja.html": null,
+                "Vetokoe.html": null
+            },
+            "Mekaniikka": {
+                "Mekaniikan kaavoja.html": null
+            },
+            "Nesteet": {
+                "Ilmastointi.html": null,
+                "Kavitaatio.html": null,
+                "Nesteiden kaavoja.html": null,
+                "Hydrodynamiikka": {
+                    "Lentokoneen siipi.html": null,
+                    "Reynoldsin luku ja turbulentti virtaus.html": null,
+                    "Tilavuusvirta.html": null,
+                    "Tuulivoimala.html": null,
+                    "Viskositeetti.html": null
+                },
+                "Hydrostatiikka": {
+                    "Hydrostaattinen tehonsiirto.html": null,
+                    "Ilmastointikanava.html": null,
+                    "Nestepatsasmanometri.html": null
+                }
+            },
+            "Suhteellisuusteoria": {
+                "Suppea suhteellisuusteoria.html": null
+            },
+            "Suureet, yksiköt ja vakiot": {
+                "Johdannaisyksiköt.html": null,
+                "Kerrannaisyksiköiden etuliitteet.html": null,
+                "Luonnonvakioita.html": null,
+                "Muuntokertoimia.html": null,
+                "Perusyksiköiden määritelmät.html": null,
+                "SI-järjestelmä.html": null
+            },
+            "Sähkömagnetismi": {
+                "Kaavoja.html": null,
+                "Maxwellin yhtälöt.html": null,
+                "Sähkövuo ja sähkövuon tiheys.html": null,
+                "Värähtelypiiri.html": null,
+                "Taulukoita": {
+                    "Alkuaineiden ominaisuuksia.html": null,
+                    "Curie-lämpötiloja.html": null,
+                    "Eristeiden ominaisuuksia.html": null,
+                    "Ferromagneettisten aineiden ominaisuuksia.html": null,
+                    "Metalliseosten ominaisuuksia.html": null,
+                    "Suprajohteita.html": null,
+                    "Sähköteknisiä piirrosmerkkejä.html": null
+                }
+            },
+            "Taulukoita": {
+                "Ilmakehän koostumus.html": null,
+                "Putoamiskiihtyvyys merenpinnan tasolla.html": null,
+                "Mekaniikka ja termodynamiikka": {
+                    "Ilmakehän ominaisuuksia.html": null,
+                    "Kiinteiden aineiden ominaisuuksia.html": null,
+                    "Kiinteiden alkuaineiden ominaisuuksia.html": null,
+                    "Kitkakertoimia.html": null,
+                    "Kylläisen vesihöyryn paine ja tiheys.html": null,
+                    "Metalliseosten ominaisuuksia.html": null,
+                    "Nesteiden ja kaasujen ominaisuuksia.html": null,
+                    "Polttoaineiden lämpöarvoja.html": null,
+                    "Veden ominaisuuksia.html": null,
+                    "Veden tiheys lämpötiloissa.html": null
+                }
+            },
+            "Termodynamiikka": {
+                "Aikavakio (lämpömittari).html": null,
+                "Entropia ja termodynamiikan toinen pääsääntö.html": null,
+                "Fourierin I laki.html": null,
+                "Fourierin II laki.html": null,
+                "Lämmön siirtyminen.html": null,
+                "Lämpöhaude.html": null,
+                "Lämpösäteily.html": null,
+                "Rajapinnan vaikutus lämmön siirtymiseen.html": null,
+                "Takan lämpötilajakauman simulointi.html": null,
+                "Termodynamiikan kaavoja.html": null,
+                "Termodynamiikan peruskäsitteitä.html": null,
+                "Lämpökoneet": {
+                    "Jäähdytyskone ja lämpöpumppu.html": null,
+                    "Lämpökoneiden kaavoja.html": null,
+                    "Lämpövoimakone.html": null
+                }
+            },
+            "Tähtitiede": {
+                "Aurinko.html": null,
+                "Kirkkaimmat tähdet.html": null,
+                "Komeettoja.html": null,
+                "Kuu.html": null,
+                "Linnunrata.html": null,
+                "Lähimmät tähdet.html": null,
+                "Maa.html": null,
+                "Pikkuplaneettoja ja asteroideja.html": null,
+                "Planeetat.html": null,
+                "Tähtisumuja.html": null
+            }
+        },
+        "Kemia": {
+            "Alkuaineet": {
+                "Alkuaineiden jaksollinen järjestelmä.html": null,
+                "Alkuaineiden suhteelliset atomimassat (IUPAC 2018).html": null,
+                "Atomien ja ionien suhteelliset koot.html": null,
+                "Elektronegatiivisuus.html": null,
+                "Elektronien sijoittuminen energiatasoille.html": null,
+                "Kovalenttisidoksen ioniluonne.html": null,
+                "Pääryhmien alkuaineiden ionisoitumisenergioita.html": null,
+                "Yleisimmät hapetusluvut.html": null
+            },
+            "Hapot, emäkset": {
+                "Emäsvakioita.html": null,
+                "Happo- ja emäsliuosten pitoisuuksia ja tiheyksiä.html": null,
+                "Happovakioita.html": null,
+                "Veden ionitulo.html": null
+            },
+            "Hiilen yhdisteitä": {
+                "Hiilen yhdisteiden triviaalinimiä ja IUPAC-nimiä.html": null,
+                "Yleisesti käytettyjä nimilyhenteitä.html": null
+            },
+            "Merkintöjä ja kaavoja": {
+                "Kreikkalaiset numeeriset etuliitteet.html": null,
+                "Laskukaavoja.html": null,
+                "Vakioita.html": null
+            },
+            "Sähkökemia": {
+                "Metallien jännitesarja yleisille metalleille.html": null,
+                "Standardipotentiaaleja.html": null
+            },
+            "Yhdisteet": {
+                "Anioneja.html": null,
+                "Kaasujen ominaisuuksia.html": null,
+                "Kationeja.html": null,
+                "Kompleksi-ioneja.html": null,
+                "Kovalenttisidosten pituuksia ja sidosenergioita.html": null,
+                "Liukoisuustuloja.html": null,
+                "Mineraaleja.html": null,
+                "Muodostumislämpöjä.html": null,
+                "Spektrien tulkinta.html": null,
+                "Yhdisteiden kauppanimiä ja koostumuksia.html": null
+            }
+        },
+        "Testit": {
+            "LaTeX ja kopiointi.html": null,
+            "Lorem ipsum.html": null,
+            "Tyhjä.html": null
         }
     }
-
-    window.addEventListener('popstate', () => {
-        // console.log("POPSTATE");
-        // loadUrl();
-    });
-    
-    window.addEventListener('load', () => {
-        console.log("LOAD");
-        loadUrl();
-    });
-
-    window.addEventListener('hashchange', () => {
-        console.log("HASH CHANGE")
-        loadUrl();
-    });
 }

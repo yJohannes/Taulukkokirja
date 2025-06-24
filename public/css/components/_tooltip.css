@@ -1,0 +1,44 @@
+/* Reduced motion blocks the bootstrap animation */
+
+.tooltip {
+    pointer-events: none;
+}
+
+.tooltip.fade .tooltip-inner
+{
+    transform: scale(0.8);
+    transition: transform 0.15s ease;
+}
+
+.tooltip.fade {
+    opacity: 0;
+    transition: opacity 0.15s ease;
+}
+  
+.tooltip.fade.show,
+.tooltip.fade.show .tooltip-inner {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.tooltip[data-popper-placement='top'] .tooltip-inner {
+    transform-origin: bottom;
+}
+
+.tooltip[data-popper-placement='bottom'] .tooltip-inner {
+    transform-origin: top;
+}
+
+.tooltip[data-popper-placement='left'] .tooltip-inner {
+    transform-origin: right;
+}
+
+.tooltip[data-popper-placement='right'] .tooltip-inner {
+    transform-origin: left;
+}
+
+@media (max-width: 768px) {
+    .tooltip {
+        display: none !important;
+    }
+}

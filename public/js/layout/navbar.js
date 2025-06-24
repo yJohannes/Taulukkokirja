@@ -1,44 +1,128 @@
-import { addRippleToElement } from "../effects/ripple.js";
 import { addToolTip } from "../components/common/tooltip.js";
-import { toggleEditor } from "./editor.js";
-import { updateBookmarks } from "../components/bookmarks/index.js";
+import { showWorkspace, hideWorkspace, isWorkspaceOpen } from "./workspace.js";
+import { updateBookmarks } from "../components/bookmarks/bookmarks.js";
+import { elementUtils } from "../utils/element-utils.js";
 
-export function initNavbar() {
-    const $sidebar1Toggle = document.getElementById('sidebar-1-toggle');
-    const $sidebar1 = document.getElementById('sidebar-1');
-    const $sidebar2 = document.getElementById('sidebar-2');
-    const $editor = document.getElementById('latex-editor');
-    const $bookmarks = document.getElementById('bookmarks');
-    const $settings = document.getElementById('settings');
+import { GridManager } from "./grid-manager.js";
 
-    $sidebar1Toggle.addEventListener('click', () => {
+export const Navbar = {
+    init,
+}
+
+function init() {
+    // const gm = new GridManager(document.getElementById('content-grid'), 'content-grid');
+    
+    const sidebar1 = document.getElementById('sidebar-left');
+    const sidebar2 = document.getElementById('sidebar-right');
+    
+    const sidebarToggle = document.getElementById('nav-sidebar-toggle');
+    const history = document.getElementById('nav-history');
+    const bookmarks = document.getElementById('nav-bookmarks');
+    const editor = document.getElementById('nav-latex-editor');
+    const rightSidebar = document.getElementById('nav-toggle-right-sidebar');
+    const geogebra = document.getElementById('nav-geogebra');
+    const darkMode = document.getElementById('nav-dark-mode');
+    const settings = document.getElementById('nav-settings');
+
+    // Sidebar toggle just ensures sidebar2 is hidden (sidebar.js handles actual toggling)
+    sidebarToggle.addEventListener('click', () => {
         updateBookmarks();
-        
-        $sidebar2.classList.remove('show');
-        // sidebar.js handles the toggling logic
+        sidebar2.classList.remove('show');
     });
 
-    
-    $bookmarks.addEventListener('click', () => {
+    const bookmarkRoot = document.getElementById('bookmarks');
+    const historyRoot = document.getElementById('recently-viewed');
+
+    function updateSidebarVisibility() {
+        if (elementUtils.isElementVisible(historyRoot) || elementUtils.isElementVisible(bookmarkRoot)) {
+            sidebar2.classList.add('show');
+            sidebar1.classList.remove('show');
+            // gm.setCol(4, false);
+            // gm.setCol(5, false);
+        } else {
+            sidebar2.classList.remove('show');
+            // gm.setCol(4, true);
+            // gm.setCol(5, true);
+        }
+    }
+
+    history.addEventListener('click', () => {
+       elementUtils.toggleVisibility(historyRoot);
+        updateSidebarVisibility();
         updateBookmarks();
-        
-        $sidebar1.classList.remove('show');
-        $sidebar2.classList.toggle('show');
+    });
+
+    bookmarks.addEventListener('click', () => {
+       elementUtils.toggleVisibility(bookmarkRoot);
+        updateSidebarVisibility();
+        updateBookmarks();
     });
     
-    $editor.addEventListener('click', () => {
-        toggleEditor();
-    })
+    // rightSidebar.addEventListener('click', () => {
+    //     toggleGridColumn(SplitGrid.ref, 4, !elementUtils.isElementVisible(sidebar2));
+    // });
 
-    let navs = [
-        $editor,
-        $bookmarks,
-        $settings,
-        $sidebar1Toggle,
-    ];
+    const geogebraRoot = document.getElementById('geogebra-iframe-root');
+    const editorRoot = document.getElementById('rich-text-editor-root');
 
-    navs.forEach($nav => {
-        addToolTip($nav, 'bottom');
-        addRippleToElement($nav);
+    editor.addEventListener('click', () => {
+        if (!isWorkspaceOpen()) {
+            showWorkspace();
+        } else if (elementUtils.isElementVisible(editorRoot)) {
+            return hideWorkspace();
+        }
+        
+        if (elementUtils.isElementVisible(geogebraRoot)) {
+            elementUtils.showElement(false, geogebraRoot)
+            elementUtils.showElement(true, editorRoot);
+        }
+
+        localStorage.setItem('workspace-tool', 'editor');
+    });
+
+    geogebra.addEventListener('click', () => {
+        if (!isWorkspaceOpen()) {
+            showWorkspace();
+        } else if (elementUtils.isElementVisible(geogebraRoot))
+            return hideWorkspace();
+
+        if (elementUtils.isElementVisible(editorRoot)) {
+           elementUtils.showElement(false, editorRoot)
+           elementUtils.showElement(true, geogebraRoot);
+        }
+
+        localStorage.setItem('workspace-tool', 'geogebra');
+    });
+
+    const tool = localStorage.getItem('workspace-tool');
+    const toolIsEditor = tool === 'editor';
+
+    elementUtils.showElement(toolIsEditor, editorRoot);
+    elementUtils.showElement(!toolIsEditor, geogebraRoot);
+
+    // Apply tooltips
+    [
+        history,
+        bookmarks,
+        editor,
+        geogebra,
+        darkMode,
+        settings,
+        sidebarToggle,
+    ].forEach(el => addToolTip(el, 'right'));
+
+    const theme = localStorage.getItem('theme');
+    if (theme === 'dark') {
+        darkMode.toggled = true;
+    }
+
+    // Handle dark mode toggle
+    darkMode.addEventListener('toggle-change', (e) => {
+        const { toggled } = e.detail;
+        document.documentElement.classList.toggle('light', !toggled);
+        document.documentElement.classList.toggle('dark', toggled);
+
+        const theme = toggled ? 'dark' : 'light';
+        localStorage.setItem('theme', theme)
     });
 }

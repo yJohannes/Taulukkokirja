@@ -1,30 +1,31 @@
-import { setRealVH } from './layout/grid.js';
-import { initSplitGrid } from './components/split-grid.js';
-import { initPageLoading } from './pages/index.js';
-import { initSidebar } from './layout/sidebar.js';
-import { initNavbar } from './layout/navbar.js';
-import { loadSettings } from './components/settings.js';
-import * as explorer from './components/explorer/index.js'
-import * as editor from './rich-text-editor/index.js'
-import * as bookmarks from './components/bookmarks/index.js';
-import * as search from './components/search/index.js';
+import { initRealVH } from './utils/viewport.js';
+import { SplitGrid } from './layout/split-grid.js';
+import { Pages } from './pages/index.js';
+import { Sidebar } from './layout/sidebar.js';
+import { Navbar } from './layout/navbar.js';
+import { Editor } from './rich-text-editor/index.js'
+import { Bookmarks } from './components/bookmarks/bookmarks.js';
+import { Search } from './components/search/search.js';
 
-window.addEventListener('resize', setRealVH);
-window.addEventListener('load', setRealVH);
+import '../components/search_bar/search-bar.js';
+import '../components/toggle_button/toggle-button.js';
+import '../components/ripple/index.js';
+import '../components/table_highlighting/index.js';
 
 document.addEventListener('DOMContentLoaded', async () => {
-    initSplitGrid();
-    initPageLoading();
-    initNavbar();
-    initSidebar();
-    explorer.initSearchToInput(document.getElementById('explorer-search'))
-    bookmarks.updateBookmarks();
+    const root = document.documentElement;
+    const fontSize = window.getComputedStyle(root).getPropertyValue('--font-size').trim();
+    const scale = localStorage.getItem('font-scale');
+    document.documentElement.style.fontSize = `calc(${scale} * (${fontSize}))`;
+    
+    initRealVH();
+    SplitGrid.init();
 
-    await explorer.loadExplorerToElement(document.getElementById('explorer-container'));
-    explorer.loadExplorerSave();
-    loadSettings();
+    Navbar.init();
+    Sidebar.init();
+    Pages.loading.init();
+    Bookmarks.updateBookmarks();    
 
-    editor.init();
-
-    await search.initSearch();
+    Editor.init();
+    await Search.init();
 });

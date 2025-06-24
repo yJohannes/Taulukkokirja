@@ -1,22 +1,13 @@
 .sidebar {
-    background-color: white;
-    position: sticky;
-    top: 0;
+    height: 100%;
     min-width: 250px;
-    padding: 1rem;
-    box-sizing: border-box;
+    /* max-width: 450px; */
     overflow-y: auto;
-    z-index: 60;
+    z-index: 1;
 }
 
-/* Show hamburger icon on smaller screens */
-#sidebar-1-toggle {
-    /* Hidden by default */
-    display: none !important; 
-    box-shadow: none !important;
-
-
-    @media (max-width: 768px) {
-        display: flex !important;
+@media (min-width: 768px) {
+    #nav-sidebar-toggle {
+        display: none !important;
     }
 }
