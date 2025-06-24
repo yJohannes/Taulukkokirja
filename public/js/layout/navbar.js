@@ -10,7 +10,7 @@ export const Navbar = {
 }
 
 function init() {
-    const gm = new GridManager(document.getElementById('content-grid'), 'content-grid');
+    // const gm = new GridManager(document.getElementById('content-grid'), 'content-grid');
     
 
     const sidebar1 = document.getElementById('sidebar-left');
@@ -35,11 +35,15 @@ function init() {
     const historyRoot = document.getElementById('recently-viewed');
 
     function updateSidebarVisibility() {
-        if (elementUtils.isElementVisible(historyRoot) ||elementUtils.isElementVisible(bookmarkRoot)) {
+        if (elementUtils.isElementVisible(historyRoot) || elementUtils.isElementVisible(bookmarkRoot)) {
             sidebar2.classList.add('show');
             sidebar1.classList.remove('show');
+            // gm.setCol(4, false);
+            // gm.setCol(5, false);
         } else {
             sidebar2.classList.remove('show');
+            // gm.setCol(4, true);
+            // gm.setCol(5, true);
         }
     }
 
