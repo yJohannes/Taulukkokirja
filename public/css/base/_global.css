@@ -65,8 +65,8 @@
     --color-arrow-flipped: var(--color-primary);
     --color-mark-transparent: rgba(255, 255, 0, 0.4);
     --color-mark: #FF0;
-    --color-scrollbar: #949494;
-    --color-scrollbar-bg: transparent;
+    /* --color-scrollbar: #949494; */
+    /* --color-scrollbar-bg: transparent; */
     --color-selection: rgb(88 155 255 / 30%);
 }
 
