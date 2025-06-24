@@ -41,13 +41,15 @@
 
     <script>
         (() => {
+            const root = document.documentElement;
             try {
                 const theme = localStorage.getItem('theme');
-                if (theme) {
-                    document.documentElement.classList.add(theme);
-                }
+                if (theme) root.classList.add(theme);
+                else root.classList.add('light');
             } catch (e) {
             // Fallback if localStorage is not available
+            root.classList.add('light');
+
             }
         })();
     </script>
