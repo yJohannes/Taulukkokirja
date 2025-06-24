@@ -70,152 +70,194 @@
                 <!-- Top icons -->
                 <ul class="nav d-flex flex-row flex-md-column gap-1 gap-md-2 m-0 p-0 justify-content-center justify-content-md-start">
                     <li class="nav-item d-flex justify-content-center">
-                        <button is="toggle-button" id="nav-dark-mode"
-                            class="btn nav-link rounded-circle ripple ripple-centered hover-glow d-flex flex-column justify-content-center align-items-center"
-                            title="Dark mode" aria-label="Dark mode">
-                            <i slot="on" class="bi bi-sun"></i>
-                            <i slot="off" class="bi bi-moon"></i>
+                        <button id="nav-history"
+                            class="btn nav-link rounded-circle ripple ripple-centered hover-glow d-flex justify-content-center align-items-center"
+                            title="Historia" aria-label="Historia">
+                            <i class="bi bi-clock-history"></i>
                         </button>
                     </li>
                     <li class="nav-item d-flex justify-content-center">
-                        <a id="nav-settings"
+                        <button id="nav-bookmarks"
                             class="btn nav-link rounded-circle ripple ripple-centered hover-glow d-flex justify-content-center align-items-center"
-                            href="#/Asetukset" title="Asetukset" aria-label="Asetukset"
-                            >
-                            <i class="bi bi-gear"></i>
-                        </a>
-                    <li class="nav-item d-flex justify-content-center">
-                        <button id="nav-sidebar-toggle"
-                            class="btn nav-link rounded-circle ripple ripple-centered hover-glow d-flex justify-content-center align-items-center"
-                            title="Avaa/sulje sivupalkki" aria-label="Avaa/sulje sivupalkki"
-                        >
-                            <i class="bi bi-list" style="transform: scale(1.4);"></i>
+                            title="Kirjanmerkit" aria-label="Kirjanmerkit">
+                            <i class="bi bi-bookmarks"></i>
                         </button>
                     </li>
+                    <li class="nav-item d-flex justify-content-center">
+                        <button id="nav-latex-editor"
+                            class="btn nav-link rounded-circle ripple ripple-centered hover-glow d-flex justify-content-center align-items-center"
+                            title="LaTeX-editori" aria-label="LaTeX-editori">
+                            <i class="bi bi-pen"></i>
+                        </button>
                     </li>
+                    <li class="nav-item d-flex justify-content-center">
+                        <button id="nav-geogebra"
+                            class="btn nav-link rounded-circle ripple ripple-centered hover-glow d-flex justify-content-center align-items-center"
+                            title="GeoGebra" aria-label="GeoGebra">
+                            <i class="bi bi-calculator"></i>
+                        </button>
+                    </li>
+                    <!-- <li class="nav-item d-flex justify-content-center">
+                        <button id="nav-toggle-right-sidebar"
+                            class="btn nav-link rounded-circle ripple ripple-centered hover-glow d-flex justify-content-center align-items-center"
+                            title="Toggle right sidebar" aria-label="Toggle right sidebar">
+                            <i class="bi bi-layout-sidebar-reverse"></i>
+                        </button>
+                    </li> -->
                 </ul>
-            </header>
-            
-            <!-- Right column: main content -->
-            <div id="content-grid" class="flex-grow-1 overflow-auto order-0 order-md-1 h-100">
-                <aside id="sidebar-left" style="grid-column: 1 / 2; grid-row: 1 / 4;" class="sidebar bg-tertiary border-end px-2 py-3"></aside>
-                <div id="left-splitter" style="grid-column: 2 / 3; grid-row: 1 / 4;" class="gutter gutter-horizontal"></div>
+            </nav>
 
-                <div id="main-content" style="grid-column: 3 / 4; grid-row: 1 / 2;" class="d-flex flex-column bg-primary cross-background overflow-y-auto">
-                    <main id="page-container" class="p-3 mb-5">
-                        <div class="sticky-header">
-                            <h1>Etusivu</h1>
-                            <hr>
-                        </div>
+            <!-- Bottom icons -->
+            <ul
+                class="nav d-flex flex-row flex-md-column gap-1 gap-md-2 m-0 p-0 justify-content-center justify-content-md-start">
+                <li class="nav-item d-flex justify-content-center">
+                    <button is="toggle-button" id="nav-dark-mode"
+                        class="btn nav-link rounded-circle ripple ripple-centered hover-glow d-flex flex-column justify-content-center align-items-center"
+                        title="Dark mode" aria-label="Dark mode">
+                        <i slot="on" class="bi bi-sun"></i>
+                        <i slot="off" class="bi bi-moon"></i>
+                    </button>
+                </li>
+                <li class="nav-item d-flex justify-content-center">
+                    <a id="nav-settings"
+                        class="btn nav-link rounded-circle ripple ripple-centered hover-glow d-flex justify-content-center align-items-center"
+                        href="#/Asetukset" title="Asetukset" aria-label="Asetukset"
+                        >
+                        <i class="bi bi-gear"></i>
+                    </a>
+                <li class="nav-item d-flex justify-content-center">
+                    <button id="nav-sidebar-toggle"
+                        class="btn nav-link rounded-circle ripple ripple-centered hover-glow d-flex justify-content-center align-items-center"
+                        title="Avaa/sulje sivupalkki" aria-label="Avaa/sulje sivupalkki"
+                    >
+                        <i class="bi bi-list" style="transform: scale(1.4);"></i>
+                    </button>
+                </li>
+                </li>
+            </ul>
+        </header>
+        
+        <!-- Right column: main content -->
+        <div id="content-grid"
+        style="grid-template-columns: 300px 0px 1fr 0px 275px; grid-template-rows: 1fr auto 300px;"
+        class="flex-grow-1 overflow-auto order-0 order-md-1 h-100">
+            <aside id="sidebar-left" style="grid-column: 1 / 2; grid-row: 1 / 4;" class="sidebar bg-tertiary border-end px-2 py-3"></aside>
+            <div id="left-splitter" style="grid-column: 2 / 3; grid-row: 1 / 4;" class="gutter gutter-horizontal"></div>
 
-                        <p>Tämä on taulukkokirjan etusivu.</p>
-                    </main>
+            <div id="main-content" style="grid-column: 3 / 4; grid-row: 1 / 2;" class="d-flex flex-column bg-primary cross-background overflow-y-auto">
+                <main id="page-container" class="p-3 mb-5">
+                    <div class="sticky-header">
+                        <h1>Etusivu</h1>
+                        <hr>
+                    </div>
 
-                    <footer class="bg-secondary shadow px-3 py-5 mt-auto">
-                        <div class="container">
-                            <div class="row">
-                                <div class="col-lg-3 mb-3">
-                                    <h4>
-                                        Taulukkokirja
-                                    </h4>
-                                    <p>
-                                        Kaavoja ja taulukoita matematiikasta, fysiikasta ja kemiasta.
-                                    </p>
-                                </div>
-                                <div class="col-6 col-lg-3 mb-3">
-                                    <h5 class="d-flex align-items-center gap-2">
-                                        Linkit
-                                        <i class="bi bi-link fs-4"></i>
-                                    </h5>
-                                    <ul class="list-unstyled">
-                                        <li class="mb-2"><a href="#/Lähteet">Lähteet</a></li>
-                                        <li class="mb-2"><a href="#/Hyödyllisiä_linkkejä">Hyödyllisiä linkkejä</a></li>
-                                    </ul>
-                                </div>
-                                <div class="col-6 col-lg-3 mb-3">
-                                    <h5 class="d-flex align-items-center gap-2">
-                                        Laskimet
-                                        <i class="bi bi-plus-slash-minus fs-4"></i>
-                                    </h5>
+                    <p>Tämä on taulukkokirjan etusivu.</p>
+                </main>
 
-                                    <ul class="list-unstyled">
-                                        <li class="mb-2">
-                                            <a href="https://www.wolframalpha.com" target="_blank" rel="noopener">
-                                                Wolfram Alpha
-                                            </a>
-                                        </li>
-                                        <li class="mb-2">
-                                            <a href="https://www.geogebra.org/calculator" target="_blank" rel="noopener">
-                                            GeoGebra
-                                            </a>
-                                        </li>
-                                        <li class="mb-2">
-                                            <a href="https://www.desmos.com/calculator" target="_blank" rel="noopener">
-                                            Desmos
-                                            </a>
-                                        </li>
-                                        <li class="mb-2">
-                                            <a href="https://www.desmos.com/3d" target="_blank" rel="noopener">
-                                            Desmos 3D
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
+                <footer class="bg-secondary shadow px-3 py-5 mt-auto">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-lg-3 mb-3">
+                                <h4>
+                                    Taulukkokirja
+                                </h4>
+                                <p>
+                                    Kaavoja ja taulukoita matematiikasta, fysiikasta ja kemiasta.
+                                </p>
+                            </div>
+                            <div class="col-6 col-lg-3 mb-3">
+                                <h5 class="d-flex align-items-center gap-2">
+                                    Linkit
+                                    <i class="bi bi-link fs-4"></i>
+                                </h5>
+                                <ul class="list-unstyled">
+                                    <li class="mb-2"><a href="#/Lähteet">Lähteet</a></li>
+                                    <li class="mb-2"><a href="#/Hyödyllisiä_linkkejä">Hyödyllisiä linkkejä</a></li>
+                                </ul>
+                            </div>
+                            <div class="col-6 col-lg-3 mb-3">
+                                <h5 class="d-flex align-items-center gap-2">
+                                    Laskimet
+                                    <i class="bi bi-plus-slash-minus fs-4"></i>
+                                </h5>
 
-                                <div class="col-6 col-lg-3 mb-3">
-                                    <h5 class="d-flex align-items-center gap-2">
-                                        GitHub
-                                        <i class="bi bi-github fs-4"></i>
-                                    </h5>
-                                    <ul class="list-unstyled">
-                                        <li class="mb-2">
-                                            <a href="https://github.com/yJohannes/Taulukkokirja" target="_blank" rel="noopener" class="d-flex align-items-center gap-2">
-                                                Taulukkokirja
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
+                                <ul class="list-unstyled">
+                                    <li class="mb-2">
+                                        <a href="https://www.wolframalpha.com" target="_blank" rel="noopener">
+                                            Wolfram Alpha
+                                        </a>
+                                    </li>
+                                    <li class="mb-2">
+                                        <a href="https://www.geogebra.org/calculator" target="_blank" rel="noopener">
+                                        GeoGebra
+                                        </a>
+                                    </li>
+                                    <li class="mb-2">
+                                        <a href="https://www.desmos.com/calculator" target="_blank" rel="noopener">
+                                        Desmos
+                                        </a>
+                                    </li>
+                                    <li class="mb-2">
+                                        <a href="https://www.desmos.com/3d" target="_blank" rel="noopener">
+                                        Desmos 3D
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <div class="col-6 col-lg-3 mb-3">
+                                <h5 class="d-flex align-items-center gap-2">
+                                    GitHub
+                                    <i class="bi bi-github fs-4"></i>
+                                </h5>
+                                <ul class="list-unstyled">
+                                    <li class="mb-2">
+                                        <a href="https://github.com/yJohannes/Taulukkokirja" target="_blank" rel="noopener" class="d-flex align-items-center gap-2">
+                                            Taulukkokirja
+                                        </a>
+                                    </li>
+                                </ul>
                             </div>
                         </div>
-                    </footer>
-                </div>
-
-                <div id="main-workspace-splitter" style="grid-column: 3 / 4; grid-row: 2 / 3;" class="gutter gutter-vertical bg-primary bg-transition">
-                    <div class="handle rounded-pill position-absolute start-50 translate-middle bg-transition"></div>
-                    <div class="bg-secondary bg-transition border-top px-4 py-3"></div>
-                </div>
-                <!-- Tools are initially hidden and revealed during loading -->
-                <div id="workspace" style="grid-column: 3 / 4; grid-row: 3 / 4;" class="overflow-x-auto bg-secondary bg-transition h-100"> 
-                    <div id="geogebra-iframe-root" class="hidden"
-                        style="width: 100%; height: 100%; overflow: hidden; position: relative;">
-                        
-                        <iframe src="https://www.geogebra.org/calculator"
-                                allowfullscreen
-                                style="position: absolute; top: -50px; left: 0; width: 100%; height: calc(100% + 50px); border: 0;">
-                        </iframe>
                     </div>
-                    <div id="rich-text-editor-root" class="hidden overflow-y-hidden" style="overflow-wrap: break-word;"></div>
-                </div>
-
-                <div id="right-splitter" style="grid-column: 4 / 5; grid-row: 1 / 4;" class="gutter gutter-horizontal"></div>
-                <aside id="sidebar-right" style="grid-column: 5 / 6; grid-row: 1 / 4;" class="sidebar bg-tertiary border-start px-3 py-3">
-                    <section id="bookmarks" class="mb-4">
-                        <div class="sticky-header">
-                            <h3>Kirjanmerkit</h3>
-                            <hr>
-                        </div>
-                        <nav id="bookmark-container" class=" rounded"></nav>
-                    </section>
-
-                    <section id="recently-viewed" style="margin-bottom: 10rem;">
-                        <div class="sticky-header">
-                            <h3>Viimeksi selatut</h3>
-                            <hr>
-                        </div>
-                        <nav id="recently-viewed-container" class=" rounded"></nav>
-                    </section>
-                </aside>
+                </footer>
             </div>
+
+            <div id="main-workspace-splitter" style="grid-column: 3 / 4; grid-row: 2 / 3;" class="gutter gutter-vertical bg-primary bg-transition">
+                <div class="handle rounded-pill position-absolute start-50 translate-middle bg-transition"></div>
+                <div class="bg-secondary bg-transition border-top px-4 py-4"></div>
+            </div>
+            <!-- Tools are initially hidden and revealed during loading -->
+            <div id="workspace" style="grid-column: 3 / 4; grid-row: 3 / 4;" class="overflow-x-auto bg-secondary bg-transition h-100"> 
+                <div id="geogebra-iframe-root" class="hidden"
+                    style="width: 100%; height: 100%; overflow: hidden; position: relative;">
+                    
+                    <iframe src="https://www.geogebra.org/calculator"
+                            allowfullscreen
+                            style="position: absolute; top: -50px; left: 0; width: 100%; height: calc(100% + 50px); border: 0;">
+                    </iframe>
+                </div>
+                <div id="rich-text-editor-root" class="hidden overflow-y-hidden" style="overflow-wrap: break-word;"></div>
+            </div>
+
+            <div id="right-splitter" style="grid-column: 4 / 5; grid-row: 1 / 4;" class="gutter gutter-horizontal"></div>
+            <aside id="sidebar-right" style="grid-column: 5 / 6; grid-row: 1 / 4;" class="sidebar bg-tertiary border-start px-3 py-3">
+                <section id="bookmarks" class="mb-4">
+                    <div class="sticky-header">
+                        <h3>Kirjanmerkit</h3>
+                        <hr>
+                    </div>
+                    <nav id="bookmark-container" class=" rounded"></nav>
+                </section>
+
+                <section id="recently-viewed" style="margin-bottom: 10rem;">
+                    <div class="sticky-header">
+                        <h3>Viimeksi selatut</h3>
+                        <hr>
+                    </div>
+                    <nav id="recently-viewed-container" class=" rounded"></nav>
+                </section>
+            </aside>
         </div>
     </div>
 </body>
