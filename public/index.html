@@ -59,58 +59,16 @@
 </head>
 <!-- cross-background bg-secondary -->
 <body class="bg-secondary">
-    <div class="container-fluid p-0" style="height: 100dvh; height: calc(var(--real-vh, 1dvh) * 100);">
-        <div class="d-flex flex-column flex-md-row h-100">
-            <header id="nav-rail" class="bg-secondary d-flex flex-md-column justify-content-between flex-shrink-0 p-2 border-top border-end order-1 order-md-0">
-                <!-- Wrapper for nav items -->
-                <nav class="d-flex flex-md-column gap-1 gap-md-3">
-                    <a class="navbar-brand d-flex justify-content-center p-1 link-body-emphasis text-decoration-none" href="./">
-                        <img src="./img/icon/book-rounded.png" alt="Brand"
-                            style="width: 32px; height: 32px; object-fit: contain;">
-                    </a>
-                    <!-- Top icons -->
-                    <ul class="nav d-flex flex-row flex-md-column gap-1 gap-md-2 m-0 p-0 justify-content-center justify-content-md-start">
-                        <li class="nav-item d-flex justify-content-center">
-                            <button id="nav-history"
-                                class="btn nav-link rounded-circle ripple ripple-centered hover-glow d-flex justify-content-center align-items-center"
-                                title="Historia" aria-label="Historia">
-                                <i class="bi bi-clock-history"></i>
-                            </button>
-                        </li>
-                        <li class="nav-item d-flex justify-content-center">
-                            <button id="nav-bookmarks"
-                                class="btn nav-link rounded-circle ripple ripple-centered hover-glow d-flex justify-content-center align-items-center"
-                                title="Kirjanmerkit" aria-label="Kirjanmerkit">
-                                <i class="bi bi-bookmarks"></i>
-                            </button>
-                        </li>
-                        <li class="nav-item d-flex justify-content-center">
-                            <button id="nav-latex-editor"
-                                class="btn nav-link rounded-circle ripple ripple-centered hover-glow d-flex justify-content-center align-items-center"
-                                title="LaTeX-editori" aria-label="LaTeX-editori">
-                                <i class="bi bi-pen"></i>
-                            </button>
-                        </li>
-                        <li class="nav-item d-flex justify-content-center">
-                            <button id="nav-geogebra"
-                                class="btn nav-link rounded-circle ripple ripple-centered hover-glow d-flex justify-content-center align-items-center"
-                                title="GeoGebra" aria-label="GeoGebra">
-                                <i class="bi bi-calculator"></i>
-                            </button>
-                        </li>
-                        <!-- <li class="nav-item d-flex justify-content-center">
-                            <button id="nav-toggle-right-sidebar"
-                                class="btn nav-link rounded-circle ripple ripple-centered hover-glow d-flex justify-content-center align-items-center"
-                                title="Toggle right sidebar" aria-label="Toggle right sidebar">
-                                <i class="bi bi-layout-sidebar-reverse"></i>
-                            </button>
-                        </li> -->
-                    </ul>
-                </nav>
-
-                <!-- Bottom icons -->
-                <ul
-                    class="nav d-flex flex-row flex-md-column gap-1 gap-md-2 m-0 p-0 justify-content-center justify-content-md-start">
+    <div class="d-flex flex-column flex-md-row p-0" style="height: 100dvh; height: calc(var(--real-vh, 1dvh) * 100);">
+        <header id="nav-rail" class="bg-secondary d-flex flex-md-column justify-content-between flex-shrink-0 p-2 border-top border-end order-1 order-md-0">
+            <!-- Wrapper for nav items -->
+            <nav class="d-flex flex-md-column gap-1 gap-md-3">
+                <a class="navbar-brand d-flex justify-content-center p-1 link-body-emphasis text-decoration-none" href="./">
+                    <img src="./img/icon/book-rounded.png" alt="Brand"
+                        style="width: 32px; height: 32px; object-fit: contain;">
+                </a>
+                <!-- Top icons -->
+                <ul class="nav d-flex flex-row flex-md-column gap-1 gap-md-2 m-0 p-0 justify-content-center justify-content-md-start">
                     <li class="nav-item d-flex justify-content-center">
                         <button is="toggle-button" id="nav-dark-mode"
                             class="btn nav-link rounded-circle ripple ripple-centered hover-glow d-flex flex-column justify-content-center align-items-center"
