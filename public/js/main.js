@@ -1,4 +1,5 @@
 import { initRealVH } from './utils/viewport.js';
+import { GridManager } from './layout/grid-manager.js';
 import { SplitGrid } from './layout/split-grid.js';
 import { Pages } from './pages/index.js';
 import { Sidebar } from './layout/sidebar.js';
@@ -13,12 +14,16 @@ import '../components/ripple/index.js';
 import '../components/table_highlighting/index.js';
 
 document.addEventListener('DOMContentLoaded', async () => {
+    window.gridManager = new GridManager(document.getElementById('content-grid'), 'grid-d');
+    
     const root = document.documentElement;
     const fontSize = window.getComputedStyle(root).getPropertyValue('--font-size').trim();
     const scale = localStorage.getItem('font-scale');
     document.documentElement.style.fontSize = `calc(${scale} * (${fontSize}))`;
     
     initRealVH();
+
+
     SplitGrid.init();
 
     Navbar.init();
