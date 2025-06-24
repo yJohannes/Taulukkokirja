@@ -43,7 +43,7 @@
 
 <section>
     <h5>Muistin hallinta</h5>
-    <button class="btn ripple ripple-dark hover-glow" onclick="localStorage.removeItem('grid-data'); location.reload();">
+    <button class="btn ripple ripple-dark hover-glow" onclick="localStorage.removeItem('grid-data'); localStorage.removeItem('content-grid'); location.reload();">
         Nollaa jakajat
     </button>
 
@@ -51,7 +51,7 @@
         Tyhjennä vanhentuneet tiedot
     </button>
     
-    <button class="btn btn-danger ripple ripple-dark hover-glow" onclick="localStorage.clear(); location.reload();">
+    <button class="btn btn-danger bg-danger text-white ripple ripple-dark hover-glow" onclick="if(confirm('Tyhjennä muisti?')) { localStorage.clear(); location.reload(); }">
         Tyhjennä muisti
     </button>
 </section>
@@ -59,39 +59,34 @@
 <!-- <label for="color-picker">Pick a color:</label>
 <input type="color" id="color-picker" value="#ff0000"/> -->
 
-
-
 <script>
-    // Scoping is very important
-    {
-        const root = document.documentElement;
-        const fontSize = window.getComputedStyle(root).getPropertyValue('--font-size').trim();
+    const root = document.documentElement;
+    const fontSize = window.getComputedStyle(root).getPropertyValue('--font-size').trim();
 
-        const display = document.getElementById("fontSizeDisplay");
-        const step = 0.1;
-        let scale = localStorage.getItem('font-scale') || 1;
-        const minscale = 0.5;
-        const maxscale = 2.5;
+    const display = document.getElementById("fontSizeDisplay");
+    const step = 0.1;
+    let scale = localStorage.getItem('font-scale') || 1;
+    const minscale = 0.5;
+    const maxscale = 2.5;
 
-        function updateFontSize() {
-            scale = Math.max(minscale, Math.min(maxscale, scale));
-            localStorage.setItem('font-scale', scale);
+    function updateFontSize() {
+        scale = Math.max(minscale, Math.min(maxscale, scale));
+        localStorage.setItem('font-scale', scale);
 
-            document.documentElement.style.fontSize = `calc(${scale} * (${fontSize}))`;
-            display.textContent = Math.round(scale * 100) + " %";
-        }
-
-        document.getElementById("increase").addEventListener("click", () => {
-            scale += step;
-            updateFontSize();
-        });
-
-        document.getElementById("decrease").addEventListener("click", () => {
-            scale -= step;
-            updateFontSize();
-        });
-
-        // Initial display
-        updateFontSize();
+        document.documentElement.style.fontSize = `calc(${scale} * (${fontSize}))`;
+        display.textContent = Math.round(scale * 100) + " %";
     }
+
+    document.getElementById("increase").addEventListener("click", () => {
+        scale += step;
+        updateFontSize();
+    });
+
+    document.getElementById("decrease").addEventListener("click", () => {
+        scale -= step;
+        updateFontSize();
+    });
+
+    // Initial display
+    updateFontSize();
 </script>
