@@ -12,7 +12,6 @@ export const Navbar = {
 function init() {
     // const gm = new GridManager(document.getElementById('content-grid'), 'content-grid');
     
-
     const sidebar1 = document.getElementById('sidebar-left');
     const sidebar2 = document.getElementById('sidebar-right');
     
