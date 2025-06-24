@@ -1,8 +1,7 @@
-
-
 /**
- * @brief Tied state -- width/height = 0 means display = none but 0px doesn't affect display.
+ * @brief
  * Indexing is 1-based.
+ * Grid must have template rows & cols written inline
  */
 export class GridManager {
     /**
@@ -12,8 +11,8 @@ export class GridManager {
         this.grid = grid;
         this.storageID = storageID;
         this.data = JSON.parse(localStorage.getItem(storageID)) || {
-            prevRows: [],
-            prevCols: [],
+            prevRows: null,
+            prevCols: null,
         }
 
     }
@@ -25,7 +24,7 @@ export class GridManager {
 
         rows[i-1] = '0'
         const newRows = rows.join(' ');
-        this.grid.style.gridTemplateRows = newRows;
+        this.grid.style.gridTemplateRows = String(newRows);
 
 
         if (isVisible) {
@@ -37,6 +36,7 @@ export class GridManager {
         } else {
             for (const child of rowChildren) {
                 child.classList.add('d-none');
+                console.log(child);
             }
         }
 
@@ -44,28 +44,50 @@ export class GridManager {
     }
 
     setCol(i, isVisible) {
+        if (i - 1 < 0) {
+            console.warn('Invalid column index:', i);
+            return;
+        }
+
+        // First time setup: store original sizes
+        if (!this.data.prevCols) {
+            this.data.prevCols = GridManager.getTemplateSizes(this.grid, 'col');
+        }
+
         const colChildren = GridManager.getDirectionChildren(this.grid, i, 'col');
-        const cols = GridManager.getTemplateSizes(this.grid, 'col');
-        this.data.prevCols = cols;
 
-        cols[i-1] = '0'
-        const newCols = cols.join(' ');
-        this.grid.style.gridTemplateColumns = newCols;
+        // Always use the current state as base
+        const currentCols = GridManager.getTemplateSizes(this.grid, 'col');
+        const newCols = [...currentCols];
 
+        // Cache original size if not already cached and not hidden
+        if (!this.data.prevCols[i - 1] || this.data.prevCols[i - 1] === '0px') {
+            this.data.prevCols[i - 1] = currentCols[i - 1] !== '0px'
+                ? currentCols[i - 1]
+                : 'auto'; // fallback
+        }
 
         if (isVisible) {
+            const restoreSize = this.data.prevCols[i - 1];
+            newCols[i - 1] = restoreSize && restoreSize !== '0px' ? restoreSize : 'auto';
             for (const child of colChildren) {
-                this.grid.style.gridTemplateCols = this.data.prevCols;
                 child.classList.remove('d-none');
             }
         } else {
+            newCols[i - 1] = '0px';
             for (const child of colChildren) {
                 child.classList.add('d-none');
             }
         }
 
-        this.saveData()
+        console.log('prevCols:', this.data.prevCols);
+        console.log('newCols:', newCols);
+
+        this.grid.style.gridTemplateColumns = newCols.join(' ');
+        this.saveData();
     }
+
+
 
     saveData() {
         localStorage.setItem(this.storageID, JSON.stringify(this.data));
@@ -97,11 +119,12 @@ export class GridManager {
     /**
      * 
      * @param {string} direction - row/col
+     * @param {HTMLElement} grid
      */
     static getTemplateSizes(grid, direction) {
         if (direction === 'row')
-            return getComputedStyle(grid).gridTemplateRows.split(' ');
+            return grid.style.gridTemplateRows.split(' ');
         else if (direction === 'col')
-            return getComputedStyle(grid).gridTemplateColumns.split(' ');
+            return grid.style.gridTemplateColumns.split(' ');
     }
 }
