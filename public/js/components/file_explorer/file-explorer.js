@@ -18,6 +18,7 @@ export class FileExplorer {
         this.storageID = storageID;
         this.data = {
             autoCollapse: false,
+            lastActiveTab: null,
             openedFolderPaths: [],
         }
 
@@ -163,6 +164,14 @@ export class FileExplorer {
             });
         });
     }
+
+    // setTabActivity(isActive, tab) {
+
+        // this.data.lastActiveTab = 
+
+        // tab.classList.add('active');
+        // localStorage.setItem()
+    // }
 
     onTabClick(parent, tab, isDropdown) {
         console.log("DAOIWJAD")
