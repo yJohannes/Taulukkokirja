@@ -3,7 +3,14 @@ function setRealVHDesktop() {
 }
 
 function setRealVHMobile() {
-    document.documentElement.style.setProperty('--real-vh', `${window.visualViewport.height * 0.01}px`);
+    const isZoomed = () => {
+        return visualViewport.scale !== 1;
+    }
+
+    // We shouldnt update because zooming decreases the visualViewport
+    if (!isZoomed()) {
+        document.documentElement.style.setProperty('--real-vh', `${window.visualViewport.height * 0.01}px`);
+    }
 }
 
 /**
