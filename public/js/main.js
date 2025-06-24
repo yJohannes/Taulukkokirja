@@ -20,6 +20,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     
     initRealVH();
     SplitGrid.init();
+
     Navbar.init();
     Sidebar.init();
     Pages.loading.init();
