@@ -108,32 +108,32 @@ async function loadPageToElement(path, element, bookMarkable=true) {
     Sidebar.showSidebar(false, 'sidebar-left');
 }
 
-
-function clearInjectedScripts() {
-    document.querySelectorAll('script.injected').forEach(script => script.remove());
-}
-
-// Execute any inline scripts within injected HTML
-// Scripts will get the class 'injected' 
-
-// DOES NOT WORK
-
-
+/**
+ * Execute any inline scripts within injected HTML.
+ * Scripts will get the class 'injected'.
+ * @param {HTMLElement} container 
+ */
 function injectPageScripts(container) {
     clearInjectedScripts()
 
     container.querySelectorAll('script').forEach(script => {
         const newScript = document.createElement('script');
         newScript.classList.add('injected');
+
         if (script.src) {
-            // Handle external scripts
+            // External script: no scope wrapping
             newScript.src = script.src;
         } else {
-            // Execute inline scripts using innerHTML
-            newScript.innerHTML = script.innerHTML;
+            // Wrap inline script in an IIFE (Immediately Invoked Function Expression)
+            // to create a new scope
+            newScript.textContent = `(function() {\n${script.textContent}\n})();`;
         }
         document.body.appendChild(newScript);
     });
+}
+
+function clearInjectedScripts() {
+    document.querySelectorAll('script.injected').forEach(script => script.remove());
 }
 
 function updateHistory(path) {
