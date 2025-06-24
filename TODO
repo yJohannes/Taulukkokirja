@@ -4,4 +4,3 @@
 - Make ESC blur() in the editor
 - FileExplorer takes prefix for namespacing in storage
 - Remove useless wrappers
-- Darkmode icons are too bright
