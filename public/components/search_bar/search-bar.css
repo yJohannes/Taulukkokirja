@@ -10,11 +10,6 @@
     
     }
 
-    svg {
-        width: 1rem;
-        height: 1rem;
-    }
-    
     .search-bar-search-icon,
     .search-bar-clear-button {
         position: absolute !important;
