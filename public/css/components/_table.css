@@ -5,10 +5,10 @@ table tbody tr:nth-of-type(odd) {
 }
 
 table {
-    border-collapse: collapse;
+    border-collapse: separate;
     border-spacing: 0;
-    /* border: 1px solid var(--color-lines); */
-    /* border-radius: var(--table-border-radius); */
+    border: 1px solid var(--color-lines);
+    border-radius: var(--table-border-radius);
     overflow: hidden;
     /* clip inside cells */
 
@@ -20,8 +20,16 @@ td {
     padding: 0.5rem !important;
 }
 
+tr {
+    th:last-child, td:last-child {
+        border-right: none !important;
+    }
+}
+
 th {
-    border: solid 1px var(--color-lines-secondary);
+    /* border-right: 1px solid var(--color-lines-secondary) !important; */
+    padding: 0.75rem !important;
+    border-bottom: solid 1px var(--color-lines-secondary);
     background-color: var(--color-table-heading);
     color: var(--color-white);
 
@@ -41,7 +49,8 @@ th {
 }
 
 td {
-    border: 1px solid var(--color-lines) !important;
+    padding: 0.5rem !important;
+    border-right: 1px solid var(--color-lines) !important;
 
     p,
     ul,

@@ -17,7 +17,7 @@
     --color-white: #fff;
 
     --font-size: 0.6rem + 0.5vw;
-    --table-border-radius: 1rem;
+    --table-border-radius: 0.5rem;
 }
 
 .light {
