@@ -60,13 +60,15 @@
     --color-badge: var(--color-black);
     --color-shadow: rgba(0, 0, 0, 0.15);
     --color-lines: #dee2e6;
-    --color-lines-secondary: #232323;
+    --color-lines-secondary: #606060;
     --color-arrow: rgb(120, 120, 120);
     --color-arrow-flipped: var(--color-primary);
     --color-mark-transparent: rgba(255, 255, 0, 0.4);
     --color-mark: #FF0;
-    /* --color-scrollbar: #949494; */
-    /* --color-scrollbar-bg: transparent; */
+
+    --color-ripple-light: rgba(255, 255, 255, 0.3);
+    --color-ripple-dark: rgba(0, 0, 0, 0.1);
+
     --color-selection: rgb(88 155 255 / 30%);
 }
 
@@ -90,7 +92,7 @@
     --color-bg-primary-rgb: 22, 22, 22;
     --color-bg-secondary-rgb: 18, 18, 18;
     --color-bg-tertiary-rgb: 31, 31, 31;
-    --color-bg-pattern: rgba(255, 255, 255, 0.035);
+    --color-bg-pattern: rgba(255, 255, 255, 0.02);
 
     --color-text: #e5e7eb;
     --color-text-invert: var(--color-black);
@@ -116,6 +118,9 @@
     --color-scrollbar: #888;
     --color-scrollbar-bg: var(--color-bg-tertiary);
 
+    --color-ripple-light: rgba(0, 0, 0, 0.1);
+    --color-ripple-dark: rgba(255, 255, 255, 0.3);
+
     --color-selection: rgb(185 125 251 / 25%);
 }
 
@@ -135,17 +140,12 @@ html {
     scrollbar-color: var(--color-scrollbar) var(--color-scrollbar-bg);
 }
 
-
-::-webkit-scrollbar-thumb {
-    background: var(--color-scrollbar-bg);
-}
-
-*::-webkit-scrollbar {
-    width: 6px;
-}
-
 * {
     scrollbar-width: thin;
+}
+
+.scrollbar-big {
+    scrollbar-width: auto !important;
 }
 
 /* Selection */
@@ -351,6 +351,10 @@ footer {
     height: 100%;
     z-index: 1;
     background-color: rgba(200, 200, 200, 0.2) !important;
+}
+
+.file-explorer__search-results-text {
+    color: var(--color-text);
 }
 
 valio {
