@@ -1,7 +1,7 @@
 #content-grid {
     position: relative;
     display: grid;
-    overflow-x: hidden; /* temp fix for left sidebar overflowing when loading it as hidden */
+    overflow: hidden; /* temp fix for left sidebar overflowing when loading it as hidden */
 }
 
 @media (max-width: 768px) {
