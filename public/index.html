@@ -31,14 +31,7 @@
     <script defer src="./vendor/mathjax/tex-svg.js"></script>
     <script defer type="module" src="./vendor/rich-text-editor/dist/rich-text-editor-bundle.js"></script>
 
-    <!-- SPLIT GRID IS NOT WORKING UNLESS THESE ARE HERE FOR WHATEVER REASON -->
-    <!-- <style>
-        #content-grid {
-            grid-template-columns: 300px 1px 1fr 1px 275px;
-            grid-template-rows: 1fr auto 300px;
-        }
-    </style> -->
-
+    <!-- Load theme -->
     <script>
         (() => {
             const root = document.documentElement;
@@ -53,6 +46,8 @@
             }
         })();
     </script>
+
+    <!-- TODO: Fix layout shifting -->
 
     <link rel="stylesheet" type="text/css" href="./css/bundle.css">
     <script defer type="module" src="./js/main.js"></script>
@@ -71,29 +66,29 @@
                 <ul class="nav d-flex flex-row flex-md-column gap-1 gap-md-2 m-0 p-0 justify-content-center justify-content-md-start">
                     <li class="nav-item d-flex justify-content-center">
                         <button id="nav-history"
-                            class="btn nav-link rounded-circle ripple ripple-centered hover-glow d-flex justify-content-center align-items-center"
-                            title="Historia" aria-label="Historia">
+                            class="btn nav-link rounded-circle ripple ripple-dark ripple-centered hover-glow d-flex justify-content-center align-items-center"
+                            data-bs-toggle="button" title="Historia" aria-label="Historia">
                             <i class="bi bi-clock-history"></i>
                         </button>
                     </li>
                     <li class="nav-item d-flex justify-content-center">
                         <button id="nav-bookmarks"
-                            class="btn nav-link rounded-circle ripple ripple-centered hover-glow d-flex justify-content-center align-items-center"
-                            title="Kirjanmerkit" aria-label="Kirjanmerkit">
+                            class="btn nav-link rounded-circle ripple ripple-dark ripple-centered hover-glow d-flex justify-content-center align-items-center"
+                            data-bs-toggle="button" title="Kirjanmerkit" aria-label="Kirjanmerkit">
                             <i class="bi bi-bookmarks"></i>
                         </button>
                     </li>
                     <li class="nav-item d-flex justify-content-center">
                         <button id="nav-latex-editor"
-                            class="btn nav-link rounded-circle ripple ripple-centered hover-glow d-flex justify-content-center align-items-center"
-                            title="LaTeX-editori" aria-label="LaTeX-editori">
+                            class="btn nav-link rounded-circle ripple ripple-dark ripple-centered hover-glow d-flex justify-content-center align-items-center"
+                            data-bs-toggle="button" title="LaTeX-editori" aria-label="LaTeX-editori">
                             <i class="bi bi-pen"></i>
                         </button>
                     </li>
                     <li class="nav-item d-flex justify-content-center">
                         <button id="nav-geogebra"
-                            class="btn nav-link rounded-circle ripple ripple-centered hover-glow d-flex justify-content-center align-items-center"
-                            title="GeoGebra" aria-label="GeoGebra">
+                            class="btn nav-link rounded-circle ripple ripple-dark ripple-centered hover-glow d-flex justify-content-center align-items-center"
+                            data-bs-toggle="button" title="GeoGebra" aria-label="GeoGebra">
                             <i class="bi bi-calculator"></i>
                         </button>
                     </li>
@@ -139,12 +134,12 @@
         
         <!-- Right column: main content -->
         <div id="content-grid"
-        style="grid-template-columns: 300px 0px 1fr 0px 275px; grid-template-rows: 1fr auto 300px;"
-        class="flex-grow-1 overflow-auto order-0 order-md-1 h-100">
+        style="grid-template-columns: 300px 0px 1fr 0px 275px; grid-template-rows: 1fr auto 0px;"
+        class="flex-grow-1 order-0 order-md-1 h-100">
             <aside id="sidebar-left" style="grid-column: 1 / 2; grid-row: 1 / 4;" class="sidebar bg-tertiary border-end px-2 py-3"></aside>
             <div id="left-splitter" style="grid-column: 2 / 3; grid-row: 1 / 4;" class="gutter gutter-horizontal"></div>
 
-            <div id="main-content" style="grid-column: 3 / 4; grid-row: 1 / 2;" class="d-flex flex-column bg-primary cross-background overflow-y-auto">
+            <div id="main-content" style="grid-column: 3 / 4; grid-row: 1 / 2;" class="d-flex flex-column bg-primary cross-background overflow-y-auto scrollbar-big">
                 <main id="page-container" class="p-3 mb-5">
                     <div class="sticky-header">
                         <h1>Etusivu</h1>
@@ -245,7 +240,6 @@
                 <section id="bookmarks" class="mb-4">
                     <div class="sticky-header">
                         <h3>Kirjanmerkit</h3>
-                        <hr>
                     </div>
                     <nav id="bookmark-container" class=" rounded"></nav>
                 </section>
@@ -253,7 +247,6 @@
                 <section id="recently-viewed" style="margin-bottom: 10rem;">
                     <div class="sticky-header">
                         <h3>Viimeksi selatut</h3>
-                        <hr>
                     </div>
                     <nav id="recently-viewed-container" class=" rounded"></nav>
                 </section>

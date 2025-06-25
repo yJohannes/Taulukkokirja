@@ -11,7 +11,7 @@ const toolTipOptions = {
  * @param {*} tip overrides element's title attribute
  */
 export function addToolTip(element, placement, tip=null) {
-    element.setAttribute('data-bs-toggle', 'tooltip');
+    // element.setAttribute('data-bs-toggle', 'tooltip');
     element.setAttribute('data-bs-placement', placement);
     
     if (tip) {

@@ -1,8 +1,6 @@
 import { SearchBar } from '../../../components/search_bar/search-bar.js';
 import { Tab } from "../../../components/tab/tab.js";
 import { FlipArrow } from '../../../components/flip_arrow/flip-arrow.js';
-import { StorageHelper } from "../storage/index.js";
-
 import { getHeatColor, normalization } from '../../utils/colors.js';
 import { updateBookmarks } from '../bookmarks/bookmarks.js';
 import { Search } from '../search/search.js';
@@ -174,7 +172,6 @@ export class FileExplorer {
     // }
 
     onTabClick(parent, tab, isDropdown) {
-        console.log("DAOIWJAD")
         const activeTabs = parent.querySelectorAll(`.${'active'}`);
         activeTabs.forEach(t => t.classList.remove('active'));
 
@@ -261,7 +258,14 @@ export class FileExplorer {
 
                 const item = Tab.createTabListItem();
 
-                const tab = Tab.createTab(pageName, currentPath, isFolder, level);
+                const tab = Tab.createTab({
+                    innerHTML: pageName,
+                    href: currentPath,
+                    isDropdown: isFolder,
+                    nestLevel: level,
+                    rippleColor: 'light',
+                });
+
                 tab.addEventListener('click', () => this.onTabClick(parent, tab, isFolder));
 
                 if (isFolder && level === 0) tab.style.fontWeight = 'bold';
@@ -291,10 +295,10 @@ export class FileExplorer {
     createResultView(matches) {
         this.searchResultContainer.innerHTML = `
             <div class="d-flex flex-row justify-content-between align-items-center gap-1 py-2 px-1 mt-3">
-                <h5 class="m-0">
+                <h5 class="file-explorer__search-results-text m-0">
                     <b>Haun tulokset</b>
                 </h5>
-                <h4 class="m-0">
+                <h4 class="file-explorer__search-results-hits m-0">
                     <span class="badge">${matches.length} osumaa</span>
                 </h4>
             </div>
@@ -314,11 +318,13 @@ export class FileExplorer {
             
             const path = match.id;
             const name = Pages.formatting.formatPathToLabel(path);
-            const tab = Tab.createTab(name, path);
+            const tab = Tab.createTab({innerHTML: name, href: path});
             
             const tabHref = tab.getAttribute('href');
             tab.setAttribute('href', tabHref + `?highlight=${Pages.formatting.encodeSearchParams(match.terms)}`)
             tab.classList.add('p-2', 'pe-5');
+
+            // TODO: move this outside and pass callbacks as args 
             tab.addEventListener('click', updateBookmarks);
 
             // Right click opens the tab folder

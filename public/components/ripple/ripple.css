@@ -14,11 +14,11 @@
     will-change: transform, opacity;
 }
 .ripple-effect-light {
-    background: rgba(255, 255, 255, 0.3);
+    background: var(--color-ripple-light, rgba(255, 255, 255, 0.3));
 }
 
 .ripple-effect-dark {
-    background: rgba(0, 0, 0, 0.1);
+    background: var(--color-ripple-dark, rgba(0, 0, 0, 0.1));
 }
 
 @keyframes grow {
