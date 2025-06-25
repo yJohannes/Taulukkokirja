@@ -7,8 +7,13 @@
     --bs-nav-link-disabled-color: var(--bs-secondary-color);
 }
 
+.nav-link {
+    color: var(--color-nav-link) !important;
+    border-color: transparent !important;
+}
+
 .nav-link:focus, .nav-link:hover {
-    color: var(--color-nav-link-hover);
+    color: var(--color-nav-link-hover) !important;
 }
 
 .nav-link:focus-visible {
@@ -19,3 +24,10 @@
 .nav-link .bi {
     font-size: 120%;
 }
+
+.nav-link.active {
+    background-color: transparent !important;
+    color: var(--color-nav-link-hover);
+}
+
+/* border: 1px dashed black !important; */
