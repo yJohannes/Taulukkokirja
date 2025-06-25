@@ -12,6 +12,12 @@ export const Bookmarks = {
 function createTabsFromList(pathsList, container, deleteTargetListName=null) {
     container.innerHTML = '';
 
+    if (pathsList.length === 0) {
+        container.innerHTML = `
+            <pre>Ei sisältöä</pre>
+        `
+    }
+
     pathsList.forEach(path => {
         const name = formatting.formatPathToLabel(path);
         const tab = Tab.createTab({innerHTML: name, href: path});
@@ -19,7 +25,7 @@ function createTabsFromList(pathsList, container, deleteTargetListName=null) {
 
        if (deleteTargetListName) {
             const deleteBtn = document.createElement('button');
-            deleteBtn.className = 'btn icon-button rounded-circle ripple  ripple-dark ripple-centered hover-glow';
+            deleteBtn.className = 'btn btn-danger icon-button rounded-circle ripple  ripple-dark ripple-centered hover-glow';
 
             deleteBtn.addEventListener('click', (e) => {
                 e.stopPropagation(); // Prevents event from reaching <a>
