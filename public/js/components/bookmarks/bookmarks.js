@@ -14,7 +14,7 @@ function createTabsFromList(pathsList, container, deleteTargetListName=null) {
 
     pathsList.forEach(path => {
         const name = formatting.formatPathToLabel(path);
-        const tab = Tab.createTab(name, path);
+        const tab = Tab.createTab({innerHTML: name, href: path});
         tab.classList.add('p-2');
 
        if (deleteTargetListName) {

@@ -15,7 +15,24 @@ export const Tab = {
     setDropdownState,
 };
 
-function createTab(innerHTML, href, isDropdown=false, nestLevel=0, tagName='') {
+/**
+ * 
+ * @param {string} innerHTML 
+ * @param {string} href 
+ * @param {boolean} isDropdown 
+ * @param {number} nestLevel 
+ * @param {string} tagName 
+ * @param {string} rippleColor light | dark
+ * @returns {HTMLElement}
+ */
+function createTab({
+  innerHTML,
+  href,
+  isDropdown = false,
+  nestLevel = 0,
+  tagName = '',
+  rippleColor = 'dark',
+} = {}) {
     let t;
     if (tagName) {
         t = document.createElement(tagName);
@@ -28,7 +45,7 @@ function createTab(innerHTML, href, isDropdown=false, nestLevel=0, tagName='') {
     t.setAttribute('data-path', href);
     t.setAttribute('href', formatting.formatPathToHash(href));
 
-    t.classList.add('btn', 'tab', 'ripple');
+    t.classList.add('btn', 'tab', 'ripple', `ripple-${rippleColor}`);
     t.style.setProperty('--level', nestLevel);
 
     const span = document.createElement('span');

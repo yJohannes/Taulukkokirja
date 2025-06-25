@@ -261,7 +261,14 @@ export class FileExplorer {
 
                 const item = Tab.createTabListItem();
 
-                const tab = Tab.createTab(pageName, currentPath, isFolder, level);
+                const tab = Tab.createTab({
+                    innerHTML: pageName,
+                    href: currentPath,
+                    isDropdown: isFolder,
+                    nestLevel: level,
+                    rippleColor: 'light',
+                });
+
                 tab.addEventListener('click', () => this.onTabClick(parent, tab, isFolder));
 
                 if (isFolder && level === 0) tab.style.fontWeight = 'bold';
