@@ -44,6 +44,10 @@
             root.classList.add('light');
 
             }
+
+            const fontSizeExpr = '0.6rem + 0.5vw'; // Same as in _global.css
+            const scale = localStorage.getItem('font-scale') || 1;
+            document.documentElement.style.fontSize = `calc(${scale} * (${fontSizeExpr}))`;
         })();
     </script>
 
