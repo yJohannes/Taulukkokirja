@@ -10,10 +10,10 @@ import { elementUtils } from '../../utils/element-utils.js';
 import { FileExplorerUtils } from './utils.js';
 
 export class FileExplorer {
-    constructor(fileStructure, parent, storageID) {
+    constructor(fileStructure, parent, storageKey) {
         this.fileStructure = fileStructure;
         this.parent = parent;
-        this.storageID = storageID;
+        this.storageKey = storageKey;
         this.data = {
             autoCollapse: false,
             lastActiveTab: null,
@@ -67,7 +67,7 @@ export class FileExplorer {
         this.treeContainer = this.root.querySelector('.file-explorer__tree-container');
         this.searchResultContainer = this.root.querySelector('.file-explorer__search-result-container');
     
-        this.data = JSON.parse(localStorage.getItem(this.storageID)) || this.data;
+        this.data = JSON.parse(localStorage.getItem(this.storageKey)) || this.data;
 
         this._initSearch();
         this._initButtons();
@@ -78,7 +78,7 @@ export class FileExplorer {
     }
 
     saveData() {
-        localStorage.setItem(this.storageID, JSON.stringify(this.data));
+        localStorage.setItem(this.storageKey, JSON.stringify(this.data));
     }
 
     _initSearch() {

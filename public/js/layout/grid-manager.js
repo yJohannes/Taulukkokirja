@@ -1,40 +1,45 @@
 /**
- * @brief
+ * @class GridManager
+ * @classdesc Utility to dynamically toggle visibility of grid rows and columns by setting their size to 0 and hiding associated children.
  * Indexing is 1-based.
- * Grid must have template rows & cols written inline
+ * Assumes the grid uses inline `grid-template-rows` and `grid-template-columns`.
+ * This makes it Split-Grid.js compatible.
  */
 export class GridManager {
     /**
-     * @param {HTMLElement} grid
+     * @constructor
+     * @param {HTMLElement} gridElement - The CSS grid container element.
+     * @param {string} storageKey - A key used to persist visibility state in localStorage.
      */
-    constructor(grid, storageID) {
-        this.grid = grid;
-        this.storageID = storageID;
-        this.data = JSON.parse(localStorage.getItem(storageID)) || {
-            prevRows: GridManager.getTemplateSizes(this.grid, 'row'),
-            prevCols: GridManager.getTemplateSizes(this.grid, 'col'),
+    constructor(gridElement, storageKey) {
+        this.gridElement = gridElement;
+        this.storageKey = storageKey;
+
+        this.state = JSON.parse(localStorage.getItem(storageKey)) || {
+            previousRowSizes: GridManager.extractTemplateSizes(this.gridElement, 'row'),
+            previousColumnSizes: GridManager.extractTemplateSizes(this.gridElement, 'col'),
         }
 
-        this.rowCount = GridManager.getTemplateSizes(this.grid, 'row').length;
-        this.colCount = GridManager.getTemplateSizes(this.grid, 'col').length;
+        this.totalRows = GridManager.extractTemplateSizes(this.gridElement, 'row').length;
+        this.totalColumns = GridManager.extractTemplateSizes(this.gridElement, 'col').length;
     }
 
     setRow(i, isVisible) {
-        const rowChildren = GridManager.getDirectionChildren(this.grid, i, 'row');
-        const rows = GridManager.getTemplateSizes(this.grid, 'row');
+        const rowChildren = GridManager.getDirectionChildren(this.gridElement, i, 'row');
+        const rows = GridManager.extractTemplateSizes(this.gridElement, 'row');
         
         // Build the new sizes on newRows
         const newRows = [...rows];
         if (!isVisible) {
             // Save size
-            this.data.prevRows[i - 1] = rows[i - 1];
+            this.state.previousRowSizes[i - 1] = rows[i - 1];
             newRows[i - 1] = '0px';
 
             for (const child of rowChildren) {
                 child.classList.add('d-none');
             }
         } else {
-            const cachedSize = this.data.prevRows[i - 1];
+            const cachedSize = this.state.previousRowSizes[i - 1];
             newRows[i - 1] = cachedSize;
 
             for (const child of rowChildren) {
@@ -42,31 +47,26 @@ export class GridManager {
             }
         }
         
-        this.grid.style.gridTemplateRows = newRows.join(' ');
+        this.gridElement.style.gridTemplateRows = newRows.join(' ');
         this.saveData();
-        
-        // console.log(rowChildren);
-        // console.log('prevRows:', this.data.prevRows);
-        // console.log('newRows:', newRows);
-        
     }
 
     setCol(i, isVisible) {
-        const colChildren = GridManager.getDirectionChildren(this.grid, i, 'col');
-        const cols = GridManager.getTemplateSizes(this.grid, 'col');
+        const colChildren = GridManager.getDirectionChildren(this.gridElement, i, 'col');
+        const cols = GridManager.extractTemplateSizes(this.gridElement, 'col');
         
         // Build the new sizes on newcols
         const newCols = [...cols];
         if (!isVisible) {
             // Save size
-            this.data.prevCols[i - 1] = cols[i - 1];
+            this.state.previousColumnSizes[i - 1] = cols[i - 1];
             newCols[i - 1] = '0px';
 
             for (const child of colChildren) {
                 child.classList.add('d-none');
             }
         } else {
-            const cachedSize = this.data.prevCols[i - 1];
+            const cachedSize = this.state.previousColumnSizes[i - 1];
             newCols[i - 1] = cachedSize;
 
             for (const child of colChildren) {
@@ -74,19 +74,14 @@ export class GridManager {
             }
         }
         
-        this.grid.style.gridTemplateColumns = newCols.join(' ');
+        this.gridElement.style.gridTemplateColumns = newCols.join(' ');
         this.saveData();
-        
-        // console.log(colChildren);
-        // console.log('prevCols:', this.data.prevCols);
-        // console.log('newCols:', newCols);
-        
     }
 
 
 
     saveData() {
-        localStorage.setItem(this.storageID, JSON.stringify(this.data));
+        localStorage.setItem(this.storageKey, JSON.stringify(this.state));
     }
 
     /**
@@ -117,7 +112,7 @@ export class GridManager {
      * @param {string} direction - row/col
      * @param {HTMLElement} grid
      */
-    static getTemplateSizes(grid, direction) {
+    static extractTemplateSizes(grid, direction) {
         if (direction === 'row')
             return grid.style.gridTemplateRows.split(' ');
         else if (direction === 'col')
