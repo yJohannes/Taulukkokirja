@@ -31,7 +31,7 @@
     <script defer src="./vendor/mathjax/tex-svg.js"></script>
     <script defer type="module" src="./vendor/rich-text-editor/dist/rich-text-editor-bundle.js"></script>
 
-    <!-- Load theme -->
+    <!-- Load settings -->
     <script>
         (() => {
             const root = document.documentElement;
@@ -40,9 +40,7 @@
                 if (theme) root.classList.add(theme);
                 else root.classList.add('light');
             } catch (e) {
-            // Fallback if localStorage is not available
-            root.classList.add('light');
-
+                root.classList.add('light'); // Fallback if localStorage is not available
             }
 
             const fontSizeExpr = '0.6rem + 0.5vw'; // Same as in _global.css
@@ -64,7 +62,7 @@
             <nav class="d-flex flex-md-column gap-1 gap-md-3">
                 <a class="navbar-brand d-flex justify-content-center p-1 link-body-emphasis text-decoration-none" href="./">
                     <img src="./img/icon/book-rounded.png" alt="Brand"
-                        style="width: 32px; height: 32px; object-fit: contain;">
+                        style="width: 2rem; height: 2rem; object-fit: contain;">
                 </a>
                 <!-- Top icons -->
                 <ul class="nav d-flex flex-row flex-md-column gap-1 gap-md-2 m-0 p-0 justify-content-center justify-content-md-start">
@@ -222,12 +220,12 @@
                 </footer>
             </div>
 
-            <div id="main-workspace-splitter" style="grid-column: 3 / 4; grid-row: 2 / 3;" class="gutter gutter-vertical bg-primary bg-transition">
+            <div id="main-workspace-splitter" style="grid-column: 3 / 4; grid-row: 2 / 3; z-index: 99999;" class="gutter gutter-vertical bg-primary bg-transition">
                 <div class="handle rounded-pill position-absolute start-50 translate-middle bg-transition"></div>
                 <div class="bg-secondary bg-transition border-top px-4 py-4"></div>
             </div>
             <!-- Tools are initially hidden and revealed during loading -->
-            <div id="workspace" style="grid-column: 3 / 4; grid-row: 3 / 4;" class="overflow-x-auto bg-secondary bg-transition h-100"> 
+            <div id="workspace" style="grid-column: 3 / 4; grid-row: 3 / 4; z-index: 99999;" class="overflow-x-auto bg-secondary bg-transition h-100"> 
                 <div id="geogebra-iframe-root" class="hidden"
                     style="width: 100%; height: 100%; overflow: hidden; position: relative;">
                     
