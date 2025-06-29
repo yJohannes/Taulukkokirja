@@ -56,7 +56,7 @@
     --color-button-hover: #0000000d;
     --color-input: var(--color-white);
     --color-table-heading: var(--color-jet);
-    --color-table-stripe-color: rgba(0, 0, 0, 0.05);
+    --color-table-stripe-color: rgba(0, 0, 0, 0.03);
     --color-nav-link: #555;
     --color-nav-link-hover: #000;
     --color-badge: var(--color-black);
@@ -103,7 +103,7 @@
     --color-button-hover: var(--color-gun-powder);
     --color-input: #353535;
     --color-table-heading: var(--color-jet);
-    --color-table-stripe-color: rgba(156, 151, 207, 0.048);
+    --color-table-stripe-color: rgba(156, 151, 207, 0.06);
 
     --color-nav-link: #bbb;
     --color-nav-link-hover: #fff;
