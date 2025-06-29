@@ -81,7 +81,7 @@ export function createBookmarkButton(path) {
     button.classList.add('btn', 'icon-button', 'rounded-circle', 'ripple', 'ripple-dark', 'ripple-centered', 'hover-glow');
     
     const headerWrapper = document.createElement('h1');
-    headerWrapper.style.margin = '0';
+    headerWrapper.classList.add('p-0', 'm-0');
     headerWrapper.style.color = 'inherit';
 
     const icon = document.createElement('i');
