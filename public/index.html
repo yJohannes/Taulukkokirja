@@ -49,14 +49,12 @@
         })();
     </script>
 
-    <!-- TODO: Fix layout shifting -->
-
     <link rel="stylesheet" type="text/css" href="./css/bundle.css">
     <script defer type="module" src="./js/main.js"></script>
 </head>
 <!-- cross-background bg-secondary -->
-<body class="bg-secondary">
-    <div class="d-flex flex-column flex-md-row p-0" style="height: 100dvh; height: calc(var(--real-vh, 1dvh) * 100);">
+<body>
+    <div id="root" class="d-flex flex-column flex-md-row p-0 bg-secondary" style="height: 100dvh; height: calc(var(--real-vh, 1dvh) * 100);">
         <header id="nav-rail" class="bg-secondary d-flex flex-md-column justify-content-between flex-shrink-0 p-2 border-top border-end order-1 order-md-0">
             <!-- Wrapper for nav items -->
             <nav class="d-flex flex-md-column gap-1 gap-md-3">
@@ -94,13 +92,6 @@
                             <i class="bi bi-calculator"></i>
                         </button>
                     </li>
-                    <!-- <li class="nav-item d-flex justify-content-center">
-                        <button id="nav-toggle-right-sidebar"
-                            class="btn nav-link rounded-circle ripple ripple-centered hover-glow d-flex justify-content-center align-items-center"
-                            title="Toggle right sidebar" aria-label="Toggle right sidebar">
-                            <i class="bi bi-layout-sidebar-reverse"></i>
-                        </button>
-                    </li> -->
                 </ul>
             </nav>
 
