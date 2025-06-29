@@ -28,12 +28,15 @@ tr {
 th {
     border-bottom: solid 1px var(--color-lines-secondary);
     border-right: solid 1px var(--color-lines-secondary);
-    padding: 0.75rem !important;
-    background-color: var(--color-table-heading);
-    color: var(--color-white);
+    padding-top: 0.75rem !important;
+    padding-bottom: 0.75rem !important;
+    padding-left: 0.85rem !important;
+    padding-right: 0.85rem !important;
 
     font-weight: normal !important;
     white-space: nowrap;
+    color: var(--color-white);
+    background-color: var(--color-table-heading);
 
     mark {
         background-color: var(--color-mark);
@@ -48,7 +51,10 @@ th {
 }
 
 td {
-    padding: 0.5rem !important;
+    padding-top: 0.5rem !important;
+    padding-bottom: 0.5rem !important;
+    padding-left: 0.75rem !important;
+    padding-right: 0.75rem !important;
     border-right: 1px solid var(--color-lines) !important;
 
     p,
