@@ -35,23 +35,23 @@ export class FileExplorer {
                     <button
                         class="file_explorer__button-expand btn btn-sm ripple ripple-dark ripple-centered hover-glow"
                         title="Laajenna välilehdet (alt + 1)" aria-label="Laajenna välilehdet"
-                        style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: 1rem;"
+                        style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem;"
                     >
-                        <i class="bi bi-arrows-expand" style="font-size: 120%;"></i>
+                        <i class="bi bi-arrows-expand" style="font-size: 120%"></i>
                     </button>
                     <button
                         class="file_explorer__button-collapse btn btn-sm ripple ripple-dark ripple-centered hover-glow"
                         title="Sulje välilehdet (alt + 2)" aria-label="Sulje välilehdet"
-                        style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: 1rem;"
+                        style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem;"
                     >
-                        <i class="bi bi-arrows-collapse" style="font-size: 120%;"></i>
+                        <i class="bi bi-arrows-collapse" style="font-size: 120%"></i>
                     </button>
                     <button
                         class="file_explorer__button-auto-collapse btn btn-sm ripple ripple-dark ripple-centered hover-glow"
                         title="Automaattinen sulkeminen (alt + 3)" aria-label="Automaattinen sulkeminen"
-                        style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: 1rem;"
+                        style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem;"
                     >
-                        <i class="bi bi-list-nested" style="font-size: 120%;"></i>
+                        <i class="bi bi-list-nested" style="font-size: 120%"></i>
                     </button>
                 </div>
             </div>
