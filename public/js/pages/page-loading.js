@@ -45,7 +45,7 @@ async function fetchPageStructure() {
     }
     
     const structure = await response.json();
-    // console.log(structure)
+    console.log(structure)
     return structure;
 }
 
