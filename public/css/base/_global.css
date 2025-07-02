@@ -115,7 +115,8 @@
     --color-arrow: rgb(150, 150, 150);
     /* --color-arrow-flipped: var(--color-white); */
     --color-arrow-flipped: var(--color-accent);
-    --color-mark-transparent: rgb(255 140 81 / 52%);
+    --color-mark-transparent: rgb(255 140 81 / 80%);
+
     --color-mark: rgb(255 140 81);
     --color-scrollbar: #888;
     --color-scrollbar-bg: var(--color-bg-tertiary);
