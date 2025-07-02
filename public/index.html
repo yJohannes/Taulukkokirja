@@ -43,9 +43,9 @@
                 root.classList.add('light'); // Fallback if localStorage is not available
             }
 
-            const fontSizeExpr = '0.6rem + 0.5vw'; // Same as in _global.css
+            const fontSize = 'min(1rem, 0.6rem + 0.5vw)'; // Cap at 1rem, same as in _global.css
             const scale = localStorage.getItem('font-scale') || 1;
-            document.documentElement.style.fontSize = `calc(${scale} * (${fontSizeExpr}))`;
+            document.documentElement.style.fontSize = `calc(${scale} * (${fontSize}))`;
         })();
     </script>
 
