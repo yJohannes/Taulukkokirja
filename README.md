@@ -1,6 +1,10 @@
 # Taulukkokirja
+Kaavoja ja taulukoita matematiikasta, fysiikasta ja kemiasta
 
-Tavoite kerätä hyödyllistä/kiinnostavaa tietoa ja koota all-in-one taulukkokirja. Sisältää pääosin kaavoja ja taulukoita matematiikasta, fysiikasta ja kemiasta.
+## Tavoitteet
+- Kerätä hyödyllistä/kiinnostavaa tietoa ja koota "all-in-one" taulukkokirja.
+- Oppia web-ohjelmoinnista ja siihen liittyvästä ympäristöstä.
+
 
 
 ## Lähteet
