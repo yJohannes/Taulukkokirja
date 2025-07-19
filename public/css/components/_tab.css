@@ -15,16 +15,27 @@
 
     width: 100%;
     border: 1px solid transparent;
-    padding-left: calc(12px + var(--level, 0) * 20px);
-    padding-right: 12px;
     border-radius: 1rem;
+
+    padding-left: calc(0.75rem + var(--level, 0) * 1.25rem);
+    padding-right: 12px;
     
+    padding-top: calc(
+        max(0.234375rem, 0.875rem / (1 + var(--level, 0)))
+    ) !important;
+        
+    padding-bottom: calc(
+        max(0.234375rem, 0.875rem / (1 + var(--level, 0)))
+    ) !important;
+            
+            /* padding-left: calc(12px + var(--level, 0) * 20px); */
+    /*     
     padding-top: calc(
         max(3.75px, 14px / (1 + var(--level, 0)))
     ) !important;
     padding-bottom: calc(
         max(3.75px, 14px / (1 + var(--level, 0)))
-    ) !important;
+    ) !important; */
 
     font-size: calc(
         max(94%, 100% - var(--level, 0) * 2%)

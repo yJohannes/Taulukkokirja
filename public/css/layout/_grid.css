@@ -14,21 +14,22 @@
     #right-splitter,
     #sidebar-right {
         display: none;
-        grid-row: unset;
-        grid-column: unset;
+        grid-row: unset !important;
+        grid-column: unset !important;
     }
     
     .sidebar {
         display: none; 
         position: absolute !important; /* Detach from grid */
         top: 0;
-        left: 0;
+        right: 0;
+        width: 45vw;
+        /* margin-left: 55vw; */
         z-index: 5000 !important;
         pointer-events: none !important; /* without this you can't drag the workspace for whatever reason on mobile */
     }  
-
+    
     .sidebar.show {
-        width: 100%;
         display: block !important;
         pointer-events: all !important; /* without this you can't drag the workspace for whatever reason on mobile */
 

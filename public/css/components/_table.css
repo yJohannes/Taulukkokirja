@@ -1,5 +1,4 @@
 table tbody tr:nth-of-type(odd) {
-    /* background-color: rgba(255, 255, 255, 0.05) !important; */
     background-color: var(--color-table-stripe-color);
     /* #161616 */
 }
@@ -7,7 +6,7 @@ table tbody tr:nth-of-type(odd) {
 table {
     border-collapse: separate;
     border-spacing: 0;
-    border: 1px solid var(--color-lines);
+    border: 1px solid var(--color-jet);
     border-radius: var(--table-border-radius);
     overflow: hidden;
     /* clip inside cells */
@@ -27,14 +26,17 @@ tr {
 }
 
 th {
-    /* border-right: 1px solid var(--color-lines-secondary) !important; */
-    padding: 0.75rem !important;
     border-bottom: solid 1px var(--color-lines-secondary);
-    background-color: var(--color-table-heading);
-    color: var(--color-white);
+    border-right: solid 1px var(--color-lines-secondary);
+    padding-top: 0.75rem !important;
+    padding-bottom: 0.75rem !important;
+    padding-left: 0.85rem !important;
+    padding-right: 0.85rem !important;
 
     font-weight: normal !important;
     white-space: nowrap;
+    color: var(--color-white);
+    background-color: var(--color-table-heading);
 
     mark {
         background-color: var(--color-mark);
@@ -49,7 +51,10 @@ th {
 }
 
 td {
-    padding: 0.5rem !important;
+    padding-top: 0.5rem !important;
+    padding-bottom: 0.5rem !important;
+    padding-left: 0.75rem !important;
+    padding-right: 0.75rem !important;
     border-right: 1px solid var(--color-lines) !important;
 
     p,

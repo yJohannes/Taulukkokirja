@@ -1,3 +1,4 @@
+/* https://color-name.com */
 /** https://imagecolorpicker.com/color-code/96a1ff */
 /* https://m3.material.io/components/buttons/overview */
 
@@ -13,10 +14,11 @@
     --color-m3-snow: #f2ecee;
     --color-gun-powder: #45455a;
     --color-dark-navy: #041123;
+    --color-jet: #353535;
     --color-black: #000;
     --color-white: #fff;
 
-    --font-size: 0.6rem + 0.5vw;
+    --font-size: min(1rem, 0.6rem + 0.5vw);
     --table-border-radius: 0.5rem;
 }
 
@@ -53,8 +55,8 @@
     --color-button: transparent;
     --color-button-hover: #0000000d;
     --color-input: var(--color-white);
-    --color-table-heading: var(--color-valio-blue-50);
-    --color-table-stripe-color: rgba(0, 0, 0, 0.05);
+    --color-table-heading: var(--color-jet);
+    --color-table-stripe-color: rgba(0, 0, 0, 0.03);
     --color-nav-link: #555;
     --color-nav-link-hover: #000;
     --color-badge: var(--color-black);
@@ -100,8 +102,8 @@
     --color-button: transparent;
     --color-button-hover: var(--color-gun-powder);
     --color-input: #353535;
-    --color-table-heading: var(--color-gun-powder);
-    --color-table-stripe-color: rgba(156, 151, 207, 0.048);
+    --color-table-heading: var(--color-jet);
+    --color-table-stripe-color: rgba(156, 151, 207, 0.06);
 
     --color-nav-link: #bbb;
     --color-nav-link-hover: #fff;
@@ -113,7 +115,8 @@
     --color-arrow: rgb(150, 150, 150);
     /* --color-arrow-flipped: var(--color-white); */
     --color-arrow-flipped: var(--color-accent);
-    --color-mark-transparent: rgb(255 140 81 / 52%);
+    --color-mark-transparent: rgb(255 140 81 / 80%);
+
     --color-mark: rgb(255 140 81);
     --color-scrollbar: #888;
     --color-scrollbar-bg: var(--color-bg-tertiary);
@@ -129,10 +132,6 @@ body,
 .sidebar,
 .bg-transition {
     transition: color 0.3s ease, background-color 0.3s ease, border-color 0.3s ease, fill 0.3s ease, stroke 0.3s ease;
-}
-
-html {
-  font-size: calc(--font-size) !important;
 }
 
 /* Scrollbar */
@@ -175,11 +174,7 @@ body {
     color: var(--color-text) !important;
 }
 
-h1, h2, h3, h4, h5, h6 {
-    color: var(--color-heading);
-}
-
-h1 {
+/* h1 {
     font-size: 2rem;
 }
 
@@ -201,32 +196,6 @@ h5 {
 
 h6 {
     font-size: 1rem;
-}
-
-/* @media (max-width: 768px) {
-    h1 {
-        font-size: 1.5rem;
-    }
-
-    h2 {
-        font-size: 1.25rem;
-    }
-
-    h3 {
-        font-size: 1.15rem;
-    }
-
-    h4 {
-        font-size: 1rem;
-    }
-
-    h5 {
-        font-size: 0.75rem;
-    }
-
-    h6 {
-        font-size: 1rem;
-    }
 } */
 
 p {
@@ -234,7 +203,7 @@ p {
 }
 
 figcaption {
-    font-size: 0.875rem;
+    font-size: 87%;
 }
 
 hr {
@@ -293,8 +262,12 @@ a:hover {
 }
 
 footer {
-    h1, h2, h3, h4, h5, h6 {
+    a {
         color: var(--color-text);
+    }
+
+    a:not(:hover) {
+        text-decoration: none;
     }
 }
 
@@ -317,25 +290,12 @@ footer {
     display: flex !important;
     justify-content: center;
     align-items: center;
-    /* border-radius: .75rem; */
-
-    padding: 0.5rem !important;
-    aspect-ratio: 1 / 1;
     flex-shrink: 0;
+    aspect-ratio: 1 / 1;
+    padding: 0.75rem !important;
 
     color: var(--color-text);
-
-    .bi {
-        filter: brightness(1.2);
-    }
 }
-
-.icon-button:hover {
-    .bi {
-        filter: brightness(1);
-    }
-}
-
 
 
 .hover-glow {
@@ -357,137 +317,9 @@ footer {
     color: var(--color-text);
 }
 
-valio {
-    --valio-coal-black: #11181e;
-    --valio-iconic-blue: #002f6d;
-    --valio-pure-white: #fff;
-    --valio-natural-white: #f7f3ed;
-    --valio-aluminum-gray: #bac4cc;
-    --valio-ash-gray: #dfe3e6;
-    --valio-light-grey: #eee;
-    --valio-mist: #eaf4fd;
-    --valio-action-blue: #204dc6;
-    --valio-amazing-blue: #1e00cf;
-    --valio-blueberry-blue: #071e4a;
-    --valio-summer-sky-blue: #a1c6e9;
-    --valio-water: #d3e8e7;
-    --valio-amazing-green: #03bb67;
-    --valio-rosemary-green: #aac6a1;
-    --valio-leaf-green: #016a3e;
-    --valio-zucchini-green: #14342a;
-    --valio-amazing-purple: #9b6af2;
-    --valio-chive-purple: #c3c3e1;
-    --valio-purple: #89328f;
-    --valio-eggplant-purple: #482747;
-    --valio-amazing-pink: #ff45b1;
-    --valio-pink-frosting: #f5cdd4;
-    --valio-strawberry-red: #d12d2f;
-    --valio-beet-red: #520e1b;
-    --valio-xmas-red: #aa1839;
-    --valio-amazing-peach: #fead95;
-    --valio-peach-sorbet: #feba91;
-    --valio-orange: #e78c2f;
-    --valio-cinnamon-orange: #82302b;
-    --valio-amazing-yellow: #fcf48b;
-    --valio-lemon-juice-yellow: #f8e699;
-    --valio-yellow: #f3c547;
-    --valio-turmeric-yellow: #d99b21;
-    --valio-cappucino: #e0c7b4;
-    --valio-cocoa-brown: #472d13;
-    --valio-additional-brown: #efe7de;
-    --color-family: var(--valio-iconic-blue);
-    --color-text: var(--valio-iconic-blue);
-    --color-text-lead: var(--valio-iconic-blue);
-    --color-lead-content-border: var(--color-family);
-    --text-primary: #11181e;
-    --text-secondary: #11181e;
-    --text-tertiary: #616161;
-    --button-primary: var(--valio-action-blue);
-    --button-primary-hover: #1e00cf;
-    --button-primary-label: var(--valio-pure-white);
-    --button-primary-label-blue: var(--valio-action-blue);
-    --blockquote-border-color: var(--color-family);
-    --tag-low-key: #efe7de;
-    --tag-low-key-label: var(--valio-iconic-blue);
-    --tag-secondary: var(--valio-purple);
-    --tag-secondary-label: var(--valio-pure-white);
-    --navigation-label: var(--valio-iconic-blue);
-    --navigation: var(--valio-pure-white);
-    --navigation-outline: #dfe3e6;
-    --menulist-heading-color: #003878;
-    --form-label-disabled: var(--valio-aluminum-gray);
-    --min-height-input: 3rem;
-    --height-header-content: 3rem;
-    --color-brand-season: var(--valio-iconic-blue);
-    --spacing-image-text: 3.125rem;
-    --font-family-gotham: "Gotham",helvetica,arial,sans-serif;
-    --font-family-omnes: "Gotham",helvetica,arial,sans-serif;
-    --font-family-sans: "Gotham",helvetica,arial,sans-serif;
-    --font-family-playfair: "PlayfairDisplay",helvetica,arial,sans-serif;
-    --font-weight-light: 300;
-    --font-weight-regular: 400;
-    --font-weight-medium: 500;
-    --font-weight-semibold: 600;
-    --font-weight-bold: 700;
-    --font-weight-extrabold: 800;
-    --font-weight-black: 900;
-    --font-weight-omnes-regular: 400;
-    --font-weight-omnes-medium: 500;
-    --font-weight-omnes-semibold: 600;
-    --font-size-md: 1.0625rem;
-    --font-size-h1-hero: 1.75rem;
-    --font-size-h1-product: 1.75rem;
-    --font-size-h1-recipe: 1.75rem;
-    --font-size-h1: 1.75rem;
-    --font-size-h2: 1.5rem;
-    --font-size-h3: 1.5rem;
-    --font-size-h4: 1.0625rem;
-    --font-size-h5: 1.0625rem;
-    --font-size-h6: 1.0625rem;
-    --font-size-playfair: 1.75rem;
-    --font-size-playfair-italic: 2.5625rem;
-    --line-height-h1-hero: 1.2;
-    --line-height-h1: 1.2;
-    --line-height-h1-mobile: 1.1;
-    --line-height-h1-optional: 1.2;
-    --line-height-h2: 1.2;
-    --line-height-h2-optional: 1;
-    --line-height-h3: 1.1;
-    --line-height-h3-optional: 1.2;
-    --line-height-h4: 1.1;
-    --line-height-h4-optional: 1.3;
-    --line-height-h5: 1.1;
-    --line-height-h6: 1.1;
-    --line-height-sm: 1.25;
-    --line-height-md: 1.5;
-    --line-height-paragraph: 1.3;
-    --radius-6: 0.375rem;
-    --radius-12: 0.75rem;
-    --radius-16: 1rem;
-    --radius-24: 1.5rem;
-    --radius-36: 2.25rem;
-    --radius-100: 6.25rem;
-    --spacing-2: 0.125rem;
-    --spacing-4: 0.25rem;
-    --spacing-5: 0.3125rem;
-    --spacing-6: 0.375rem;
-    --spacing-8: 0.5rem;
-    --spacing-10: 0.625rem;
-    --spacing-12: 0.75rem;
-    --spacing-14: 0.875rem;
-    --spacing-16: 1rem;
-    --spacing-22: 1.375rem;
-    --spacing-24: 1.5rem;
-    --spacing-32: 2rem;
-    --spacing-40: 2.5rem;
-    --spacing-48: 3rem;
-    --spacing-56: 3.5rem;
-    --spacing-64: 4rem;
-    --spacing-72: 4.5rem;
-    --spacing-80: 5rem;
-    --spacing-96: 6rem;
-    --spacing-104: 6.5rem;
-    --radius-sm: 1rem;
-    --radius-md: 1.5rem;
-    --radius-lg: 2rem;
+.file-explorer__search-bar {
+    font-size: 120%;
+    padding-left: 1rem !important;
+    padding-top: 0.7rem;
+    padding-bottom: 0.7rem;
 }

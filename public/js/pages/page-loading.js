@@ -45,7 +45,7 @@ async function fetchPageStructure() {
     }
     
     const structure = await response.json();
-    // console.log(structure)
+    console.log(structure)
     return structure;
 }
 
@@ -151,7 +151,6 @@ function updateHistory(path) {
     StorageHelper.setStorageItem('recently-viewed', recents);
 }
 
-
 const defaultStructure = {
     "pages": {
         "Matematiikka": {
@@ -216,8 +215,8 @@ const defaultStructure = {
             "Lineaarialgebra": {
                 "Määritelmiä ja termejä.html": null,
                 "Determinantti": {
+                    "Determinantin määritelmiä ja merkintöjä.html": null,
                     "Lineaariset yhtälöryhmät.html": null,
-                    "Määritelmiä ja merkintöjä.html": null,
                     "Ominaisarvo ja -ominaisvektori.html": null
                 },
                 "Matriisi": {
@@ -286,7 +285,6 @@ const defaultStructure = {
                 "Trigonometristen funktioiden tarkkoja arvoja.html": null
             }
         },
-
         "Fysiikka": {
             "Aaltoliike- ja valo-oppi": {
                 "Dopplerin ilmiö.html": null,
@@ -303,12 +301,15 @@ const defaultStructure = {
             },
             "Atomi-, säteily- ja ydinfysiikka": {
                 "Alkuaineiden isotooppeja.html": null,
+                "Atomi-, säteily- ja ydinfysiikan kaavoja.html": null,
                 "Irrotustöitä.html": null,
-                "Kaavoja.html": null,
                 "Nukleonit.html": null,
                 "Radioaktiivinen hajominen.html": null,
                 "Standardimallin alkeishiukkaset.html": null,
                 "Säteilyn laatukertoimia.html": null
+            },
+            "Diffuusio": {
+                "Diffuusion kaavoja.html": null
             },
             "Kvanttifysiikka": {
                 "Kaavoja.html": null,
@@ -414,6 +415,7 @@ const defaultStructure = {
         },
         "Kemia": {
             "Alkuaineet": {
+                "Alkuaineiden jaksollinen järjestelmä (Ptable).html": null,
                 "Alkuaineiden jaksollinen järjestelmä.html": null,
                 "Alkuaineiden suhteelliset atomimassat (IUPAC 2018).html": null,
                 "Atomien ja ionien suhteelliset koot.html": null,

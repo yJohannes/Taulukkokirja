@@ -31,7 +31,7 @@
     <script defer src="./vendor/mathjax/tex-svg.js"></script>
     <script defer type="module" src="./vendor/rich-text-editor/dist/rich-text-editor-bundle.js"></script>
 
-    <!-- Load theme -->
+    <!-- Load settings -->
     <script>
         (() => {
             const root = document.documentElement;
@@ -40,27 +40,27 @@
                 if (theme) root.classList.add(theme);
                 else root.classList.add('light');
             } catch (e) {
-            // Fallback if localStorage is not available
-            root.classList.add('light');
-
+                root.classList.add('light'); // Fallback if localStorage is not available
             }
+
+            const fontSize = 'min(1rem, 0.6rem + 0.5vw)'; // Cap at 1rem, same as in _global.css
+            const scale = localStorage.getItem('font-scale') || 1;
+            document.documentElement.style.fontSize = `calc(${scale} * (${fontSize}))`;
         })();
     </script>
-
-    <!-- TODO: Fix layout shifting -->
 
     <link rel="stylesheet" type="text/css" href="./css/bundle.css">
     <script defer type="module" src="./js/main.js"></script>
 </head>
 <!-- cross-background bg-secondary -->
-<body class="bg-secondary">
-    <div class="d-flex flex-column flex-md-row p-0" style="height: 100dvh; height: calc(var(--real-vh, 1dvh) * 100);">
+<body>
+    <div id="root" class="d-flex flex-column flex-md-row p-0 bg-secondary" style="height: 100dvh; height: calc(var(--real-vh, 1dvh) * 100);">
         <header id="nav-rail" class="bg-secondary d-flex flex-md-column justify-content-between flex-shrink-0 p-2 border-top border-end order-1 order-md-0">
             <!-- Wrapper for nav items -->
             <nav class="d-flex flex-md-column gap-1 gap-md-3">
                 <a class="navbar-brand d-flex justify-content-center p-1 link-body-emphasis text-decoration-none" href="./">
                     <img src="./img/icon/book-rounded.png" alt="Brand"
-                        style="width: 32px; height: 32px; object-fit: contain;">
+                        style="width: 2rem; height: 2rem; object-fit: contain;">
                 </a>
                 <!-- Top icons -->
                 <ul class="nav d-flex flex-row flex-md-column gap-1 gap-md-2 m-0 p-0 justify-content-center justify-content-md-start">
@@ -92,13 +92,6 @@
                             <i class="bi bi-calculator"></i>
                         </button>
                     </li>
-                    <!-- <li class="nav-item d-flex justify-content-center">
-                        <button id="nav-toggle-right-sidebar"
-                            class="btn nav-link rounded-circle ripple ripple-centered hover-glow d-flex justify-content-center align-items-center"
-                            title="Toggle right sidebar" aria-label="Toggle right sidebar">
-                            <i class="bi bi-layout-sidebar-reverse"></i>
-                        </button>
-                    </li> -->
                 </ul>
             </nav>
 
@@ -136,7 +129,7 @@
         <div id="content-grid"
         style="grid-template-columns: 300px 0px 1fr 0px 275px; grid-template-rows: 1fr auto 0px;"
         class="flex-grow-1 order-0 order-md-1 h-100">
-            <aside id="sidebar-left" style="grid-column: 1 / 2; grid-row: 1 / 4;" class="sidebar bg-tertiary border-end px-2 py-3"></aside>
+            <aside id="sidebar-left" style="grid-column: 1 / 2; grid-row: 1 / 4;" class="sidebar bg-tertiary border-start border-end px-2 py-3"></aside>
             <div id="left-splitter" style="grid-column: 2 / 3; grid-row: 1 / 4;" class="gutter gutter-horizontal"></div>
 
             <div id="main-content" style="grid-column: 3 / 4; grid-row: 1 / 2;" class="d-flex flex-column bg-primary cross-background overflow-y-auto scrollbar-big">
@@ -236,7 +229,7 @@
             </div>
 
             <div id="right-splitter" style="grid-column: 4 / 5; grid-row: 1 / 4;" class="gutter gutter-horizontal"></div>
-            <aside id="sidebar-right" style="grid-column: 5 / 6; grid-row: 1 / 4;" class="sidebar bg-tertiary border-start px-3 py-3">
+            <aside id="sidebar-right" style="grid-column: 5 / 6; grid-row: 1 / 4;" class="sidebar bg-tertiary border-start border-end px-3 py-3">
                 <section id="bookmarks" class="mb-4">
                     <div class="sticky-header">
                         <h3>Kirjanmerkit</h3>
