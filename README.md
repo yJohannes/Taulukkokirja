@@ -1,6 +1,10 @@
 # Taulukkokirja
+Kaavoja ja taulukoita matematiikasta, fysiikasta ja kemiasta
 
-Tavoite kerätä hyödyllistä/kiinnostavaa tietoa ja koota all-in-one taulukkokirja. Sisältää pääosin kaavoja ja taulukoita matematiikasta, fysiikasta ja kemiasta.
+## Tavoitteet
+- Kerätä hyödyllistä/kiinnostavaa tietoa ja koota "all-in-one" taulukkokirja.
+- Oppia web-ohjelmoinnista ja siihen liittyvästä ympäristöstä.
+
 
 
 ## Lähteet
@@ -17,4 +21,4 @@ Tavoite kerätä hyödyllistä/kiinnostavaa tietoa ja koota all-in-one taulukkok
 - [KaTeX](https://katex.org) / LaTeX-kaavojen renderöinti
 - [Bootstrap 5.3](https://getbootstrap.com/) / Ulkoasu ja responsiivisuus
 - [Split Grid](https://www.npmjs.com/package/split-grid) / Sivupalkkien ja työkalujen kokojen muuttaminen
-- [MiniSearch](https://www.npmjs.com/package/minisearch) / Sivujen indeksointi ja niiltä vastaavuuksien hakeminen.  
+- [MiniSearch](https://www.npmjs.com/package/minisearch) / Sivujen indeksointi ja niiltä vastaavuuksien hakeminen.
