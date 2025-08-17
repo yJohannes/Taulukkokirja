@@ -38,11 +38,6 @@ th {
     color: var(--color-white);
     background-color: var(--color-table-heading);
 
-    mark {
-        background-color: var(--color-mark);
-        color: black;
-    }
-
     p,
     ul,
     ol {
