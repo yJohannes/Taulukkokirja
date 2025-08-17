@@ -308,13 +308,15 @@ export class FileExplorer {
                 </h4>
             `
 
+        // Clear innerHTML
+        this.searchResults.replaceChildren();
+
         if (matches.length === 0) {
-            this.searchResults.innerHTML += '<pre class="ps-2">Ei tuloksia</pre>'
+            this.searchResults.innerHTML = '<pre class="ps-2">Ei tuloksia</pre>'
             return;
         }
 
         const maxScore = Math.max(...matches.map(r => r.score));
-
         for (const match of matches) {
             const score = match.score.toFixed(1); Math.round(match.score);
             const heatColor = getHeatColor(match.score, maxScore, normalization.log);
