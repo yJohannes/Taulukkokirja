@@ -56,7 +56,11 @@ export class FileExplorer {
                 </div>
             </div>
             <nav class="file-explorer__tree-container rounded w-100"></nav>
-            <nav class="file-explorer__search-result-container rounded w-100"></nav>
+            <nav class="file-explorer__search-result-container rounded w-100">
+                <div class="file-explorer__search-results-info d-flex flex-row justify-content-between align-items-center gap-2 py-2 px-1 mt-3"></div>
+                <hr>
+                <div class="file-explorer__search-results"></div>
+            </nav>
         `;
     
         this.searchBar = this.root.querySelector('.file-explorer__search-bar');
@@ -66,6 +70,8 @@ export class FileExplorer {
         this.btnAutoCollapse = this.root.querySelector('.file_explorer__button-auto-collapse');
         this.treeContainer = this.root.querySelector('.file-explorer__tree-container');
         this.searchResultContainer = this.root.querySelector('.file-explorer__search-result-container');
+        this.searchResultsInfo = this.root.querySelector('.file-explorer__search-results-info');
+        this.searchResults = this.root.querySelector('.file-explorer__search-results');
     
         this.data = JSON.parse(localStorage.getItem(this.storageKey)) || this.data;
 
@@ -106,7 +112,7 @@ export class FileExplorer {
 
                     // Merge all matched terms to avoid redundant highlighting
                     const uniqueTerms = [...new Set(titleMatches.flatMap(m => m.terms))];
-                    highlightTerms(this.searchResultContainer, uniqueTerms);
+                    highlightTerms(this.searchResults, uniqueTerms);
                 }
             }
         });
@@ -293,20 +299,17 @@ export class FileExplorer {
 
     // TODO: make static eventually 
     createResultView(matches) {
-        this.searchResultContainer.innerHTML = `
-            <div class="d-flex flex-row justify-content-between align-items-center gap-1 py-2 px-1 mt-3">
+        this.searchResultsInfo.innerHTML = `
                 <h5 class="file-explorer__search-results-text m-0">
                     <b>Haun tulokset</b>
                 </h5>
                 <h4 class="file-explorer__search-results-hits m-0">
                     <span class="badge">${matches.length} osumaa</span>
                 </h4>
-            </div>
-            <hr>
             `
 
         if (matches.length === 0) {
-            this.searchResultContainer.innerHTML += '<pre class="ps-2">Ei tuloksia</pre>'
+            this.searchResults.innerHTML += '<pre class="ps-2">Ei tuloksia</pre>'
             return;
         }
 
@@ -361,7 +364,7 @@ export class FileExplorer {
             scoreBadge.style.backgroundColor = heatColor;
 
             tab.appendChild(scoreBadge);
-            this.searchResultContainer.appendChild(tab);
+            this.searchResults.appendChild(tab);
         }
     }
 }
