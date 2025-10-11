@@ -72,7 +72,9 @@ export class FileExplorer {
         this.searchResultContainer = this.root.querySelector('.file-explorer__search-result-container');
         this.searchResultsInfo = this.root.querySelector('.file-explorer__search-results-info');
         this.searchResults = this.root.querySelector('.file-explorer__search-results');
-    
+
+        elementUtils.showElement(false, this.searchResultContainer);
+
         this.data = JSON.parse(localStorage.getItem(this.storageKey)) || this.data;
 
         this._initSearch();
