@@ -22,7 +22,7 @@ export class FileExplorer {
 
         this.init();
     }
-    
+
     async init() {
         this.root = document.createElement('section');
         this.root.setAttribute('aria-label', 'File explorer');
@@ -30,7 +30,7 @@ export class FileExplorer {
         this.root.innerHTML = `
             <div class="sticky-header mb-1">
                 <input class="file-explorer__search-bar form-control" placeholder="Hae..." autocomplete="off"></input>
-    
+
                 <div class="file-explorer__buttons d-flex justify-content-end mt-2" role="group">
                     <button
                         class="file_explorer__button-expand btn btn-sm ripple ripple-dark ripple-centered hover-glow"
@@ -62,7 +62,7 @@ export class FileExplorer {
                 <div class="file-explorer__search-results"></div>
             </nav>
         `;
-    
+
         this.searchBar = this.root.querySelector('.file-explorer__search-bar');
         this.buttonGroup = this.root.querySelector('.file-explorer__buttons');
         this.btnExpand = this.root.querySelector('.file_explorer__button-expand');
@@ -94,7 +94,7 @@ export class FileExplorer {
 
         this.searchBar.addEventListener('input', (e) => {
             const query = e.target.value;
-            
+
             if (query.length <= 0) {
                 elementUtils.showElement(true, this.buttonGroup);
                 elementUtils.showElement(true, this.treeContainer);
@@ -104,7 +104,7 @@ export class FileExplorer {
                 elementUtils.showElement(false, this.buttonGroup);
                 elementUtils.showElement(false, this.treeContainer);
                 elementUtils.showElement(true, this.searchResultContainer);
-                
+
                 const matches = Search.search(query);
                 this.createResultView(matches);
 
@@ -140,7 +140,7 @@ export class FileExplorer {
             }
         });
     }
-    
+
     _initTree() {
         const tabs = this.createTreeView(this.treeContainer, this.fileStructure.pages, 'pages');
         tabs.classList.add('file-explorer__tree-root');
@@ -149,7 +149,7 @@ export class FileExplorer {
 
     _loadSave() {
         const lists = this.root.querySelectorAll('.tab-list');
-        
+
         // Collapse all dropdowns and unflip arrows
         lists.forEach(list => {
             const items = list.querySelectorAll('.tab-list-item');
@@ -162,7 +162,7 @@ export class FileExplorer {
                         if (this.data.openedFolderPaths.includes(path)) {
                             const dropdown = item.querySelector('.tab-list');
                             dropdown?.classList.add('show');
-                            
+
                             FlipArrow.setArrowFlip(true, tab.querySelector(`svg`));
                         }
                     }
@@ -170,14 +170,6 @@ export class FileExplorer {
             });
         });
     }
-
-    // setTabActivity(isActive, tab) {
-
-        // this.data.lastActiveTab = 
-
-        // tab.classList.add('active');
-        // localStorage.setItem()
-    // }
 
     onTabClick(parent, tab, isDropdown) {
         const activeTabs = parent.querySelectorAll(`.${'active'}`);
@@ -189,7 +181,7 @@ export class FileExplorer {
             tab.classList.add('active');
             return;
         }
-        
+
         // Handle collapsible tabs
         const nestedDropdown = Tab.getTabDropdown(tab);
 
@@ -206,14 +198,14 @@ export class FileExplorer {
             // Dismiss highest level dropdown
             if (!(parentDropdown.classList.contains('file-explorer__tree-root') )) {
                 parentTab.classList.add('active');
-                
+
                 this.data.openedFolderPaths.push(parentTab.getAttribute('data-path'));
                 this.saveData();
             }
 
         } else {
             const autoCollapseOn = this.btnAutoCollapse.classList.contains('active');
-            
+
             if (autoCollapseOn) {
                 // collapseExplorer();
                 // openPath(document, tab.getAttribute('data-path'));
@@ -223,10 +215,10 @@ export class FileExplorer {
                 openDropdown.forEach(dropdown => {
                     const tab = dropdown.parentElement.querySelector('button');
                     const arrow = tab.querySelector('svg');
-                    
+
                     FlipArrow.setArrowFlip(false, arrow);
                     dropdown.classList.remove('show');
-                        
+
                 this.data.openedFolderPaths = this.data.openedFolderPaths.filter(item => item !== tab.getAttribute('data-path'));
                 this.saveData();
                 });
@@ -241,7 +233,7 @@ export class FileExplorer {
         }
     }
 
-    // TODO: make static eventually 
+    // TODO: make static eventually
     createTreeView(parent, treeData, rootPath = '') {
         const rootList = Tab.createTabList(false);
 
@@ -299,7 +291,7 @@ export class FileExplorer {
     }
 
 
-    // TODO: make static eventually 
+    // TODO: make static eventually
     createResultView(matches) {
         this.searchResultsInfo.innerHTML = `
                 <h5 class="file-explorer__search-results-text m-0">
@@ -322,16 +314,16 @@ export class FileExplorer {
         for (const match of matches) {
             const score = match.score.toFixed(1); Math.round(match.score);
             const heatColor = getHeatColor(match.score, maxScore, normalization.log);
-            
+
             const path = match.id;
             const name = Pages.formatting.formatPathToLabel(path);
             const tab = Tab.createTab({innerHTML: name, href: path});
-            
+
             const tabHref = tab.getAttribute('href');
             tab.setAttribute('href', tabHref + `?highlight=${Pages.formatting.encodeSearchParams(match.terms)}`)
             tab.classList.add('p-2', 'pe-5');
 
-            // TODO: move this outside and pass callbacks as args 
+            // TODO: move this outside and pass callbacks as args
             tab.addEventListener('click', updateBookmarks);
 
             // Right click opens the tab folder
