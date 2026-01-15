@@ -5,8 +5,6 @@ Kaavoja ja taulukoita matematiikasta, fysiikasta ja kemiasta
 - Kerätä hyödyllistä/kiinnostavaa tietoa ja koota "all-in-one" taulukkokirja.
 - Oppia web-ohjelmoinnista ja siihen liittyvästä ympäristöstä.
 
-
-
 ## Lähteet
 - MAOL-taulukkokirja
 - Algebra I — Antti Majaniemi
@@ -21,4 +19,4 @@ Kaavoja ja taulukoita matematiikasta, fysiikasta ja kemiasta
 - [KaTeX](https://katex.org) / LaTeX-kaavojen renderöinti
 - [Bootstrap 5.3](https://getbootstrap.com/) / Ulkoasu ja responsiivisuus
 - [Split Grid](https://www.npmjs.com/package/split-grid) / Sivupalkkien ja työkalujen kokojen muuttaminen
-- [MiniSearch](https://www.npmjs.com/package/minisearch) / Sivujen indeksointi ja niiltä vastaavuuksien hakeminen.  
+- [MiniSearch](https://www.npmjs.com/package/minisearch) / Sivujen indeksointi ja niiltä vastaavuuksien hakeminen.
