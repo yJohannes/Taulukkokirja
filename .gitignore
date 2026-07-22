@@ -3,3 +3,4 @@ node_modules/
 public/img-unlicensed/
 temp/
 public/vendor/bootstrap/
+dist/

@@ -8,10 +8,10 @@ export const Navbar = {
     init,
 }
 
-function init() {    
+function init() {
     const sidebar1 = document.getElementById('sidebar-left');
     const sidebar2 = document.getElementById('sidebar-right');
-    
+
     const sidebarToggle = document.getElementById('nav-sidebar-toggle');
     const history = document.getElementById('nav-history');
     const bookmarks = document.getElementById('nav-bookmarks');
@@ -58,55 +58,56 @@ function init() {
         updateSidebarVisibility();
         updateBookmarks();
     });
-    
+
     // rightSidebar.addEventListener('click', () => {
     //     toggleGridColumn(SplitGrid.ref, 4, !elementUtils.isElementVisible(sidebar2));
     // });
 
-    const geogebraRoot = document.getElementById('geogebra-iframe-root');
-    const editorRoot = document.getElementById('rich-text-editor-root');
+    // DISABLED EDITOR AND GEOGEBRA
+    // const geogebraRoot = document.getElementById('geogebra-iframe-root');
+    // const editorRoot = document.getElementById('rich-text-editor-root');
 
-    editor.addEventListener('click', () => {
-        if (!isWorkspaceOpen()) {
-            showWorkspace();
-        } else if (elementUtils.isElementVisible(editorRoot)) {
-            return hideWorkspace();
-        }
-        
-        if (elementUtils.isElementVisible(geogebraRoot)) {
-            elementUtils.showElement(false, geogebraRoot)
-            elementUtils.showElement(true, editorRoot);
-        }
+    // editor.addEventListener('click', () => {
+    //     if (!isWorkspaceOpen()) {
+    //         showWorkspace();
+    //     } else if (elementUtils.isElementVisible(editorRoot)) {
+    //         return hideWorkspace();
+    //     }
 
-        localStorage.setItem('workspace-tool', 'editor');
-    });
+    //     if (elementUtils.isElementVisible(geogebraRoot)) {
+    //         elementUtils.showElement(false, geogebraRoot)
+    //         elementUtils.showElement(true, editorRoot);
+    //     }
 
-    geogebra.addEventListener('click', () => {
-        if (!isWorkspaceOpen()) {
-            showWorkspace();
-        } else if (elementUtils.isElementVisible(geogebraRoot))
-            return hideWorkspace();
+    //     localStorage.setItem('workspace-tool', 'editor');
+    // });
 
-        if (elementUtils.isElementVisible(editorRoot)) {
-           elementUtils.showElement(false, editorRoot)
-           elementUtils.showElement(true, geogebraRoot);
-        }
+    // geogebra.addEventListener('click', () => {
+    //     if (!isWorkspaceOpen()) {
+    //         showWorkspace();
+    //     } else if (elementUtils.isElementVisible(geogebraRoot))
+    //         return hideWorkspace();
 
-        localStorage.setItem('workspace-tool', 'geogebra');
-    });
+    //     if (elementUtils.isElementVisible(editorRoot)) {
+    //        elementUtils.showElement(false, editorRoot)
+    //        elementUtils.showElement(true, geogebraRoot);
+    //     }
 
-    const tool = localStorage.getItem('workspace-tool');
-    const toolIsEditor = tool === 'editor';
+    //     localStorage.setItem('workspace-tool', 'geogebra');
+    // });
 
-    elementUtils.showElement(toolIsEditor, editorRoot);
-    elementUtils.showElement(!toolIsEditor, geogebraRoot);
+    // const tool = localStorage.getItem('workspace-tool');
+    // const toolIsEditor = tool === 'editor';
+
+    // elementUtils.showElement(toolIsEditor, editorRoot);
+    // elementUtils.showElement(!toolIsEditor, geogebraRoot);
 
     // Apply tooltips
     [
         history,
         bookmarks,
-        editor,
-        geogebra,
+        // editor,
+        // geogebra,
         darkMode,
         settings,
         sidebarToggle,
